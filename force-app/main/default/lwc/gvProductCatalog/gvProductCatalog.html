@@ -1,0 +1,85 @@
+
+<template>
+    <section class="catalog">
+        <div class="catalog-header">
+            <p class="eyebrow">THE GOLDVUEE EDIT</p>
+            <h1>Explore Our Jewellery</h1>
+            <p class="subtitle">
+                Timeless craftsmanship. Exceptional elegance.
+            </p>
+        </div>
+
+        <!-- Product search -->
+        <div class="toolbar">
+            <input
+                type="search"
+                placeholder="Search jewellery..."
+                aria-label="Search jewellery"
+                value={searchTerm}
+                oninput={handleSearch}
+            />
+            <span class="product-count">
+                {productCount} Pieces
+            </span>
+        </div>
+
+        <!-- Loading state -->
+        <template lwc:if={isLoading}>
+            <div class="message">Loading our collection...</div>
+        </template>
+
+        <!-- Error state -->
+        <template lwc:elseif={errorMessage}>
+            <div class="message error">{errorMessage}</div>
+        </template>
+
+        <!-- Product grid -->
+        <template lwc:elseif={hasProducts}>
+            <div class="product-grid">
+                <template for:each={filteredProducts} for:item="product">
+                    <article class="product-card" key={product.id}>
+                        <div class="image-wrap">
+                            <img
+                                src={product.image}
+                                alt={product.name}
+                                loading="lazy"
+                            />
+
+                            <template lwc:if={product.isNew}>
+                                <span class="product-badge">NEW</span>
+                            </template>
+                        </div>
+
+                        <div class="product-info">
+                            <p class="category">{product.category}</p>
+                            <h2>{product.name}</h2>
+
+                            <div class="price-row">
+                                <span class="current-price">
+                                    {product.formattedPrice}
+                                </span>
+
+                                <template lwc:if={product.hasDiscount}>
+                                    <span class="old-price">
+                                        {product.formattedOriginalPrice}
+                                    </span>
+                                </template>
+                            </div>
+
+                            <p class="availability">
+                                {product.availability}
+                            </p>
+                        </div>
+                    </article>
+                </template>
+            </div>
+        </template>
+
+        <!-- Empty results -->
+        <template lwc:else>
+            <div class="message">
+                No jewellery found. Try another search.
+            </div>
+        </template>
+    </section>
+</template>

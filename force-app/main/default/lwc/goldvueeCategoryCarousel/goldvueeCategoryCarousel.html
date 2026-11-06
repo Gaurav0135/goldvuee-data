@@ -1,0 +1,99 @@
+
+<template>
+    <section class="gv-collections" aria-label="GoldVuee Jewellery Collections">
+
+        <!-- SECTION HEADING -->
+        <div class="gv-section-heading">
+            <h2>Explore Our Collections</h2>
+            <span class="gv-heading-line" aria-hidden="true"></span>
+        </div>
+
+        <!-- THREE DYNAMIC COLLECTION CARDS -->
+        <div class="gv-card-grid">
+
+            <template for:each={categories} for:item="category">
+
+                <article class="gv-card" key={category.id}>
+
+                    <!-- JEWELLERY IMAGE CAROUSEL -->
+                    <div
+                        class="gv-image-frame"
+                        data-id={category.id}
+                        ontouchstart={handleTouchStart}
+                        ontouchend={handleTouchEnd}
+                    >
+
+                        <!-- TWO-PHASE 180-DEGREE FLIP -->
+                        <div
+                            class={category.animationClass}
+                            data-id={category.id}
+                            onanimationend={handleAnimationEnd}
+                        >
+                            <img
+                                src={category.currentImage}
+                                alt={category.imageAlt}
+                                class="gv-product-image"
+                                draggable="false"
+                            />
+                        </div>
+
+                        <!-- PREVIOUS IMAGE -->
+                        <button
+                            type="button"
+                            class="gv-arrow gv-arrow-left"
+                            data-id={category.id}
+                            onclick={previousImage}
+                            disabled={category.isAnimating}
+                            aria-label="Previous jewellery image"
+                            title="Previous image"
+                        >
+                            &#10094;
+                        </button>
+
+                        <!-- NEXT IMAGE -->
+                        <button
+                            type="button"
+                            class="gv-arrow gv-arrow-right"
+                            data-id={category.id}
+                            onclick={nextImage}
+                            disabled={category.isAnimating}
+                            aria-label="Next jewellery image"
+                            title="Next image"
+                        >
+                            &#10095;
+                        </button>
+
+                        <!-- CURRENT IMAGE COUNTER -->
+                        <span class="gv-image-counter" aria-live="polite">
+                            {category.displayIndex} / {category.totalImages}
+                        </span>
+
+                    </div>
+
+                    <!-- COLLECTION DETAILS -->
+                    <div class="gv-card-content">
+
+                        <h3>{category.title}</h3>
+
+                        <p>{category.description}</p>
+
+                        <!-- DYNAMIC COLLECTION NAVIGATION -->
+                        <a
+                            href={category.url}
+                            class="gv-explore-link"
+                            title={category.title}
+                        >
+                            Explore Collection
+                            <span aria-hidden="true">&#8594;</span>
+                        </a>
+
+                    </div>
+
+                </article>
+
+            </template>
+
+        </div>
+
+    </section>
+</template>

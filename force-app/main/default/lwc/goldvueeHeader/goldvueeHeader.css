@@ -1,0 +1,349 @@
+
+/* ==========================================
+   GOLDVUEE LUXURY HEADER
+   ========================================== */
+
+:host {
+    --gv-burgundy: #300711;
+    --gv-gold: #e8c77b;
+    --gv-ivory: #fff9f0;
+
+    display: block;
+    width: 100%;
+}
+
+/* Main Header */
+.gv-header {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    color: var(--gv-ivory);
+
+    background:
+        radial-gradient(
+            ellipse at 15% 0%,
+            rgba(139, 47, 66, 0.25),
+            transparent 48%
+        ),
+        linear-gradient(
+            115deg,
+            #210309 0%,
+            #400b19 35%,
+            #581627 65%,
+            #26040d 100%
+        );
+
+    border-bottom: 1px solid var(--gv-gold);
+
+    box-shadow:
+        0 5px 18px rgba(35, 0, 12, 0.15);
+}
+
+/* Header Layout */
+.gv-container {
+    max-width: 1480px;
+    height: 90px;
+    min-height: 0;
+    margin: 0 auto;
+    padding: 0 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+/* Logo */
+.gv-brand {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    height: 100%;
+    text-decoration: none;
+}
+
+.gv-logo {
+    display: block;
+    width: auto;
+    height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    border-radius: 0;
+
+    transition: filter 0.25s ease;
+}
+
+.gv-brand:hover .gv-logo {
+    filter: brightness(1.1);
+}
+
+/* Desktop Navigation */
+.gv-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    gap: clamp(16px, 2.2vw, 38px);
+}
+
+.gv-nav a {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 0;
+
+    color: var(--gv-ivory);
+    text-decoration: none;
+    border: none;
+    border-bottom: none;
+    box-shadow: none;
+
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+
+    transition: color 0.25s ease;
+}
+
+.gv-nav a:hover {
+    color: var(--gv-gold);
+}
+
+/* Single Gold Underline */
+.gv-nav a::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 2px;
+
+    width: 0;
+    height: 2px;
+    background: var(--gv-gold);
+
+    transform: translateX(-50%);
+    transition: width 0.25s ease;
+}
+
+.gv-nav a:hover::after,
+.gv-nav a:focus-visible::after {
+    width: 100%;
+}
+
+/* Actions */
+.gv-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 18px;
+    flex-shrink: 0;
+}
+
+/* Cart */
+.gv-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    color: var(--gv-gold);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+
+    transition: color 0.2s ease;
+}
+
+.gv-action:link,
+.gv-action:visited {
+    color: var(--gv-gold);
+}
+
+.gv-action lightning-icon {
+    --slds-c-icon-color-foreground-default: #e8c77b;
+    --sds-c-icon-color-foreground-default: #e8c77b;
+}
+
+.gv-action:hover {
+    color: #ffffff;
+}
+
+/* Login and Account Buttons */
+.gv-login,
+.gv-account {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 42px;
+    padding: 10px 25px;
+
+    border-radius: 30px;
+    border: 1px solid #f3d99c;
+
+    background: linear-gradient(
+        135deg,
+        #fff0c8,
+        #e8c77b,
+        #c99b4e
+    );
+
+    color: #300711;
+    text-decoration: none;
+    white-space: nowrap;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.gv-login:link,
+.gv-login:visited,
+.gv-account:link,
+.gv-account:visited {
+    color: #300711;
+}
+
+.gv-login:hover,
+.gv-account:hover {
+    color: #300711;
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 5px 15px rgba(232, 199, 123, 0.25);
+}
+
+/* Mobile Menu Button */
+.gv-menu-button {
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+
+    background: transparent;
+    border: 1px solid rgba(232, 199, 123, 0.5);
+    border-radius: 8px;
+
+    cursor: pointer;
+}
+
+.gv-menu-button lightning-icon {
+    --slds-c-icon-color-foreground-default: #e8c77b;
+    --sds-c-icon-color-foreground-default: #e8c77b;
+}
+
+/* Mobile Navigation */
+.gv-mobile-nav {
+    display: flex;
+    flex-direction: column;
+
+    padding: 12px 24px 20px;
+
+    background: #300711;
+    border-top: 1px solid rgba(232, 199, 123, 0.3);
+}
+
+.gv-mobile-nav a {
+    display: block;
+    padding: 13px 8px;
+
+    color: var(--gv-ivory);
+    text-decoration: none;
+    font-size: 14px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.gv-mobile-nav a:hover {
+    color: var(--gv-gold);
+}
+
+/* Keyboard Accessibility */
+.gv-header a:focus-visible,
+.gv-header button:focus-visible {
+    outline: 2px solid var(--gv-gold);
+    outline-offset: 3px;
+}
+
+/* Tablet */
+@media screen and (max-width: 1100px) {
+    .gv-container {
+        padding: 0 20px;
+    }
+
+    .gv-nav {
+        gap: 16px;
+    }
+
+    .gv-nav a {
+        font-size: 13px;
+    }
+}
+
+/* Mobile / Small Tablet */
+@media screen and (max-width: 1000px) {
+    .gv-container {
+        height: 78px;
+        min-height: 0;
+        padding: 0 16px;
+    }
+
+    .gv-logo {
+        height: 100%;
+        width: auto;
+    }
+
+    .gv-nav {
+        display: none;
+    }
+
+    .gv-menu-button {
+        display: inline-flex;
+    }
+}
+
+/* Small Mobile */
+@media screen and (max-width: 480px) {
+    .gv-container {
+        height: 68px;
+        min-height: 0;
+        padding: 0 12px;
+        gap: 8px;
+    }
+
+    .gv-logo {
+        height: 100%;
+        width: auto;
+    }
+
+    .gv-actions {
+        gap: 10px;
+    }
+
+    .gv-login,
+    .gv-account {
+        min-height: 36px;
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    .gv-action-label {
+        display: none;
+    }
+
+    .gv-menu-button {
+        width: 36px;
+        height: 36px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .gv-header *,
+    .gv-header *::after {
+        transition: none !important;
+    }
+}

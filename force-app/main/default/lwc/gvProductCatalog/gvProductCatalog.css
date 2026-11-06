@@ -1,0 +1,218 @@
+
+/* =========================================================
+   GOLDVUEE | LUXURY PRODUCT CATALOGUE
+   Theme: Burgundy, champagne gold and warm ivory
+   ========================================================= */
+
+:host {
+    display: block;
+    --gv-burgundy: #59172e;
+    --gv-gold: #b38b4d;
+    --gv-ivory: #fcfaf7;
+    --gv-text: #33252a;
+}
+
+.catalog {
+    background: var(--gv-ivory);
+    padding: 70px 5%;
+    min-height: 500px;
+}
+
+.catalog-header {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.eyebrow {
+    color: var(--gv-gold);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.catalog-header h1 {
+    font-family: Georgia, serif;
+    color: var(--gv-burgundy);
+    font-size: clamp(30px, 4vw, 46px);
+    font-weight: 400;
+    margin: 12px 0;
+}
+
+.subtitle {
+    color: #82777a;
+    font-size: 15px;
+}
+
+.toolbar {
+    max-width: 1250px;
+    margin: 0 auto 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.toolbar input {
+    width: min(100%, 360px);
+    padding: 13px 17px;
+    border: 1px solid #e2d8d5;
+    border-radius: 4px;
+    background: white;
+    color: var(--gv-text);
+    font-size: 14px;
+    outline: none;
+}
+
+.toolbar input:focus {
+    border-color: var(--gv-gold);
+}
+
+.product-count {
+    color: #82777a;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.product-grid {
+    max-width: 1250px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 28px;
+}
+
+.product-card {
+    background: white;
+    border: 1px solid #f0e9e5;
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(55, 25, 35, 0.1);
+}
+
+.image-wrap {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    background: #f5f0ec;
+    overflow: hidden;
+}
+
+.image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.product-card:hover img {
+    transform: scale(1.05);
+}
+
+.product-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: var(--gv-burgundy);
+    color: white;
+    padding: 6px 12px;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+.product-info {
+    padding: 20px 16px 24px;
+    text-align: center;
+}
+
+.category {
+    color: var(--gv-gold);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.product-info h2 {
+    font-family: Georgia, serif;
+    color: var(--gv-text);
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.5;
+    min-height: 50px;
+    margin: 10px 0;
+}
+
+.price-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.current-price {
+    color: var(--gv-burgundy);
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.old-price {
+    color: #999;
+    font-size: 13px;
+    text-decoration: line-through;
+}
+
+.availability {
+    color: #777;
+    font-size: 12px;
+    margin-top: 12px;
+}
+
+.message {
+    text-align: center;
+    padding: 70px 20px;
+    color: #82777a;
+}
+
+.error {
+    color: #a52a2a;
+}
+
+/* Tablet layout */
+@media (max-width: 1000px) {
+    .product-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+/* Mobile layout */
+@media (max-width: 700px) {
+    .catalog {
+        padding: 45px 4%;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+    }
+
+    .product-info {
+        padding: 14px 10px;
+    }
+
+    .product-info h2 {
+        font-size: 14px;
+    }
+
+    .toolbar {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .toolbar input {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}

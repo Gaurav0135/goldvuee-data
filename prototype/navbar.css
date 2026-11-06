@@ -1,0 +1,54 @@
+:root {
+  --burgundy: #3c101c;
+  --burgundy-dark: #280914;
+  --gold: #edcf91;
+  --ivory: #fff6e5;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: #fffaf3; color: var(--burgundy); font-family: Georgia, 'Times New Roman', serif; }
+button, input { font: inherit; }
+.gv-header { position: relative; z-index: 20; background: var(--burgundy); color: var(--ivory); border-bottom: 1px solid rgba(237, 207, 145, .55); }
+.gv-shell { width: min(100% - 32px, 1440px); min-height: 84px; margin: auto; display: flex; align-items: center; gap: clamp(16px, 2.2vw, 36px); }
+.gv-brand, .gv-header a { color: var(--ivory); text-decoration: none; }
+.gv-brand { display: flex; align-items: center; gap: 10px; flex: 0 0 auto; }
+.gv-mark { display: grid; place-items: center; width: 42px; height: 42px; border: 1px solid var(--gold); border-radius: 50%; color: var(--gold); font-size: 15px; letter-spacing: -1px; }
+.gv-brand-text { display: grid; gap: 2px; }
+.gv-brand-name { color: var(--gold); font-size: 23px; letter-spacing: .04em; }
+.gv-brand-subtitle { color: var(--ivory); font: 10px Arial, sans-serif; letter-spacing: .18em; text-transform: uppercase; }
+.gv-search { position: relative; display: flex; align-items: center; flex: 1 1 260px; max-width: 360px; }
+.gv-search input { width: 100%; min-height: 40px; padding: 0 84px 0 38px; border: 1px solid rgba(237, 207, 145, .55); border-radius: 3px; background: rgba(255, 246, 229, .1); color: var(--ivory); }
+.gv-search input::placeholder { color: #eadfcf; }
+.gv-search-icon { position: absolute; left: 12px; color: var(--gold); font: 20px Arial, sans-serif; }
+.gv-search-submit { position: absolute; right: 4px; min-height: 32px; padding: 0 10px; border: 0; border-radius: 2px; background: var(--gold); color: var(--burgundy-dark); font: 700 11px Arial, sans-serif; cursor: pointer; }
+.gv-desktop-nav { display: flex; align-items: center; justify-content: center; gap: clamp(12px, 1.7vw, 28px); flex: 1 1 auto; }
+.gv-desktop-nav a, .gv-nav-button { padding: 10px 0; color: var(--ivory); font: 14px Arial, sans-serif; white-space: nowrap; }
+.gv-desktop-nav a:hover, .gv-nav-button:hover, .gv-action:hover { color: var(--gold); }
+.gv-nav-button, .gv-account-button { border: 0; background: transparent; color: var(--ivory); cursor: pointer; }
+.gv-dropdown, .gv-account { position: relative; }
+.gv-dropdown-menu, .gv-account-menu { position: absolute; top: calc(100% + 10px); right: 0; min-width: 180px; padding: 8px; border: 1px solid rgba(237, 207, 145, .55); background: var(--burgundy-dark); box-shadow: 0 12px 25px rgba(0,0,0,.28); }
+.gv-dropdown-menu { left: -12px; right: auto; }
+.gv-dropdown-menu a, .gv-account-menu a, .gv-account-menu button { display: block; width: 100%; padding: 10px 12px; border: 0; background: transparent; color: var(--ivory); text-align: left; font: 13px Arial, sans-serif; cursor: pointer; }
+.gv-dropdown-menu a:hover, .gv-account-menu a:hover, .gv-account-menu button:hover { background: var(--gold); color: var(--burgundy-dark); }
+.gv-actions { display: flex; align-items: center; gap: 14px; flex: 0 0 auto; }
+.gv-action, .gv-account-button { display: inline-flex; align-items: center; gap: 5px; font: 13px Arial, sans-serif; white-space: nowrap; }
+.gv-action-icon { color: var(--gold); font: 25px Georgia, serif; line-height: 1; }
+.gv-count { display: grid; place-items: center; min-width: 18px; height: 18px; padding: 0 4px; border-radius: 10px; background: var(--gold); color: var(--burgundy-dark); font: 700 11px Arial, sans-serif; }
+.gv-menu-button { display: none; width: 40px; height: 40px; border: 1px solid var(--gold); background: transparent; color: var(--gold); cursor: pointer; }
+.gv-search-message { margin: 0; padding: 8px 16px; background: var(--burgundy-dark); color: var(--gold); text-align: center; font: 12px Arial, sans-serif; }
+.gv-mobile-menu { display: none; }
+.gv-mobile-links, .gv-mobile-actions { display: grid; }
+.gv-mobile-links a, .gv-mobile-links button, .gv-mobile-actions a, .gv-mobile-actions button { padding: 14px 4px; border: 0; border-bottom: 1px solid rgba(255,246,229,.12); background: transparent; color: var(--ivory); text-align: left; font: 15px Arial, sans-serif; cursor: pointer; }
+.gv-mobile-collections { display: grid; padding-left: 18px; background: rgba(0,0,0,.12); }
+.gv-mobile-actions { padding-top: 8px; }
+.gv-mobile-actions span { float: right; color: var(--gold); }
+.gv-visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.gv-header a:focus-visible, .gv-header button:focus-visible, .gv-header input:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.demo-content { max-width: 760px; margin: 13vh auto; padding: 0 24px; }
+.eyebrow { color: #9c6e36; font: 700 12px Arial, sans-serif; letter-spacing: .18em; text-transform: uppercase; }
+.demo-content h1 { max-width: 620px; margin: 12px 0; font-size: clamp(38px, 7vw, 76px); font-weight: 400; }
+.demo-content p:not(.eyebrow) { font: 16px/1.6 Arial, sans-serif; }
+.demo-controls { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.demo-controls button { padding: 10px 14px; border: 1px solid var(--burgundy); background: var(--gold); color: var(--burgundy-dark); cursor: pointer; }
+@media (max-width: 1150px) { .gv-shell { gap: 14px; } .gv-action-label { display: none; } .gv-desktop-nav { gap: 14px; } }
+@media (max-width: 900px) { .gv-shell { min-height: 72px; flex-wrap: wrap; padding: 10px 0; } .gv-desktop-nav { display: none; } .gv-search { order: 4; flex-basis: 100%; max-width: none; } .gv-actions { margin-left: auto; } .gv-menu-button { display: block; } .gv-mobile-menu { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 16px max(16px, calc((100% - 680px) / 2)); border-top: 1px solid rgba(237,207,145,.35); background: var(--burgundy-dark); } }
+@media (max-width: 520px) { .gv-shell { width: calc(100% - 24px); gap: 10px; } .gv-brand-name { font-size: 19px; } .gv-brand-subtitle { font-size: 8px; } .gv-mark { width: 36px; height: 36px; font-size: 13px; } .gv-actions { gap: 8px; } .gv-count { min-width: 16px; height: 16px; font-size: 10px; } .gv-mobile-menu { grid-template-columns: 1fr; gap: 10px; } }

@@ -1,0 +1,358 @@
+
+/* ==========================================
+   GOLDVUEE | LUXURY CATEGORY CAROUSEL
+   FINAL CSS - BURGUNDY & CHAMPAGNE GOLD
+   ========================================== */
+
+:host {
+    display: block;
+    width: 100%;
+    --gv-gold: #e8c77b;
+    --gv-light-gold: #f7dca4;
+    --gv-ivory: #fff1e5;
+    --gv-dark: #26040d;
+}
+
+/* 1. MAIN COLLECTION SECTION */
+.gv-collections {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 28px 32px 34px;
+    color: var(--gv-ivory);
+    background: linear-gradient(
+        120deg,
+        #210309 0%,
+        #390914 50%,
+        #26040d 100%
+    );
+    border-top: 1px solid rgba(232, 199, 123, 0.55);
+}
+
+/* 2. SECTION HEADING */
+.gv-section-heading {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.gv-section-heading h2 {
+    margin: 0;
+    color: var(--gv-light-gold);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(25px, 2.6vw, 35px);
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+.gv-heading-line {
+    display: block;
+    width: 65px;
+    height: 1px;
+    margin: 12px auto 0;
+    background: var(--gv-gold);
+}
+
+/* 3. THREE EQUAL CARDS */
+.gv-card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+/* 4. PREMIUM CARD */
+.gv-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid rgba(232, 199, 123, 0.55);
+    border-radius: 11px;
+    background: linear-gradient(
+        160deg,
+        #390a16 0%,
+        #26040d 100%
+    );
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25);
+    transition:
+        transform 250ms ease,
+        border-color 250ms ease,
+        box-shadow 250ms ease;
+}
+
+.gv-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--gv-gold);
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.32),
+        0 0 16px rgba(232, 199, 123, 0.08);
+}
+
+/* 5. IMAGE FRAME */
+.gv-image-frame {
+    position: relative;
+    width: 100%;
+    height: 190px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: var(--gv-dark);
+    perspective: 1200px;
+    touch-action: pan-y;
+}
+
+/* 6. IMAGE ROTATOR */
+.gv-image-rotator {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    transform: rotateY(0deg);
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+
+/* 7. JEWELLERY IMAGE */
+.gv-product-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    object-fit: cover;
+    object-position: center;
+    backface-visibility: hidden;
+}
+
+/* 8. FIRST HALF OF 180-DEGREE FLIP */
+.gv-flip-out {
+    animation: gv-flip-out-animation 350ms ease-in forwards;
+}
+
+/* 9. SECOND HALF OF 180-DEGREE FLIP */
+.gv-flip-in {
+    animation: gv-flip-in-animation 350ms ease-out forwards;
+}
+
+@keyframes gv-flip-out-animation {
+    from {
+        transform: rotateY(0deg);
+    }
+
+    to {
+        transform: rotateY(90deg);
+    }
+}
+
+@keyframes gv-flip-in-animation {
+    from {
+        transform: rotateY(-90deg);
+    }
+
+    to {
+        transform: rotateY(0deg);
+    }
+}
+
+/* 10. PREVIOUS / NEXT ARROWS */
+.gv-arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: 1px solid rgba(232, 199, 123, 0.85);
+    border-radius: 50%;
+    background: rgba(32, 3, 12, 0.82);
+    color: var(--gv-light-gold);
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    transition:
+        background 200ms ease,
+        border-color 200ms ease;
+}
+
+.gv-arrow:hover {
+    background: #76243a;
+    border-color: #ffe5ad;
+}
+
+.gv-arrow:disabled {
+    opacity: 0.55;
+    cursor: wait;
+}
+
+.gv-arrow-left {
+    left: 12px;
+}
+
+.gv-arrow-right {
+    right: 12px;
+}
+
+/* 11. IMAGE COUNTER */
+.gv-image-counter {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    z-index: 2;
+    padding: 4px 9px;
+    border-radius: 16px;
+    background: rgba(20, 2, 8, 0.82);
+    color: var(--gv-light-gold);
+    font-size: 11px;
+    line-height: 1.2;
+}
+
+/* 12. CARD CONTENT */
+.gv-card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 18px 16px 20px;
+    text-align: center;
+}
+
+.gv-card-content h3 {
+    margin: 0 0 9px;
+    color: var(--gv-light-gold);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+.gv-card-content p {
+    margin: 0 0 16px;
+    color: var(--gv-ivory);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+/* 13. EXPLORE COLLECTION BUTTON */
+.gv-explore-link,
+.gv-explore-link:link,
+.gv-explore-link:visited {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: auto;
+    padding: 9px 18px;
+    border: 1px solid rgba(232, 199, 123, 0.8);
+    border-radius: 24px;
+    background: transparent;
+    color: var(--gv-gold);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.4;
+    text-decoration: none;
+    transition:
+        background 250ms ease,
+        color 250ms ease,
+        box-shadow 250ms ease;
+}
+
+.gv-explore-link:hover {
+    background: linear-gradient(
+        135deg,
+        #f7e1ae,
+        #d5a653
+    );
+    color: #300711;
+    box-shadow: 0 5px 18px rgba(232, 199, 123, 0.2);
+}
+
+/* 14. KEYBOARD ACCESSIBILITY */
+.gv-collections button:focus-visible,
+.gv-collections a:focus-visible {
+    outline: 2px solid #ffe4a8;
+    outline-offset: 3px;
+}
+
+/* 15. TABLET */
+@media (max-width: 1000px) {
+    .gv-collections {
+        padding: 26px 20px 30px;
+    }
+
+    .gv-card-grid {
+        gap: 18px;
+    }
+
+    .gv-image-frame {
+        height: 175px;
+    }
+
+    .gv-card-content {
+        padding: 16px 12px 18px;
+    }
+
+    .gv-card-content h3 {
+        font-size: 19px;
+    }
+
+    .gv-card-content p {
+        font-size: 13px;
+    }
+
+    .gv-explore-link {
+        font-size: 12px;
+        padding: 8px 12px;
+    }
+}
+
+/* 16. MOBILE */
+@media (max-width: 650px) {
+    .gv-collections {
+        padding: 28px 16px;
+    }
+
+    .gv-card-grid {
+        grid-template-columns: 1fr;
+        max-width: 420px;
+        gap: 22px;
+    }
+
+    .gv-image-frame {
+        height: 210px;
+    }
+
+    .gv-card-content {
+        padding: 18px 16px 20px;
+    }
+
+    .gv-card-content h3 {
+        font-size: 22px;
+    }
+
+    .gv-card-content p {
+        font-size: 14px;
+    }
+}
+
+/* 17. REDUCED MOTION */
+@media (prefers-reduced-motion: reduce) {
+    .gv-card,
+    .gv-arrow,
+    .gv-explore-link {
+        transition: none;
+    }
+
+    .gv-flip-out,
+    .gv-flip-in {
+        animation-duration: 1ms;
+    }
+}

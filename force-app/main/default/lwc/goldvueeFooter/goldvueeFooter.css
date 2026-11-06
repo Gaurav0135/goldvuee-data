@@ -1,0 +1,164 @@
+
+/* GOLDVUEE LUXURY FOOTER */
+
+:host {
+    --gv-gold: #e8c77b;
+    --gv-ivory: #fff9f0;
+    display: block;
+    width: 100%;
+}
+
+.gv-footer {
+    width: 100%;
+    background: linear-gradient(
+        115deg,
+        #210309 0%,
+        #400b19 55%,
+        #26040d 100%
+    );
+    color: var(--gv-ivory);
+    border-top: 2px solid var(--gv-gold);
+}
+
+.gv-footer-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 55px 40px 45px;
+
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+}
+
+/* Brand */
+.gv-brand-name {
+    display: inline-block;
+    color: var(--gv-gold);
+    font-family: Georgia, serif;
+    font-size: 32px;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+.gv-brand-name:link,
+.gv-brand-name:visited,
+.gv-brand-name:hover,
+.gv-brand-name:active {
+    color: #e8c77b;
+    text-decoration: none;
+}
+
+.gv-brand-subtitle {
+    margin: 4px 0 18px;
+    color: #f8e8bd;
+    font-size: 10px;
+    letter-spacing: 3px;
+}
+
+.gv-brand-description {
+    max-width: 290px;
+    color: #e9dad4;
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+/* Columns */
+.gv-footer-column h3 {
+    margin: 0 0 22px;
+    color: var(--gv-gold);
+    font-family: Georgia, serif;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.gv-footer-column nav {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.gv-footer-column a {
+    color: #f1e6e0;
+    font-size: 13px;
+    text-decoration: none;
+    transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.gv-footer-column a:hover {
+    color: var(--gv-gold);
+    transform: translateX(3px);
+}
+
+.gv-brand-note {
+    margin-top: 20px;
+    color: #cdb8af;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+/* Copyright */
+.gv-footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+
+    padding: 20px max(40px, calc((100% - 1360px) / 2));
+
+    border-top: 1px solid rgba(232, 199, 123, 0.25);
+    color: #d8b97a;
+    font-size: 12px;
+}
+
+.gv-footer-bottom p {
+    margin: 0;
+}
+
+/* Accessibility */
+.gv-footer a:focus-visible {
+    outline: 2px solid var(--gv-gold);
+    outline-offset: 4px;
+}
+
+/* Tablet */
+@media screen and (max-width: 900px) {
+    .gv-footer-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 35px;
+        padding: 45px 28px;
+    }
+
+    .gv-footer-bottom {
+        padding: 20px 28px;
+    }
+}
+
+/* Mobile */
+@media screen and (max-width: 520px) {
+    .gv-footer-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 40px 24px;
+    }
+
+    .gv-footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px 24px;
+    }
+
+    .gv-brand-name {
+        font-size: 29px;
+    }
+}
+
+
+.gv-footer .gv-brand-name,
+.gv-footer .gv-brand-name:link,
+.gv-footer .gv-brand-name:visited,
+.gv-footer .gv-brand-name:hover {
+    color: #e8c77b !important;
+    text-decoration: none !important;
+}

@@ -1,0 +1,69 @@
+
+<template>
+    <footer class="gv-footer">
+        <div class="gv-footer-container">
+
+            <!-- Brand -->
+            <div class="gv-footer-brand">
+                <a href={homeUrl} class="gv-brand-name">
+                    GoldVuee
+                </a>
+                <p class="gv-brand-subtitle">
+                    LUXURY JEWELLERY
+                </p>
+                <p class="gv-brand-description">
+                    Timeless elegance, crafted for every
+                    special moment. Discover jewellery
+                    that celebrates your story.
+                </p>
+            </div>
+
+            <!-- Explore -->
+            <div class="gv-footer-column">
+                <h3>Explore</h3>
+                <nav aria-label="Explore links">
+                    <a href={homeUrl}>Home</a>
+                    <a href={collectionsUrl}>Collections</a>
+                    <a href={newArrivalsUrl}>New Arrivals</a>
+                </nav>
+            </div>
+
+            <!-- Customer Care -->
+            <div class="gv-footer-column">
+                <h3>Customer Care</h3>
+                <nav aria-label="Customer care links">
+                    <a href={contactUrl}>Contact Us</a>
+                    <template lwc:if={isLoggedIn}>
+                        <a href={accountUrl}>My Account</a>
+                        <a href={cartUrl}>My Cart</a>
+                    </template>
+                    <template lwc:else>
+                        <a href={loginUrl}>Login</a>
+                    </template>
+                </nav>
+            </div>
+
+            <!-- Our Brand -->
+            <div class="gv-footer-column">
+                <h3>Our Brand</h3>
+                <nav aria-label="Brand links">
+                    <a href={storyUrl}>Our Story</a>
+                    <a href={contactUrl}>Get in Touch</a>
+                </nav>
+                <p class="gv-brand-note">
+                    Crafted with care.
+                    Worn with love.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="gv-footer-bottom">
+            <p>
+                © {currentYear} GoldVuee.
+                All rights reserved.
+            </p>
+            <p>Elegance in every detail.</p>
+        </div>
+    </footer>
+</template>
