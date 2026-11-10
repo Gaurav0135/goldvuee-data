@@ -1,0 +1,605 @@
+﻿[1m68.0 APEX_CODE,FINEST;APEX_PROFILING,INFO;CALLOUT,INFO;DATA_ACCESS,NONE;DB,FINE;NBA,INFO;SYSTEM,DEBUG;VALIDATION,INFO;VISUALFORCE,INFO;WAVE,INFO;WORKFLOW,FINER[22m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m902321[39m)[1m[32m|USER_INFO|[39m[22m[EXTERNAL]|005jV000003hRuT|gauravpatel260931@[94mgmail.com[39m|(GMT+[94m00[39m:[94m00[39m) Greenwich Mean Time (GMT)|GMTZ
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m986162[39m)|EXECUTION_STARTED
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m1008112[39m)|CODE_UNIT_STARTED|[EXTERNAL]|apex://GVCheckoutController/ACTION$placeOrder
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m3561084[39m)|CODE_UNIT_STARTED|[EXTERNAL]|01pjV000005AXXh|[94mGVCheckoutController.placeOrder[39m(String, String, String, String, String)
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m5902143[39m)|HEAP_ALLOCATE|[[94m95[39m]|Bytes:[94m3[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m5999225[39m)|HEAP_ALLOCATE|[[94m100[39m]|Bytes:[94m152[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m6013405[39m)|HEAP_ALLOCATE|[[94m417[39m]|Bytes:[94m408[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m6021665[39m)|HEAP_ALLOCATE|[[94m430[39m]|Bytes:[94m408[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m6049785[39m)|HEAP_ALLOCATE|[[94m317[39m]|Bytes:[94m6[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m6059455[39m)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:[94m14[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m6081866[39m)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:[94m6[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m6083586[39m)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:[94m287[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m6108256[39m)[34m|METHOD_ENTRY|[39m[[94m12[39m]|01pjV000005AXXh|[94mGVCheckoutController.GVCheckoutController[39m()
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m6116956[39m)|STATEMENT_EXECUTE|[[94m12[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m6255948[39m)|STATEMENT_EXECUTE|[[94m12[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m6272338[39m)|HEAP_ALLOCATE|[[94m68[39m]|Bytes:[94m5[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m6309548[39m)|HEAP_ALLOCATE|[[94m74[39m]|Bytes:[94m5[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m6316139[39m)|HEAP_ALLOCATE|[[94m82[39m]|Bytes:[94m7[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m6497501[39m)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:[94m5[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m6505731[39m)|STATEMENT_EXECUTE|[[94m14[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m6515381[39m)[34m|METHOD_EXIT|[39m[[94m12[39m]|GVCheckoutController
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m6517731[39m)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:[94m1[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m6519341[39m)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:[94m1[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m6520651[39m)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:[94m1[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m6521851[39m)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:[94m6[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m6522951[39m)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:[94m5[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m6561022[39m)[1m[36m|VARIABLE_SCOPE_BEGIN|[39m[22m[[94m23[39m]|shippingAddress|String|[94mfalse[39m|[94mfalse[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m6629202[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m23[39m]|shippingAddress|[1m[31m"r"[39m[22m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m6638203[39m)[1m[36m|VARIABLE_SCOPE_BEGIN|[39m[22m[[94m23[39m]|shippingCity|String|[94mfalse[39m|[94mfalse[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m6648343[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m23[39m]|shippingCity|[1m[31m"r"[39m[22m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m6652773[39m)[1m[36m|VARIABLE_SCOPE_BEGIN|[39m[22m[[94m23[39m]|shippingState|String|[94mfalse[39m|[94mfalse[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m6659693[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m23[39m]|shippingState|[1m[31m"r"[39m[22m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m6663583[39m)[1m[36m|VARIABLE_SCOPE_BEGIN|[39m[22m[[94m23[39m]|shippingPostalCode|String|[94mfalse[39m|[94mfalse[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m6670173[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m23[39m]|shippingPostalCode|[1m[31m"[94m452016[31m"[39m[22m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m6685643[39m)[1m[36m|VARIABLE_SCOPE_BEGIN|[39m[22m[[94m23[39m]|shippingCountry|String|[94mfalse[39m|[94mfalse[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m6691843[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m23[39m]|shippingCountry|[1m[31m"India"[39m[22m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m6700683[39m)|HEAP_ALLOCATE|[[94m31[39m]|Bytes:[94m5[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m6706523[39m)|STATEMENT_EXECUTE|[[94m29[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m6707753[39m)|STATEMENT_EXECUTE|[[94m31[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m6709673[39m)|HEAP_ALLOCATE|[[94m31[39m]|Bytes:[94m5[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m6762684[39m)[1m[36m|VARIABLE_SCOPE_BEGIN|[39m[22m[[94m31[39m]|stage|String|[94mfalse[39m|[94mfalse[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m6776834[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m31[39m]|stage|[1m[31m"START"[39m[22m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m6779014[39m)|STATEMENT_EXECUTE|[[94m33[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m6779974[39m)|STATEMENT_EXECUTE|[[94m33[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m6780944[39m)|STATEMENT_EXECUTE|[[94m35[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m6810825[39m)|HEAP_ALLOCATE|[[94m37[39m]|Bytes:[94m29[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m6955067[39m)|HEAP_ALLOCATE|[[94m38[39m]|Bytes:[94m105[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m6961987[39m)|SYSTEM_METHOD_ENTRY|[[94m1[39m]|[94mUserInfo.UserInfo[39m()
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m6964147[39m)|STATEMENT_EXECUTE|[[94m1[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m6967997[39m)|SYSTEM_METHOD_EXIT|[[94m1[39m]|UserInfo
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m6992237[39m)[34m|METHOD_ENTRY|[39m[[94m38[39m]||[94mSystem.UserInfo.getUserId[39m()
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m8109531[39m)[34m|METHOD_EXIT|[39m[[94m38[39m]||[94mSystem.UserInfo.getUserId[39m()
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m8127761[39m)|HEAP_ALLOCATE|[[94m37[39m]|Bytes:[94m47[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m8210822[39m)[1m[32m|USER_DEBUG|[39m[22m[[94m35[39m]|[1m[31mERROR[39m[22m|GV CHECKOUT &#[94m124[39m; START &#[94m124[39m; UserId=005jV000003hRuTQAU
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m8241303[39m)|STATEMENT_EXECUTE|[[94m45[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m8249903[39m)|HEAP_ALLOCATE|[[94m45[39m]|Bytes:[94m15[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m8312183[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m45[39m]|stage|[1m[31m"CUSTOMER LOOKUP"[39m[22m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m8314823[39m)|STATEMENT_EXECUTE|[[94m47[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m8316064[39m)|HEAP_ALLOCATE|[[94m47[39m]|Bytes:[94m58[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m8336744[39m)|HEAP_ALLOCATE|[[94m47[39m]|Bytes:[94m4[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m8345264[39m)|HEAP_ALLOCATE|[[94m47[39m]|Bytes:[94m7[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m8350824[39m)[34m|METHOD_ENTRY|[39m[[94m50[39m]||[94mSystem.UserInfo.getUserId[39m()
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m8358604[39m)[34m|METHOD_EXIT|[39m[[94m50[39m]||[94mSystem.UserInfo.getUserId[39m()
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m9992854[39m)[1m[33m|SOQL_EXECUTE_BEGIN|[39m[22m[[94m47[39m]|Aggregations:[94m0[39m|SELECT Id, ContactId FROM User WHERE Id = :tmpVar1 LIMIT [94m1[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m24698698[39m)[1m[33m|SOQL_EXECUTE_END|[39m[22m[[94m47[39m]|Rows:[94m1[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m24726049[39m)|HEAP_ALLOCATE|[[94m47[39m]|Bytes:[94m8[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m24738539[39m)|HEAP_ALLOCATE|[[94m47[39m]|Bytes:[94m60[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m24856840[39m)|HEAP_ALLOCATE|[[94m47[39m]|Bytes:[94m8[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m24915381[39m)[1m[36m|VARIABLE_SCOPE_BEGIN|[39m[22m[[94m47[39m]|users|List<User>|[94mtrue[39m|[94mfalse[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25034852[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m47[39m]|users|[{[1m[31m"Id"[39m[22m:[1m[31m"005jV000003hRuTQAU"[39m[22m,[1m[31m"ContactId"[39m[22m:[1m[31m"003jV00000GPEjJQAX"[39m[22m}]|0x8150457
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25134534[39m)|HEAP_ALLOCATE|[[94m56[39m]|Bytes:[94m12[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25164824[39m)|STATEMENT_EXECUTE|[[94m54[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25166874[39m)|STATEMENT_EXECUTE|[[94m63[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25169364[39m)|HEAP_ALLOCATE|[[94m63[39m]|Bytes:[94m12[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25175504[39m)[1m[36m|VARIABLE_SCOPE_BEGIN|[39m[22m[[94m63[39m]|customerContactId|Id|[94mfalse[39m|[94mfalse[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25299786[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m63[39m]|customerContactId|[1m[31m"003jV00000GPEjJQAX"[39m[22m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25303296[39m)|STATEMENT_EXECUTE|[[94m65[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25309216[39m)|HEAP_ALLOCATE|[[94m67[39m]|Bytes:[94m41[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25355746[39m)|HEAP_ALLOCATE|[[94m68[39m]|Bytes:[94m18[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25366337[39m)|HEAP_ALLOCATE|[[94m67[39m]|Bytes:[94m59[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25415307[39m)[1m[32m|USER_DEBUG|[39m[22m[[94m65[39m]|[1m[31mERROR[39m[22m|GV CHECKOUT &#[94m124[39m; CUSTOMER FOUND &#[94m124[39m; ContactId=003jV00000GPEjJQAX
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25420657[39m)|STATEMENT_EXECUTE|[[94m75[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25422347[39m)|HEAP_ALLOCATE|[[94m75[39m]|Bytes:[94m19[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25433677[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m75[39m]|stage|[1m[31m"SHIPPING VALIDATION"[39m[22m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25436007[39m)|STATEMENT_EXECUTE|[[94m77[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25444847[39m)[34m|METHOD_ENTRY|[39m[[94m77[39m]|01pjV000005AXXh|[94mGVCheckoutController.clean[39m(String)
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25529129[39m)[1m[36m|VARIABLE_SCOPE_BEGIN|[39m[22m[[94m549[39m]|value|String|[94mfalse[39m|[94mfalse[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25538479[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m549[39m]|value|[1m[31m"r"[39m[22m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25550399[39m)|HEAP_ALLOCATE|[[94m550[39m]|Bytes:[94m5[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25554459[39m)|STATEMENT_EXECUTE|[[94m549[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25555549[39m)|STATEMENT_EXECUTE|[[94m550[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25569689[39m)|HEAP_ALLOCATE|[[94m550[39m]|Bytes:[94m1[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25580529[39m)[34m|METHOD_EXIT|[39m[[94m77[39m]|01pjV000005AXXh|[94mGVCheckoutController.clean[39m(String)
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25587949[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m77[39m]|shippingAddress|[1m[31m"r"[39m[22m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25589949[39m)|STATEMENT_EXECUTE|[[94m78[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25593159[39m)[34m|METHOD_ENTRY|[39m[[94m78[39m]|01pjV000005AXXh|[94mGVCheckoutController.clean[39m(String)
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25598779[39m)[1m[36m|VARIABLE_SCOPE_BEGIN|[39m[22m[[94m549[39m]|value|String|[94mfalse[39m|[94mfalse[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25605890[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m549[39m]|value|[1m[31m"r"[39m[22m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25609080[39m)|HEAP_ALLOCATE|[[94m550[39m]|Bytes:[94m5[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25611730[39m)|STATEMENT_EXECUTE|[[94m549[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25612620[39m)|STATEMENT_EXECUTE|[[94m550[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25616230[39m)|HEAP_ALLOCATE|[[94m550[39m]|Bytes:[94m1[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25622040[39m)[34m|METHOD_EXIT|[39m[[94m78[39m]|01pjV000005AXXh|[94mGVCheckoutController.clean[39m(String)
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25627720[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m78[39m]|shippingCity|[1m[31m"r"[39m[22m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25629800[39m)|STATEMENT_EXECUTE|[[94m79[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25632480[39m)[34m|METHOD_ENTRY|[39m[[94m79[39m]|01pjV000005AXXh|[94mGVCheckoutController.clean[39m(String)
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25766072[39m)[1m[36m|VARIABLE_SCOPE_BEGIN|[39m[22m[[94m549[39m]|value|String|[94mfalse[39m|[94mfalse[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25792162[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m549[39m]|value|[1m[31m"r"[39m[22m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25794802[39m)|HEAP_ALLOCATE|[[94m550[39m]|Bytes:[94m5[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25797462[39m)|STATEMENT_EXECUTE|[[94m549[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25798312[39m)|STATEMENT_EXECUTE|[[94m550[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25811292[39m)|HEAP_ALLOCATE|[[94m550[39m]|Bytes:[94m1[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25817472[39m)[34m|METHOD_EXIT|[39m[[94m79[39m]|01pjV000005AXXh|[94mGVCheckoutController.clean[39m(String)
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25823782[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m79[39m]|shippingState|[1m[31m"r"[39m[22m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25825912[39m)|STATEMENT_EXECUTE|[[94m80[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25828572[39m)[34m|METHOD_ENTRY|[39m[[94m80[39m]|01pjV000005AXXh|[94mGVCheckoutController.clean[39m(String)
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25834152[39m)[1m[36m|VARIABLE_SCOPE_BEGIN|[39m[22m[[94m549[39m]|value|String|[94mfalse[39m|[94mfalse[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25840322[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m549[39m]|value|[1m[31m"[94m452016[31m"[39m[22m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25842882[39m)|HEAP_ALLOCATE|[[94m550[39m]|Bytes:[94m5[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25845152[39m)|STATEMENT_EXECUTE|[[94m549[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25846043[39m)|STATEMENT_EXECUTE|[[94m550[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25849313[39m)|HEAP_ALLOCATE|[[94m550[39m]|Bytes:[94m6[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25854383[39m)[34m|METHOD_EXIT|[39m[[94m80[39m]|01pjV000005AXXh|[94mGVCheckoutController.clean[39m(String)
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25859833[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m80[39m]|shippingPostalCode|[1m[31m"[94m452016[31m"[39m[22m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25861833[39m)|STATEMENT_EXECUTE|[[94m81[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25864303[39m)[34m|METHOD_ENTRY|[39m[[94m81[39m]|01pjV000005AXXh|[94mGVCheckoutController.clean[39m(String)
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25868113[39m)[1m[36m|VARIABLE_SCOPE_BEGIN|[39m[22m[[94m549[39m]|value|String|[94mfalse[39m|[94mfalse[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25874183[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m549[39m]|value|[1m[31m"India"[39m[22m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25876413[39m)|HEAP_ALLOCATE|[[94m550[39m]|Bytes:[94m5[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25878743[39m)|STATEMENT_EXECUTE|[[94m549[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25879713[39m)|STATEMENT_EXECUTE|[[94m550[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25882783[39m)|HEAP_ALLOCATE|[[94m550[39m]|Bytes:[94m5[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25887943[39m)[34m|METHOD_EXIT|[39m[[94m81[39m]|01pjV000005AXXh|[94mGVCheckoutController.clean[39m(String)
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25893003[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m81[39m]|shippingCountry|[1m[31m"India"[39m[22m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25929144[39m)|STATEMENT_EXECUTE|[[94m83[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25963454[39m)|STATEMENT_EXECUTE|[[94m95[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25970174[39m)|HEAP_ALLOCATE|[[94m108[39m]|Bytes:[94m5[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25975884[39m)|HEAP_ALLOCATE|[[94m108[39m]|Bytes:[94m5[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m25985184[39m)|HEAP_ALLOCATE|[[94m110[39m]|Bytes:[94m15[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m26024085[39m)|HEAP_ALLOCATE|[[94m109[39m]|Bytes:[94m24[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m26042865[39m)|SYSTEM_METHOD_ENTRY|[[94m1[39m]|[94mPattern.Pattern[39m()
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m26045735[39m)|STATEMENT_EXECUTE|[[94m1[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m26066715[39m)|SYSTEM_METHOD_EXIT|[[94m1[39m]|Pattern
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m26080515[39m)[34m|METHOD_ENTRY|[39m[[94m109[39m]||[94mSystem.Pattern.matches[39m(String, String)
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m26391539[39m)[34m|METHOD_EXIT|[39m[[94m109[39m]||[94mSystem.Pattern.matches[39m(String, String)
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m26396449[39m)|STATEMENT_EXECUTE|[[94m107[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m26398519[39m)|STATEMENT_EXECUTE|[[94m119[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m26400979[39m)|HEAP_ALLOCATE|[[94m121[39m]|Bytes:[94m32[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m26419020[39m)[1m[32m|USER_DEBUG|[39m[22m[[94m119[39m]|[1m[31mERROR[39m[22m|GV CHECKOUT &#[94m124[39m; SHIPPING VALIDATED
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m26424330[39m)|STATEMENT_EXECUTE|[[94m128[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m26426280[39m)|HEAP_ALLOCATE|[[94m128[39m]|Bytes:[94m11[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m26450720[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m128[39m]|stage|[1m[31m"CART LOOKUP"[39m[22m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m26452920[39m)|STATEMENT_EXECUTE|[[94m130[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m26454460[39m)|HEAP_ALLOCATE|[[94m130[39m]|Bytes:[94m140[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m26467730[39m)|HEAP_ALLOCATE|[[94m130[39m]|Bytes:[94m4[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m32389444[39m)[1m[33m|SOQL_EXECUTE_BEGIN|[39m[22m[[94m130[39m]|Aggregations:[94m0[39m|SELECT Id, Customer__c, Cart_Status__c FROM Shopping_Cart__c WHERE (Customer__c = :tmpVar1 AND Cart_Status__c = 'Active') LIMIT [94m2[39m FOR UPDATE
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m53354076[39m)[1m[33m|SOQL_EXECUTE_END|[39m[22m[[94m130[39m]|Rows:[94m1[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m53382327[39m)|HEAP_ALLOCATE|[[94m130[39m]|Bytes:[94m8[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m53396477[39m)|HEAP_ALLOCATE|[[94m130[39m]|Bytes:[94m86[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m53496588[39m)|HEAP_ALLOCATE|[[94m130[39m]|Bytes:[94m8[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m53546869[39m)[1m[36m|VARIABLE_SCOPE_BEGIN|[39m[22m[[94m130[39m]|carts|List<Shopping_Cart__c>|[94mtrue[39m|[94mfalse[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m53693080[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m130[39m]|carts|[{[1m[31m"Cart_Status__c"[39m[22m:[1m[31m"Active"[39m[22m,[1m[31m"Id"[39m[22m:[1m[31m"a03jV00000GS2qTQAT"[39m[22m,[1m[31m"Customer__c"[39m[22m:[1m[31m"003jV00000GPEjJQAX"[39m[22m}]|0xdcfa907
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m53699940[39m)|STATEMENT_EXECUTE|[[94m139[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m53710271[39m)|HEAP_ALLOCATE|[[94m141[39m]|Bytes:[94m32[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m53812962[39m)|HEAP_ALLOCATE|[[94m142[39m]|Bytes:[94m1[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m53823752[39m)|HEAP_ALLOCATE|[[94m141[39m]|Bytes:[94m33[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m53867213[39m)[1m[32m|USER_DEBUG|[39m[22m[[94m139[39m]|[1m[31mERROR[39m[22m|GV CHECKOUT &#[94m124[39m; ACTIVE CART COUNT=[94m1[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m53881693[39m)|STATEMENT_EXECUTE|[[94m145[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m53890243[39m)|STATEMENT_EXECUTE|[[94m151[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m53891213[39m)|STATEMENT_EXECUTE|[[94m158[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m53902863[39m)|HEAP_ALLOCATE|[[94m158[39m]|Bytes:[94m16[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m53919573[39m)[1m[36m|VARIABLE_SCOPE_BEGIN|[39m[22m[[94m158[39m]|cart|Shopping_Cart__c|[94mtrue[39m|[94mfalse[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m53947174[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m158[39m]|cart|{[1m[31m"Cart_Status__c"[39m[22m:[1m[31m"Active"[39m[22m,[1m[31m"Id"[39m[22m:[1m[31m"a03jV00000GS2qTQAT"[39m[22m,[1m[31m"Customer__c"[39m[22m:[1m[31m"003jV00000GPEjJQAX"[39m[22m}|0x458cecda
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m54006524[39m)|HEAP_ALLOCATE|[[94m162[39m]|Bytes:[94m6[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m54018284[39m)|STATEMENT_EXECUTE|[[94m160[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m54019434[39m)|STATEMENT_EXECUTE|[[94m169[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m54021505[39m)|HEAP_ALLOCATE|[[94m171[39m]|Bytes:[94m30[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m54039835[39m)|HEAP_ALLOCATE|[[94m172[39m]|Bytes:[94m18[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m54045565[39m)|HEAP_ALLOCATE|[[94m171[39m]|Bytes:[94m48[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m54055235[39m)[1m[32m|USER_DEBUG|[39m[22m[[94m169[39m]|[1m[31mERROR[39m[22m|GV CHECKOUT &#[94m124[39m; CART FOUND &#[94m124[39m; Id=a03jV00000GS2qTQAT
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m54059305[39m)|STATEMENT_EXECUTE|[[94m179[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m54060605[39m)|HEAP_ALLOCATE|[[94m179[39m]|Bytes:[94m21[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m54159246[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m179[39m]|stage|[1m[31m"DUPLICATE ORDER CHEC ([94m1[31m more) ..."[39m[22m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m54161506[39m)|STATEMENT_EXECUTE|[[94m181[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m54162516[39m)|HEAP_ALLOCATE|[[94m181[39m]|Bytes:[94m75[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m54177956[39m)|HEAP_ALLOCATE|[[94m181[39m]|Bytes:[94m4[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m58402529[39m)[1m[33m|SOQL_EXECUTE_BEGIN|[39m[22m[[94m181[39m]|Aggregations:[94m0[39m|SELECT Id FROM Jewellery_Order__c WHERE Shopping_Cart__c = :tmpVar1 LIMIT [94m1[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m69380996[39m)[1m[33m|SOQL_EXECUTE_END|[39m[22m[[94m181[39m]|Rows:[94m0[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m69404357[39m)|HEAP_ALLOCATE|[[94m181[39m]|Bytes:[94m4[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m69413387[39m)|HEAP_ALLOCATE|[[94m181[39m]|Bytes:[94m0[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m69495468[39m)|HEAP_ALLOCATE|[[94m181[39m]|Bytes:[94m4[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m69518528[39m)[1m[36m|VARIABLE_SCOPE_BEGIN|[39m[22m[[94m181[39m]|existingOrders|List<Jewellery_Order__c>|[94mtrue[39m|[94mfalse[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m69560609[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m181[39m]|existingOrders|[]|0x29eed1bf
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m69628419[39m)|STATEMENT_EXECUTE|[[94m188[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m69630460[39m)|STATEMENT_EXECUTE|[[94m194[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m69636210[39m)|HEAP_ALLOCATE|[[94m196[39m]|Bytes:[94m36[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m69671600[39m)[1m[32m|USER_DEBUG|[39m[22m[[94m194[39m]|[1m[31mERROR[39m[22m|GV CHECKOUT &#[94m124[39m; DUPLICATE CHECK PASSED
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m69676270[39m)|STATEMENT_EXECUTE|[[94m203[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m69677550[39m)|HEAP_ALLOCATE|[[94m203[39m]|Bytes:[94m17[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m69689170[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m203[39m]|stage|[1m[31m"CART ITEMS LOOKUP"[39m[22m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m69691460[39m)|STATEMENT_EXECUTE|[[94m205[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m69692460[39m)|HEAP_ALLOCATE|[[94m205[39m]|Bytes:[94m142[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m69706250[39m)|HEAP_ALLOCATE|[[94m205[39m]|Bytes:[94m4[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m71544543[39m)[1m[33m|SOQL_EXECUTE_BEGIN|[39m[22m[[94m205[39m]|Aggregations:[94m0[39m|SELECT Id, Shopping_Cart__c, Jewellery_Product__c, Quantity__c FROM Cart_Item__c WHERE Shopping_Cart__c = :tmpVar1 ORDER BY Id ASC NULLS FIRST
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m84911080[39m)[1m[33m|SOQL_EXECUTE_END|[39m[22m[[94m205[39m]|Rows:[94m2[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m84940191[39m)|HEAP_ALLOCATE|[[94m205[39m]|Bytes:[94m12[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m84957801[39m)|HEAP_ALLOCATE|[[94m205[39m]|Bytes:[94m320[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m85051502[39m)|HEAP_ALLOCATE|[[94m205[39m]|Bytes:[94m12[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m85075942[39m)[1m[36m|VARIABLE_SCOPE_BEGIN|[39m[22m[[94m205[39m]|cartItems|List<Cart_Item__c>|[94mtrue[39m|[94mfalse[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m85206234[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m205[39m]|cartItems|[{[1m[31m"Shopping_Cart__c"[39m[22m:[1m[31m"a03jV00000GS2qTQAT"[39m[22m,[1m[31m"Id"[39m[22m:[1m[31m"a04jV000000n14bQAA"[39m[22m,[1m[31m"Jewellery_Product__c"[39m[22m:[1m[31m"a00jV00000PTZX4QAP"[39m[22m,[1m[31m"Quantity__c"[39m[22m:[94m2[39m},{[1m[31m"Shopping_Cart__c"[39m[22m:[1m[31m"a03jV00000GS2qTQAT"[39m[22m,[1m[31m"Id"[39m[22m:[1m[31m"a04jV000000n16DQAQ"[39m[22m,[1m[31m"Jewellery_Product__c"[39m[22m:[1m[31m"a00jV00000PTZX5QAP"[39m[22m,[1m[31m"Quantity__c"[39m[22m:[94m1[39m}]|0x6872bd90
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m85213334[39m)|STATEMENT_EXECUTE|[[94m215[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m85222374[39m)|HEAP_ALLOCATE|[[94m217[39m]|Bytes:[94m30[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m85318645[39m)|HEAP_ALLOCATE|[[94m218[39m]|Bytes:[94m1[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m85329136[39m)|HEAP_ALLOCATE|[[94m217[39m]|Bytes:[94m31[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m85369586[39m)[1m[32m|USER_DEBUG|[39m[22m[[94m215[39m]|[1m[31mERROR[39m[22m|GV CHECKOUT &#[94m124[39m; CART ITEM COUNT=[94m2[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m85404037[39m)|STATEMENT_EXECUTE|[[94m221[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m85405337[39m)|STATEMENT_EXECUTE|[[94m227[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m85417347[39m)|HEAP_ALLOCATE|[[94m227[39m]|Bytes:[94m4[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m85477517[39m)[1m[36m|VARIABLE_SCOPE_BEGIN|[39m[22m[[94m227[39m]|productIds|Set<Id>|[94mtrue[39m|[94mfalse[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m85504598[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m227[39m]|productIds|[]|0x462349c7
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m85507218[39m)|STATEMENT_EXECUTE|[[94m229[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m85518098[39m)|HEAP_ALLOCATE|[[94m230[39m]|Bytes:[94m4[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m85525338[39m)[1m[36m|VARIABLE_SCOPE_BEGIN|[39m[22m[[94m229[39m]|totalQuantities|Map<Id,Decimal>|[94mtrue[39m|[94mfalse[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m85540868[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m229[39m]|totalQuantities|{}|0x3b40e2ae
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m85664960[39m)|HEAP_ALLOCATE|[[94m232[39m]|Bytes:[94m5[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m85681140[39m)|HEAP_ALLOCATE|[[94m232[39m]|Bytes:[94m20[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m85686720[39m)[1m[36m|VARIABLE_SCOPE_BEGIN|[39m[22m[[94m232[39m]|item|Cart_Item__c|[94mtrue[39m|[94mfalse[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m85716130[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m232[39m]|item|{[1m[31m"Shopping_Cart__c"[39m[22m:[1m[31m"a03jV00000GS2qTQAT"[39m[22m,[1m[31m"Id"[39m[22m:[1m[31m"a04jV000000n14bQAA"[39m[22m,[1m[31m"Jewellery_Product__c"[39m[22m:[1m[31m"a00jV00000PTZX4QAP"[39m[22m,[1m[31m"Quantity__c"[39m[22m:[94m2[39m}|0x4072933b
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m85720091[39m)|STATEMENT_EXECUTE|[[94m232[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m85768471[39m)|HEAP_ALLOCATE|[[94m236[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m85773171[39m)|HEAP_ALLOCATE|[[94m237[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m85783661[39m)|HEAP_ALLOCATE|[[94m237[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m85785351[39m)|HEAP_ALLOCATE|[[94m237[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m85847462[39m)|HEAP_ALLOCATE|[[94m238[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m85850442[39m)|HEAP_ALLOCATE|[[94m239[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m85880083[39m)|HEAP_ALLOCATE|[[94m239[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m85896683[39m)|STATEMENT_EXECUTE|[[94m234[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m85897873[39m)|STATEMENT_EXECUTE|[[94m246[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m85900473[39m)[1m[36m|VARIABLE_SCOPE_BEGIN|[39m[22m[[94m246[39m]|productId|Id|[94mfalse[39m|[94mfalse[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m85987144[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m246[39m]|productId|[1m[31m"a00jV00000PTZX4QAP"[39m[22m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m85989494[39m)|STATEMENT_EXECUTE|[[94m248[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m86012224[39m)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:[94m4[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m86017294[39m)|STATEMENT_EXECUTE|[[94m250[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m86034064[39m)|HEAP_ALLOCATE|[[94m251[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m86036224[39m)|HEAP_ALLOCATE|[[94m251[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m86038134[39m)[1m[36m|VARIABLE_SCOPE_BEGIN|[39m[22m[[94m250[39m]|previousQuantity|Decimal|[94mfalse[39m|[94mfalse[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m86047065[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m250[39m]|previousQuantity|[94m0[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m86049025[39m)|STATEMENT_EXECUTE|[[94m255[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m86056955[39m)|HEAP_ALLOCATE|[[94m257[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m86076095[39m)|HEAP_ALLOCATE|[[94m257[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m86077715[39m)|HEAP_ALLOCATE|[[94m257[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m86093305[39m)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:-[94m4[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m86101325[39m)|HEAP_ALLOCATE|[[94m232[39m]|Bytes:[94m5[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m86107235[39m)|HEAP_ALLOCATE|[[94m232[39m]|Bytes:[94m20[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m86109915[39m)[1m[36m|VARIABLE_SCOPE_BEGIN|[39m[22m[[94m232[39m]|item|Cart_Item__c|[94mtrue[39m|[94mfalse[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m86133176[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m232[39m]|item|{[1m[31m"Shopping_Cart__c"[39m[22m:[1m[31m"a03jV00000GS2qTQAT"[39m[22m,[1m[31m"Id"[39m[22m:[1m[31m"a04jV000000n16DQAQ"[39m[22m,[1m[31m"Jewellery_Product__c"[39m[22m:[1m[31m"a00jV00000PTZX5QAP"[39m[22m,[1m[31m"Quantity__c"[39m[22m:[94m1[39m}|0x58b09105
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m86135696[39m)|STATEMENT_EXECUTE|[[94m232[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m86139546[39m)|HEAP_ALLOCATE|[[94m236[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m86142186[39m)|HEAP_ALLOCATE|[[94m237[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m86144716[39m)|HEAP_ALLOCATE|[[94m237[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m86146076[39m)|HEAP_ALLOCATE|[[94m237[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m86171126[39m)|HEAP_ALLOCATE|[[94m238[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m86173586[39m)|HEAP_ALLOCATE|[[94m239[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m86179556[39m)|HEAP_ALLOCATE|[[94m239[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m86188576[39m)|STATEMENT_EXECUTE|[[94m234[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m86189446[39m)|STATEMENT_EXECUTE|[[94m246[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m86191016[39m)[1m[36m|VARIABLE_SCOPE_BEGIN|[39m[22m[[94m246[39m]|productId|Id|[94mfalse[39m|[94mfalse[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m86217757[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m246[39m]|productId|[1m[31m"a00jV00000PTZX5QAP"[39m[22m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m86219717[39m)|STATEMENT_EXECUTE|[[94m248[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m86223397[39m)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:[94m4[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m86226727[39m)|STATEMENT_EXECUTE|[[94m250[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m86231797[39m)|HEAP_ALLOCATE|[[94m251[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m86233527[39m)|HEAP_ALLOCATE|[[94m251[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m86235187[39m)[1m[36m|VARIABLE_SCOPE_BEGIN|[39m[22m[[94m250[39m]|previousQuantity|Decimal|[94mfalse[39m|[94mfalse[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m86256887[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m250[39m]|previousQuantity|[94m0[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m86258657[39m)|STATEMENT_EXECUTE|[[94m255[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m86260997[39m)|HEAP_ALLOCATE|[[94m257[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m86266907[39m)|HEAP_ALLOCATE|[[94m257[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m86268297[39m)|HEAP_ALLOCATE|[[94m257[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m86273337[39m)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:-[94m4[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m86278297[39m)|HEAP_ALLOCATE|[[94m232[39m]|Bytes:[94m5[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m86287198[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m232[39m]|item|[94mnull[39m|
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m86290388[39m)|STATEMENT_EXECUTE|[[94m265[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m86291998[39m)|HEAP_ALLOCATE|[[94m265[39m]|Bytes:[94m14[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m86298368[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m265[39m]|stage|[1m[31m"PRODUCT LOOKUP"[39m[22m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m86300178[39m)|STATEMENT_EXECUTE|[[94m267[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m86324208[39m)|HEAP_ALLOCATE|[[94m268[39m]|Bytes:[94m4[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m86326468[39m)|HEAP_ALLOCATE|[[94m268[39m]|Bytes:[94m131[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m86330788[39m)|HEAP_ALLOCATE|[[94m268[39m]|Bytes:[94m4[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m91764706[39m)[1m[33m|SOQL_EXECUTE_BEGIN|[39m[22m[[94m268[39m]|Aggregations:[94m0[39m|SELECT Id, Name, Active__c, Price__c, Discount_Price__c, Stock_Quantity__c FROM Jewellery_Product__c WHERE Id = :tmpVar1 FOR UPDATE
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m100277032[39m)[1m[33m|SOQL_EXECUTE_END|[39m[22m[[94m268[39m]|Rows:[94m2[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m100296023[39m)|HEAP_ALLOCATE|[[94m268[39m]|Bytes:[94m12[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m100309433[39m)|HEAP_ALLOCATE|[[94m268[39m]|Bytes:[94m490[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m100364053[39m)|HEAP_ALLOCATE|[[94m268[39m]|Bytes:[94m12[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m100418494[39m)|HEAP_ALLOCATE|[[94m268[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m100432334[39m)|HEAP_ALLOCATE|[[94m268[39m]|Bytes:[94m4[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m100435684[39m)|HEAP_ALLOCATE|[[94m268[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m100437904[39m)|HEAP_ALLOCATE|[[94m268[39m]|Bytes:[94m4[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m100445644[39m)[1m[36m|VARIABLE_SCOPE_BEGIN|[39m[22m[[94m267[39m]|products|Map<Id,Jewellery_Product__c>|[94mtrue[39m|[94mfalse[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m100555056[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m267[39m]|products|{[1m[31m"a00jV00000PTZX4QAP"[39m[22m:{[1m[31m"Price__c"[39m[22m:[94m245000[39m.[94m00[39m,[1m[31m"Id"[39m[22m:[1m[31m"a00jV00000PTZX4QAP"[39m[22m,[1m[31m"Stock_Quantity__c"[39m[22m:[94m5[39m,[1m[31m"Discount_Price__c"[39m[22m:[94m232000[39m.[94m00[39m,[1m[31m"Name"[39m[22m:[1m[31m"Antique Temple Gold  ([94m8[31m more) ..."[39m[22m,[1m[31m"Active__c"[39m[22m:[94mtrue[39m},[1m[31m"a00jV00000PTZX5QAP"[39m[22m:{[1m[31m"Price__c"[39m[22m:[94m95000[39m.[94m00[39m,[1m[31m"Id"[39m[22m:[1m[31m"a00jV00000PTZX5QAP"[39m[22m,[1m[31m"Stock_Quantity__c"[39m[22m:[94m12[39m,[1m[31m"Discount_Price__c"[39m[22m:[94m89000[39m.[94m00[39m,[1m[31m"Name"[39m[22m:[1m[31m"Classic Diamond Soli ([94m10[31m more) ..."[39m[22m,[1m[31m"Active__c"[39m[22m:[94mtrue[39m}}|0x1b9f52c5
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m100686897[39m)|STATEMENT_EXECUTE|[[94m280[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m100689008[39m)|STATEMENT_EXECUTE|[[94m286[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m100702828[39m)|HEAP_ALLOCATE|[[94m286[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m100705968[39m)|HEAP_ALLOCATE|[[94m286[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m100709088[39m)[1m[36m|VARIABLE_SCOPE_BEGIN|[39m[22m[[94m286[39m]|subtotal|Decimal|[94mfalse[39m|[94mfalse[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m100722178[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m286[39m]|subtotal|[94m0[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m100724348[39m)|STATEMENT_EXECUTE|[[94m288[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m100733978[39m)|HEAP_ALLOCATE|[[94m289[39m]|Bytes:[94m4[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m100737988[39m)[1m[36m|VARIABLE_SCOPE_BEGIN|[39m[22m[[94m288[39m]|sellingPrices|Map<Id,Decimal>|[94mtrue[39m|[94mfalse[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m100761768[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m288[39m]|sellingPrices|{}|0x6abfb3e7
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m100765028[39m)|STATEMENT_EXECUTE|[[94m291[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m100770029[39m)|HEAP_ALLOCATE|[[94m292[39m]|Bytes:[94m4[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m100843839[39m)[1m[36m|VARIABLE_SCOPE_BEGIN|[39m[22m[[94m291[39m]|inventoryUpdates|List<Jewellery_Product__c>|[94mtrue[39m|[94mfalse[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m100851590[39m)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:[94m4[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m100860200[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m291[39m]|inventoryUpdates|[]|0x1f45c1d8
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m100899720[39m)|HEAP_ALLOCATE|[[94m294[39m]|Bytes:[94m5[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m100935291[39m)|HEAP_ALLOCATE|[[94m294[39m]|Bytes:[94m4[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m100937441[39m)[1m[36m|VARIABLE_SCOPE_BEGIN|[39m[22m[[94m294[39m]|productId|Id|[94mfalse[39m|[94mfalse[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m100991511[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m294[39m]|productId|[1m[31m"a00jV00000PTZX4QAP"[39m[22m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m100994601[39m)|STATEMENT_EXECUTE|[[94m294[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m100995831[39m)|STATEMENT_EXECUTE|[[94m296[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101020512[39m)[1m[36m|VARIABLE_SCOPE_BEGIN|[39m[22m[[94m296[39m]|product|Jewellery_Product__c|[94mtrue[39m|[94mfalse[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101054082[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m296[39m]|product|{[1m[31m"Price__c"[39m[22m:[94m245000[39m.[94m00[39m,[1m[31m"Id"[39m[22m:[1m[31m"a00jV00000PTZX4QAP"[39m[22m,[1m[31m"Stock_Quantity__c"[39m[22m:[94m5[39m,[1m[31m"Discount_Price__c"[39m[22m:[94m232000[39m.[94m00[39m,[1m[31m"Name"[39m[22m:[1m[31m"Antique Temple Gold  ([94m8[31m more) ..."[39m[22m,[1m[31m"Active__c"[39m[22m:[94mtrue[39m}|0x710c6ed7
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101056982[39m)|STATEMENT_EXECUTE|[[94m299[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101066742[39m)|HEAP_ALLOCATE|[[94m300[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101071232[39m)[1m[36m|VARIABLE_SCOPE_BEGIN|[39m[22m[[94m299[39m]|requestedQuantity|Decimal|[94mfalse[39m|[94mfalse[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101079632[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m299[39m]|requestedQuantity|[94m2[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101096373[39m)|STATEMENT_EXECUTE|[[94m302[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101101473[39m)|HEAP_ALLOCATE|[[94m309[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101108743[39m)|HEAP_ALLOCATE|[[94m310[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101133973[39m)|STATEMENT_EXECUTE|[[94m308[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101140613[39m)|HEAP_ALLOCATE|[[94m319[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101142273[39m)|HEAP_ALLOCATE|[[94m319[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101152263[39m)|STATEMENT_EXECUTE|[[94m317[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101153223[39m)|STATEMENT_EXECUTE|[[94m326[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101155103[39m)[1m[36m|VARIABLE_SCOPE_BEGIN|[39m[22m[[94m326[39m]|sellingPrice|Decimal|[94mfalse[39m|[94mfalse[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101164823[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m326[39m]|sellingPrice|[94m245000[39m.[94m00[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101171544[39m)|HEAP_ALLOCATE|[[94m330[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101173084[39m)|HEAP_ALLOCATE|[[94m330[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101193924[39m)|STATEMENT_EXECUTE|[[94m332[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101194834[39m)|STATEMENT_EXECUTE|[[94m333[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101199444[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m333[39m]|sellingPrice|[94m232000[39m.[94m00[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101201444[39m)|STATEMENT_EXECUTE|[[94m336[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101211704[39m)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:-[94m4[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101214824[39m)|STATEMENT_EXECUTE|[[94m341[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101236834[39m)|HEAP_ALLOCATE|[[94m342[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101251735[39m)|HEAP_ALLOCATE|[[94m341[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101258375[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m341[39m]|subtotal|[94m464000[39m.[94m00[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101260145[39m)|STATEMENT_EXECUTE|[[94m344[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101273495[39m)|HEAP_ALLOCATE|[[94m345[39m]|Bytes:[94m4[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101390456[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m345[39m]|[94mthis.Id[39m|[1m[31m"a00jV00000PTZX4QAP"[39m[22m|0x53c44a67
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101396166[39m)|HEAP_ALLOCATE|[[94m348[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101419277[39m)|HEAP_ALLOCATE|[[94m348[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101420957[39m)|HEAP_ALLOCATE|[[94m348[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101434797[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m345[39m]|[94mthis.Stock_Quantity__c[39m|[94m3[39m|0x53c44a67
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101477017[39m)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:[94m4[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101484027[39m)|HEAP_ALLOCATE|[[94m294[39m]|Bytes:[94m5[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101498148[39m)|HEAP_ALLOCATE|[[94m294[39m]|Bytes:[94m4[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101500008[39m)[1m[36m|VARIABLE_SCOPE_BEGIN|[39m[22m[[94m294[39m]|productId|Id|[94mfalse[39m|[94mfalse[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101529808[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m294[39m]|productId|[1m[31m"a00jV00000PTZX5QAP"[39m[22m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101532128[39m)|STATEMENT_EXECUTE|[[94m294[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101532988[39m)|STATEMENT_EXECUTE|[[94m296[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101539548[39m)[1m[36m|VARIABLE_SCOPE_BEGIN|[39m[22m[[94m296[39m]|product|Jewellery_Product__c|[94mtrue[39m|[94mfalse[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101564118[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m296[39m]|product|{[1m[31m"Price__c"[39m[22m:[94m95000[39m.[94m00[39m,[1m[31m"Id"[39m[22m:[1m[31m"a00jV00000PTZX5QAP"[39m[22m,[1m[31m"Stock_Quantity__c"[39m[22m:[94m12[39m,[1m[31m"Discount_Price__c"[39m[22m:[94m89000[39m.[94m00[39m,[1m[31m"Name"[39m[22m:[1m[31m"Classic Diamond Soli ([94m10[31m more) ..."[39m[22m,[1m[31m"Active__c"[39m[22m:[94mtrue[39m}|0x7964a82a
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101566828[39m)|STATEMENT_EXECUTE|[[94m299[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101570829[39m)|HEAP_ALLOCATE|[[94m300[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101574569[39m)[1m[36m|VARIABLE_SCOPE_BEGIN|[39m[22m[[94m299[39m]|requestedQuantity|Decimal|[94mfalse[39m|[94mfalse[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101581099[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m299[39m]|requestedQuantity|[94m1[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101585989[39m)|STATEMENT_EXECUTE|[[94m302[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101596529[39m)|STATEMENT_EXECUTE|[[94m308[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101599879[39m)|HEAP_ALLOCATE|[[94m319[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101601579[39m)|HEAP_ALLOCATE|[[94m319[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101608309[39m)|STATEMENT_EXECUTE|[[94m317[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101609109[39m)|STATEMENT_EXECUTE|[[94m326[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101610599[39m)[1m[36m|VARIABLE_SCOPE_BEGIN|[39m[22m[[94m326[39m]|sellingPrice|Decimal|[94mfalse[39m|[94mfalse[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101616289[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m326[39m]|sellingPrice|[94m95000[39m.[94m00[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101619849[39m)|HEAP_ALLOCATE|[[94m330[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101621329[39m)|HEAP_ALLOCATE|[[94m330[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101634029[39m)|STATEMENT_EXECUTE|[[94m332[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101634789[39m)|STATEMENT_EXECUTE|[[94m333[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101638469[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m333[39m]|sellingPrice|[94m89000[39m.[94m00[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101640219[39m)|STATEMENT_EXECUTE|[[94m336[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101643799[39m)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:-[94m4[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101646419[39m)|STATEMENT_EXECUTE|[[94m341[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101651110[39m)|HEAP_ALLOCATE|[[94m342[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101657740[39m)|HEAP_ALLOCATE|[[94m341[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101663250[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m341[39m]|subtotal|[94m553000[39m.[94m00[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101664840[39m)|STATEMENT_EXECUTE|[[94m344[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101670860[39m)|HEAP_ALLOCATE|[[94m345[39m]|Bytes:[94m4[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101685860[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m345[39m]|[94mthis.Id[39m|[1m[31m"a00jV00000PTZX5QAP"[39m[22m|0x79542678
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101692650[39m)|HEAP_ALLOCATE|[[94m348[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101701840[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m345[39m]|[94mthis.Stock_Quantity__c[39m|[94m11[39m|0x79542678
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101711040[39m)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:[94m4[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101716020[39m)|HEAP_ALLOCATE|[[94m294[39m]|Bytes:[94m5[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101724120[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m294[39m]|productId|[94mnull[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101727370[39m)|STATEMENT_EXECUTE|[[94m354[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101732611[39m)|HEAP_ALLOCATE|[[94m356[39m]|Bytes:[94m41[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101744621[39m)|HEAP_ALLOCATE|[[94m357[39m]|Bytes:[94m9[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101750801[39m)|HEAP_ALLOCATE|[[94m356[39m]|Bytes:[94m50[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101786271[39m)[1m[32m|USER_DEBUG|[39m[22m[[94m354[39m]|[1m[31mERROR[39m[22m|GV CHECKOUT &#[94m124[39m; STOCK VALIDATED &#[94m124[39m; Subtotal=[94m553000[39m.[94m00[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101791261[39m)|STATEMENT_EXECUTE|[[94m364[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101792541[39m)|HEAP_ALLOCATE|[[94m364[39m]|Bytes:[94m12[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101798971[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m364[39m]|stage|[1m[31m"ORDER INSERT"[39m[22m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101801141[39m)|STATEMENT_EXECUTE|[[94m366[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101810032[39m)|HEAP_ALLOCATE|[[94m367[39m]|Bytes:[94m4[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101866892[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m367[39m]|[94mthis.Customer__c[39m|[1m[31m"003jV00000GPEjJQAX"[39m[22m|0x68604cf8
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101883322[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m367[39m]|[94mthis.Shopping_Cart__c[39m|[1m[31m"a03jV00000GS2qTQAT"[39m[22m|0x68604cf8
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101904803[39m)|HEAP_ALLOCATE|[[94m370[39m]|Bytes:[94m56[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101938513[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m367[39m]|[94mthis.Order_Date__c[39m|[1m[31m"[94m2026[31m-[94m11[31m-09T13:[94m29[31m:[94m32[[94m31m.183Z[39m"[39m[22m|0x68604cf8
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101941103[39m)|HEAP_ALLOCATE|[[94m371[39m]|Bytes:[94m7[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101950423[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m367[39m]|[94mthis.Order_Status__c[39m|[1m[31m"pending"[39m[22m|0x68604cf8
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101952473[39m)|HEAP_ALLOCATE|[[94m372[39m]|Bytes:[94m7[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101959203[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m367[39m]|[94mthis.Payment_Status__c[39m|[1m[31m"Pending"[39m[22m|0x68604cf8
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101970734[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m367[39m]|[94mthis.Shipping_Address__c[39m|[1m[31m"r"[39m[22m|0x68604cf8
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101978064[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m367[39m]|[94mthis.Shipping_City__c[39m|[1m[31m"r"[39m[22m|0x68604cf8
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101986254[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m367[39m]|[94mthis.Shipping_State__c[39m|[1m[31m"r"[39m[22m|0x68604cf8
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m101993964[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m367[39m]|[94mthis.Shipping_Postal_Code__c[39m|[1m[31m"[94m452016[31m"[39m[22m|0x68604cf8
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m102000834[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m367[39m]|[94mthis.Shipping_Country__c[39m|[1m[31m"India"[39m[22m|0x68604cf8
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m102008324[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m367[39m]|[94mthis.Subtotal__c[39m|[94m553000[39m.[94m00[39m|0x68604cf8
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m102012564[39m)|HEAP_ALLOCATE|[[94m367[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m102014104[39m)|HEAP_ALLOCATE|[[94m367[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m102021174[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m367[39m]|[94mthis.Discount_Amount__c[39m|[94m0[39m|0x68604cf8
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m102023694[39m)|HEAP_ALLOCATE|[[94m367[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m102025124[39m)|HEAP_ALLOCATE|[[94m367[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m102032544[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m367[39m]|[94mthis.Tax_Amount__c[39m|[94m0[39m|0x68604cf8
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m102034964[39m)|HEAP_ALLOCATE|[[94m367[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m102036404[39m)|HEAP_ALLOCATE|[[94m367[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m102042834[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m367[39m]|[94mthis.Shipping_Charges__c[39m|[94m0[39m|0x68604cf8
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m102050545[39m)[1m[36m|VARIABLE_SCOPE_BEGIN|[39m[22m[[94m366[39m]|newOrder|Jewellery_Order__c|[94mtrue[39m|[94mfalse[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m102073165[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m366[39m]|newOrder|{[1m[31m"Customer__c"[39m[22m:[1m[31m"003jV00000GPEjJQAX"[39m[22m,[1m[31m"Shopping_Cart__c"[39m[22m:[1m[31m"a03jV00000GS2qTQAT"[39m[22m,[1m[31m"Order_Date__c"[39m[22m:[1m[31m"[94m2026[31m-[94m11[31m-09T13:[94m29[31m:[94m32[[94m31m.183Z[39m"[39m[22m,[1m[31m"Order_Status__c"[39m[22m:[1m[31m"pending"[39m[22m,[1m[31m"Payment_Status__c"[39m[22m:[1m[31m"Pending"[39m[22m,[1m[31m"Shipping_Address__c"[39m[22m:[1m[31m"r"[39m[22m,[1m[31m"Shipping_City__c"[39m[22m:[1m[31m"r"[39m[22m,[1m[31m"Shipping_State__c"[39m[22m:[1m[31m"r"[39m[22m,[1m[31m"Shipping_Postal_Code__c"[39m[22m:[1m[31m"[94m452016[31m"[39m[22m,[1m[31m"Shipping_Country__c"[39m[22m:[1m[31m"India"[39m[22m,[1m[31m"Subtotal__c"[39m[22m:[94m553000[39m.[94m00[39m,[1m[31m"Discount_Amount__c"[39m[22m:[94m0[39m,[1m[31m"Tax_Amount__c"[39m[22m:[94m0[39m,[1m[31m"Shipping_Charges__c"[39m[22m:[94m0[39m}|0x68604cf8
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m102076895[39m)|STATEMENT_EXECUTE|[[94m385[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m102079045[39m)|HEAP_ALLOCATE|[[94m387[39m]|Bytes:[94m33[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m102089205[39m)[1m[32m|USER_DEBUG|[39m[22m[[94m385[39m]|[1m[31mERROR[39m[22m|GV CHECKOUT &#[94m124[39m; BEFORE ORDER INSERT
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m102093515[39m)|STATEMENT_EXECUTE|[[94m390[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m102190016[39m)[1m[36m|VARIABLE_SCOPE_BEGIN|[39m[22m[[94m6[39m]|[94mSystem.AccessLevel.SYSTEM_MODE[39m|[94mSystem.AccessLevel[39m|[94mtrue[39m|[94mtrue[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m102197466[39m)[1m[36m|VARIABLE_SCOPE_BEGIN|[39m[22m[[94m4[39m]|[94mSystem.AccessLevel.USER_MODE[39m|[94mSystem.AccessLevel[39m|[94mtrue[39m|[94mtrue[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m102206816[39m)|HEAP_ALLOCATE|[[94m390[39m]|Bytes:[94m8[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m102277097[39m)|SYSTEM_METHOD_ENTRY|[[94m1[39m]|[94mAccessLevel.AccessLevel[39m()
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m102280177[39m)|STATEMENT_EXECUTE|[[94m1[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m102471120[39m)|SYSTEM_METHOD_EXIT|[[94m1[39m]|AccessLevel
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m102507960[39m)|HEAP_ALLOCATE|[[94m390[39m]|Bytes:[94m8[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m102555451[39m)|DML_BEGIN|[[94m390[39m]|Op:Insert|Type:Jewellery_Order__c|Rows:[94m1[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m102609442[39m)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:[94m8[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m125039152[39m)|CODE_UNIT_STARTED|[EXTERNAL]|Validation:Jewellery_Order:new
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m125061862[39m)|VALIDATION_RULE|03djV000000WWBF|GV_Order_Validation
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m125410196[39m)|VALIDATION_FORMULA|OR(
+    Grand_Total__c < [94m0[39m,
+    Discount_Amount__c < [94m0[39m,
+    Shipping_Charges__c < [94m0[39m,
+    AND(
+        ISPICKVAL(Order_Status__c, [1m[31m"Confirmed"[39m[22m),
+        ISBLANK(Shipping_Address__c)
+    )
+)|Shipping_Charges__c=[94m0[39m , Order_Status__c=pending , Discount_Amount__c=[94m0[39m , Grand_Total__c=[94m553000[39m.[94m00[39m , Shipping_Address__c=r
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m125416256[39m)|VALIDATION_PASS
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m125420306[39m)|CODE_UNIT_FINISHED|Validation:Jewellery_Order:new
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m164084121[39m)|DML_END|[[94m390[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m164340384[39m)|STATEMENT_EXECUTE|[[94m392[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m164387505[39m)|HEAP_ALLOCATE|[[94m394[39m]|Bytes:[94m34[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m164561097[39m)|HEAP_ALLOCATE|[[94m395[39m]|Bytes:[94m18[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m164579097[39m)|HEAP_ALLOCATE|[[94m394[39m]|Bytes:[94m52[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m164638978[39m)[1m[32m|USER_DEBUG|[39m[22m[[94m392[39m]|[1m[31mERROR[39m[22m|GV CHECKOUT &#[94m124[39m; ORDER INSERTED &#[94m124[39m; Id=a05jV000003j9JxQAI
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m167089239[39m)|STATEMENT_EXECUTE|[[94m402[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m167092569[39m)|HEAP_ALLOCATE|[[94m402[39m]|Bytes:[94m18[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m167150399[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m402[39m]|stage|[1m[31m"ORDER ITEMS INSERT"[39m[22m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m167153139[39m)|STATEMENT_EXECUTE|[[94m404[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m167225570[39m)|HEAP_ALLOCATE|[[94m405[39m]|Bytes:[94m4[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m167318021[39m)[1m[36m|VARIABLE_SCOPE_BEGIN|[39m[22m[[94m404[39m]|orderItems|List<Jewellery_Order_Item__c>|[94mtrue[39m|[94mfalse[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m167369902[39m)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:[94m4[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m167391322[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m404[39m]|orderItems|[]|0x53b55ad6
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m167433853[39m)|HEAP_ALLOCATE|[[94m407[39m]|Bytes:[94m5[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m167459343[39m)|HEAP_ALLOCATE|[[94m407[39m]|Bytes:[94m20[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m167465083[39m)[1m[36m|VARIABLE_SCOPE_BEGIN|[39m[22m[[94m407[39m]|item|Cart_Item__c|[94mtrue[39m|[94mfalse[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m167534594[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m407[39m]|item|{[1m[31m"Shopping_Cart__c"[39m[22m:[1m[31m"a03jV00000GS2qTQAT"[39m[22m,[1m[31m"Id"[39m[22m:[1m[31m"a04jV000000n14bQAA"[39m[22m,[1m[31m"Jewellery_Product__c"[39m[22m:[1m[31m"a00jV00000PTZX4QAP"[39m[22m,[1m[31m"Quantity__c"[39m[22m:[94m2[39m}|0x4072933b
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m167538694[39m)|STATEMENT_EXECUTE|[[94m407[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m167539564[39m)|STATEMENT_EXECUTE|[[94m409[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m167556134[39m)|HEAP_ALLOCATE|[[94m410[39m]|Bytes:[94m4[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m169248016[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m410[39m]|[94mthis.Jewellery_Order__c[39m|[1m[31m"a05jV000003j9JxQAI"[39m[22m|0x730b9a45
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m169298156[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m410[39m]|[94mthis.Jewellery_Product__c[39m|[1m[31m"a00jV00000PTZX4QAP"[39m[22m|0x730b9a45
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m169316606[39m)|HEAP_ALLOCATE|[[94m414[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m169327447[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m410[39m]|[94mthis.Quantity__c[39m|[94m2[39m|0x730b9a45
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m169357367[39m)|HEAP_ALLOCATE|[[94m415[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m169372467[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m410[39m]|[94mthis.Unit_Price__c[39m|[94m232000[39m.[94m00[39m|0x730b9a45
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m169379757[39m)|HEAP_ALLOCATE|[[94m410[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m169380897[39m)|HEAP_ALLOCATE|[[94m410[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m169386937[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m410[39m]|[94mthis.Discount_Amount__c[39m|[94m0[39m|0x730b9a45
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m169440908[39m)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:[94m4[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m169452538[39m)|HEAP_ALLOCATE|[[94m407[39m]|Bytes:[94m5[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m169461668[39m)|HEAP_ALLOCATE|[[94m407[39m]|Bytes:[94m20[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m169465678[39m)[1m[36m|VARIABLE_SCOPE_BEGIN|[39m[22m[[94m407[39m]|item|Cart_Item__c|[94mtrue[39m|[94mfalse[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m169505529[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m407[39m]|item|{[1m[31m"Shopping_Cart__c"[39m[22m:[1m[31m"a03jV00000GS2qTQAT"[39m[22m,[1m[31m"Id"[39m[22m:[1m[31m"a04jV000000n16DQAQ"[39m[22m,[1m[31m"Jewellery_Product__c"[39m[22m:[1m[31m"a00jV00000PTZX5QAP"[39m[22m,[1m[31m"Quantity__c"[39m[22m:[94m1[39m}|0x58b09105
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m169509039[39m)|STATEMENT_EXECUTE|[[94m407[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m169509869[39m)|STATEMENT_EXECUTE|[[94m409[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m169516599[39m)|HEAP_ALLOCATE|[[94m410[39m]|Bytes:[94m4[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m169529189[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m410[39m]|[94mthis.Jewellery_Order__c[39m|[1m[31m"a05jV000003j9JxQAI"[39m[22m|0x5bc3eb53
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m169536299[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m410[39m]|[94mthis.Jewellery_Product__c[39m|[1m[31m"a00jV00000PTZX5QAP"[39m[22m|0x5bc3eb53
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m169540329[39m)|HEAP_ALLOCATE|[[94m414[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m169545469[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m410[39m]|[94mthis.Quantity__c[39m|[94m1[39m|0x5bc3eb53
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m169550729[39m)|HEAP_ALLOCATE|[[94m415[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m169557919[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m410[39m]|[94mthis.Unit_Price__c[39m|[94m89000[39m.[94m00[39m|0x5bc3eb53
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m169560829[39m)|HEAP_ALLOCATE|[[94m410[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m169561869[39m)|HEAP_ALLOCATE|[[94m410[39m]|Bytes:[94m28[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m169566800[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m410[39m]|[94mthis.Discount_Amount__c[39m|[94m0[39m|0x5bc3eb53
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m169573190[39m)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:[94m4[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m169578240[39m)|HEAP_ALLOCATE|[[94m407[39m]|Bytes:[94m5[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m169587270[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m407[39m]|item|[94mnull[39m|
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m169590610[39m)|STATEMENT_EXECUTE|[[94m423[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m169595040[39m)|HEAP_ALLOCATE|[[94m425[39m]|Bytes:[94m39[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m169625260[39m)[1m[32m|USER_DEBUG|[39m[22m[[94m423[39m]|[1m[31mERROR[39m[22m|GV CHECKOUT &#[94m124[39m; BEFORE ORDER ITEMS INSERT
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m169640680[39m)|STATEMENT_EXECUTE|[[94m428[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m169716991[39m)|DML_BEGIN|[[94m428[39m]|Op:Insert|Type:Jewellery_Order_Item__c|Rows:[94m2[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m169756892[39m)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:[94m12[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m185416268[39m)|CODE_UNIT_STARTED|[EXTERNAL]|Validation:Jewellery_Order_Item:new
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m185431108[39m)|VALIDATION_RULE|03djV000000WWCr|GV_Order_Item_Validation
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m185592490[39m)|VALIDATION_FORMULA|OR(
+    ISBLANK(Quantity__c),
+    Quantity__c < [94m1[39m,
+    ISBLANK(Unit_Price__c),
+    Unit_Price__c < [94m0[39m
+)|Unit_Price__c=[94m232000[39m.[94m00[39m , Quantity__c=[94m2[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m185595990[39m)|VALIDATION_PASS
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m185599940[39m)|CODE_UNIT_FINISHED|Validation:Jewellery_Order_Item:new
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m185616420[39m)|CODE_UNIT_STARTED|[EXTERNAL]|Validation:Jewellery_Order_Item:new
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m185618650[39m)|VALIDATION_RULE|03djV000000WWCr|GV_Order_Item_Validation
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m185688911[39m)|VALIDATION_FORMULA|OR(
+    ISBLANK(Quantity__c),
+    Quantity__c < [94m1[39m,
+    ISBLANK(Unit_Price__c),
+    Unit_Price__c < [94m0[39m
+)|Unit_Price__c=[94m89000[39m.[94m00[39m , Quantity__c=[94m1[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m185690881[39m)|VALIDATION_PASS
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m185691881[39m)|CODE_UNIT_FINISHED|Validation:Jewellery_Order_Item:new
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m210049415[39m)|DML_END|[[94m428[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m210287718[39m)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:[94m12[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m210338869[39m)|STATEMENT_EXECUTE|[[94m430[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m210354699[39m)|HEAP_ALLOCATE|[[94m432[39m]|Bytes:[94m34[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m210415120[39m)[1m[32m|USER_DEBUG|[39m[22m[[94m430[39m]|[1m[31mERROR[39m[22m|GV CHECKOUT &#[94m124[39m; ORDER ITEMS INSERTED
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m210430780[39m)|STATEMENT_EXECUTE|[[94m439[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m210434050[39m)|HEAP_ALLOCATE|[[94m439[39m]|Bytes:[94m16[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m210461500[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m439[39m]|stage|[1m[31m"INVENTORY UPDATE"[39m[22m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m210463340[39m)|STATEMENT_EXECUTE|[[94m441[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m210464880[39m)|HEAP_ALLOCATE|[[94m443[39m]|Bytes:[94m37[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m210473491[39m)[1m[32m|USER_DEBUG|[39m[22m[[94m441[39m]|[1m[31mERROR[39m[22m|GV CHECKOUT &#[94m124[39m; BEFORE INVENTORY UPDATE
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m210500711[39m)|STATEMENT_EXECUTE|[[94m446[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m210501321[39m)|STATEMENT_EXECUTE|[[94m447[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m210579772[39m)|DML_BEGIN|[[94m447[39m]|Op:Update|Type:Jewellery_Product__c|Rows:[94m2[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m210616132[39m)|HEAP_ALLOCATE|[EXTERNAL]|Bytes:[94m12[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m231224120[39m)|DML_END|[[94m447[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m232074990[39m)|[1m[32mEXCEPTION_THROWN[39m[22m|[[94m447[39m]|[1m[[94m31mSystem.DmlException[39m[39m[22m: Update failed. First exception on row [94m0[39m with id a00jV00000PTZX4QAP; first error: INSUFFICIENT_ACCESS_OR_READONLY, insufficient access rights on object id: []
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m232879001[39m)|HEAP_ALLOCATE|[[94m447[39m]|Bytes:[94m161[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m232938681[39m)[1m[36m|VARIABLE_SCOPE_BEGIN|[39m[22m[[94m510[39m]|e|[1m[31mException[39m[22m|[94mtrue[39m|[94mfalse[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m233019982[39m)[1m[36m|VARIABLE_ASSIGNMENT|[39m[22m[[94m510[39m]|e|[1m[31m"[1m[[94m31mcommon.apex.runtime.impl.DmlExecutionException[39m[39m[22m: Update failed. First exception on row [94m0[31m with id a00jV00000PTZX4QAP; first error: INSUFFICIENT_ACCESS_OR_READONLY, insufficient access rights on object id: []"[39m[22m|0x719ffaca
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m233024902[39m)|STATEMENT_EXECUTE|[[94m510[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m233025712[39m)|STATEMENT_EXECUTE|[[94m512[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m233032512[39m)|HEAP_ALLOCATE|[[94m514[39m]|Bytes:[94m27[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m233043323[39m)|HEAP_ALLOCATE|[[94m514[39m]|Bytes:[94m43[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m233085423[39m)[1m[32m|USER_DEBUG|[39m[22m[[94m512[39m]|[1m[31mERROR[39m[22m|GV CHECKOUT FAILED &#[94m124[39m; Stage=INVENTORY UPDATE
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m233093263[39m)|STATEMENT_EXECUTE|[[94m517[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m233094723[39m)|HEAP_ALLOCATE|[[94m519[39m]|Bytes:[94m26[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m233139914[39m)|HEAP_ALLOCATE|[[94m520[39m]|Bytes:[94m19[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m233147234[39m)|HEAP_ALLOCATE|[[94m519[39m]|Bytes:[94m45[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m233154274[39m)[1m[32m|USER_DEBUG|[39m[22m[[94m517[39m]|[1m[31mERROR[39m[22m|GV CHECKOUT FAILED &#[94m124[39m; Type=[1m[[94m31mSystem.DmlException[39m[39m[22m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m233157644[39m)|STATEMENT_EXECUTE|[[94m523[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m233158934[39m)|HEAP_ALLOCATE|[[94m525[39m]|Bytes:[94m29[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m233184884[39m)|HEAP_ALLOCATE|[[94m526[39m]|Bytes:[94m157[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m233188244[39m)|HEAP_ALLOCATE|[[94m525[39m]|Bytes:[94m186[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m233193564[39m)[1m[32m|USER_DEBUG|[39m[22m[[94m523[39m]|[1m[31mERROR[39m[22m|GV CHECKOUT FAILED &#[94m124[39m; Message=Update failed. First exception on row [94m0[39m with id a00jV00000PTZX4QAP; first error: INSUFFICIENT_ACCESS_OR_READONLY, insufficient access rights on object id: []
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m233208785[39m)|STATEMENT_EXECUTE|[[94m529[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m233209965[39m)|HEAP_ALLOCATE|[[94m531[39m]|Bytes:[94m20[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m233254855[39m)|HEAP_ALLOCATE|[[94m532[39m]|Bytes:[94m57[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m233257875[39m)|HEAP_ALLOCATE|[[94m531[39m]|Bytes:[94m77[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m233262925[39m)[1m[32m|USER_DEBUG|[39m[22m[[94m529[39m]|[1m[31mERROR[39m[22m|GV CHECKOUT STACK &#[94m124[39m; [94mClass.GVCheckoutController.placeOrder[39m: line [94m447[39m, column [94m1[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m233266155[39m)|HEAP_ALLOCATE|[[94m535[39m]|Bytes:[94m49[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m233355836[39m)|STATEMENT_EXECUTE|[[94m535[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m233356696[39m)|STATEMENT_EXECUTE|[[94m539[39m]
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m233366057[39m)|HEAP_ALLOCATE|[[94m540[39m]|Bytes:[94m46[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m233491458[39m)|[1m[32mFATAL_ERROR[39m[22m|[1m[[94m31mSystem.AuraHandledException[39m[39m[22m: Script-thrown exception
+
+[94mClass.GVCheckoutController.placeOrder[39m: line [94m539[39m, column [94m1[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m233501998[39m)|[1m[32mFATAL_ERROR[39m[22m|[1m[[94m31mSystem.AuraHandledException[39m[39m[22m: Script-thrown exception
+
+[94mClass.GVCheckoutController.placeOrder[39m: line [94m539[39m, column [94m1[39m
+[94m13[39m:[94m29[39m:[94m32[39m.[94m233[39m ([94m233514838[39m)|CUMULATIVE_LIMIT_USAGE
+[94m13[39m:[94m29[39m:[94m32[39m.[94m233[39m ([94m233514838[39m)|LIMIT_USAGE_FOR_NS|(default)|
+  Number of SOQL queries: [94m5[39m out of [94m100[39m
+  Number of query rows: [94m6[39m out of [94m50000[39m
+  Number of SOSL queries: [94m0[39m out of [94m20[39m
+  Number of DML statements: [94m3[39m out of [94m150[39m
+  Number of Publish Immediate DML: [94m0[39m out of [94m150[39m
+  Number of DML rows: [94m5[39m out of [94m10000[39m
+  Maximum CPU time: [94m0[39m out of [94m10000[39m
+  Maximum heap size: [94m0[39m out of [94m10000000[39m
+  Number of callouts: [94m0[39m out of [94m100[39m
+  Number of Email Invocations: [94m0[39m out of [94m10[39m
+  Number of future calls: [94m0[39m out of [94m50[39m
+  Number of queueable jobs added to the queue: [94m0[39m out of [94m50[39m
+  Number of Mobile Apex push calls: [94m0[39m out of [94m10[39m
+
+[94m13[39m:[94m29[39m:[94m32[39m.[94m233[39m ([94m233514838[39m)|CUMULATIVE_LIMIT_USAGE_END
+
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m233894673[39m)|CODE_UNIT_FINISHED|[94mGVCheckoutController.placeOrder[39m(String, String, String, String, String)
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m234115016[39m)|CODE_UNIT_FINISHED|apex://GVCheckoutController/ACTION$placeOrder
+[94m13[39m:[94m29[39m:[94m32[39m.[94m0[39m ([94m234119316[39m)|EXECUTION_FINISHED
+

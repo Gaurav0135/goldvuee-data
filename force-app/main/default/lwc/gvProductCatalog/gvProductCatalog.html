@@ -1,85 +1,528 @@
 
 <template>
+    <!-- ==============================================
+         GOLDVUEE | LUXURY JEWELLERY COLLECTIONS
+         ============================================== -->
+
     <section class="catalog">
-        <div class="catalog-header">
+
+        <!-- COLLECTION INTRODUCTION -->
+        <header class="catalog-header">
             <p class="eyebrow">THE GOLDVUEE EDIT</p>
+
             <h1>Explore Our Jewellery</h1>
+
             <p class="subtitle">
                 Timeless craftsmanship. Exceptional elegance.
             </p>
+        </header>
+
+        <!-- PRODUCT COUNT AND FILTER VISIBILITY -->
+        <div class="catalog-actions">
+            <p class="product-count">
+                {productCount} exquisite pieces
+            </p>
+
+            <button
+                class="filter-toggle"
+                type="button"
+                onclick={toggleFilters}>
+                {filterToggleLabel}
+            </button>
         </div>
 
-        <!-- Product search -->
-        <div class="toolbar">
-            <input
-                type="search"
-                placeholder="Search jewellery..."
-                aria-label="Search jewellery"
-                value={searchTerm}
-                oninput={handleSearch}
-            />
-            <span class="product-count">
-                {productCount} Pieces
-            </span>
-        </div>
+        <div class={catalogLayoutClass}>
 
-        <!-- Loading state -->
-        <template lwc:if={isLoading}>
-            <div class="message">Loading our collection...</div>
-        </template>
+            <!-- ======================================
+                 LEFT SIDEBAR
+                 ====================================== -->
+            <template lwc:if={showFilters}>
+                <aside
+                    class="filter-panel"
+                    aria-label="Product filters">
 
-        <!-- Error state -->
-        <template lwc:elseif={errorMessage}>
-            <div class="message error">{errorMessage}</div>
-        </template>
+                    <div class="filter-heading">
+                        <div>
+                            <p class="filter-kicker">
+                                CURATE YOUR COLLECTION
+                            </p>
 
-        <!-- Product grid -->
-        <template lwc:elseif={hasProducts}>
-            <div class="product-grid">
-                <template for:each={filteredProducts} for:item="product">
-                    <article class="product-card" key={product.id}>
-                        <div class="image-wrap">
-                            <img
-                                src={product.image}
-                                alt={product.name}
-                                loading="lazy"
-                            />
-
-                            <template lwc:if={product.isNew}>
-                                <span class="product-badge">NEW</span>
-                            </template>
+                            <h2>Filter Jewellery</h2>
                         </div>
 
-                        <div class="product-info">
-                            <p class="category">{product.category}</p>
-                            <h2>{product.name}</h2>
+                        <button
+                            class="close-filters"
+                            type="button"
+                            title="Close filters"
+                            aria-label="Close filters"
+                            onclick={toggleFilters}>
+                            &times;
+                        </button>
+                    </div>
 
-                            <div class="price-row">
-                                <span class="current-price">
-                                    {product.formattedPrice}
-                                </span>
+                    <!-- ==================================
+                         1. METAL TYPE
+                         ================================== -->
+                    <div class="filter-section">
+                        <button
+                            class="filter-section-toggle"
+                            type="button"
+                            data-section="metal"
+                            aria-expanded={metalOpen}
+                            onclick={toggleSection}>
+                            <span>Metal Type</span>
+                            <span>{metalArrow}</span>
+                        </button>
 
-                                <template lwc:if={product.hasDiscount}>
-                                    <span class="old-price">
-                                        {product.formattedOriginalPrice}
-                                    </span>
+                        <template lwc:if={metalOpen}>
+                            <div class="filter-options">
+                                <template
+                                    for:each={metalOptions}
+                                    for:item="option">
+
+                                    <label
+                                        class="filter-option"
+                                        key={option.value}>
+
+                                        <input
+                                            type="checkbox"
+                                            data-group="metal"
+                                            value={option.value}
+                                            checked={option.checked}
+                                            onchange={handleFilterChange}/>
+
+                                        <span>{option.label}</span>
+                                    </label>
                                 </template>
                             </div>
+                        </template>
+                    </div>
 
-                            <p class="availability">
-                                {product.availability}
-                            </p>
-                        </div>
-                    </article>
+                    <!-- ==================================
+                         2. JEWELLERY CATEGORY
+                         ================================== -->
+                    <div class="filter-section">
+                        <button
+                            class="filter-section-toggle"
+                            type="button"
+                            data-section="category"
+                            aria-expanded={categoryOpen}
+                            onclick={toggleSection}>
+                            <span>Jewellery Category</span>
+                            <span>{categoryArrow}</span>
+                        </button>
+
+                        <template lwc:if={categoryOpen}>
+                            <div class="filter-options">
+                                <template
+                                    for:each={categoryOptions}
+                                    for:item="option">
+
+                                    <label
+                                        class="filter-option"
+                                        key={option.value}>
+
+                                        <input
+                                            type="checkbox"
+                                            data-group="category"
+                                            value={option.value}
+                                            checked={option.checked}
+                                            onchange={handleFilterChange}/>
+
+                                        <span>{option.label}</span>
+                                    </label>
+                                </template>
+                            </div>
+                        </template>
+                    </div>
+
+                    <!-- ==================================
+                         3. SHOP FOR
+                         ================================== -->
+                    <div class="filter-section">
+                        <button
+                            class="filter-section-toggle"
+                            type="button"
+                            data-section="gender"
+                            aria-expanded={genderOpen}
+                            onclick={toggleSection}>
+                            <span>Shop For</span>
+                            <span>{genderArrow}</span>
+                        </button>
+
+                        <template lwc:if={genderOpen}>
+                            <div class="filter-options">
+                                <template
+                                    for:each={genderOptions}
+                                    for:item="option">
+
+                                    <label
+                                        class="filter-option"
+                                        key={option.value}>
+
+                                        <input
+                                            type="checkbox"
+                                            data-group="gender"
+                                            value={option.value}
+                                            checked={option.checked}
+                                            onchange={handleFilterChange}/>
+
+                                        <span>{option.label}</span>
+                                    </label>
+                                </template>
+                            </div>
+                        </template>
+                    </div>
+
+                    <!-- ==================================
+                         4. PURITY
+                         ================================== -->
+                    <div class="filter-section">
+                        <button
+                            class="filter-section-toggle"
+                            type="button"
+                            data-section="purity"
+                            aria-expanded={purityOpen}
+                            onclick={toggleSection}>
+                            <span>Purity</span>
+                            <span>{purityArrow}</span>
+                        </button>
+
+                        <template lwc:if={purityOpen}>
+                            <div class="filter-options">
+                                <template
+                                    for:each={purityOptions}
+                                    for:item="option">
+
+                                    <label
+                                        class="filter-option"
+                                        key={option.value}>
+
+                                        <input
+                                            type="checkbox"
+                                            data-group="purity"
+                                            value={option.value}
+                                            checked={option.checked}
+                                            onchange={handleFilterChange}/>
+
+                                        <span>{option.label}</span>
+                                    </label>
+                                </template>
+                            </div>
+                        </template>
+                    </div>
+
+                    <!-- ==================================
+                         5. STONE TYPE
+                         ================================== -->
+                    <div class="filter-section">
+                        <button
+                            class="filter-section-toggle"
+                            type="button"
+                            data-section="stone"
+                            aria-expanded={stoneOpen}
+                            onclick={toggleSection}>
+                            <span>Stone Type</span>
+                            <span>{stoneArrow}</span>
+                        </button>
+
+                        <template lwc:if={stoneOpen}>
+                            <div class="filter-options">
+                                <template
+                                    for:each={stoneOptions}
+                                    for:item="option">
+
+                                    <label
+                                        class="filter-option"
+                                        key={option.value}>
+
+                                        <input
+                                            type="checkbox"
+                                            data-group="stone"
+                                            value={option.value}
+                                            checked={option.checked}
+                                            onchange={handleFilterChange}/>
+
+                                        <span>{option.label}</span>
+                                    </label>
+                                </template>
+                            </div>
+                        </template>
+                    </div>
+
+                    <!-- ==================================
+                         6. COLLECTIONS
+                         ================================== -->
+                    <div class="filter-section">
+                        <button
+                            class="filter-section-toggle"
+                            type="button"
+                            data-section="collection"
+                            aria-expanded={collectionOpen}
+                            onclick={toggleSection}>
+                            <span>Collections</span>
+                            <span>{collectionArrow}</span>
+                        </button>
+
+                        <template lwc:if={collectionOpen}>
+                            <div class="filter-options">
+                                <template
+                                    for:each={collectionOptions}
+                                    for:item="option">
+
+                                    <label
+                                        class="filter-option"
+                                        key={option.value}>
+
+                                        <input
+                                            type="checkbox"
+                                            data-group="collection"
+                                            value={option.value}
+                                            checked={option.checked}
+                                            onchange={handleFilterChange}/>
+
+                                        <span>{option.label}</span>
+                                    </label>
+                                </template>
+                            </div>
+                        </template>
+                    </div>
+
+                    <!-- ==================================
+                         7. AVAILABILITY
+                         ================================== -->
+                    <div class="filter-section">
+                        <button
+                            class="filter-section-toggle"
+                            type="button"
+                            data-section="availability"
+                            aria-expanded={availabilityOpen}
+                            onclick={toggleSection}>
+                            <span>Availability</span>
+                            <span>{availabilityArrow}</span>
+                        </button>
+
+                        <template lwc:if={availabilityOpen}>
+                            <div class="filter-options">
+                                <template
+                                    for:each={availabilityOptions}
+                                    for:item="option">
+
+                                    <label
+                                        class="filter-option"
+                                        key={option.value}>
+
+                                        <input
+                                            type="checkbox"
+                                            data-group="availability"
+                                            value={option.value}
+                                            checked={option.checked}
+                                            onchange={handleFilterChange}/>
+
+                                        <span>{option.label}</span>
+                                    </label>
+                                </template>
+                            </div>
+                        </template>
+                    </div>
+
+                    <!-- ==================================
+                         8. BUDGET
+                         ================================== -->
+                    <div class="filter-section">
+                        <button
+                            class="filter-section-toggle"
+                            type="button"
+                            data-section="budget"
+                            aria-expanded={budgetOpen}
+                            onclick={toggleSection}>
+                            <span>Budget</span>
+                            <span>{budgetArrow}</span>
+                        </button>
+
+                        <template lwc:if={budgetOpen}>
+                            <div class="budget-options">
+
+                                <label for="max-budget">
+                                    Maximum price
+                                </label>
+
+                                <input
+                                    id="max-budget"
+                                    type="range"
+                                    min="0"
+                                    max={budgetMaximum}
+                                    step="1000"
+                                    value={maxBudget}
+                                    oninput={handleBudgetChange}/>
+
+                                <div class="budget-labels">
+                                    <span>₹0</span>
+                                    <strong>{formattedMaxBudget}</strong>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+
+                    <!-- CLEAR ALL FILTERS -->
+                    <button
+                        class="clear-filters"
+                        type="button"
+                        onclick={clearFilters}>
+                        Clear All Filters
+                    </button>
+
+                </aside>
+            </template>
+
+            <!-- ======================================
+                 RIGHT SIDE: SEARCH AND PRODUCTS
+                 ====================================== -->
+            <main class="catalog-main">
+
+                <!-- SEARCH AND SORT TOOLBAR -->
+                <div class="toolbar">
+
+                    <div class="search-box">
+                        <input
+                            type="search"
+                            placeholder="Search your perfect piece..."
+                            aria-label="Search jewellery"
+                            value={searchTerm}
+                            oninput={handleSearch}/>
+                    </div>
+
+                    <select
+                        class="sort-select"
+                        aria-label="Sort jewellery"
+                        value={sortBy}
+                        onchange={handleSortChange}>
+
+                        <option value="featured">
+                            Featured
+                        </option>
+
+                        <option value="priceLow">
+                            Price: Low to High
+                        </option>
+
+                        <option value="priceHigh">
+                            Price: High to Low
+                        </option>
+
+                        <option value="name">
+                            Name: A to Z
+                        </option>
+                    </select>
+
+                </div>
+
+                <!-- LOADING STATE -->
+                <template lwc:if={isLoading}>
+                    <div class="message">
+                        Loading our collection...
+                    </div>
                 </template>
-            </div>
-        </template>
 
-        <!-- Empty results -->
-        <template lwc:else>
-            <div class="message">
-                No jewellery found. Try another search.
-            </div>
-        </template>
+                <!-- ERROR STATE -->
+                <template lwc:elseif={errorMessage}>
+                    <div class="message error">
+                        {errorMessage}
+                    </div>
+                </template>
+
+                <!-- ======================================
+                     PRODUCT GRID
+                     NEW: PRODUCT DETAILS NAVIGATION
+                     ====================================== -->
+                <template lwc:elseif={hasProducts}>
+                    <div class="product-grid">
+
+                        <template
+                            for:each={filteredProducts}
+                            for:item="product">
+
+                            <article
+                                class="product-card"
+                                key={product.id}>
+
+                                <!-- CLICKABLE PRODUCT IMAGE -->
+                                <div class="image-wrap">
+
+                                    <a
+                                        class="product-image-link"
+                                        href={product.detailsUrl}
+                                        aria-label={product.name}>
+
+                                        <img
+                                            src={product.image}
+                                            alt={product.name}
+                                            loading="lazy"/>
+
+                                    </a>
+
+                                    <!-- NEW ARRIVAL BADGE -->
+                                    <template lwc:if={product.isNew}>
+                                        <span class="product-badge">
+                                            NEW
+                                        </span>
+                                    </template>
+
+                                </div>
+
+                                <!-- PRODUCT INFORMATION -->
+                                <div class="product-info">
+
+                                    <p class="category">
+                                        {product.category}
+                                    </p>
+
+                                    <!-- CLICKABLE PRODUCT NAME -->
+                                    <h2>
+                                        <a
+                                            class="product-name-link"
+                                            href={product.detailsUrl}>
+                                            {product.name}
+                                        </a>
+                                    </h2>
+
+                                    <!-- PRODUCT PRICING -->
+                                    <div class="price-row">
+
+                                        <span class="current-price">
+                                            {product.formattedPrice}
+                                        </span>
+
+                                        <template lwc:if={product.hasDiscount}>
+                                            <span class="old-price">
+                                                {product.formattedOriginalPrice}
+                                            </span>
+                                        </template>
+
+                                    </div>
+
+                                    <!-- INVENTORY AVAILABILITY -->
+                                    <p class="availability">
+                                        {product.availability}
+                                    </p>
+
+                                </div>
+
+                            </article>
+                        </template>
+
+                    </div>
+                </template>
+
+                <!-- EMPTY FILTER RESULTS -->
+                <template lwc:else>
+                    <div class="message">
+                        No jewellery matches your filters.
+                        Try clearing some selections.
+                    </div>
+                </template>
+
+            </main>
+        </div>
     </section>
 </template>

@@ -1,147 +1,552 @@
 
-/* =========================================================
-   GOLDVUEE | LUXURY PRODUCT CATALOGUE
-   Theme: Burgundy, champagne gold and warm ivory
-   ========================================================= */
+/* ==========================================================
+   GOLDVUEE | LUXURY JEWELLERY COLLECTIONS
+   ==========================================================
+   Design:
+   - Warm ivory background
+   - Royal burgundy typography
+   - Champagne gold accents
+   - Elegant jewellery product cards
+   - Responsive 8-section filter sidebar
+   ========================================================== */
 
+/* 1. DESIGN TOKENS */
 :host {
+    --gv-burgundy: #57142d;
+    --gv-burgundy-dark: #390c20;
+    --gv-gold: #bd965b;
+    --gv-ivory: #faf7f2;
+    --gv-cream: #f4ede5;
+    --gv-white: #ffffff;
+    --gv-text: #39262b;
+    --gv-muted: #88787b;
+    --gv-border: #e9dfd5;
+
     display: block;
-    --gv-burgundy: #59172e;
-    --gv-gold: #b38b4d;
-    --gv-ivory: #fcfaf7;
-    --gv-text: #33252a;
+    width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--gv-text);
 }
+
+/* 2. MAIN CATALOGUE BACKGROUND */
 
 .catalog {
-    background: var(--gv-ivory);
-    padding: 70px 5%;
-    min-height: 500px;
+    position: relative;
+    width: 100%;
+    min-height: 80vh;
+    box-sizing: border-box;
+    overflow: hidden;
+
+    /* Luxury champagne-to-ivory background */
+    background:
+        radial-gradient(
+            ellipse at 8% 15%,
+            rgba(189, 150, 91, 0.20),
+            transparent 42%
+        ),
+        radial-gradient(
+            ellipse at 95% 65%,
+            rgba(87, 20, 45, 0.09),
+            transparent 48%
+        ),
+        linear-gradient(
+            135deg,
+            #eee0cf 0%,
+            #f5ece1 40%,
+            #faf5ee 70%,
+            #eee0d4 100%
+        );
+
+    padding: 56px clamp(18px, 4vw, 64px) 100px;
 }
 
+
+/* Subtle decorative gold line */
+.catalog::before {
+    content: '';
+    display: block;
+    width: 70px;
+    height: 2px;
+    background: var(--gv-gold);
+    margin: 0 auto 26px;
+}
+
+/* 3. CATALOGUE INTRODUCTION */
 .catalog-header {
+    max-width: 850px;
+    margin: 0 auto 46px;
     text-align: center;
-    margin-bottom: 45px;
 }
 
-.eyebrow {
+.eyebrow,
+.filter-kicker {
+    margin: 0;
     color: var(--gv-gold);
-    font-size: 12px;
+    font-size: 10px;
     font-weight: 700;
     letter-spacing: 3px;
+    text-transform: uppercase;
 }
 
 .catalog-header h1 {
-    font-family: Georgia, serif;
+    margin: 15px 0 14px;
     color: var(--gv-burgundy);
-    font-size: clamp(30px, 4vw, 46px);
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(34px, 4vw, 54px);
     font-weight: 400;
-    margin: 12px 0;
+    line-height: 1.18;
+    letter-spacing: -0.8px;
 }
 
 .subtitle {
-    color: #82777a;
-    font-size: 15px;
+    margin: 0;
+    color: var(--gv-muted);
+    font-size: 14px;
+    line-height: 1.8;
+    letter-spacing: 0.2px;
 }
 
-.toolbar {
-    max-width: 1250px;
-    margin: 0 auto 30px;
+/* 4. PRODUCT COUNT + FILTER TOGGLE */
+.catalog-actions {
+    max-width: 1440px;
+    margin: 0 auto 18px;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 20px;
-}
-
-.toolbar input {
-    width: min(100%, 360px);
-    padding: 13px 17px;
-    border: 1px solid #e2d8d5;
-    border-radius: 4px;
-    background: white;
-    color: var(--gv-text);
-    font-size: 14px;
-    outline: none;
-}
-
-.toolbar input:focus {
-    border-color: var(--gv-gold);
+    gap: 16px;
 }
 
 .product-count {
-    color: #82777a;
+    margin: 0;
     font-size: 13px;
-    white-space: nowrap;
+    color: var(--gv-muted);
 }
 
-.product-grid {
-    max-width: 1250px;
-    margin: auto;
+.filter-toggle {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 40px;
+    padding: 10px 18px;
+
+    border: 1px solid var(--gv-gold);
+    border-radius: 2px;
+    background: transparent;
+    color: var(--gv-burgundy);
+
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.filter-toggle:hover {
+    background: var(--gv-burgundy);
+    color: white;
+    border-color: var(--gv-burgundy);
+}
+
+/* 5. SIDEBAR + MAIN PRODUCT GRID */
+.catalog-layout {
+    max-width: 1440px;
+    margin: 0 auto;
+
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 28px;
+    grid-template-columns: 260px minmax(0, 1fr);
+    gap: 30px;
+    align-items: start;
 }
 
-.product-card {
+.catalog-layout.filters-hidden {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+/* 6. FILTER SIDEBAR */
+.filter-panel {
+    box-sizing: border-box;
+    min-width: 0;
+    padding: 27px 23px 25px;
+
+    background: var(--gv-white);
+    border: 1px solid var(--gv-border);
+    border-radius: 4px;
+
+    box-shadow: 0 8px 28px rgba(67, 28, 36, 0.035);
+}
+
+.filter-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.filter-kicker {
+    font-size: 9px;
+    letter-spacing: 1.5px;
+}
+
+.filter-heading h2 {
+    margin: 9px 0 0;
+    color: var(--gv-burgundy);
+    font-family: Georgia, serif;
+    font-size: 23px;
+    font-weight: 400;
+    line-height: 1.25;
+}
+
+.close-filters {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+    color: var(--gv-burgundy);
+
+    font-size: 25px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.close-filters:hover {
+    color: var(--gv-gold);
+}
+
+/* 7. ACCORDION FILTER SECTIONS */
+.filter-section {
+    border-top: 1px solid var(--gv-border);
+}
+
+.filter-section-toggle {
+    width: 100%;
+    min-height: 55px;
+    padding: 17px 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+
+    background: transparent;
+    border: none;
+    color: var(--gv-text);
+
+    text-align: left;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.1px;
+    cursor: pointer;
+
+    transition: color 0.2s ease;
+}
+
+.filter-section-toggle:hover,
+.filter-section-toggle[aria-expanded="true"] {
+    color: var(--gv-burgundy);
+}
+
+.filter-section-toggle span:last-child {
+    color: var(--gv-gold);
+    font-size: 19px;
+    font-weight: 400;
+}
+
+/* 8. CHECKBOX FILTER OPTIONS */
+.filter-options {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 2px 0 22px;
+}
+
+.filter-option {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    min-height: 20px;
+
+    color: #65545a;
+    font-size: 12px;
+    line-height: 1.5;
+    cursor: pointer;
+
+    transition: color 0.2s ease;
+}
+
+.filter-option:hover {
+    color: var(--gv-burgundy);
+}
+
+.filter-option input[type="checkbox"] {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    accent-color: var(--gv-burgundy);
+    cursor: pointer;
+}
+
+.filter-option input:focus-visible,
+.filter-section-toggle:focus-visible,
+.filter-toggle:focus-visible,
+.close-filters:focus-visible,
+.clear-filters:focus-visible {
+    outline: 2px solid var(--gv-gold);
+    outline-offset: 3px;
+}
+
+/* 9. BUDGET SLIDER */
+.budget-options {
+    padding: 2px 0 23px;
+}
+
+.budget-options label {
+    display: block;
+    margin-bottom: 14px;
+    color: var(--gv-muted);
+    font-size: 12px;
+}
+
+.budget-options input[type="range"] {
+    width: 100%;
+    margin: 0;
+    accent-color: var(--gv-burgundy);
+    cursor: pointer;
+}
+
+.budget-labels {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+
+    margin-top: 14px;
+    color: var(--gv-muted);
+    font-size: 12px;
+}
+
+.budget-labels strong {
+    color: var(--gv-burgundy);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* 10. CLEAR ALL BUTTON */
+.clear-filters {
+    width: 100%;
+    min-height: 44px;
+    margin-top: 23px;
+    padding: 12px 14px;
+
+    border: 1px solid var(--gv-burgundy);
+    border-radius: 2px;
+    background: var(--gv-burgundy);
+    color: white;
+
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease;
+}
+
+.clear-filters:hover {
+    background: var(--gv-burgundy-dark);
+    transform: translateY(-1px);
+}
+
+/* 11. RIGHT CONTENT AREA */
+.catalog-main {
+    min-width: 0;
+}
+
+/* 12. SEARCH + SORT TOOLBAR */
+.toolbar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.search-box {
+    position: relative;
+    flex: 1;
+    min-width: 0;
+}
+
+.search-box::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 17px;
+    width: 13px;
+    height: 13px;
+
+    border: 1.8px solid var(--gv-gold);
+    border-radius: 50%;
+    transform: translateY(-65%);
+    pointer-events: none;
+}
+
+.search-box::after {
+    content: '';
+    position: absolute;
+    top: calc(50% + 5px);
+    left: 29px;
+    width: 7px;
+    height: 1.8px;
+
+    background: var(--gv-gold);
+    transform: rotate(45deg);
+    transform-origin: left center;
+    pointer-events: none;
+}
+
+.search-box input,
+.sort-select {
+    box-sizing: border-box;
+    height: 48px;
+
+    border: 1px solid var(--gv-border);
+    border-radius: 3px;
     background: white;
-    border: 1px solid #f0e9e5;
+    color: var(--gv-text);
+
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 0 16px 0 46px;
+}
+
+.search-box input::placeholder {
+    color: #a29496;
+}
+
+.search-box input:focus,
+.sort-select:focus {
+    border-color: var(--gv-gold);
+    box-shadow: 0 0 0 2px rgba(189, 150, 91, 0.12);
+}
+
+.sort-select {
+    width: 205px;
+    padding: 0 12px;
+    cursor: pointer;
+}
+
+/* 13. PRODUCT GRID */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+}
+
+.filters-hidden .product-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+/* 14. PRODUCT CARD */
+.product-card {
+    min-width: 0;
     overflow: hidden;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+    background: white;
+    border: 1px solid #eee5dd;
+    border-radius: 3px;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
 }
 
 .product-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(55, 25, 35, 0.1);
+    border-color: #d9c5ad;
+    box-shadow: 0 14px 34px rgba(68, 27, 41, 0.09);
 }
 
+/* 15. PRODUCT IMAGE */
 .image-wrap {
     position: relative;
-    aspect-ratio: 1 / 1;
-    background: #f5f0ec;
     overflow: hidden;
+    aspect-ratio: 1 / 1.08;
+
+    background: var(--gv-cream);
 }
 
 .image-wrap img {
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.4s ease;
+
+    transition: transform 0.5s ease;
 }
 
-.product-card:hover img {
-    transform: scale(1.05);
+.product-card:hover .image-wrap img {
+    transform: scale(1.055);
 }
 
+/* 16. NEW ARRIVAL BADGE */
 .product-badge {
     position: absolute;
-    top: 14px;
-    left: 14px;
+    top: 13px;
+    left: 13px;
+
+    padding: 7px 12px;
     background: var(--gv-burgundy);
     color: white;
-    padding: 6px 12px;
-    font-size: 10px;
-    letter-spacing: 1px;
+
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
 }
 
+/* 17. PRODUCT INFORMATION */
 .product-info {
-    padding: 20px 16px 24px;
+    min-height: 165px;
+    padding: 21px 13px 24px;
     text-align: center;
 }
 
 .category {
-    color: var(--gv-gold);
-    font-size: 11px;
-    text-transform: uppercase;
+    margin: 0 0 11px;
+    color: #b28b55;
+
+    font-size: 10px;
+    font-weight: 600;
     letter-spacing: 1.5px;
+    text-transform: uppercase;
 }
 
 .product-info h2 {
-    font-family: Georgia, serif;
+    min-height: 48px;
+    margin: 0;
+
     color: var(--gv-text);
+    font-family: Georgia, 'Times New Roman', serif;
     font-size: 17px;
     font-weight: 400;
-    line-height: 1.5;
-    min-height: 50px;
-    margin: 10px 0;
+    line-height: 1.45;
 }
 
 .price-row {
@@ -149,70 +554,206 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 9px;
+
+    margin-top: 13px;
 }
 
 .current-price {
     color: var(--gv-burgundy);
+    font-size: 15px;
     font-weight: 700;
-    font-size: 16px;
 }
 
 .old-price {
-    color: #999;
-    font-size: 13px;
+    color: #a99c9d;
+    font-size: 12px;
     text-decoration: line-through;
 }
 
 .availability {
-    color: #777;
-    font-size: 12px;
-    margin-top: 12px;
+    margin: 13px 0 0;
+    color: #82746d;
+    font-size: 11px;
 }
 
+/* 18. LOADING, ERROR AND EMPTY RESULTS */
 .message {
+    padding: 75px 22px;
     text-align: center;
-    padding: 70px 20px;
-    color: #82777a;
+    color: var(--gv-muted);
+    font-size: 14px;
+    line-height: 1.8;
+
+    background: rgba(255, 255, 255, 0.65);
+    border: 1px solid var(--gv-border);
+    border-radius: 3px;
 }
 
-.error {
-    color: #a52a2a;
+.message.error {
+    color: #a3263c;
 }
 
-/* Tablet layout */
-@media (max-width: 1000px) {
-    .product-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+/* 19. TABLET RESPONSIVENESS */
+@media (max-width: 1100px) {
+    .catalog-layout {
+        grid-template-columns: 225px minmax(0, 1fr);
+        gap: 20px;
+    }
+
+    .filter-panel {
+        padding: 22px 18px;
+    }
+
+    .product-grid,
+    .filters-hidden .product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
     }
 }
 
-/* Mobile layout */
+/* 20. MOBILE RESPONSIVENESS */
 @media (max-width: 700px) {
     .catalog {
-        padding: 45px 4%;
+        padding: 38px 16px 65px;
     }
 
-    .product-grid {
+    .catalog-header {
+        margin-bottom: 32px;
+    }
+
+    .catalog-header h1 {
+        font-size: 35px;
+    }
+
+    .subtitle {
+        font-size: 12px;
+    }
+
+    .catalog-actions {
+        margin-bottom: 16px;
+    }
+
+    .catalog-layout,
+    .catalog-layout.filters-hidden {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 22px;
+    }
+
+    .filter-panel {
+        width: 100%;
+        padding: 22px 19px;
+    }
+
+    .toolbar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .search-box,
+    .sort-select {
+        width: 100%;
+    }
+
+    .product-grid,
+    .filters-hidden .product-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 14px;
+        gap: 12px;
+    }
+
+    .image-wrap {
+        aspect-ratio: 1 / 1.08;
     }
 
     .product-info {
-        padding: 14px 10px;
+        min-height: 150px;
+        padding: 15px 8px 18px;
     }
 
     .product-info h2 {
         font-size: 14px;
+        min-height: 43px;
     }
 
-    .toolbar {
-        align-items: stretch;
-        flex-direction: column;
+    .current-price {
+        font-size: 13px;
     }
 
-    .toolbar input {
-        width: 100%;
-        box-sizing: border-box;
+    .old-price {
+        font-size: 11px;
     }
+
+    .category {
+        font-size: 9px;
+    }
+}
+
+/* 21. SMALL MOBILE SCREENS */
+@media (max-width: 380px) {
+    .catalog-header h1 {
+        font-size: 30px;
+    }
+
+    .product-grid,
+    .filters-hidden .product-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .product-info h2 {
+        font-size: 16px;
+    }
+}
+
+/* 22. REDUCED MOTION ACCESSIBILITY */
+@media (prefers-reduced-motion: reduce) {
+    .product-card,
+    .image-wrap img,
+    .filter-toggle,
+    .clear-filters {
+        transition: none;
+    }
+}
+
+
+
+/* ==============================================
+   GOLDVUEE | PRODUCT DETAILS NAVIGATION
+   ============================================== */
+
+/* Make the product image clickable. */
+.product-image-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.product-image-link img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.35s ease;
+}
+
+.product-image-link:hover img {
+    transform: scale(1.04);
+}
+
+/* Make product titles clickable. */
+.product-name-link {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.product-name-link:hover {
+    color: #8b2949;
+}
+
+.product-name-link:focus-visible,
+.product-image-link:focus-visible {
+    outline: 2px solid #bd965b;
+    outline-offset: 3px;
 }

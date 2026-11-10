@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GV_Payment_Validation</fullName>
+    <active>true</active>
+    <description>Validate payment amount and require a transaction ID for successful payments</description>
+    <errorConditionFormula>OR(
+    ISBLANK(Payment_Amount__c),
+    Payment_Amount__c &lt;= 0,
+    AND(
+        ISPICKVAL(Payment_Status__c, &quot;Success&quot;),
+        ISBLANK(Transaction_ID__c)
+    )
+)</errorConditionFormula>
+    <errorMessage>Payment amount must be greater than zero. Successful payments must have a Transaction ID.</errorMessage>
+</ValidationRule>

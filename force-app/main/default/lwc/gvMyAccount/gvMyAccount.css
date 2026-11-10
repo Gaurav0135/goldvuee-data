@@ -1,0 +1,447 @@
+
+:host {
+    display: block;
+    font-family: Arial, sans-serif;
+    color: #4d1026;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.account-page {
+    min-height: 75vh;
+    background: linear-gradient(
+        135deg,
+        #f3e7d8 0%,
+        #fffaf4 55%,
+        #f5eade 100%
+    );
+    padding: 65px 20px 85px;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 55px;
+}
+
+.eyebrow,
+.mini-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    color: #ad813e;
+}
+
+.eyebrow {
+    letter-spacing: 4px;
+}
+
+.page-header h1 {
+    font-family: Georgia, serif;
+    font-size: clamp(40px, 5vw, 58px);
+    font-weight: 400;
+    margin: 23px 0;
+}
+
+.gold-divider {
+    height: 2px;
+    width: 68px;
+    background: #c49a56;
+    margin: 0 auto 24px;
+}
+
+.subtitle {
+    font-size: 15px;
+    color: #927983;
+}
+
+.account-container {
+    max-width: 1060px;
+    margin: 0 auto;
+}
+
+.welcome-card {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    padding: 36px 42px;
+    border-radius: 8px;
+    background: linear-gradient(
+        115deg,
+        #330714,
+        #641b35
+    );
+    color: white;
+    margin-bottom: 28px;
+    box-shadow: 0 10px 30px rgba(51, 7, 20, 0.12);
+}
+
+.avatar {
+    width: 86px;
+    height: 86px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 2px solid #e7c27c;
+    background: rgba(255, 255, 255, 0.08);
+    font-family: Georgia, serif;
+    font-size: 38px;
+    color: #f0d39a;
+}
+
+.welcome-text h2 {
+    font-family: Georgia, serif;
+    font-size: clamp(26px, 3vw, 36px);
+    font-weight: 400;
+    margin: 10px 0;
+}
+
+.welcome-text p:last-child {
+    color: #ead7dd;
+    line-height: 1.7;
+    font-size: 14px;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.profile-card,
+.orders-card,
+.quick-link,
+.message-card {
+    border: 1px solid #e9d8c4;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 8px 25px rgba(70, 23, 38, 0.04);
+}
+
+.profile-card,
+.orders-card {
+    padding: 34px;
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #eee3d7;
+}
+
+.section-heading h3,
+.orders-card h3,
+.quick-header h2 {
+    font-family: Georgia, serif;
+    font-size: 27px;
+    font-weight: 400;
+    margin-top: 10px;
+}
+
+.gold-symbol {
+    color: #c49a56;
+    font-size: 32px;
+}
+
+.profile-field {
+    padding: 22px 0 8px;
+}
+
+.field-label {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    color: #957d86;
+}
+
+.profile-field p {
+    font-size: 16px;
+    margin-top: 9px;
+    color: #421327;
+    overflow-wrap: anywhere;
+}
+
+.profile-footer {
+    border-top: 1px solid #eee3d7;
+    margin-top: 25px;
+    padding-top: 22px;
+    color: #886f77;
+    font-size: 12px;
+}
+
+.member-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #bc9653;
+    margin-right: 7px;
+}
+
+.orders-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.feature-icon {
+    font-family: Georgia, serif;
+    font-size: 57px;
+    color: #c69b50;
+    margin: 24px 0 5px;
+}
+
+.orders-card h3 {
+    margin: 0 0 12px;
+}
+
+.orders-card > p:not(.mini-label) {
+    font-size: 14px;
+    color: #927c83;
+    line-height: 1.8;
+    margin-bottom: 28px;
+}
+
+.primary-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    background: linear-gradient(
+        110deg,
+        #f0d79f,
+        #d6a650
+    );
+    color: #3f1125;
+    padding: 14px 24px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    margin-top: auto;
+    transition: transform 0.2s ease;
+}
+
+.primary-button:hover {
+    transform: translateY(-2px);
+    color: #3f1125;
+}
+
+.quick-links-section {
+    margin-top: 45px;
+}
+
+.quick-header {
+    margin-bottom: 24px;
+}
+
+.links-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+}
+
+.quick-link {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 25px;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.2s ease;
+}
+
+.quick-link:hover {
+    border-color: #c49a56;
+    color: inherit;
+}
+
+.quick-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 52px;
+    height: 52px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #fbf2e2;
+    color: #af853b;
+    font-size: 27px;
+}
+
+.quick-link h3 {
+    font-family: Georgia, serif;
+    font-size: 20px;
+    margin-bottom: 6px;
+}
+
+.quick-link p {
+    font-size: 12px;
+    color: #97818a;
+    line-height: 1.5;
+}
+
+.link-arrow {
+    color: #a67b39;
+    margin-left: auto;
+    font-size: 22px;
+}
+
+.bottom-message {
+    margin-top: 45px;
+    text-align: center;
+    color: #947b83;
+    font-size: 13px;
+}
+
+.bottom-message span {
+    color: #c49a56;
+    margin: 0 12px;
+}
+
+.message-card {
+    position: relative;
+    text-align: center;
+    padding: 65px 25px;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+.message-card h2 {
+    font-family: Georgia, serif;
+    font-size: 32px;
+    font-weight: 400;
+    margin-bottom: 15px;
+}
+
+.message-card p {
+    color: #927d83;
+    line-height: 1.7;
+    margin-bottom: 24px;
+}
+
+.loading-card {
+    min-height: 230px;
+}
+
+.loading-card p {
+    margin-top: 55px;
+}
+
+.guest-icon {
+    font-size: 55px;
+    color: #c49a56;
+}
+
+.outline-button {
+    background: white;
+    border: 1px solid #c49a56;
+    border-radius: 4px;
+    padding: 12px 20px;
+    color: #59152d;
+    cursor: pointer;
+}
+
+.error-card {
+    border-color: #e6b6be;
+}
+
+@media (max-width: 700px) {
+    .account-page {
+        padding: 45px 14px 65px;
+    }
+
+    .welcome-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px 20px;
+    }
+
+    .dashboard-grid,
+    .links-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-card,
+    .orders-card {
+        padding: 25px 20px;
+    }
+
+    .quick-link {
+        padding: 20px;
+    }
+
+    .bottom-message span {
+        margin: 0 4px;
+    }
+}
+
+/* GoldVuee Account Logout Section */
+
+.account-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 28px 32px;
+    margin-top: 35px;
+    background: #ffffff;
+    border: 1px solid #e9d8c4;
+    border-radius: 8px;
+}
+
+.logout-info h3 {
+    font-family: Georgia, serif;
+    font-size: 23px;
+    font-weight: 400;
+    color: #4d1026;
+    margin-bottom: 8px;
+}
+
+.logout-info p {
+    color: #927983;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.logout-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 30px;
+    background: #59152c;
+    color: #ffffff;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.2s ease;
+}
+
+.logout-button:hover {
+    background: #350a19;
+    color: #ffffff;
+}
+
+.logout-icon {
+    --slds-c-icon-color-foreground-default: #ffffff;
+}
+
+@media (max-width: 650px) {
+    .account-actions {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 24px 20px;
+    }
+
+    .logout-button {
+        width: 100%;
+    }
+}

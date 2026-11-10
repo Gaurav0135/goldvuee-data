@@ -1,0 +1,562 @@
+
+/* ==========================================================
+   GOLDVUEE | PREMIUM PRODUCT DETAILS + SHOPPING CART
+   ========================================================== */
+
+:host {
+    --burgundy: #57142d;
+    --dark: #321d25;
+    --gold: #bd965b;
+    --ivory: #f7f0e8;
+    --border: #e6d9cc;
+
+    display: block;
+    width: 100%;
+}
+
+.details-page {
+    box-sizing: border-box;
+    min-height: 75vh;
+    padding: 65px 5% 95px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f1e5d7 0%,
+            #faf6f0 60%,
+            #f0e4d7 100%
+        );
+
+    color: var(--dark);
+}
+
+.details-container {
+    max-width: 1250px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(35px, 5vw, 80px);
+    align-items: start;
+}
+
+/* ==========================================================
+   1. PRODUCT IMAGE
+   ========================================================== */
+
+.main-image {
+    position: relative;
+    overflow: hidden;
+    background: #f0e8df;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    aspect-ratio: 1 / 1;
+}
+
+.main-image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.new-badge {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 9px 15px;
+
+    background: var(--burgundy);
+    color: #fff;
+
+    font-size: 10px;
+    letter-spacing: 1.5px;
+}
+
+/* ==========================================================
+   2. PRODUCT INFORMATION
+   ========================================================== */
+
+.information-column {
+    padding-top: 12px;
+}
+
+.eyebrow {
+    margin: 0 0 18px;
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.product-category {
+    margin: 0 0 10px;
+    color: #927452;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.information-column h1 {
+    margin: 0;
+    color: var(--dark);
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(30px, 3vw, 45px);
+    font-weight: 600;
+    line-height: 1.25;
+}
+
+.gold-divider {
+    width: 60px;
+    height: 2px;
+    margin: 25px 0;
+    background: var(--gold);
+}
+
+/* ==========================================================
+   3. PRODUCT PRICING
+   ========================================================== */
+
+.price-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 17px;
+}
+
+.current-price {
+    color: var(--burgundy);
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.original-price {
+    color: #a18d8d;
+    font-size: 17px;
+    text-decoration: line-through;
+}
+
+/* ==========================================================
+   4. INVENTORY STATUS
+   ========================================================== */
+
+.stock-status {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin: 20px 0 27px;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+.in-stock {
+    color: #37734e;
+}
+
+.out-of-stock {
+    color: #a83c43;
+}
+
+/* ==========================================================
+   5. SHOPPING CART SECTION
+   ========================================================== */
+
+.cart-section {
+    margin: 0 0 30px;
+    padding: 25px 0 28px;
+
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.cart-section-title {
+    margin: 0 0 22px;
+
+    color: var(--burgundy);
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 21px;
+    font-weight: 600;
+}
+
+/* ==========================================================
+   6. QUANTITY SELECTOR
+   ========================================================== */
+
+.quantity-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+
+    margin-bottom: 23px;
+}
+
+.quantity-label {
+    color: var(--dark);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+.quantity-selector {
+    display: inline-flex;
+    align-items: center;
+
+    height: 44px;
+
+    border: 1px solid #d5c3b3;
+    border-radius: 4px;
+
+    background: #fffaf5;
+    overflow: hidden;
+}
+
+.quantity-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 44px;
+    height: 44px;
+
+    padding: 0;
+    border: none;
+
+    background: transparent;
+    color: var(--burgundy);
+
+    font-family: Arial, sans-serif;
+    font-size: 22px;
+    font-weight: 400;
+
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+.quantity-button:hover:not(:disabled) {
+    background: #f2e5da;
+}
+
+.quantity-button:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: -3px;
+}
+
+.quantity-button:disabled {
+    color: #c7b9b4;
+    cursor: not-allowed;
+}
+
+.quantity-value {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 45px;
+    height: 44px;
+
+    padding: 0 8px;
+
+    border-left: 1px solid #e7d9cc;
+    border-right: 1px solid #e7d9cc;
+
+    color: var(--dark);
+    font-size: 15px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}
+
+/* ==========================================================
+   7. ADD TO CART BUTTON
+   ========================================================== */
+
+.add-to-cart-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    min-height: 54px;
+
+    padding: 14px 24px;
+
+    border: 1px solid var(--burgundy);
+    border-radius: 3px;
+
+    background: var(--burgundy);
+    color: #ffffff;
+
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    transition:
+        background 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.2s ease,
+        box-shadow 0.25s ease;
+}
+
+.add-to-cart-button:hover:not(:disabled) {
+    background: #74213e;
+    border-color: #74213e;
+
+    box-shadow: 0 6px 18px rgba(87, 20, 45, 0.15);
+
+    transform: translateY(-1px);
+}
+
+.add-to-cart-button:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.add-to-cart-button:focus-visible {
+    outline: 3px solid var(--gold);
+    outline-offset: 3px;
+}
+
+.add-to-cart-button:disabled {
+    background: #b7a9a7;
+    border-color: #b7a9a7;
+    color: #ffffff;
+
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+/* ==========================================================
+   8. CART SUCCESS AND ERROR MESSAGES
+   ========================================================== */
+
+.cart-message {
+    margin-top: 16px;
+    padding: 13px 16px;
+
+    border: 1px solid transparent;
+    border-radius: 3px;
+
+    font-size: 13px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+.cart-success {
+    background: #edf6ef;
+    border-color: #c5dfcb;
+    color: #28643c;
+}
+
+.cart-error {
+    background: #fff0f0;
+    border-color: #ebc6c6;
+    color: #a3263c;
+}
+
+.cart-inventory-note {
+    margin: 14px 0 0;
+
+    color: #927452;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 12px;
+    font-style: italic;
+    text-align: center;
+    letter-spacing: 0.3px;
+}
+
+/* ==========================================================
+   9. PRODUCT DESCRIPTION
+   ========================================================== */
+
+.description-block {
+    padding: 22px 0;
+    border-top: 1px solid var(--border);
+}
+
+.description-block h2,
+.specifications h2 {
+    margin: 0 0 15px;
+    color: var(--burgundy);
+    font-family: Georgia, serif;
+    font-size: 21px;
+    font-weight: 600;
+}
+
+.description-block p {
+    margin: 0;
+    color: #695b5e;
+    font-size: 14px;
+    line-height: 1.9;
+    white-space: pre-line;
+}
+
+/* ==========================================================
+   10. PRODUCT SPECIFICATIONS
+   ========================================================== */
+
+.specifications {
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+}
+
+.specifications dl {
+    margin: 0;
+}
+
+.spec-row {
+    display: grid;
+    grid-template-columns: 140px minmax(0, 1fr);
+    gap: 15px;
+    padding: 13px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+}
+
+.spec-row dt {
+    color: #86767a;
+}
+
+.spec-row dd {
+    margin: 0;
+    color: var(--dark);
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+/* ==========================================================
+   11. GOLDVUEE BRAND MESSAGE
+   ========================================================== */
+
+.service-note {
+    margin-top: 30px;
+    color: #90704a;
+    font-family: Georgia, serif;
+    font-size: 14px;
+    letter-spacing: 0.4px;
+}
+
+.service-note span {
+    margin-right: 8px;
+    color: var(--gold);
+}
+
+/* ==========================================================
+   12. LOADING AND ERROR STATES
+   ========================================================== */
+
+.status-message {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 70px 20px;
+    text-align: center;
+    color: #76666b;
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.status-message.error {
+    color: #a3263c;
+}
+
+/* ==========================================================
+   13. TABLET RESPONSIVENESS
+   ========================================================== */
+
+@media (max-width: 900px) {
+
+    .details-container {
+        gap: 30px;
+    }
+
+    .information-column h1 {
+        font-size: 31px;
+    }
+
+    .cart-section-title {
+        font-size: 20px;
+    }
+}
+
+/* ==========================================================
+   14. MOBILE RESPONSIVENESS
+   ========================================================== */
+
+@media (max-width: 700px) {
+
+    .details-page {
+        padding: 30px 18px 65px;
+    }
+
+    .details-container {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .information-column {
+        padding-top: 0;
+    }
+
+    .information-column h1 {
+        font-size: 30px;
+    }
+
+    .current-price {
+        font-size: 24px;
+    }
+
+    .spec-row {
+        grid-template-columns: 110px minmax(0, 1fr);
+    }
+
+    .cart-section {
+        padding: 22px 0 25px;
+    }
+
+    .quantity-container {
+        gap: 12px;
+    }
+
+    .add-to-cart-button {
+        min-height: 52px;
+    }
+}
+
+/* ==========================================================
+   15. SMALL MOBILE SCREENS
+   ========================================================== */
+
+@media (max-width: 380px) {
+
+    .quantity-container {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .quantity-selector {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .quantity-value {
+        flex: 1;
+    }
+
+    .add-to-cart-button {
+        font-size: 11px;
+        letter-spacing: 1.5px;
+    }
+}

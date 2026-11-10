@@ -1,0 +1,408 @@
+
+<template>
+
+    <section class="checkout-page">
+
+        <!-- HEADER -->
+        <header class="checkout-header">
+
+            <p class="eyebrow">
+                THE GOLDVUEE EXPERIENCE
+            </p>
+
+            <h1>Secure Checkout</h1>
+
+            <div class="gold-divider"></div>
+
+            <p>
+                Complete your order with confidence.
+            </p>
+
+        </header>
+
+        <div class="checkout-container">
+
+            <!-- LOADING -->
+            <template lwc:if={isLoading}>
+
+                <div class="status-message">
+                    Loading your checkout details...
+                </div>
+
+            </template>
+
+            <template lwc:else>
+
+                <!-- ERROR -->
+                <template lwc:if={errorMessage}>
+
+                    <div
+                        class="message error-message"
+                        role="alert">
+
+                        {errorMessage}
+
+                    </div>
+
+                </template>
+
+                <!-- ORDER CONFIRMATION -->
+                <template lwc:if={orderPlaced}>
+
+                    <div class="empty-checkout">
+
+                        <p class="section-eyebrow">
+                            ORDER CONFIRMED
+                        </p>
+
+                        <h2>
+                            Thank you for shopping at GoldVuee!
+                        </h2>
+
+                        <p
+                            class="message success-message"
+                            role="status">
+
+                            {successMessage}
+
+                        </p>
+
+                        <p>
+                            <strong>Order:</strong>
+                            {orderNumber}
+                        </p>
+
+                        <p>
+                            <strong>Grand Total:</strong>
+                            {formattedOrderGrandTotal}
+                        </p>
+
+                        <p>
+                            <strong>Order Status:</strong>
+                            {orderStatus}
+                        </p>
+
+                        <p>
+                            <strong>Payment:</strong>
+                            Cash on Delivery ({paymentStatus})
+                        </p>
+
+                        <p>
+                            Please pay when your jewellery
+                            is delivered.
+                        </p>
+
+                    </div>
+
+                </template>
+
+                <template lwc:else>
+
+                    <template lwc:if={hasItems}>
+
+                        <div class="checkout-layout">
+
+                            <!-- LEFT COLUMN -->
+                            <div class="checkout-form-column">
+
+                                <!-- SHIPPING -->
+                                <div class="checkout-card">
+
+                                    <p class="section-eyebrow">
+                                        STEP 01
+                                    </p>
+
+                                    <h2>
+                                        Delivery Information
+                                    </h2>
+
+                                    <p class="section-description">
+                                        Where should we deliver your
+                                        GoldVuee jewellery?
+                                    </p>
+
+                                    <div class="form-grid">
+
+                                        <div class="form-field full-width">
+
+                                            <label for="shippingAddress">
+                                                Street Address *
+                                            </label>
+
+                                            <textarea
+                                                id="shippingAddress"
+                                                name="shippingAddress"
+                                                value={shippingAddress}
+                                                onchange={handleInputChange}
+                                                placeholder="House number, street, apartment"
+                                                required>
+                                            </textarea>
+
+                                        </div>
+
+                                        <div class="form-field">
+
+                                            <label for="shippingCity">
+                                                City *
+                                            </label>
+
+                                            <input
+                                                id="shippingCity"
+                                                type="text"
+                                                name="shippingCity"
+                                                value={shippingCity}
+                                                onchange={handleInputChange}
+                                                required
+                                            />
+
+                                        </div>
+
+                                        <div class="form-field">
+
+                                            <label for="shippingState">
+                                                State *
+                                            </label>
+
+                                            <input
+                                                id="shippingState"
+                                                type="text"
+                                                name="shippingState"
+                                                value={shippingState}
+                                                onchange={handleInputChange}
+                                                required
+                                            />
+
+                                        </div>
+
+                                        <div class="form-field">
+
+                                            <label for="shippingPostalCode">
+                                                PIN Code *
+                                            </label>
+
+                                            <input
+                                                id="shippingPostalCode"
+                                                type="text"
+                                                name="shippingPostalCode"
+                                                value={shippingPostalCode}
+                                                onchange={handleInputChange}
+                                                maxlength="6"
+                                                inputmode="numeric"
+                                                required
+                                            />
+
+                                        </div>
+
+                                        <div class="form-field">
+
+                                            <label for="shippingCountry">
+                                                Country *
+                                            </label>
+
+                                            <input
+                                                id="shippingCountry"
+                                                type="text"
+                                                name="shippingCountry"
+                                                value={shippingCountry}
+                                                onchange={handleInputChange}
+                                                required
+                                            />
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <!-- PAYMENT -->
+                                <div class="checkout-card">
+
+                                    <p class="section-eyebrow">
+                                        STEP 02
+                                    </p>
+
+                                    <h2>Payment Method</h2>
+
+                                    <p class="section-description">
+                                        Pay when your order is delivered.
+                                    </p>
+
+                                    <div class="payment-option">
+
+                                        <input
+                                            type="radio"
+                                            id="codPayment"
+                                            name="paymentMethod"
+                                            value="COD"
+                                            checked
+                                            disabled
+                                        />
+
+                                        <label for="codPayment">
+
+                                            <strong>
+                                                Cash on Delivery (COD)
+                                            </strong>
+
+                                            <span>
+                                                No online payment required.
+                                                Pay on delivery.
+                                            </span>
+
+                                        </label>
+
+                                    </div>
+
+                                    <p class="payment-notice">
+                                        Your payment status will remain
+                                        Pending until cash is collected.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                            <!-- RIGHT COLUMN -->
+                            <aside class="checkout-summary">
+
+                                <div class="summary-card">
+
+                                    <p class="section-eyebrow">
+                                        YOUR GOLDVUEE ORDER
+                                    </p>
+
+                                    <h2>
+                                        Order Summary
+                                    </h2>
+
+                                    <!-- CART ITEMS -->
+                                    <template
+                                        for:each={cartItems}
+                                        for:item="item">
+
+                                        <div
+                                            class="summary-item"
+                                            key={item.id}>
+
+                                            <div class="summary-item-info">
+
+                                                <strong>
+                                                    {item.name}
+                                                </strong>
+
+                                                <span>
+                                                    Qty: {item.quantity}
+                                                </span>
+
+                                            </div>
+
+                                            <span class="item-price">
+                                                {item.formattedLineTotal}
+                                            </span>
+
+                                        </div>
+
+                                    </template>
+
+                                    <div class="summary-divider"></div>
+
+                                    <div class="summary-row">
+
+                                        <span>Items</span>
+
+                                        <span>{itemCount}</span>
+
+                                    </div>
+
+                                    <div class="summary-row">
+
+                                        <span>Subtotal</span>
+
+                                        <span>{formattedSubtotal}</span>
+
+                                    </div>
+
+                                    <div class="summary-row">
+
+                                        <span>Shipping</span>
+
+                                        <span>Free</span>
+
+                                    </div>
+
+                                    <div class="summary-divider"></div>
+
+                                    <div class="summary-total">
+
+                                        <span>Order Total</span>
+
+                                        <strong>
+                                            {formattedSubtotal}
+                                        </strong>
+
+                                    </div>
+
+                                    <p class="summary-note">
+                                        Final total and stock availability
+                                        are validated by Salesforce before
+                                        confirmation.
+                                    </p>
+
+                                    <!-- PLACE ORDER BUTTON -->
+                                    <button
+                                        type="button"
+                                        class="place-order-button"
+                                        onclick={handlePlaceOrder}
+                                        disabled={isCheckoutDisabled}>
+
+                                        {placeOrderButtonLabel}
+
+                                    </button>
+
+                                    <p class="secure-note">
+                                        ✦ Secure GoldVuee checkout
+                                    </p>
+
+                                </div>
+
+                            </aside>
+
+                        </div>
+
+                    </template>
+
+                    <!-- EMPTY CART -->
+                    <template lwc:else>
+
+                        <div class="empty-checkout">
+
+                            <h2>
+                                Your Shopping Bag Is Empty
+                            </h2>
+
+                            <p>
+                                Add jewellery to your bag
+                                before proceeding to checkout.
+                            </p>
+
+                            <button
+                                type="button"
+                                onclick={handleBackToCart}>
+
+                                Return to Shopping Bag
+
+                            </button>
+
+                        </div>
+
+                    </template>
+
+                </template>
+
+            </template>
+
+        </div>
+
+    </section>
+
+</template>

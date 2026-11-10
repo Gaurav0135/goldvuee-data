@@ -44,7 +44,7 @@ export default class GoldvueeHeader extends LightningElement {
 
     // Customer URLs
     get cartUrl() {
-        return `${basePath}/cart`;
+        return `${basePath}/shopping-cart`;
     }
 
     get accountUrl() {
