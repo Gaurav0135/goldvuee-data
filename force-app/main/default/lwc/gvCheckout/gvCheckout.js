@@ -8,28 +8,49 @@ import communityBasePath from '@salesforce/community/basePath';
 
 export default class GvCheckout extends LightningElement {
 
+    // ==========================================
     // CART
+    // ==========================================
+
     cartId = null;
     cartItems = [];
     itemCount = 0;
     subtotal = 0;
 
-    // STATES
+    // ==========================================
+    // CHECKOUT STATES
+    // ==========================================
+
     isLoading = true;
     isPlacingOrder = false;
     orderPlaced = false;
 
+    // ==========================================
+    // PAYMENT METHOD
+    // ==========================================
+
+    selectedPaymentMethod = 'COD';
+    confirmedPaymentMethod = 'Cash on Delivery';
+    // ==========================================
     // MESSAGES
+    // ==========================================
+
     errorMessage = '';
     successMessage = '';
 
+    // ==========================================
     // ORDER CONFIRMATION
+    // ==========================================
+
     orderNumber = '';
     orderGrandTotal = 0;
     orderStatus = '';
     paymentStatus = '';
 
+    // ==========================================
     // SHIPPING
+    // ==========================================
+
     shippingAddress = '';
     shippingCity = '';
     shippingState = '';
@@ -69,6 +90,7 @@ export default class GvCheckout extends LightningElement {
             this.cartItems = (
                 response?.items || []
             ).map(item => ({
+
                 id: item.Id,
 
                 name:
@@ -95,12 +117,13 @@ export default class GvCheckout extends LightningElement {
             );
 
         } finally {
+
             this.isLoading = false;
         }
     }
 
     // ==========================================
-    // HANDLE INPUT
+    // HANDLE SHIPPING INPUT
     // ==========================================
 
     handleInputChange(event) {
@@ -130,6 +153,33 @@ export default class GvCheckout extends LightningElement {
     }
 
     // ==========================================
+    // HANDLE PAYMENT METHOD SELECTION
+    // ==========================================
+
+    handlePaymentMethodChange(event) {
+
+        if (
+            this.isLoading ||
+            this.isPlacingOrder ||
+            this.orderPlaced
+        ) {
+            return;
+        }
+
+        const method = event.target.value;
+
+        if (
+            method === 'COD' ||
+            method === 'RAZORPAY'
+        ) {
+
+            this.selectedPaymentMethod = method;
+
+            this.errorMessage = '';
+        }
+    }
+
+    // ==========================================
     // VALIDATE SHIPPING
     // ==========================================
 
@@ -148,6 +198,7 @@ export default class GvCheckout extends LightningElement {
                 value => !String(value || '').trim()
             )
         ) {
+
             this.errorMessage =
                 'Please complete all delivery fields.';
 
@@ -161,6 +212,7 @@ export default class GvCheckout extends LightningElement {
                 this.shippingPostalCode.trim()
             )
         ) {
+
             this.errorMessage =
                 'Please enter a valid Indian address and six-digit PIN code.';
 
@@ -185,11 +237,24 @@ export default class GvCheckout extends LightningElement {
         }
 
         this.errorMessage = '';
+        this.successMessage = '';
+
+        // Safety check: COD handler must never
+        // process a Razorpay-selected checkout.
+
+        if (!this.isCodSelected) {
+
+            this.errorMessage =
+                'Please select Cash on Delivery to place a COD order.';
+
+            return;
+        }
 
         if (
             !this.cartId ||
             !this.hasItems
         ) {
+
             this.errorMessage =
                 'Your shopping bag is empty.';
 
@@ -205,6 +270,7 @@ export default class GvCheckout extends LightningElement {
         try {
 
             const result = await placeOrder({
+
                 shippingAddress:
                     this.shippingAddress.trim(),
 
@@ -225,10 +291,15 @@ export default class GvCheckout extends LightningElement {
                 !result?.orderId ||
                 result.orderStatus !== 'Confirmed'
             ) {
+
                 throw new Error(
                     'Salesforce did not confirm the COD order.'
                 );
             }
+
+            // ==================================
+            // ORDER SUCCESS
+            // ==================================
 
             this.orderPlaced = true;
 
@@ -248,7 +319,10 @@ export default class GvCheckout extends LightningElement {
                 result.message ||
                 'Your Cash on Delivery order is confirmed.';
 
+            // ==================================
             // CLEAR LOCAL CART AFTER SUCCESS
+            // ==================================
+
             this.cartId = null;
             this.cartItems = [];
             this.itemCount = 0;
@@ -281,27 +355,77 @@ export default class GvCheckout extends LightningElement {
         );
     }
 
+
+handleRazorpaySuccess(event) {
+    const result = event.detail;
+
+    if (
+        !result?.success ||
+        result.orderStatus !== 'Confirmed' ||
+        result.paymentStatus !== 'Paid'
+    ) {
+        this.errorMessage =
+            'Salesforce did not confirm the online payment.';
+        return;
+    }
+
+    this.orderPlaced = true;
+    this.confirmedPaymentMethod = 'Razorpay';
+
+    this.orderNumber = result.orderNumber || '';
+    this.orderGrandTotal =
+        Number(result.grandTotal || this.subtotal);
+
+    this.orderStatus = result.orderStatus;
+    this.paymentStatus = result.paymentStatus;
+
+    this.successMessage =
+        'Your Razorpay Test Mode payment was verified. ' +
+        'Your GoldVuee jewellery order is confirmed.';
+
+    this.errorMessage = '';
+
+    this.cartId = null;
+    this.cartItems = [];
+    this.itemCount = 0;
+    this.subtotal = 0;
+}
+
     // ==========================================
     // GETTERS
     // ==========================================
 
     get hasItems() {
+
         return this.cartItems.length > 0;
     }
 
+    get isCodSelected() {
+
+        return this.selectedPaymentMethod === 'COD';
+    }
+
+    get isRazorpaySelected() {
+
+        return this.selectedPaymentMethod === 'RAZORPAY';
+    }
+
     get formattedSubtotal() {
+
         return this.formatCurrency(
             this.subtotal
         );
     }
 
     get formattedOrderGrandTotal() {
+
         return this.formatCurrency(
             this.orderGrandTotal
         );
     }
 
     get isCheckoutDisabled() {
+
         return (
             this.isLoading ||
             this.isPlacingOrder ||
@@ -331,7 +455,9 @@ export default class GvCheckout extends LightningElement {
                 minimumFractionDigits: 2,
                 maximumFractionDigits: 2
             }
-        ).format(Number(value || 0));
+        ).format(
+            Number(value || 0)
+        );
     }
 
     // ==========================================
@@ -345,7 +471,8 @@ export default class GvCheckout extends LightningElement {
             return error.body
                 .map(item => item?.message)
                 .filter(Boolean)
-                .join(', ') || 'Checkout failed.';
+                .join(', ') ||
+                'Checkout failed.';
         }
 
         return (

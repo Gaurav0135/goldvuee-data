@@ -485,3 +485,48 @@
         font-size: 20px;
     }
 }
+
+
+
+
+/* ==========================================
+   GOLDVUEE | RAZORPAY PAYMENT OPTION
+   ========================================== */
+
+.razorpay-option {
+    margin-top: 14px;
+    background: #fffaf3;
+    border-color: #dbc4a3;
+}
+
+.razorpay-option:focus-within {
+    border-color: #bd965b;
+    box-shadow: 0 0 0 2px rgba(189, 150, 91, 0.12);
+}
+
+.payment-option input[type="radio"] {
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.payment-option label {
+    cursor: pointer;
+}
+
+.payment-option strong {
+    font-family: Georgia, serif;
+    font-size: 15px;
+}
+
+.payment-option span {
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+@media (max-width: 760px) {
+    .razorpay-option {
+        margin-top: 12px;
+    }
+}

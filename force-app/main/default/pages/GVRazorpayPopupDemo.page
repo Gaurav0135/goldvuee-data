@@ -1,0 +1,151 @@
+
+<apex:page
+    showHeader="false"
+    sidebar="false"
+    standardStylesheets="false"
+    applyHtmlTag="false"
+    applyBodyTag="false"
+    docType="html-5.0">
+
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1"/>
+
+    <title>GoldVuee | Razorpay Test</title>
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"> </script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 50px 20px;
+            background: #f8f1e8;
+            color: #57142d;
+            font-family: Georgia, serif;
+            text-align: center;
+        }
+
+        .card {
+            max-width: 460px;
+            margin: 20px auto;
+            padding: 36px 24px;
+            background: white;
+            border: 1px solid #bd965b;
+            border-radius: 8px;
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: normal;
+        }
+
+        button {
+            padding: 15px 25px;
+            width: 100%;
+            background: #57142d;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #status {
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+        <h1>GoldVuee</h1>
+
+        <p>Razorpay Test Mode</p>
+
+        <h2>₹1.00</h2>
+
+        <button id="payButton" type="button">
+            Open Razorpay Payment
+        </button>
+
+        <p id="status">
+            No real money will be charged.
+        </p>
+    </div>
+
+    <script>
+    //<![CDATA[
+    (function () {
+
+        var key =
+            '{!JSENCODE($Label.GoldVuee_Razorpay_Test_Key_ID)}';
+
+        var params = new URLSearchParams(
+            window.location.search
+        );
+
+        var orderId = params.get('order');
+
+        var button =
+            document.getElementById('payButton');
+
+        var status =
+            document.getElementById('status');
+
+        button.addEventListener('click', function () {
+
+            if (typeof window.Razorpay !== 'function') {
+                status.textContent =
+                    'Razorpay library not loaded.';
+                return;
+            }
+
+            if (
+                !/^rzp_test_[A-Za-z0-9]+$/.test(key) ||
+                !/^order_[A-Za-z0-9]+$/.test(orderId || '')
+            ) {
+                status.textContent =
+                    'Missing valid Razorpay Test order ID.';
+                return;
+            }
+
+            try {
+                var checkout = new window.Razorpay({
+                    key: key,
+                    amount: 100,
+                    currency: 'INR',
+                    name: 'GoldVuee',
+                    description: 'Razorpay Test Payment',
+                    order_id: orderId,
+                    theme: {
+                        color: '#57142d'
+                    },
+                    handler: function (response) {
+                        status.textContent =
+                            'Test payment response received: ' +
+                            response.razorpay_payment_id +
+                            '. This demo does not confirm ' +
+                            'a Salesforce order.';
+                    }
+                });
+
+                checkout.open();
+
+            } catch (error) {
+                status.textContent =
+                    error.message ||
+                    'Unable to open payment popup.';
+            }
+
+        });
+
+    })();
+    //]]>
+    </script>
+
+</body>
+</html>
+</apex:page>

@@ -1,11 +1,9 @@
 
 <template>
-
     <section class="checkout-page">
 
         <!-- HEADER -->
         <header class="checkout-header">
-
             <p class="eyebrow">
                 THE GOLDVUEE EXPERIENCE
             </p>
@@ -17,33 +15,26 @@
             <p>
                 Complete your order with confidence.
             </p>
-
         </header>
 
         <div class="checkout-container">
 
             <!-- LOADING -->
             <template lwc:if={isLoading}>
-
                 <div class="status-message">
                     Loading your checkout details...
                 </div>
-
             </template>
 
             <template lwc:else>
 
                 <!-- ERROR -->
                 <template lwc:if={errorMessage}>
-
                     <div
                         class="message error-message"
                         role="alert">
-
                         {errorMessage}
-
                     </div>
-
                 </template>
 
                 <!-- ORDER CONFIRMATION -->
@@ -62,9 +53,7 @@
                         <p
                             class="message success-message"
                             role="status">
-
                             {successMessage}
-
                         </p>
 
                         <p>
@@ -84,7 +73,8 @@
 
                         <p>
                             <strong>Payment:</strong>
-                            Cash on Delivery ({paymentStatus})
+                            <!-- Cash on Delivery ({paymentStatus}) -->
+                            {confirmedPaymentMethod} ({paymentStatus})
                         </p>
 
                         <p>
@@ -105,16 +95,14 @@
                             <!-- LEFT COLUMN -->
                             <div class="checkout-form-column">
 
-                                <!-- SHIPPING -->
+                                <!-- STEP 01: SHIPPING -->
                                 <div class="checkout-card">
 
                                     <p class="section-eyebrow">
                                         STEP 01
                                     </p>
 
-                                    <h2>
-                                        Delivery Information
-                                    </h2>
+                                    <h2>Delivery Information</h2>
 
                                     <p class="section-description">
                                         Where should we deliver your
@@ -123,8 +111,8 @@
 
                                     <div class="form-grid">
 
+                                        <!-- ADDRESS -->
                                         <div class="form-field full-width">
-
                                             <label for="shippingAddress">
                                                 Street Address *
                                             </label>
@@ -137,11 +125,10 @@
                                                 placeholder="House number, street, apartment"
                                                 required>
                                             </textarea>
-
                                         </div>
 
+                                        <!-- CITY -->
                                         <div class="form-field">
-
                                             <label for="shippingCity">
                                                 City *
                                             </label>
@@ -154,11 +141,10 @@
                                                 onchange={handleInputChange}
                                                 required
                                             />
-
                                         </div>
 
+                                        <!-- STATE -->
                                         <div class="form-field">
-
                                             <label for="shippingState">
                                                 State *
                                             </label>
@@ -171,11 +157,10 @@
                                                 onchange={handleInputChange}
                                                 required
                                             />
-
                                         </div>
 
+                                        <!-- PIN -->
                                         <div class="form-field">
-
                                             <label for="shippingPostalCode">
                                                 PIN Code *
                                             </label>
@@ -190,11 +175,10 @@
                                                 inputmode="numeric"
                                                 required
                                             />
-
                                         </div>
 
+                                        <!-- COUNTRY -->
                                         <div class="form-field">
-
                                             <label for="shippingCountry">
                                                 Country *
                                             </label>
@@ -207,14 +191,12 @@
                                                 onchange={handleInputChange}
                                                 required
                                             />
-
                                         </div>
 
                                     </div>
-
                                 </div>
 
-                                <!-- PAYMENT -->
+                                <!-- STEP 02: PAYMENT -->
                                 <div class="checkout-card">
 
                                     <p class="section-eyebrow">
@@ -224,9 +206,11 @@
                                     <h2>Payment Method</h2>
 
                                     <p class="section-description">
-                                        Pay when your order is delivered.
+                                        Select how you would like to
+                                        pay for your jewellery.
                                     </p>
 
+                                    <!-- CASH ON DELIVERY -->
                                     <div class="payment-option">
 
                                         <input
@@ -234,29 +218,75 @@
                                             id="codPayment"
                                             name="paymentMethod"
                                             value="COD"
-                                            checked
-                                            disabled
+                                            checked={isCodSelected}
+                                            onchange={handlePaymentMethodChange}
                                         />
 
                                         <label for="codPayment">
-
                                             <strong>
                                                 Cash on Delivery (COD)
                                             </strong>
 
                                             <span>
-                                                No online payment required.
-                                                Pay on delivery.
+                                                Pay when your jewellery
+                                                is delivered.
+                                            </span>
+                                        </label>
+
+                                    </div>
+
+                                    <!-- RAZORPAY -->
+                                    <div class="payment-option razorpay-option">
+
+                                        <input
+                                            type="radio"
+                                            id="razorpayPayment"
+                                            name="paymentMethod"
+                                            value="RAZORPAY"
+                                            checked={isRazorpaySelected}
+                                            onchange={handlePaymentMethodChange}
+                                        />
+
+                                        <label for="razorpayPayment">
+
+                                            <strong>
+                                                Razorpay — Test Mode
+                                            </strong>
+
+                                            <span>
+                                                UPI, Cards, Net Banking
+                                                and Wallets.
+                                            </span>
+
+                                            <span>
+                                                Official Razorpay test
+                                                checkout. No real money
+                                                is charged.
                                             </span>
 
                                         </label>
 
                                     </div>
 
-                                    <p class="payment-notice">
-                                        Your payment status will remain
-                                        Pending until cash is collected.
-                                    </p>
+                                    <!-- PAYMENT NOTICE -->
+                                    <template lwc:if={isRazorpaySelected}>
+
+                                        <p class="payment-notice">
+                                            Pay through the official Razorpay Test Mode checkout.
+                                            Your order will be confirmed after Salesforce verifies
+                                            the captured payment.
+                                        </p>
+
+                                    </template>
+
+                                    <template lwc:else>
+
+                                        <p class="payment-notice">
+                                            Your payment will remain
+                                            Pending until cash is collected.
+                                        </p>
+
+                                    </template>
 
                                 </div>
 
@@ -271,9 +301,7 @@
                                         YOUR GOLDVUEE ORDER
                                     </p>
 
-                                    <h2>
-                                        Order Summary
-                                    </h2>
+                                    <h2>Order Summary</h2>
 
                                     <!-- CART ITEMS -->
                                     <template
@@ -306,32 +334,27 @@
 
                                     <div class="summary-divider"></div>
 
+                                    <!-- ITEM COUNT -->
                                     <div class="summary-row">
-
                                         <span>Items</span>
-
                                         <span>{itemCount}</span>
-
                                     </div>
 
+                                    <!-- SUBTOTAL -->
                                     <div class="summary-row">
-
                                         <span>Subtotal</span>
-
                                         <span>{formattedSubtotal}</span>
-
                                     </div>
 
+                                    <!-- SHIPPING -->
                                     <div class="summary-row">
-
                                         <span>Shipping</span>
-
                                         <span>Free</span>
-
                                     </div>
 
                                     <div class="summary-divider"></div>
 
+                                    <!-- TOTAL -->
                                     <div class="summary-total">
 
                                         <span>Order Total</span>
@@ -344,23 +367,47 @@
 
                                     <p class="summary-note">
                                         Final total and stock availability
-                                        are validated by Salesforce before
-                                        confirmation.
+                                        are validated by Salesforce
+                                        before confirmation.
                                     </p>
 
-                                    <!-- PLACE ORDER BUTTON -->
-                                    <button
-                                        type="button"
-                                        class="place-order-button"
-                                        onclick={handlePlaceOrder}
-                                        disabled={isCheckoutDisabled}>
+                                    <!-- COD BUTTON -->
+                                    <template lwc:if={isCodSelected}>
 
-                                        {placeOrderButtonLabel}
+                                        <button
+                                            type="button"
+                                            class="place-order-button"
+                                            onclick={handlePlaceOrder}
+                                            disabled={isCheckoutDisabled}>
 
-                                    </button>
+                                            {placeOrderButtonLabel}
+
+                                        </button>
+
+                                    </template>
+
+                                    
+                                    
+                                    <!-- RAZORPAY PAYMENT PANEL -->
+                                    <template lwc:else>
+
+                                        
+                    <c-goldvuee-razorpay-checkout
+                        amount={subtotal}
+                        shipping-address={shippingAddress}
+                        shipping-city={shippingCity}
+                        shipping-state={shippingState}
+                        shipping-postal-code={shippingPostalCode}
+                        shipping-country={shippingCountry}
+                        onpaymentsuccess={handleRazorpaySuccess}>
+                    </c-goldvuee-razorpay-checkout>
+
+
+                                    </template>
+
 
                                     <p class="secure-note">
-                                        ✦ Secure GoldVuee checkout
+                                        ✦ Secure GoldVuee Checkout
                                     </p>
 
                                 </div>
@@ -404,5 +451,4 @@
         </div>
 
     </section>
-
 </template>
