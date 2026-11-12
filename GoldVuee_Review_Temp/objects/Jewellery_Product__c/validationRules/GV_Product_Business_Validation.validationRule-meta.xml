@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GV_Product_Business_Validation</fullName>
+    <active>true</active>
+    <description>Active products must have a Product Code</description>
+    <errorConditionFormula>AND(
+    Active__c,
+    ISBLANK(Product_Code__c)
+)</errorConditionFormula>
+    <errorDisplayField>Product_Code__c</errorDisplayField>
+    <errorMessage>Active products must have a Product Code</errorMessage>
+</ValidationRule>

@@ -1,161 +1,136 @@
-
 <template>
-    <section class="arrivals-page">
+  <section class="arrivals-page">
+    <div class="hero">
+      <p class="eyebrow">THE GOLDVUEE EXPERIENCE</p>
 
-        <div class="hero">
-            <p class="eyebrow">THE GOLDVUEE EXPERIENCE</p>
+      <h1>New Arrivals</h1>
 
-            <h1>New Arrivals</h1>
+      <div class="gold-line"></div>
 
-            <div class="gold-line"></div>
+      <p class="hero-description">
+        Discover our latest expressions of elegance. Timeless jewellery,
+        thoughtfully curated for your most treasured moments.
+      </p>
+    </div>
 
-            <p class="hero-description">
-                Discover our latest expressions of elegance.
-                Timeless jewellery, thoughtfully curated
-                for your most treasured moments.
-            </p>
+    <div class="content">
+      <div class="section-intro">
+        <p class="eyebrow">JUST DISCOVERED</p>
+        <h2>Fresh From Our Collection</h2>
+        <p>Explore the newest additions to GoldVuee.</p>
+      </div>
+
+      <div class="toolbar">
+        <div class="result-count">
+          <span class="gold-diamond">◇</span>
+          {productCount} Pieces
         </div>
 
-        <div class="content">
+        <div class="filters">
+          <div class="filter-field">
+            <label>Category</label>
+            <lightning-combobox
+              variant="label-hidden"
+              value={selectedCategory}
+              options={categoryOptions}
+              onchange={handleCategoryChange}
+            >
+            </lightning-combobox>
+          </div>
 
-            <div class="section-intro">
-                <p class="eyebrow">JUST DISCOVERED</p>
-                <h2>Fresh From Our Collection</h2>
-                <p>
-                    Explore the newest additions to GoldVuee.
-                </p>
-            </div>
-
-            <div class="toolbar">
-                <div class="result-count">
-                    <span class="gold-diamond">◇</span>
-                    {productCount} Pieces
-                </div>
-
-                <div class="filters">
-                    <div class="filter-field">
-                        <label>Category</label>
-                        <lightning-combobox
-                            variant="label-hidden"
-                            value={selectedCategory}
-                            options={categoryOptions}
-                            onchange={handleCategoryChange}>
-                        </lightning-combobox>
-                    </div>
-
-                    <div class="filter-field">
-                        <label>Sort By</label>
-                        <lightning-combobox
-                            variant="label-hidden"
-                            value={sortBy}
-                            options={sortOptions}
-                            onchange={handleSortChange}>
-                        </lightning-combobox>
-                    </div>
-                </div>
-            </div>
-
-            <template lwc:if={loading}>
-                <div class="state-box loading-box">
-                    <lightning-spinner
-                        alternative-text="Loading jewellery"
-                        size="medium">
-                    </lightning-spinner>
-                    <p>Discovering our newest pieces...</p>
-                </div>
-            </template>
-
-            <template lwc:elseif={errorMessage}>
-                <div class="state-box error-box" role="alert">
-                    <h3>Unable to Load Jewellery</h3>
-                    <p>{errorMessage}</p>
-                </div>
-            </template>
-
-            <template lwc:elseif={hasProducts}>
-                <div class="product-grid">
-                    <template
-                        for:each={filteredProducts}
-                        for:item="product">
-
-                        <article
-                            class="product-card"
-                            key={product.id}>
-
-                            <div class="product-visual">
-                                <span class="new-tag">
-                                    NEW ARRIVAL
-                                </span>
-
-                                <div class="jewel-symbol">
-                                    ◇
-                                </div>
-
-                                <template lwc:if={product.inStock}>
-                                    <span class="stock-label">
-                                        Available
-                                    </span>
-                                </template>
-
-                                <template lwc:else>
-                                    <span class="stock-label sold-out">
-                                        Sold Out
-                                    </span>
-                                </template>
-                            </div>
-
-                            <div class="product-info">
-                                <p class="category">
-                                    {product.categoryLabel}
-                                </p>
-
-                                <h3>{product.name}</h3>
-
-                                <div class="price-row">
-                                    <span class="price">
-                                        <lightning-formatted-number
-                                            value={product.displayPrice}
-                                            format-style="currency"
-                                            currency-code="INR"
-                                            minimum-fraction-digits="2">
-                                        </lightning-formatted-number>
-                                    </span>
-
-                                    <template lwc:if={product.hasDiscount}>
-                                        <span class="old-price">
-                                            <lightning-formatted-number
-                                                value={product.price}
-                                                format-style="currency"
-                                                currency-code="INR"
-                                                minimum-fraction-digits="2">
-                                            </lightning-formatted-number>
-                                        </span>
-                                    </template>
-                                </div>
-                            </div>
-                        </article>
-
-                    </template>
-                </div>
-            </template>
-
-            <template lwc:else>
-                <div class="state-box">
-                    <div class="empty-symbol">◇</div>
-                    <h3>No Jewellery Found</h3>
-                    <p>
-                        Try another category or check back
-                        for our newest designs.
-                    </p>
-                </div>
-            </template>
-
-            <div class="closing-message">
-                <span>✦</span>
-                A new chapter of timeless elegance.
-                <span>✦</span>
-            </div>
-
+          <div class="filter-field">
+            <label>Sort By</label>
+            <lightning-combobox
+              variant="label-hidden"
+              value={sortBy}
+              options={sortOptions}
+              onchange={handleSortChange}
+            >
+            </lightning-combobox>
+          </div>
         </div>
-    </section>
+      </div>
+
+      <template lwc:if={loading}>
+        <div class="state-box loading-box">
+          <lightning-spinner alternative-text="Loading jewellery" size="medium">
+          </lightning-spinner>
+          <p>Discovering our newest pieces...</p>
+        </div>
+      </template>
+
+      <template lwc:elseif={errorMessage}>
+        <div class="state-box error-box" role="alert">
+          <h3>Unable to Load Jewellery</h3>
+          <p>{errorMessage}</p>
+        </div>
+      </template>
+
+      <template lwc:elseif={hasProducts}>
+        <div class="product-grid">
+          <template for:each={filteredProducts} for:item="product">
+            <article class="product-card" key={product.id}>
+              <div class="product-visual">
+                <span class="new-tag"> NEW ARRIVAL </span>
+
+                <div class="jewel-symbol">◇</div>
+
+                <template lwc:if={product.inStock}>
+                  <span class="stock-label"> Available </span>
+                </template>
+
+                <template lwc:else>
+                  <span class="stock-label sold-out"> Sold Out </span>
+                </template>
+              </div>
+
+              <div class="product-info">
+                <p class="category">{product.categoryLabel}</p>
+
+                <h3>{product.name}</h3>
+
+                <div class="price-row">
+                  <span class="price">
+                    <lightning-formatted-number
+                      value={product.displayPrice}
+                      format-style="currency"
+                      currency-code="INR"
+                      minimum-fraction-digits="2"
+                    >
+                    </lightning-formatted-number>
+                  </span>
+
+                  <template lwc:if={product.hasDiscount}>
+                    <span class="old-price">
+                      <lightning-formatted-number
+                        value={product.price}
+                        format-style="currency"
+                        currency-code="INR"
+                        minimum-fraction-digits="2"
+                      >
+                      </lightning-formatted-number>
+                    </span>
+                  </template>
+                </div>
+              </div>
+            </article>
+          </template>
+        </div>
+      </template>
+
+      <template lwc:else>
+        <div class="state-box">
+          <div class="empty-symbol">◇</div>
+          <h3>No Jewellery Found</h3>
+          <p>Try another category or check back for our newest designs.</p>
+        </div>
+      </template>
+
+      <div class="closing-message">
+        <span>✦</span>
+        A new chapter of timeless elegance.
+        <span>✦</span>
+      </div>
+    </div>
+  </section>
 </template>

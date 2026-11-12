@@ -118,8 +118,7 @@
                 return (
                     url.protocol === 'https:' &&
                     (
-                        url.hostname === 'my.site.com' ||
-                        url.hostname.endsWith('.my.site.com')
+                        url.origin === '{!JSENCODE($Label.GoldVuee_Experience_Origin)}'
                     ) &&
                     url.origin === value
                 );
@@ -137,12 +136,12 @@
             }
 
             window.opener.postMessage(
-                {
+                JSON.stringify({
                     source: 'GOLDVUEE_RAZORPAY_HOST',
                     nonce: sessionNonce,
                     type: type,
                     data: data || {}
-                },
+                }),
                 expectedOrigin
             );
         }
@@ -270,6 +269,11 @@
                 }
 
                 var message = event.data;
+                if (typeof message === 'string') {
+                    if (message.length > 16384) return;
+                    try { message = JSON.parse(message); }
+                    catch (error) { return; }
+                }
 
                 if (
                     !message ||

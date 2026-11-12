@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingGuestRules>
+        <fullName>GV_Active_Products_Guest</fullName><accessLevel>Read</accessLevel>
+        <criteriaItems><field>Active__c</field><operation>equals</operation><value>true</value></criteriaItems>
+        <label>GoldVuee Active Products for Guests</label><sharedTo><guestUser>GoldVuee</guestUser></sharedTo>
+    </sharingGuestRules>
+</SharingRules>

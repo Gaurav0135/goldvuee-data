@@ -1,566 +1,133 @@
-/**
- * ============================================================
- * GOLDVUEE | SHOPPING CART CONTROLLER
- * ============================================================
- *
- * Used by:
- * - gvProductDetails
- * - gvShoppingCart (upcoming)
- *
- * Features:
- * 1. Identify the logged-in customer's Contact.
- * 2. Find or create an active Shopping Cart.
- * 3. Add jewellery to the cart.
- * 4. Merge quantities for duplicate products.
- * 5. Retrieve cart items and total.
- * 6. Update cart item quantities.
- * 7. Remove items from the cart.
- *
- * Security:
- * - Customer ID comes from the logged-in User.
- * - No customer ID is accepted from the browser.
- * - All cart queries are scoped to the customer.
- * - USER_MODE enforces Salesforce permissions.
- * - Product prices are calculated on the server.
- *
- * ============================================================
- */
-
-public with sharing class GVCartController {
-
-    // ========================================================
-    // 1. CART RESPONSE WRAPPER
-    // ========================================================
-    // Sends the cart and its items to Lightning Web Components.
-
-    public class CartResponse {
-
-        @AuraEnabled
-        public Id cartId { get; set; }
-
-        @AuraEnabled
-        public Decimal totalAmount { get; set; }
-
-        @AuraEnabled
-        public Integer itemCount { get; set; }
-
-        @AuraEnabled
-        public List<Cart_Item__c> items { get; set; }
-
-        public CartResponse() {
-            totalAmount = 0;
-            itemCount = 0;
-            items = new List<Cart_Item__c>();
-        }
-    }
-
-
-    // ========================================================
-    // 2. IDENTIFY THE LOGGED-IN CUSTOMER
-    // ========================================================
-    // Experience Cloud customer users have a ContactId.
-    //
-    // Never accept a Contact ID directly from the frontend.
-    // This prevents customers from selecting someone else's
-    // cart by changing a browser parameter.
-
-    private static Id getCustomerContactId() {
-
-        // This query reads only the current user's ContactId.
-        // It does not retrieve another customer's identity.
-        User currentUser = [
-            SELECT ContactId
-            FROM User
-            WHERE Id = :UserInfo.getUserId()
-            LIMIT 1
-        ];
-
-        if (currentUser.ContactId == null) {
-            throw new AuraHandledException(
-                'Please sign in with your GoldVuee customer account.'
-            );
-        }
-
-        return currentUser.ContactId;
-    }
-
-
-    // ========================================================
-    // 3. FIND THE CUSTOMER'S ACTIVE CART
-    // ========================================================
-
-    private static Shopping_Cart__c findActiveCart(
-        Id customerContactId
-    ) {
-
-        List<Shopping_Cart__c> carts = [
-            SELECT
-                Id,
-                Name,
-                Customer__c,
-                Cart_Status__c,
-                Total_Amount__c
-            FROM Shopping_Cart__c
-            WHERE
-                Customer__c = :customerContactId
-                AND Cart_Status__c = 'Active'
-            WITH USER_MODE
-            ORDER BY CreatedDate DESC
-            LIMIT 1
-        ];
-
-        return carts.isEmpty() ? null : carts[0];
-    }
-
-
-    // ========================================================
-    // 4. FIND OR CREATE AN ACTIVE CART
-    // ========================================================
-
-    private static Shopping_Cart__c getOrCreateCart(
-        Id customerContactId
-    ) {
-
-        Shopping_Cart__c cart =
-            findActiveCart(customerContactId);
-
-        if (cart != null) {
-            return cart;
-        }
-
-        // Name is Auto Number, so Salesforce generates it.
-        Shopping_Cart__c newCart = new Shopping_Cart__c(
-            Customer__c = customerContactId,
-            Cart_Status__c = 'Active'
-        );
-
-        Database.insert(
-            newCart,
-            AccessLevel.USER_MODE
-        );
-
-        return newCart;
-    }
-
-
-    // ========================================================
-    // 5. VALIDATE PRODUCT AND STOCK
-    // ========================================================
-    // Product information is always read from Salesforce.
-
-    private static Jewellery_Product__c getValidProduct(
-        Id productId
-    ) {
-
-        if (productId == null) {
-            throw new AuraHandledException(
-                'Please select a jewellery product.'
-            );
-        }
-
-        List<Jewellery_Product__c> products = [
-            SELECT
-                Id,
-                Name,
-                Active__c,
-                Stock_Quantity__c,
-                Price__c,
-                Discount_Price__c
-            FROM Jewellery_Product__c
-            WHERE
-                Id = :productId
-                AND Active__c = true
-            WITH USER_MODE
-            LIMIT 1
-        ];
-
-        if (products.isEmpty()) {
-            throw new AuraHandledException(
-                'This jewellery product is unavailable.'
-            );
-        }
-
-        return products[0];
-    }
-
-
-    // ========================================================
-    // 6. CALCULATE ACTUAL SELLING PRICE
-    // ========================================================
-    // The browser never supplies the product price.
-    //
-    // A valid discount must be:
-    // - Greater than zero
-    // - Lower than the original price
-
-    private static Decimal getSellingPrice(
-        Jewellery_Product__c product
-    ) {
-
-        Decimal originalPrice = product.Price__c;
-        Decimal discountPrice = product.Discount_Price__c;
-
-        if (
-            originalPrice == null ||
-            originalPrice <= 0
-        ) {
-            throw new AuraHandledException(
-                'This product does not have a valid price.'
-            );
-        }
-
-        if (
-            discountPrice != null &&
-            discountPrice > 0 &&
-            discountPrice < originalPrice
-        ) {
-            return discountPrice;
-        }
-
-        return originalPrice;
-    }
-
-
-    // ========================================================
-    // 7. VALIDATE REQUESTED QUANTITY
-    // ========================================================
-
-    private static void validateQuantity(
-        Integer quantity,
-        Decimal stockQuantity
-    ) {
-
-        if (quantity == null || quantity < 1) {
-            throw new AuraHandledException(
-                'Quantity must be at least 1.'
-            );
-        }
-
-        if (
-            stockQuantity == null ||
-            quantity > stockQuantity
-        ) {
-            throw new AuraHandledException(
-                'Requested quantity exceeds available stock.'
-            );
-        }
-    }
-
-
-    // ========================================================
-    // 8. ADD PRODUCT TO CART
-    // ========================================================
-    //
-    // If the product is already in the cart:
-    // Increase its quantity.
-    //
-    // Otherwise:
-    // Create a new Cart Item.
-    //
-    // Return the updated cart for immediate UI refresh.
-
+/** Customer identity and row ownership are checked before all privileged cart operations. */
+public without sharing class GVCartController {
+  public class CartResponse {
     @AuraEnabled
-    public static CartResponse addToCart(
-        Id productId,
-        Integer quantity
-    ) {
-
-        // Step 1: Identify customer.
-        Id customerId = getCustomerContactId();
-
-        // Step 2: Validate product.
-        Jewellery_Product__c product =
-            getValidProduct(productId);
-
-        // Step 3: Validate requested quantity.
-        validateQuantity(
-            quantity,
-            product.Stock_Quantity__c
-        );
-
-        // Step 4: Calculate Salesforce selling price.
-        Decimal sellingPrice =
-            getSellingPrice(product);
-
-        // Step 5: Find or create customer's cart.
-        Shopping_Cart__c cart =
-            getOrCreateCart(customerId);
-
-        // Step 6: Check whether product already exists.
-        List<Cart_Item__c> existingItems = [
-            SELECT
-                Id,
-                Quantity__c,
-                Jewellery_Product__c
-            FROM Cart_Item__c
-            WHERE
-                Shopping_Cart__c = :cart.Id
-                AND Jewellery_Product__c = :productId
-            WITH USER_MODE
-            LIMIT 1
-        ];
-
-        if (!existingItems.isEmpty()) {
-
-            // Product already exists: increase quantity.
-            Cart_Item__c existingItem =
-                existingItems[0];
-
-            Integer newQuantity =
-                Integer.valueOf(existingItem.Quantity__c)
-                + quantity;
-
-            validateQuantity(
-                newQuantity,
-                product.Stock_Quantity__c
-            );
-
-            existingItem.Quantity__c = newQuantity;
-
-            // Refresh the price using current Salesforce data.
-            existingItem.Unit_Price__c = sellingPrice;
-
-            Database.update(
-                existingItem,
-                AccessLevel.USER_MODE
-            );
-
-        } else {
-
-            // Product is not in the cart: create item.
-            Cart_Item__c newItem = new Cart_Item__c(
-                Shopping_Cart__c = cart.Id,
-                Jewellery_Product__c = productId,
-                Quantity__c = quantity,
-                Unit_Price__c = sellingPrice
-            );
-
-            Database.insert(
-                newItem,
-                AccessLevel.USER_MODE
-            );
-        }
-
-        // Return the updated cart.
-        return getCart();
-    }
-
-
-    // ========================================================
-    // 9. GET CUSTOMER'S CART
-    // ========================================================
-    //
-    // This method is read-only.
-    // It does not create a cart if none exists.
-    //
-    // Returns:
-    // - Cart ID
-    // - Cart total
-    // - Total quantity of items
-    // - Cart item records
-
+    public Id cartId;
     @AuraEnabled
-    public static CartResponse getCart() {
-
-        Id customerId = getCustomerContactId();
-
-        CartResponse response = new CartResponse();
-
-        Shopping_Cart__c cart =
-            findActiveCart(customerId);
-
-        // A customer may not have created a cart yet.
-        if (cart == null) {
-            return response;
-        }
-
-        response.cartId = cart.Id;
-
-        response.totalAmount =
-            cart.Total_Amount__c == null
-                ? 0
-                : cart.Total_Amount__c;
-
-        response.items = [
-            SELECT
-                Id,
-                Name,
-                Shopping_Cart__c,
-                Jewellery_Product__c,
-                Jewellery_Product__r.Name,
-                Jewellery_Product__r.Main_Image_URL__c,
-                Quantity__c,
-                Unit_Price__c,
-                Line_Total__c
-            FROM Cart_Item__c
-            WHERE
-                Shopping_Cart__c = :cart.Id
-            WITH USER_MODE
-            ORDER BY CreatedDate ASC
-        ];
-
-        Integer totalQuantity = 0;
-
-        for (Cart_Item__c item : response.items) {
-            totalQuantity +=
-                Integer.valueOf(item.Quantity__c);
-        }
-
-        response.itemCount = totalQuantity;
-
-        return response;
-    }
-
-
-    // ========================================================
-    // 10. UPDATE CART ITEM QUANTITY
-    // ========================================================
-
-    
-    // ========================================================
-    // 10. UPDATE CART ITEM QUANTITY
-    // ========================================================
-    // Security:
-    // - Identify the logged-in customer.
-    // - Verify that the cart item belongs to that customer.
-    // - Validate the requested quantity against stock.
-    // - Recalculate the selling price on the server.
-    // - Update only the necessary fields.
-    // ========================================================
-
+    public Decimal totalAmount = 0;
     @AuraEnabled
-    public static CartResponse updateCartItem(
-        Id cartItemId,
-        Integer quantity
-    ) {
-
-        // STEP 1: Identify the logged-in customer.
-        Id customerId = getCustomerContactId();
-
-        // STEP 2: Validate input.
-        if (cartItemId == null) {
-            throw new AuraHandledException(
-                'A valid cart item is required.'
-            );
-        }
-
-        if (quantity == null || quantity < 1) {
-            throw new AuraHandledException(
-                'Quantity must be at least 1.'
-            );
-        }
-
-        // STEP 3: Find only an item from this customer's
-        // active shopping cart.
-        List<Cart_Item__c> items = [
-            SELECT
-                Id,
-                Jewellery_Product__c
-            FROM Cart_Item__c
-            WHERE
-                Id = :cartItemId
-                AND Shopping_Cart__r.Customer__c = :customerId
-                AND Shopping_Cart__r.Cart_Status__c = 'Active'
-            WITH USER_MODE
-            LIMIT 1
-        ];
-
-        if (items.isEmpty()) {
-            throw new AuraHandledException(
-                'Cart item not found or access denied.'
-            );
-        }
-
-        // STEP 4: Get product from Salesforce.
-        Jewellery_Product__c product =
-            getValidProduct(
-                items[0].Jewellery_Product__c
-            );
-
-        // STEP 5: Check current inventory.
-        validateQuantity(
-            quantity,
-            product.Stock_Quantity__c
-        );
-
-        // STEP 6: Calculate the current selling price.
-        Decimal sellingPrice =
-            getSellingPrice(product);
-
-        // STEP 7: Create a minimal update record.
-        // This avoids including fields retrieved by SOQL
-        // that are not intended to be updated.
-        Cart_Item__c itemToUpdate = new Cart_Item__c(
-            Id = cartItemId,
-            Quantity__c = quantity,
-            Unit_Price__c = sellingPrice
-        );
-
-        // STEP 8: Save using customer permissions.
-        // USER_MODE enforces object and field security.
-        try {
-
-            Database.update(
-                itemToUpdate,
-                AccessLevel.USER_MODE
-            );
-
-        } catch (DmlException e) {
-
-            throw new AuraHandledException(
-                'Unable to update cart quantity. ' +
-                'Please verify Cart Item Edit permission ' +
-                'and field access for Quantity and Unit Price.'
-            );
-
-        }
-
-        // STEP 9: Return refreshed cart and totals.
-        return getCart();
-    }
-
-
-
-    // ========================================================
-    // 11. REMOVE CART ITEM
-    // ========================================================
-
+    public Integer itemCount = 0;
     @AuraEnabled
-    public static CartResponse removeCartItem(
-        Id cartItemId
-    ) {
-
-        Id customerId = getCustomerContactId();
-
-        if (cartItemId == null) {
-            throw new AuraHandledException(
-                'A valid cart item is required.'
-            );
-        }
-
-        // Only allow removal from the current customer's cart.
-        List<Cart_Item__c> items = [
-            SELECT Id
-            FROM Cart_Item__c
-            WHERE
-                Id = :cartItemId
-                AND Shopping_Cart__r.Customer__c = :customerId
-                AND Shopping_Cart__r.Cart_Status__c = 'Active'
-            WITH USER_MODE
-            LIMIT 1
-        ];
-
-        if (items.isEmpty()) {
-            throw new AuraHandledException(
-                'Cart item not found.'
-            );
-        }
-
-        Database.delete(
-            items[0],
-            AccessLevel.USER_MODE
-        );
-
-        return getCart();
+    public List<Cart_Item__c> items = new List<Cart_Item__c>();
+  }
+  @AuraEnabled
+  public static CartResponse getCart() {
+    Id cid = GVCheckoutEngine.customer();
+    CartResponse result = new CartResponse();
+    List<Shopping_Cart__c> carts = [
+      SELECT Id, Total_Amount__c
+      FROM Shopping_Cart__c
+      WHERE Customer__c = :cid AND Cart_Status__c = 'Active'
+      WITH SYSTEM_MODE
+      LIMIT 2
+    ];
+    if (carts.isEmpty())
+      return result;
+    if (carts.size() > 1)
+      throw new AuraHandledException('Multiple active bags require support.');
+    result.cartId = carts[0].Id;
+    result.items = [
+      SELECT
+        Id,
+        Name,
+        Shopping_Cart__c,
+        Jewellery_Product__c,
+        Jewellery_Product__r.Name,
+        Jewellery_Product__r.Main_Image_URL__c,
+        Quantity__c,
+        Unit_Price__c,
+        Line_Total__c
+      FROM Cart_Item__c
+      WHERE Shopping_Cart__c = :result.cartId
+      WITH SYSTEM_MODE
+      ORDER BY CreatedDate
+    ];
+    for (Cart_Item__c item : result.items) {
+      result.itemCount += Integer.valueOf(item.Quantity__c);
+      result.totalAmount += item.Line_Total__c;
     }
+    return result;
+  }
+  @AuraEnabled
+  public static CartResponse addToCart(Id productId, Integer quantity) {
+    Id cid = GVCheckoutEngine.customer();
+    GVCheckoutEngine.lockCustomer(cid);
+    Shopping_Cart__c cart = GVCheckoutEngine.activeCart(cid, true);
+    GVCheckoutEngine.assertMutable(cart.Id);
+    List<Cart_Item__c> items = [
+      SELECT Id, Quantity__c
+      FROM Cart_Item__c
+      WHERE Shopping_Cart__c = :cart.Id AND Jewellery_Product__c = :productId
+      WITH SYSTEM_MODE
+    ];
+    if (items.size() > 1)
+      throw new AuraHandledException('Duplicate bag lines require support.');
+    Integer qty = quantity;
+    if (!items.isEmpty() && qty != null)
+      qty += Integer.valueOf(items[0].Quantity__c);
+    Decimal price = validateProduct(productId, qty);
+    if (items.isEmpty())
+      insert as system new Cart_Item__c(
+        Shopping_Cart__c = cart.Id,
+        Jewellery_Product__c = productId,
+        Quantity__c = qty,
+        Unit_Price__c = price
+      );
+    else
+      update as system new Cart_Item__c(
+        Id = items[0].Id,
+        Quantity__c = qty,
+        Unit_Price__c = price
+      );
+    return getCart();
+  }
+  @AuraEnabled
+  public static CartResponse updateCartItem(Id cartItemId, Integer quantity) {
+    Id cid = GVCheckoutEngine.customer();
+    GVCheckoutEngine.lockCustomer(cid);
+    Cart_Item__c item = ownedItem(cartItemId, cid);
+    GVCheckoutEngine.assertMutable(item.Shopping_Cart__c);
+    update as system new Cart_Item__c(
+      Id = item.Id,
+      Quantity__c = quantity,
+      Unit_Price__c = validateProduct(item.Jewellery_Product__c, quantity)
+    );
+    return getCart();
+  }
+  @AuraEnabled
+  public static CartResponse removeCartItem(Id cartItemId) {
+    Id cid = GVCheckoutEngine.customer();
+    GVCheckoutEngine.lockCustomer(cid);
+    Cart_Item__c item = ownedItem(cartItemId, cid);
+    GVCheckoutEngine.assertMutable(item.Shopping_Cart__c);
+    delete as system item;
+    return getCart();
+  }
+  private static Cart_Item__c ownedItem(Id iid, Id cid) {
+    List<Cart_Item__c> rows = [
+      SELECT Id, Shopping_Cart__c, Jewellery_Product__c
+      FROM Cart_Item__c
+      WHERE
+        Id = :iid
+        AND Shopping_Cart__r.Customer__c = :cid
+        AND Shopping_Cart__r.Cart_Status__c = 'Active'
+      WITH SYSTEM_MODE
+    ];
+    if (rows.isEmpty())
+      throw new AuraHandledException('Bag item not found or access denied.');
+    return rows[0];
+  }
+  private static Decimal validateProduct(Id pid, Integer qty) {
+    if (qty == null || qty < 1 || qty > 100)
+      throw new AuraHandledException('Quantity must be between 1 and 100.');
+    List<Jewellery_Product__c> rows = [
+      SELECT Id, Active__c, Price__c, Discount_Price__c, Available_Quantity__c
+      FROM Jewellery_Product__c
+      WHERE Id = :pid AND Active__c = TRUE
+      WITH SYSTEM_MODE
+    ];
+    if (rows.isEmpty() || rows[0].Available_Quantity__c < qty)
+      throw new AuraHandledException('Insufficient available stock.');
+    return GVCheckoutEngine.price(rows[0]);
+  }
 }

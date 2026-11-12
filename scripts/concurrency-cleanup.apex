@@ -1,0 +1,1 @@
+for(Stock_Reservation__c hold:[SELECT Id FROM Stock_Reservation__c WHERE Jewellery_Product__c='a00jV00000PwiXQQAZ' AND Reservation_Status__c='Active']) { GVInventoryService.releaseReservation(hold.Id); } update new Jewellery_Product__c(Id='a00jV00000PwiXQQAZ',Active__c=false); System.debug(LoggingLevel.INFO,'GV_TEST_FIXTURE_RETIRED=true');

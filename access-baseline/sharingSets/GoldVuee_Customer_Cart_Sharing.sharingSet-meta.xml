@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <accessMappings>
+        <accessLevel>Edit</accessLevel>
+        <object>Shopping_Cart__c</object>
+        <objectField>Customer__c</objectField>
+        <userField>Contact</userField>
+    </accessMappings>
+    <name>GoldVuee Customer Cart Sharing</name>
+    <profiles>GoldVuee Customer</profiles>
+</SharingSet>

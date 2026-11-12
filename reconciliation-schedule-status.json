@@ -1,0 +1,18 @@
+﻿{
+  "status": 0,
+  "result": {
+    "records": [
+      {
+        "attributes": {
+          "type": "CronTrigger",
+          "url": "/services/data/v68.0/sobjects/CronTrigger/08ejV0000083fExQAI"
+        },
+        "State": "WAITING",
+        "CronExpression": "0 0 * * * ?"
+      }
+    ],
+    "totalSize": 1,
+    "done": true
+  },
+  "warnings": []
+}

@@ -1,0 +1,18 @@
+﻿{
+  "status": 0,
+  "result": {
+    "records": [
+      {
+        "attributes": {
+          "type": "GV_Payment_Config__c",
+          "url": "/services/data/v68.0/sobjects/GV_Payment_Config__c/a0CjV00000UngGNUAZ"
+        },
+        "Id": "a0CjV00000UngGNUAZ",
+        "Name": "RazorpayTest"
+      }
+    ],
+    "totalSize": 1,
+    "done": true
+  },
+  "warnings": []
+}

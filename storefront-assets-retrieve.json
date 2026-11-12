@@ -1,0 +1,401 @@
+﻿{
+  "status": 0,
+  "result": {
+    "done": true,
+    "fileProperties": [
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-05T09:54:09.000Z",
+        "fileName": "unpackaged/staticresources/goldvueeLogo.resource",
+        "fullName": "goldvueeLogo",
+        "id": "081jV000001iZUXQA2",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-05T09:54:09.000Z",
+        "manageableState": "unmanaged",
+        "type": "StaticResource"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-06T05:15:55.000Z",
+        "fileName": "unpackaged/staticresources/goldvueeHeroBanner.resource",
+        "fullName": "goldvueeHeroBanner",
+        "id": "081jV000001ic93QAA",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-06T05:15:55.000Z",
+        "manageableState": "unmanaged",
+        "type": "StaticResource"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-06T06:05:16.000Z",
+        "fileName": "unpackaged/staticresources/gvSignature3.resource",
+        "fullName": "gvSignature3",
+        "id": "081jV000001icFVQAY",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-06T06:05:16.000Z",
+        "manageableState": "unmanaged",
+        "type": "StaticResource"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-06T06:04:25.000Z",
+        "fileName": "unpackaged/staticresources/gvSignature2.resource",
+        "fullName": "gvSignature2",
+        "id": "081jV000001icDtQAI",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-06T06:04:25.000Z",
+        "manageableState": "unmanaged",
+        "type": "StaticResource"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-11T09:46:06.000Z",
+        "fileName": "unpackaged/staticresources/GV_RazorpayCheckout.resource",
+        "fullName": "GV_RazorpayCheckout",
+        "id": "081jV000001iqaDQAQ",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-11T09:46:06.000Z",
+        "manageableState": "unmanaged",
+        "type": "StaticResource"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-06T06:09:41.000Z",
+        "fileName": "unpackaged/staticresources/gvBridal3.resource",
+        "fullName": "gvBridal3",
+        "id": "081jV000001icPBQAY",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-06T06:09:41.000Z",
+        "manageableState": "unmanaged",
+        "type": "StaticResource"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:48:43.000Z",
+        "fileName": "unpackaged/staticresources/SiteSamples.resource",
+        "fullName": "SiteSamples",
+        "id": "081jV000001gVtFQAU",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:48:43.000Z",
+        "manageableState": "unmanaged",
+        "type": "StaticResource"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-06T06:09:04.000Z",
+        "fileName": "unpackaged/staticresources/gvBridal2.resource",
+        "fullName": "gvBridal2",
+        "id": "081jV000001icNZQAY",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-06T06:09:04.000Z",
+        "manageableState": "unmanaged",
+        "type": "StaticResource"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-06T06:08:34.000Z",
+        "fileName": "unpackaged/staticresources/gvBridal1.resource",
+        "fullName": "gvBridal1",
+        "id": "081jV000001icLxQAI",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-06T06:08:34.000Z",
+        "manageableState": "unmanaged",
+        "type": "StaticResource"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-06T06:06:25.000Z",
+        "fileName": "unpackaged/staticresources/gvNewArrival1.resource",
+        "fullName": "gvNewArrival1",
+        "id": "081jV000001icH7QAI",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-06T06:06:25.000Z",
+        "manageableState": "unmanaged",
+        "type": "StaticResource"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-06T06:07:05.000Z",
+        "fileName": "unpackaged/staticresources/gvNewArrival2.resource",
+        "fullName": "gvNewArrival2",
+        "id": "081jV000001icIjQAI",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-06T06:07:05.000Z",
+        "manageableState": "unmanaged",
+        "type": "StaticResource"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-06T06:07:49.000Z",
+        "fileName": "unpackaged/staticresources/gvNewArrival3.resource",
+        "fullName": "gvNewArrival3",
+        "id": "081jV000001icKLQAY",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-06T06:07:49.000Z",
+        "manageableState": "unmanaged",
+        "type": "StaticResource"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-06T06:03:27.000Z",
+        "fileName": "unpackaged/staticresources/gvSignature1.resource",
+        "fullName": "gvSignature1",
+        "id": "081jV000001icCHQAY",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-06T06:03:27.000Z",
+        "manageableState": "unmanaged",
+        "type": "StaticResource"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-12T10:27:21.581Z",
+        "fileName": "unpackaged/package.xml",
+        "fullName": "unpackaged/package.xml",
+        "id": "",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-12T10:27:21.581Z",
+        "manageableState": "unmanaged",
+        "type": "Package"
+      }
+    ],
+    "id": "09SjV00000ElQa5UAF",
+    "status": "Succeeded",
+    "success": true,
+    "messages": [],
+    "files": [
+      {
+        "fullName": "goldvueeLogo",
+        "type": "StaticResource",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\storefront-assets-baseline\\staticresources\\goldvueeLogo.png"
+      },
+      {
+        "fullName": "goldvueeLogo",
+        "type": "StaticResource",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\storefront-assets-baseline\\staticresources\\goldvueeLogo.resource-meta.xml"
+      },
+      {
+        "fullName": "goldvueeHeroBanner",
+        "type": "StaticResource",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\storefront-assets-baseline\\staticresources\\goldvueeHeroBanner.png"
+      },
+      {
+        "fullName": "goldvueeHeroBanner",
+        "type": "StaticResource",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\storefront-assets-baseline\\staticresources\\goldvueeHeroBanner.resource-meta.xml"
+      },
+      {
+        "fullName": "gvSignature3",
+        "type": "StaticResource",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\storefront-assets-baseline\\staticresources\\gvSignature3.jpeg"
+      },
+      {
+        "fullName": "gvSignature3",
+        "type": "StaticResource",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\storefront-assets-baseline\\staticresources\\gvSignature3.resource-meta.xml"
+      },
+      {
+        "fullName": "gvSignature2",
+        "type": "StaticResource",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\storefront-assets-baseline\\staticresources\\gvSignature2.jpeg"
+      },
+      {
+        "fullName": "gvSignature2",
+        "type": "StaticResource",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\storefront-assets-baseline\\staticresources\\gvSignature2.resource-meta.xml"
+      },
+      {
+        "fullName": "GV_RazorpayCheckout",
+        "type": "StaticResource",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\storefront-assets-baseline\\staticresources\\GV_RazorpayCheckout.js"
+      },
+      {
+        "fullName": "GV_RazorpayCheckout",
+        "type": "StaticResource",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\storefront-assets-baseline\\staticresources\\GV_RazorpayCheckout.resource-meta.xml"
+      },
+      {
+        "fullName": "gvBridal3",
+        "type": "StaticResource",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\storefront-assets-baseline\\staticresources\\gvBridal3.jpeg"
+      },
+      {
+        "fullName": "gvBridal3",
+        "type": "StaticResource",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\storefront-assets-baseline\\staticresources\\gvBridal3.resource-meta.xml"
+      },
+      {
+        "fullName": "SiteSamples",
+        "type": "StaticResource",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\storefront-assets-baseline\\staticresources\\SiteSamples\\img\\clock.png"
+      },
+      {
+        "fullName": "SiteSamples",
+        "type": "StaticResource",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\storefront-assets-baseline\\staticresources\\SiteSamples\\img\\construction.png"
+      },
+      {
+        "fullName": "SiteSamples",
+        "type": "StaticResource",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\storefront-assets-baseline\\staticresources\\SiteSamples\\img\\force_logo.png"
+      },
+      {
+        "fullName": "SiteSamples",
+        "type": "StaticResource",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\storefront-assets-baseline\\staticresources\\SiteSamples\\img\\maintenance.png"
+      },
+      {
+        "fullName": "SiteSamples",
+        "type": "StaticResource",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\storefront-assets-baseline\\staticresources\\SiteSamples\\img\\poweredby.png"
+      },
+      {
+        "fullName": "SiteSamples",
+        "type": "StaticResource",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\storefront-assets-baseline\\staticresources\\SiteSamples\\img\\tools.png"
+      },
+      {
+        "fullName": "SiteSamples",
+        "type": "StaticResource",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\storefront-assets-baseline\\staticresources\\SiteSamples\\img\\unauthorized.png"
+      },
+      {
+        "fullName": "SiteSamples",
+        "type": "StaticResource",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\storefront-assets-baseline\\staticresources\\SiteSamples\\img\\warning.png"
+      },
+      {
+        "fullName": "SiteSamples",
+        "type": "StaticResource",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\storefront-assets-baseline\\staticresources\\SiteSamples\\SiteStyles.css"
+      },
+      {
+        "fullName": "SiteSamples",
+        "type": "StaticResource",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\storefront-assets-baseline\\staticresources\\SiteSamples.resource-meta.xml"
+      },
+      {
+        "fullName": "gvBridal2",
+        "type": "StaticResource",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\storefront-assets-baseline\\staticresources\\gvBridal2.jpeg"
+      },
+      {
+        "fullName": "gvBridal2",
+        "type": "StaticResource",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\storefront-assets-baseline\\staticresources\\gvBridal2.resource-meta.xml"
+      },
+      {
+        "fullName": "gvBridal1",
+        "type": "StaticResource",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\storefront-assets-baseline\\staticresources\\gvBridal1.jpeg"
+      },
+      {
+        "fullName": "gvBridal1",
+        "type": "StaticResource",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\storefront-assets-baseline\\staticresources\\gvBridal1.resource-meta.xml"
+      },
+      {
+        "fullName": "gvNewArrival1",
+        "type": "StaticResource",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\storefront-assets-baseline\\staticresources\\gvNewArrival1.jpeg"
+      },
+      {
+        "fullName": "gvNewArrival1",
+        "type": "StaticResource",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\storefront-assets-baseline\\staticresources\\gvNewArrival1.resource-meta.xml"
+      },
+      {
+        "fullName": "gvNewArrival2",
+        "type": "StaticResource",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\storefront-assets-baseline\\staticresources\\gvNewArrival2.jpeg"
+      },
+      {
+        "fullName": "gvNewArrival2",
+        "type": "StaticResource",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\storefront-assets-baseline\\staticresources\\gvNewArrival2.resource-meta.xml"
+      },
+      {
+        "fullName": "gvNewArrival3",
+        "type": "StaticResource",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\storefront-assets-baseline\\staticresources\\gvNewArrival3.jpeg"
+      },
+      {
+        "fullName": "gvNewArrival3",
+        "type": "StaticResource",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\storefront-assets-baseline\\staticresources\\gvNewArrival3.resource-meta.xml"
+      },
+      {
+        "fullName": "gvSignature1",
+        "type": "StaticResource",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\storefront-assets-baseline\\staticresources\\gvSignature1.jpeg"
+      },
+      {
+        "fullName": "gvSignature1",
+        "type": "StaticResource",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\storefront-assets-baseline\\staticresources\\gvSignature1.resource-meta.xml"
+      }
+    ]
+  },
+  "warnings": []
+}

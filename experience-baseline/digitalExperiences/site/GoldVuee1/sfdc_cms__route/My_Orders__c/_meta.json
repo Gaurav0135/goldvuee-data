@@ -1,0 +1,6 @@
+{
+  "apiName" : "My_Orders__c",
+  "type" : "sfdc_cms__route",
+  "path" : "routes",
+  "contentKey" : "MCNLZRZDAKQBGH3OSDSTPMZXGUR4"
+}

@@ -1,0 +1,92 @@
+﻿{
+  "status": 0,
+  "result": {
+    "checkOnly": false,
+    "completedDate": "2026-11-12T10:16:51.000Z",
+    "createdBy": "005jV000003akdh",
+    "createdByName": "Gaurav Patel",
+    "createdDate": "2026-11-12T10:16:48.000Z",
+    "details": {
+      "componentSuccesses": [
+        {
+          "changed": true,
+          "componentType": "Layout",
+          "created": false,
+          "createdDate": "2026-11-12T10:16:51.000Z",
+          "deleted": false,
+          "fileName": "layouts/GV_Payment_Config__c-GoldVuee Payment Configuration.layout",
+          "fullName": "GV_Payment_Config__c-GoldVuee Payment Configuration",
+          "id": "00hjV000004s87xQAA",
+          "success": true
+        },
+        {
+          "changed": true,
+          "componentType": "Profile",
+          "created": false,
+          "createdDate": "2026-11-12T10:16:51.000Z",
+          "deleted": false,
+          "fileName": "profiles/Admin.profile",
+          "fullName": "Admin",
+          "id": "00ejV000002Gj6TQAS",
+          "success": true
+        },
+        {
+          "changed": true,
+          "componentType": "",
+          "created": false,
+          "createdDate": "2026-11-12T10:16:51.000Z",
+          "deleted": false,
+          "fileName": "package.xml",
+          "fullName": "package.xml",
+          "success": true
+        }
+      ],
+      "runTestResult": {
+        "numFailures": 0,
+        "numTestsRun": 0,
+        "totalTime": 0,
+        "codeCoverage": [],
+        "codeCoverageWarnings": [],
+        "failures": [],
+        "flowCoverage": [],
+        "flowCoverageWarnings": [],
+        "successes": []
+      },
+      "componentFailures": []
+    },
+    "done": true,
+    "id": "0AfjV000006NMh7SAG",
+    "ignoreWarnings": false,
+    "lastModifiedDate": "2026-11-12T10:16:51.000Z",
+    "numberComponentErrors": 0,
+    "numberComponentsDeployed": 2,
+    "numberComponentsTotal": 2,
+    "numberFiles": "5",
+    "numberTestErrors": 0,
+    "numberTestsCompleted": 0,
+    "numberTestsTotal": 0,
+    "rollbackOnError": true,
+    "runTestsEnabled": false,
+    "startDate": "2026-11-12T10:16:49.000Z",
+    "status": "Succeeded",
+    "success": true,
+    "zipSize": 1275,
+    "files": [
+      {
+        "fullName": "GV_Payment_Config__c-GoldVuee Payment Configuration",
+        "type": "Layout",
+        "state": "Changed",
+        "filePath": "D:\\GoldVuee\\goldvuee\\force-app\\main\\default\\layouts\\GV_Payment_Config__c-GoldVuee Payment Configuration.layout-meta.xml"
+      },
+      {
+        "fullName": "Admin",
+        "type": "Profile",
+        "state": "Changed",
+        "filePath": "D:\\GoldVuee\\goldvuee\\force-app\\main\\default\\profiles\\Admin.profile-meta.xml"
+      }
+    ],
+    "zipFileCount": 5,
+    "deployUrl": "https://goldvuee-dev-ed.develop.my.salesforce.com/lightning/setup/DeployStatus/page?address=%2Fchangemgmt%2FmonitorDeploymentsDetails.apexp%3FasyncId%3D0AfjV000006NMh7SAG%26retURL%3D%252Fchangemgmt%252FmonitorDeployment.apexp"
+  },
+  "warnings": []
+}

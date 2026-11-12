@@ -1,0 +1,82 @@
+﻿{
+  "status": 0,
+  "result": {
+    "done": true,
+    "fileProperties": [
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:42.000Z",
+        "fileName": "unpackaged/profiles/GoldVuee Profile.profile",
+        "fullName": "GoldVuee Profile",
+        "id": "00ejV000002S59OQAS",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-10T18:46:49.000Z",
+        "type": "Profile"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T13:22:16.000Z",
+        "fileName": "unpackaged/profiles/GoldVuee Customer.profile",
+        "fullName": "GoldVuee Customer",
+        "id": "00ejV000002SGALQA4",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-11T10:34:14.000Z",
+        "type": "Profile"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-07T18:05:07.000Z",
+        "fileName": "unpackaged/sharingSets/GoldVuee_Customer_Cart_Sharing.sharingSet",
+        "fullName": "GoldVuee_Customer_Cart_Sharing",
+        "id": "0H2jV000000ujwvSAA",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-07T18:05:07.000Z",
+        "type": "SharingSet"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-12T09:14:28.994Z",
+        "fileName": "unpackaged/package.xml",
+        "fullName": "unpackaged/package.xml",
+        "id": "",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-12T09:14:28.994Z",
+        "manageableState": "unmanaged",
+        "type": "Package"
+      }
+    ],
+    "id": "09SjV00000ElLk5UAF",
+    "status": "Succeeded",
+    "success": true,
+    "messages": [],
+    "files": [
+      {
+        "fullName": "GoldVuee Profile",
+        "type": "Profile",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-baseline\\profiles\\GoldVuee Profile.profile-meta.xml"
+      },
+      {
+        "fullName": "GoldVuee Customer",
+        "type": "Profile",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-baseline\\profiles\\GoldVuee Customer.profile-meta.xml"
+      },
+      {
+        "fullName": "GoldVuee_Customer_Cart_Sharing",
+        "type": "SharingSet",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-baseline\\sharingSets\\GoldVuee_Customer_Cart_Sharing.sharingSet-meta.xml"
+      }
+    ]
+  },
+  "warnings": []
+}

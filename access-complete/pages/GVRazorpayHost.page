@@ -1,0 +1,348 @@
+<apex:page showHeader="false"
+    sidebar="false"
+    standardStylesheets="false"
+    applyHtmlTag="false"
+    applyBodyTag="false"
+    docType="html-5.0">
+
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1"/>
+
+    <title>GoldVuee | Razorpay Test Mode</title>
+
+    
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 30px 18px;
+            background: #f7f0e8;
+            color: #57142d;
+            font-family: Georgia, serif;
+            text-align: center;
+        }
+
+        .card {
+            max-width: 460px;
+            margin: 40px auto;
+            padding: 36px 24px;
+            background: #fff;
+            border: 1px solid #bd965b;
+            border-radius: 6px;
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 500;
+        }
+
+        p {
+            line-height: 1.7;
+        }
+
+        button {
+            padding: 14px 25px;
+            border: 0;
+            border-radius: 4px;
+            background: #57142d;
+            color: white;
+            cursor: pointer;
+        }
+
+        .error {
+            color: #a12c43;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <h1>GoldVuee</h1>
+        <p>Secure Razorpay Test Mode Payment</p>
+
+        <p id="status">
+            Connecting to your GoldVuee checkout...
+        </p>
+
+        <p id="error" class="error"></p>
+
+        <button
+            id="retryButton"
+            type="button"
+            style="display:none">
+            Open Razorpay
+        </button>
+    </div>
+
+    <script>
+    //<![CDATA[
+    (function () {
+        'use strict';
+
+        var params = new URLSearchParams(
+            window.location.search
+        );
+
+        var expectedOrigin = params.get('origin') || '';
+        var sessionNonce = params.get('nonce') || '';
+
+        var statusElement =
+            document.getElementById('status');
+
+        var errorElement =
+            document.getElementById('error');
+
+        var retryButton =
+            document.getElementById('retryButton');
+
+        var paymentOptions = null;
+        var paymentStarted = false;
+
+        function setStatus(message) {
+            statusElement.textContent = message;
+        }
+
+        function setError(message) {
+            errorElement.textContent = message;
+        }
+
+        function validOrigin(value) {
+            try {
+                var url = new URL(value);
+
+                return (
+                    url.protocol === 'https:' &&
+                    (
+                        url.hostname === 'my.site.com' ||
+                        url.hostname.endsWith('.my.site.com')
+                    ) &&
+                    url.origin === value
+                );
+            } catch (error) {
+                return false;
+            }
+        }
+
+        function sendToCheckout(type, data) {
+            if (
+                !window.opener ||
+                !validOrigin(expectedOrigin)
+            ) {
+                return;
+            }
+
+            window.opener.postMessage(
+                {
+                    source: 'GOLDVUEE_RAZORPAY_HOST',
+                    nonce: sessionNonce,
+                    type: type,
+                    data: data || {}
+                },
+                expectedOrigin
+            );
+        }
+
+        function openPayment() {
+            if (paymentStarted || !paymentOptions) {
+                return;
+            }
+
+            if (typeof window.Razorpay !== 'function') {
+                setError(
+                    'Razorpay library could not be loaded.'
+                );
+                sendToCheckout('ERROR', {
+                    message: 'Razorpay library unavailable.'
+                });
+                return;
+            }
+
+            paymentStarted = true;
+            retryButton.style.display = 'none';
+
+            setError('');
+            setStatus('Opening secure Razorpay checkout...');
+
+            try {
+                var checkout = new window.Razorpay({
+                    key: paymentOptions.key,
+                    amount: paymentOptions.amount,
+                    currency: 'INR',
+                    name: 'GoldVuee',
+                    description:
+                        'Premium Jewellery | Test Mode',
+                    order_id: paymentOptions.orderId,
+                    theme: {
+                        color: '#57142d'
+                    },
+
+                    handler: function (response) {
+                        setStatus(
+                            'Payment received. Confirming with Salesforce...'
+                        );
+
+                        sendToCheckout('PAYMENT_SUCCESS', {
+                            paymentId:
+                                response.razorpay_payment_id,
+                            orderId:
+                                response.razorpay_order_id,
+                            signature:
+                                response.razorpay_signature
+                        });
+                    },
+
+                    modal: {
+                        ondismiss: function () {
+                            if (paymentStarted) {
+                                paymentStarted = false;
+                                retryButton.style.display =
+                                    'inline-block';
+
+                                setStatus(
+                                    'Payment window closed.'
+                                );
+
+                                sendToCheckout(
+                                    'PAYMENT_DISMISSED',
+                                    {}
+                                );
+                            }
+                        }
+                    }
+                });
+
+                checkout.on(
+                    'payment.failed',
+                    function (response) {
+                        paymentStarted = false;
+
+                        retryButton.style.display =
+                            'inline-block';
+
+                        setError(
+                            response &&
+                            response.error &&
+                            response.error.description
+                                ? response.error.description
+                                : 'Payment failed.'
+                        );
+
+                        sendToCheckout('PAYMENT_FAILED', {
+                            message:
+                                'Razorpay reported a payment failure.'
+                        });
+                    }
+                );
+
+                checkout.open();
+
+            } catch (error) {
+                paymentStarted = false;
+                retryButton.style.display = 'inline-block';
+
+                setError(
+                    error.message ||
+                    'Unable to open Razorpay.'
+                );
+
+                sendToCheckout('ERROR', {
+                    message:
+                        'Unable to launch the Razorpay window.'
+                });
+            }
+        }
+
+        window.addEventListener(
+            'message',
+            function (event) {
+
+                if (
+                    event.source !== window.opener ||
+                    event.origin !== expectedOrigin ||
+                    !validOrigin(expectedOrigin)
+                ) {
+                    return;
+                }
+
+                var message = event.data;
+
+                if (
+                    !message ||
+                    message.source !==
+                        'GOLDVUEE_CHECKOUT' ||
+                    message.nonce !== sessionNonce
+                ) {
+                    return;
+                }
+
+                if (message.type !== 'START_PAYMENT') {
+                    return;
+                }
+
+                var data = message.data || {};
+
+                if (
+                    typeof data.key !== 'string' ||
+                    !/^rzp_test_[A-Za-z0-9]+$/.test(
+                        data.key
+                    ) ||
+                    !/^order_[A-Za-z0-9]+$/.test(
+                        data.orderId || ''
+                    ) ||
+                    !Number.isSafeInteger(data.amount) ||
+                    data.amount < 100
+                ) {
+                    setError('Invalid Razorpay order details.');
+                    sendToCheckout('ERROR', {
+                        message:
+                            'Invalid Razorpay order details.'
+                    });
+                    return;
+                }
+
+                paymentOptions = data;
+                openPayment();
+            }
+        );
+
+        retryButton.addEventListener(
+            'click',
+            openPayment
+        );
+
+        window.addEventListener('load', function () {
+
+            if (
+                !window.opener ||
+                !validOrigin(expectedOrigin) ||
+                !/^[A-Za-z0-9_-]{16,100}$/.test(
+                    sessionNonce
+                )
+            ) {
+                setError(
+                    'Open this page through GoldVuee checkout.'
+                );
+                return;
+            }
+
+            if (typeof window.Razorpay !== 'function') {
+                setError('Razorpay library unavailable.');
+                sendToCheckout('ERROR', {
+                    message: 'Razorpay script could not load.'
+                });
+                return;
+            }
+
+            setStatus('Waiting for payment order...');
+            sendToCheckout('READY', {});
+        });
+
+    })();
+    //]]>
+    </script>
+</body>
+</html>
+</apex:page>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+
+    <!-- Salesforce API version -->
+    <apiVersion>68.0</apiVersion>
+
+    <!-- Make component available in Lightning Builder -->
+    <isExposed>true</isExposed>
+
+    <!-- Supported page types -->
+    <targets>
+
+        <!-- Experience Cloud LWR pages -->
+        <target>lightningCommunity__Page</target>
+
+        <!-- Experience Builder default content -->
+        <target>lightningCommunity__Default</target>
+
+    </targets>
+
+</LightningComponentBundle>

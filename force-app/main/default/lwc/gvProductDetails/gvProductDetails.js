@@ -1,12 +1,11 @@
+import { LightningElement, api, wire } from "lwc";
+import isGuest from "@salesforce/user/isGuest";
+import communityBasePath from "@salesforce/community/basePath";
+import { CurrentPageReference } from "lightning/navigation";
 
-import { LightningElement, api, wire } from 'lwc';
-import { CurrentPageReference } from 'lightning/navigation';
+import getProductById from "@salesforce/apex/GVProductController.getProductById";
 
-import getProductById from
-    '@salesforce/apex/GVProductController.getProductById';
-
-import addToCart from
-    '@salesforce/apex/GVCartController.addToCart';
+import addToCart from "@salesforce/apex/GVCartController.addToCart";
 
 // ============================================================
 // GOLDVUEE | PRODUCT DETAILS COMPONENT
@@ -32,395 +31,330 @@ import addToCart from
 // ============================================================
 
 const FALLBACK_IMAGE =
-    'https://placehold.co/800x800/f8f3ee/6b1834?text=GoldVuee';
+  "https://placehold.co/800x800/f8f3ee/6b1834?text=GoldVuee";
 
 export default class GvProductDetails extends LightningElement {
+  get isGuestUser() { return isGuest; }
+  get loginUrl() { return `${communityBasePath}/login`; }
+  // --------------------------------------------------------
+  // 1. PRODUCT IDENTIFICATION
+  // --------------------------------------------------------
 
-    // --------------------------------------------------------
-    // 1. PRODUCT IDENTIFICATION
-    // --------------------------------------------------------
+  @api recordId;
 
-    @api recordId;
+  urlProductId = null;
 
-    urlProductId = null;
+  product = null;
+  errorMessage = "";
+  isLoading = false;
 
-    product = null;
-    errorMessage = '';
-    isLoading = false;
+  // --------------------------------------------------------
+  // 2. SHOPPING CART STATE
+  // --------------------------------------------------------
 
-    // --------------------------------------------------------
-    // 2. SHOPPING CART STATE
-    // --------------------------------------------------------
+  // Default purchase quantity.
+  quantity = 1;
 
-    // Default purchase quantity.
-    quantity = 1;
+  // Prevent repeated clicks while Apex saves the cart.
+  isAddingToCart = false;
 
-    // Prevent repeated clicks while Apex saves the cart.
-    isAddingToCart = false;
+  // Customer feedback messages.
+  cartSuccessMessage = "";
+  cartErrorMessage = "";
 
-    // Customer feedback messages.
-    cartSuccessMessage = '';
-    cartErrorMessage = '';
+  // --------------------------------------------------------
+  // 3. CURRENCY FORMATTER
+  // --------------------------------------------------------
 
-    // --------------------------------------------------------
-    // 3. CURRENCY FORMATTER
-    // --------------------------------------------------------
+  currencyFormatter = new Intl.NumberFormat("en-IN", {
+    style: "currency",
+    currency: "INR",
+    maximumFractionDigits: 0
+  });
 
-    currencyFormatter = new Intl.NumberFormat('en-IN', {
-        style: 'currency',
-        currency: 'INR',
-        maximumFractionDigits: 0
-    });
+  // --------------------------------------------------------
+  // 4. READ PRODUCT ID FROM PAGE URL
+  // --------------------------------------------------------
 
-    // --------------------------------------------------------
-    // 4. READ PRODUCT ID FROM PAGE URL
-    // --------------------------------------------------------
+  @wire(CurrentPageReference)
+  readPageReference(pageReference) {
+    const nextProductId = pageReference?.state?.c__productId || null;
 
-    @wire(CurrentPageReference)
-    readPageReference(pageReference) {
-
-        const nextProductId =
-            pageReference?.state?.c__productId || null;
-
-        // Reset quantity and cart messages when navigating
-        // to a different product.
-        if (this.urlProductId !== nextProductId) {
-
-            this.quantity = 1;
-            this.cartSuccessMessage = '';
-            this.cartErrorMessage = '';
-        }
-
-        this.urlProductId = nextProductId;
+    // Reset quantity and cart messages when navigating
+    // to a different product.
+    if (this.urlProductId !== nextProductId) {
+      this.quantity = 1;
+      this.cartSuccessMessage = "";
+      this.cartErrorMessage = "";
     }
 
-    // Determine which product should be displayed.
-    get productId() {
-        return this.urlProductId || this.recordId || undefined;
+    this.urlProductId = nextProductId;
+  }
+
+  // Determine which product should be displayed.
+  get productId() {
+    return this.urlProductId || this.recordId || undefined;
+  }
+
+  // --------------------------------------------------------
+  // 5. LOAD PRODUCT DATA FROM APEX
+  // --------------------------------------------------------
+  // Undefined productId prevents the Apex wire from running
+  // until a product ID is available.
+
+  @wire(getProductById, { productId: "$productId" })
+  wiredProduct({ data, error }) {
+    // No product has been selected.
+    if (!this.productId) {
+      this.product = null;
+      this.errorMessage = "";
+      this.isLoading = false;
+
+      return;
     }
 
-    // --------------------------------------------------------
-    // 5. LOAD PRODUCT DATA FROM APEX
-    // --------------------------------------------------------
-    // Undefined productId prevents the Apex wire from running
-    // until a product ID is available.
+    // Salesforce returned the selected product.
+    if (data) {
+      this.errorMessage = "";
 
-    @wire(getProductById, { productId: '$productId' })
-    wiredProduct({ data, error }) {
+      const originalPrice = Number(data.Price__c || 0);
 
-        // No product has been selected.
-        if (!this.productId) {
+      const discountPrice = Number(data.Discount_Price__c || 0);
 
-            this.product = null;
-            this.errorMessage = '';
-            this.isLoading = false;
+      const hasDiscount = discountPrice > 0 && discountPrice < originalPrice;
 
-            return;
-        }
+      const sellingPrice = hasDiscount ? discountPrice : originalPrice;
 
-        // Salesforce returned the selected product.
-        if (data) {
+      // Convert Salesforce fields into UI-friendly data.
+      this.product = {
+        id: data.Id,
+        name: data.Name,
 
-            this.errorMessage = '';
+        category: data.Category__r?.Name || "Jewellery",
 
-            const originalPrice =
-                Number(data.Price__c || 0);
+        description:
+          data.Description__c ||
+          "An elegant piece from the GoldVuee collection.",
 
-            const discountPrice =
-                Number(data.Discount_Price__c || 0);
+        image: data.Main_Image_URL__c || FALLBACK_IMAGE,
 
-            const hasDiscount =
-                discountPrice > 0 &&
-                discountPrice < originalPrice;
+        metal: data.Metal_Type__c || "—",
+        purity: data.Purity__c || "—",
+        stone: data.Stone_Type__c || "—",
+        gender: data.Gender__c || "—",
 
-            const sellingPrice = hasDiscount
-                ? discountPrice
-                : originalPrice;
+        sku: data.SKU__c || "—",
+        productCode: data.Product_Code__c || "—",
 
-            // Convert Salesforce fields into UI-friendly data.
-            this.product = {
+        weight: data.Weight__c,
 
-                id: data.Id,
-                name: data.Name,
+        stock: Number(data.Available_Quantity__c || 0),
 
-                category:
-                    data.Category__r?.Name || 'Jewellery',
+        availability: data.Availability_Status__c,
 
-                description:
-                    data.Description__c ||
-                    'An elegant piece from the GoldVuee collection.',
+        isNew: data.New_Arrival__c === true,
 
-                image:
-                    data.Main_Image_URL__c || FALLBACK_IMAGE,
+        isAvailable: data.Availability_Status__c === "In Stock",
 
-                metal: data.Metal_Type__c || '—',
-                purity: data.Purity__c || '—',
-                stone: data.Stone_Type__c || '—',
-                gender: data.Gender__c || '—',
+        hasDiscount,
 
-                sku: data.SKU__c || '—',
-                productCode: data.Product_Code__c || '—',
+        formattedPrice: this.currencyFormatter.format(sellingPrice),
 
-                weight: data.Weight__c,
+        formattedOriginalPrice: this.currencyFormatter.format(originalPrice)
+      };
 
-                stock:
-                    Number(data.Stock_Quantity__c || 0),
+      // Keep selected quantity within available stock.
+      if (this.quantity > this.product.stock || this.quantity < 1) {
+        this.quantity = 1;
+      }
 
-                availability:
-                    data.Availability_Status__c,
+      this.isLoading = false;
+    } else if (error) {
+      this.product = null;
 
-                isNew:
-                    data.New_Arrival__c === true,
+      const apexMessage =
+        error?.body?.message || error?.message || "Unknown Salesforce error";
 
-                isAvailable:
-                    data.Availability_Status__c === 'In Stock',
+      this.errorMessage =
+        "Unable to load this jewellery product. " + apexMessage;
 
-                hasDiscount,
+      this.isLoading = false;
 
-                formattedPrice:
-                    this.currencyFormatter.format(
-                        sellingPrice
-                    ),
+      console.error("GoldVuee Product Details Apex Error:", error);
+    } else {
+      this.isLoading = true;
+    }
+  }
 
-                formattedOriginalPrice:
-                    this.currencyFormatter.format(
-                        originalPrice
-                    )
-            };
+  // --------------------------------------------------------
+  // 6. PRODUCT DISPLAY HELPERS
+  // --------------------------------------------------------
 
-            // Keep selected quantity within available stock.
-            if (
-                this.quantity > this.product.stock ||
-                this.quantity < 1
-            ) {
-                this.quantity = 1;
-            }
+  get hasProduct() {
+    return Boolean(this.product);
+  }
 
-            this.isLoading = false;
-
-        } else if (error) {
-
-            this.product = null;
-
-            const apexMessage =
-                error?.body?.message ||
-                error?.message ||
-                'Unknown Salesforce error';
-
-            this.errorMessage =
-                'Unable to load this jewellery product. ' +
-                apexMessage;
-
-            this.isLoading = false;
-
-            console.error(
-                'GoldVuee Product Details Apex Error:',
-                error
-            );
-
-        } else {
-
-            this.isLoading = true;
-        }
+  get formattedWeight() {
+    if (
+      !this.product ||
+      this.product.weight === null ||
+      this.product.weight === undefined
+    ) {
+      return "Not specified";
     }
 
-    // --------------------------------------------------------
-    // 6. PRODUCT DISPLAY HELPERS
-    // --------------------------------------------------------
+    return `${this.product.weight} g`;
+  }
 
-    get hasProduct() {
-        return Boolean(this.product);
+  get stockLabel() {
+    if (!this.product) {
+      return "";
     }
 
-    get formattedWeight() {
+    return this.product.isAvailable ? "In Stock" : "Out of Stock";
+  }
 
-        if (
-            !this.product ||
-            this.product.weight === null ||
-            this.product.weight === undefined
-        ) {
-            return 'Not specified';
-        }
+  get availabilityClass() {
+    return this.product?.isAvailable
+      ? "stock-status in-stock"
+      : "stock-status out-of-stock";
+  }
 
-        return `${this.product.weight} g`;
+  // --------------------------------------------------------
+  // 7. INVENTORY HELPERS
+  // --------------------------------------------------------
+
+  get isInStock() {
+    return Boolean(
+      this.product && this.product.isAvailable && this.product.stock > 0
+    );
+  }
+
+  get isDecreaseDisabled() {
+    return this.isAddingToCart || !this.isInStock || this.quantity <= 1;
+  }
+
+  get isIncreaseDisabled() {
+    return (
+      this.isAddingToCart ||
+      !this.isInStock ||
+      this.quantity >= this.product.stock
+    );
+  }
+
+  get isAddToCartDisabled() {
+    return (
+      this.isAddingToCart ||
+      !this.isInStock ||
+      this.quantity < 1 ||
+      this.quantity > this.product.stock
+    );
+  }
+
+  // --------------------------------------------------------
+  // 8. DECREASE QUANTITY
+  // --------------------------------------------------------
+
+  handleDecreaseQuantity() {
+    if (this.isDecreaseDisabled) {
+      return;
     }
 
-    get stockLabel() {
+    this.quantity -= 1;
 
-        if (!this.product) {
-            return '';
-        }
+    // Clear messages when the customer changes quantity.
+    this.cartSuccessMessage = "";
+    this.cartErrorMessage = "";
+  }
 
-        return this.product.isAvailable
-            ? 'In Stock'
-            : 'Out of Stock';
+  // --------------------------------------------------------
+  // 9. INCREASE QUANTITY
+  // --------------------------------------------------------
+
+  handleIncreaseQuantity() {
+    if (this.isIncreaseDisabled) {
+      return;
     }
 
-    get availabilityClass() {
+    this.quantity += 1;
 
-        return this.product?.isAvailable
-            ? 'stock-status in-stock'
-            : 'stock-status out-of-stock';
+    this.cartSuccessMessage = "";
+    this.cartErrorMessage = "";
+  }
+
+  // --------------------------------------------------------
+  // 10. ADD JEWELLERY TO SALESFORCE CART
+  // --------------------------------------------------------
+  //
+  // Calls:
+  // GVCartController.addToCart(productId, quantity)
+  //
+  // Apex:
+  // - Identifies the customer using User.ContactId.
+  // - Finds or creates an active cart.
+  // - Validates stock.
+  // - Determines the current selling price.
+  // - Inserts or updates the cart item.
+  //
+  // --------------------------------------------------------
+
+  async handleAddToCart() {
+    if (isGuest) {
+      this.cartErrorMessage = "Please sign in to add jewellery to your bag.";
+      return;
+    }
+    // Prevent invalid or repeated submissions.
+    if (this.isAddToCartDisabled || !this.product?.id) {
+      return;
     }
 
-    // --------------------------------------------------------
-    // 7. INVENTORY HELPERS
-    // --------------------------------------------------------
+    const selectedProductId = this.product.id;
+    const selectedProductName = this.product.name;
+    const selectedQuantity = this.quantity;
 
-    get isInStock() {
+    // Start loading state.
+    this.isAddingToCart = true;
 
-        return Boolean(
-            this.product &&
-            this.product.isAvailable &&
-            this.product.stock > 0
-        );
+    // Clear previous messages.
+    this.cartSuccessMessage = "";
+    this.cartErrorMessage = "";
+
+    try {
+      // Call Salesforce Apex.
+      const cartResponse = await addToCart({
+        productId: selectedProductId,
+        quantity: selectedQuantity
+      });
+
+      // Show confirmation only after Apex succeeds.
+      this.cartSuccessMessage =
+        `${selectedQuantity} × ${selectedProductName} ` +
+        "added to your cart successfully!";
+
+      // Useful for debugging during development.
+      console.log("GoldVuee Cart Updated:", cartResponse);
+
+      // Reset quantity after successful addition.
+      if (this.product?.id === selectedProductId) {
+        this.quantity = 1;
+      }
+
+      // Later we can notify the header cart badge
+      // and navigate to the Shopping Cart page.
+    } catch (error) {
+      // Salesforce may return an AuraHandledException
+      // for login, stock, access or validation problems.
+      const apexMessage =
+        error?.body?.message ||
+        error?.message ||
+        "Unable to add this product to your cart.";
+
+      this.cartErrorMessage = apexMessage;
+
+      console.error("GoldVuee Add to Cart Error:", error);
+    } finally {
+      // Re-enable controls after the Apex call finishes.
+      this.isAddingToCart = false;
     }
-
-    get isDecreaseDisabled() {
-
-        return (
-            this.isAddingToCart ||
-            !this.isInStock ||
-            this.quantity <= 1
-        );
-    }
-
-    get isIncreaseDisabled() {
-
-        return (
-            this.isAddingToCart ||
-            !this.isInStock ||
-            this.quantity >= this.product.stock
-        );
-    }
-
-    get isAddToCartDisabled() {
-
-        return (
-            this.isAddingToCart ||
-            !this.isInStock ||
-            this.quantity < 1 ||
-            this.quantity > this.product.stock
-        );
-    }
-
-    // --------------------------------------------------------
-    // 8. DECREASE QUANTITY
-    // --------------------------------------------------------
-
-    handleDecreaseQuantity() {
-
-        if (this.isDecreaseDisabled) {
-            return;
-        }
-
-        this.quantity -= 1;
-
-        // Clear messages when the customer changes quantity.
-        this.cartSuccessMessage = '';
-        this.cartErrorMessage = '';
-    }
-
-    // --------------------------------------------------------
-    // 9. INCREASE QUANTITY
-    // --------------------------------------------------------
-
-    handleIncreaseQuantity() {
-
-        if (this.isIncreaseDisabled) {
-            return;
-        }
-
-        this.quantity += 1;
-
-        this.cartSuccessMessage = '';
-        this.cartErrorMessage = '';
-    }
-
-    // --------------------------------------------------------
-    // 10. ADD JEWELLERY TO SALESFORCE CART
-    // --------------------------------------------------------
-    //
-    // Calls:
-    // GVCartController.addToCart(productId, quantity)
-    //
-    // Apex:
-    // - Identifies the customer using User.ContactId.
-    // - Finds or creates an active cart.
-    // - Validates stock.
-    // - Determines the current selling price.
-    // - Inserts or updates the cart item.
-    //
-    // --------------------------------------------------------
-
-    async handleAddToCart() {
-
-        // Prevent invalid or repeated submissions.
-        if (
-            this.isAddToCartDisabled ||
-            !this.product?.id
-        ) {
-            return;
-        }
-
-        const selectedProductId = this.product.id;
-        const selectedProductName = this.product.name;
-        const selectedQuantity = this.quantity;
-
-        // Start loading state.
-        this.isAddingToCart = true;
-
-        // Clear previous messages.
-        this.cartSuccessMessage = '';
-        this.cartErrorMessage = '';
-
-        try {
-
-            // Call Salesforce Apex.
-            const cartResponse = await addToCart({
-                productId: selectedProductId,
-                quantity: selectedQuantity
-            });
-
-            // Show confirmation only after Apex succeeds.
-            this.cartSuccessMessage =
-                `${selectedQuantity} × ${selectedProductName} ` +
-                'added to your cart successfully!';
-
-            // Useful for debugging during development.
-            console.log(
-                'GoldVuee Cart Updated:',
-                cartResponse
-            );
-
-            // Reset quantity after successful addition.
-            if (this.product?.id === selectedProductId) {
-                this.quantity = 1;
-            }
-
-            // Later we can notify the header cart badge
-            // and navigate to the Shopping Cart page.
-
-        } catch (error) {
-
-            // Salesforce may return an AuraHandledException
-            // for login, stock, access or validation problems.
-            const apexMessage =
-                error?.body?.message ||
-                error?.message ||
-                'Unable to add this product to your cart.';
-
-            this.cartErrorMessage = apexMessage;
-
-            console.error(
-                'GoldVuee Add to Cart Error:',
-                error
-            );
-
-        } finally {
-
-            // Re-enable controls after the Apex call finishes.
-            this.isAddingToCart = false;
-        }
-    }
+  }
 }

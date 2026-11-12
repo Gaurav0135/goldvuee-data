@@ -1,0 +1,67 @@
+{
+  "type" : "sfdc_cms__view",
+  "title" : "My Orders",
+  "contentBody" : {
+    "component" : {
+      "children" : [ {
+        "children" : [ {
+          "attributes" : {
+            "backgroundImageConfig" : "",
+            "backgroundImageOverlay" : "rgba(0,0,0,0)",
+            "componentSpacerSize" : "",
+            "layoutDirectionDesktop" : "row",
+            "layoutDirectionMobile" : "column",
+            "layoutDirectionTablet" : "column",
+            "maxContentWidth" : "",
+            "sectionColumnGutterWidth" : "",
+            "sectionConfig" : "{\"UUID\":\"cbc26fe1-313c-43db-ac2a-6903b2fe3aa7\",\"columns\":[{\"UUID\":\"215b8632-377e-4f9b-81ed-5a831d0e261e\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}",
+            "sectionMinHeight" : "",
+            "sectionVerticalAlign" : "flex-start"
+          },
+          "children" : [ {
+            "children" : [ {
+              "attributes" : { },
+              "definition" : "c:gvMyOrders",
+              "id" : "8f266fc3-1524-4fc2-af53-b5ea321d4adc",
+              "type" : "component"
+            } ],
+            "id" : "215b8632-377e-4f9b-81ed-5a831d0e261e",
+            "name" : "col1",
+            "title" : "Column 1",
+            "type" : "region"
+          } ],
+          "definition" : "community_layout:section",
+          "id" : "cbc26fe1-313c-43db-ac2a-6903b2fe3aa7",
+          "type" : "component"
+        } ],
+        "id" : "4b74928b-55e2-47f5-b214-020691868650",
+        "name" : "content",
+        "title" : "Content",
+        "type" : "region"
+      }, {
+        "children" : [ {
+          "attributes" : {
+            "customHeadTags" : "",
+            "description" : "",
+            "pageTitle" : "My Orders",
+            "recordId" : "{!recordId}"
+          },
+          "definition" : "community_builder:seoAssistant",
+          "id" : "72ced87a-16d0-44d6-b9b5-795d3e211b8c",
+          "type" : "component"
+        } ],
+        "id" : "84cd08f9-daa2-4ab1-a80e-15e67d94b359",
+        "name" : "sfdcHiddenRegion",
+        "title" : "sfdcHiddenRegion",
+        "type" : "region"
+      } ],
+      "definition" : "community_layout:sldsFlexibleLayout",
+      "id" : "b334c8c0-060c-4974-9ed4-015b41e5babd",
+      "type" : "component"
+    },
+    "dataProviders" : [ ],
+    "themeLayoutType" : "Inner",
+    "viewType" : "custom-my-orders"
+  },
+  "urlName" : "my-orders"
+}

@@ -7,4 +7,6 @@
         <shortDescription>GoldVuee Razorpay Test Key ID</shortDescription>
         <value>rzp_test_TykeswVls3Qc3W</value>
     </labels>
+    <labels><fullName>GoldVuee_Razorpay_Host_URL</fullName><language>en_US</language><protected>false</protected><shortDescription>Razorpay popup host URL</shortDescription><value>https://goldvuee-dev-ed--c.develop.vf.force.com/apex/GVRazorpayHost</value></labels>
+    <labels><fullName>GoldVuee_Experience_Origin</fullName><language>en_US</language><protected>false</protected><shortDescription>Allowed Experience origin</shortDescription><value>https://goldvuee-dev-ed.develop.my.site.com</value></labels>
 </CustomLabels>

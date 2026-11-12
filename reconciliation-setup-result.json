@@ -1,0 +1,14 @@
+﻿{
+  "status": 0,
+  "result": {
+    "success": true,
+    "compiled": true,
+    "compileProblem": "",
+    "exceptionMessage": "",
+    "exceptionStackTrace": "",
+    "line": -1,
+    "column": -1,
+    "logs": "68.0 APEX_CODE,DEBUG;APEX_PROFILING,INFO\nExecute Anonymous: // Idempotent development-org operational setup. No customer orders or secrets are logged.\nExecute Anonymous: System.debug(LoggingLevel.INFO,'GV_OPERATIONAL_READINESS='+JSON.serialize(GVCheckoutOperations.configureReconciliation()));\n16:01:53.344 (344744419)|USER_INFO|[EXTERNAL]|005jV000003akdh|gaurav.goldvuee@gmail.com|(GMT+05:30) India Standard Time (Asia/Kolkata)|GMT+05:30\n16:01:53.344 (344761439)|EXECUTION_STARTED\n16:01:53.344 (344772379)|CODE_UNIT_STARTED|[EXTERNAL]|execute_anonymous_apex\n16:01:53.344 (578096070)|USER_DEBUG|[2]|INFO|GV_OPERATIONAL_READINESS={\"webhookSecretReady\":false,\"checkoutSecretReady\":true,\"scheduled\":true}\n16:01:53.599 (599952319)|CUMULATIVE_LIMIT_USAGE\n16:01:53.599 (599952319)|LIMIT_USAGE_FOR_NS|(default)|\n  Number of SOQL queries: 3 out of 100\n  Number of query rows: 3 out of 50000\n  Number of SOSL queries: 0 out of 20\n  Number of DML statements: 0 out of 150\n  Number of Publish Immediate DML: 0 out of 150\n  Number of DML rows: 0 out of 10000\n  Maximum CPU time: 0 out of 10000\n  Maximum heap size: 0 out of 10000000\n  Number of callouts: 0 out of 100\n  Number of Email Invocations: 0 out of 10\n  Number of future calls: 0 out of 50\n  Number of queueable jobs added to the queue: 0 out of 50\n  Number of Mobile Apex push calls: 0 out of 10\n\n16:01:53.599 (599952319)|CUMULATIVE_LIMIT_USAGE_END\n\n16:01:53.344 (600016669)|CODE_UNIT_FINISHED|execute_anonymous_apex\n16:01:53.344 (600030489)|EXECUTION_FINISHED\n"
+  },
+  "warnings": []
+}

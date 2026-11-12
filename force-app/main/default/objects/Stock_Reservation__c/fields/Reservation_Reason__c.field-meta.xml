@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Reservation_Reason__c</fullName>
+    <description>Reason for creating the reservation.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Enter the reservation reason.</inlineHelpText>
+    <label>Reservation Reason</label>
+    <length>255</length>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

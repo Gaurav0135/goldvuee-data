@@ -1,265 +1,210 @@
-
 <template>
-    <!-- =====================================================
+  <!-- =====================================================
          GOLDVUEE | PREMIUM SHOPPING CART
          ===================================================== -->
 
-    <section class="cart-page">
+  <section class="cart-page">
+    <!-- PAGE HEADING -->
+    <header class="cart-header">
+      <p class="eyebrow">THE GOLDVUEE COLLECTION</p>
+      <h1>Your Shopping Bag</h1>
+      <div class="gold-divider"></div>
+      <p class="cart-subtitle">A curated selection of timeless elegance.</p>
+    </header>
 
-        <!-- PAGE HEADING -->
-        <header class="cart-header">
-            <p class="eyebrow">THE GOLDVUEE COLLECTION</p>
-            <h1>Your Shopping Bag</h1>
-            <div class="gold-divider"></div>
-            <p class="cart-subtitle">
-                A curated selection of timeless elegance.
-            </p>
-        </header>
+    <div class="cart-container">
+      <!-- LOADING STATE -->
+      <template lwc:if={isLoading}>
+        <div class="status-message">Loading your shopping bag...</div>
+      </template>
 
-        <div class="cart-container">
+      <template lwc:else>
+        <!-- ERROR MESSAGE -->
+        <template lwc:if={errorMessage}>
+          <div class="message error-message" role="alert">{errorMessage}</div>
+        </template>
 
-            <!-- LOADING STATE -->
-            <template lwc:if={isLoading}>
-                <div class="status-message">
-                    Loading your shopping bag...
-                </div>
-            </template>
+        <!-- SUCCESS MESSAGE -->
+        <template lwc:if={successMessage}>
+          <div class="message success-message" role="status">
+            {successMessage}
+          </div>
+        </template>
 
-            <template lwc:else>
+        <!-- CART WITH ITEMS -->
+        <template lwc:if={hasItems}>
+          <div class="cart-layout">
+            <!-- LEFT: SHOPPING BAG ITEMS -->
+            <div class="cart-items-column">
+              <div class="items-heading">
+                <h2>Selected Jewellery</h2>
+                <span class="item-count"> {itemCountLabel} </span>
+              </div>
 
-                <!-- ERROR MESSAGE -->
-                <template lwc:if={errorMessage}>
-                    <div class="message error-message"
-                         role="alert">
-                        {errorMessage}
-                    </div>
-                </template>
+              <!-- REPEAT EACH CART ITEM -->
+              <template for:each={cartItems} for:item="item">
+                <article class="cart-item" key={item.id}>
+                  <!-- PRODUCT IMAGE -->
+                  <div class="item-image">
+                    <a href={item.detailsUrl} aria-label={item.name}>
+                      <img src={item.image} alt={item.name} />
+                    </a>
+                  </div>
 
-                <!-- SUCCESS MESSAGE -->
-                <template lwc:if={successMessage}>
-                    <div class="message success-message"
-                         role="status">
-                        {successMessage}
-                    </div>
-                </template>
+                  <!-- PRODUCT INFORMATION -->
+                  <div class="item-information">
+                    <p class="item-eyebrow">GOLDVUEE FINE JEWELLERY</p>
 
-                <!-- CART WITH ITEMS -->
-                <template lwc:if={hasItems}>
+                    <h3>
+                      <a href={item.detailsUrl}> {item.name} </a>
+                    </h3>
 
-                    <div class="cart-layout">
+                    <p class="unit-price">
+                      {item.formattedUnitPrice}
+                      <span>per piece</span>
+                    </p>
 
-                        <!-- LEFT: SHOPPING BAG ITEMS -->
-                        <div class="cart-items-column">
+                    <!-- QUANTITY CONTROLS -->
+                    <div class="quantity-section">
+                      <span class="quantity-label"> Quantity </span>
 
-                            <div class="items-heading">
-                                <h2>Selected Jewellery</h2>
-                                <span class="item-count">
-                                    {itemCountLabel}
-                                </span>
-                            </div>
-
-                            <!-- REPEAT EACH CART ITEM -->
-                            <template for:each={cartItems}
-                                      for:item="item">
-
-                                <article class="cart-item"
-                                         key={item.id}>
-
-                                    <!-- PRODUCT IMAGE -->
-                                    <div class="item-image">
-                                        <a href={item.detailsUrl}
-                                           aria-label={item.name}>
-                                            <img
-                                                src={item.image}
-                                                alt={item.name}
-                                            />
-                                        </a>
-                                    </div>
-
-                                    <!-- PRODUCT INFORMATION -->
-                                    <div class="item-information">
-
-                                        <p class="item-eyebrow">
-                                            GOLDVUEE FINE JEWELLERY
-                                        </p>
-
-                                        <h3>
-                                            <a href={item.detailsUrl}>
-                                                {item.name}
-                                            </a>
-                                        </h3>
-
-                                        <p class="unit-price">
-                                            {item.formattedUnitPrice}
-                                            <span>per piece</span>
-                                        </p>
-
-                                        <!-- QUANTITY CONTROLS -->
-                                        <div class="quantity-section">
-
-                                            <span class="quantity-label">
-                                                Quantity
-                                            </span>
-
-                                            <div class="quantity-control">
-
-                                                <button
-                                                    type="button"
-                                                    class="quantity-button"
-                                                    data-id={item.id}
-                                                    onclick={handleDecrease}
-                                                    disabled={controlsDisabled}
-                                                    aria-label="Decrease quantity">
-                                                    −
-                                                </button>
-
-                                                <span class="quantity-value">
-                                                    {item.quantity}
-                                                </span>
-
-                                                <button
-                                                    type="button"
-                                                    class="quantity-button"
-                                                    data-id={item.id}
-                                                    onclick={handleIncrease}
-                                                    disabled={controlsDisabled}
-                                                    aria-label="Increase quantity">
-                                                    +
-                                                </button>
-
-                                            </div>
-                                        </div>
-
-                                        <!-- REMOVE ITEM -->
-                                        <button
-                                            type="button"
-                                            class="remove-button"
-                                            data-id={item.id}
-                                            onclick={handleRemove}
-                                            disabled={controlsDisabled}>
-                                            Remove from bag
-                                        </button>
-
-                                    </div>
-
-                                    <!-- LINE TOTAL -->
-                                    <div class="item-total">
-                                        <span>Item Total</span>
-                                        <strong>
-                                            {item.formattedLineTotal}
-                                        </strong>
-                                    </div>
-
-                                </article>
-
-                            </template>
-
-                            <!-- CONTINUE SHOPPING -->
-                            <button
-                                type="button"
-                                class="continue-shopping"
-                                onclick={handleContinueShopping}>
-                                ← Continue Shopping
-                            </button>
-
-                        </div>
-
-                        <!-- RIGHT: ORDER SUMMARY -->
-                        <aside class="summary-column">
-
-                            <div class="summary-card">
-
-                                <p class="summary-eyebrow">
-                                    YOUR GOLDVUEE ORDER
-                                </p>
-
-                                <h2>Order Summary</h2>
-
-                                <div class="summary-divider"></div>
-
-                                <div class="summary-row">
-                                    <span>Items</span>
-                                    <span>{itemCount}</span>
-                                </div>
-
-                                <div class="summary-row">
-                                    <span>Subtotal</span>
-                                    <span>{formattedTotal}</span>
-                                </div>
-
-                                <div class="summary-row">
-                                    <span>Shipping</span>
-                                    <span>Calculated at checkout</span>
-                                </div>
-
-                                <div class="summary-divider"></div>
-
-                                <div class="summary-total">
-                                    <span>Subtotal</span>
-                                    <strong>{formattedTotal}</strong>
-                                </div>
-
-                                <p class="summary-note">
-                                    Taxes and delivery charges,
-                                    if applicable, will be
-                                    calculated at checkout.
-                                </p>
-
-                                <!-- CHECKOUT PLACEHOLDER -->
-                                <button
-                                    type="button"
-                                    class="checkout-button"
-                                    onclick={handleCheckout}
-                                    disabled={controlsDisabled}>
-                                    Proceed to Checkout
-                                </button>
-
-                                <p class="secure-note">
-                                    ✦ A secure GoldVuee
-                                    shopping experience
-                                </p>
-
-                            </div>
-
-                            <div class="brand-message">
-                                <span>✦</span>
-                                Crafted for timeless elegance.
-                            </div>
-
-                        </aside>
-
-                    </div>
-
-                </template>
-
-                <!-- EMPTY SHOPPING BAG -->
-                <template lwc:elseif={isEmpty}>
-
-                    <div class="empty-cart">
-
-                        <div class="empty-icon">✧</div>
-
-                        <h2>Your Shopping Bag Is Empty</h2>
-
-                        <p>
-                            Discover exceptional jewellery
-                            and find something truly timeless.
-                        </p>
-
+                      <div class="quantity-control">
                         <button
-                            type="button"
-                            class="shop-now-button"
-                            onclick={handleContinueShopping}>
-                            Explore Our Collection
+                          type="button"
+                          class="quantity-button"
+                          data-id={item.id}
+                          onclick={handleDecrease}
+                          disabled={controlsDisabled}
+                          aria-label="Decrease quantity"
+                        >
+                          −
                         </button>
 
+                        <span class="quantity-value"> {item.quantity} </span>
+
+                        <button
+                          type="button"
+                          class="quantity-button"
+                          data-id={item.id}
+                          onclick={handleIncrease}
+                          disabled={controlsDisabled}
+                          aria-label="Increase quantity"
+                        >
+                          +
+                        </button>
+                      </div>
                     </div>
 
-                </template>
+                    <!-- REMOVE ITEM -->
+                    <button
+                      type="button"
+                      class="remove-button"
+                      data-id={item.id}
+                      onclick={handleRemove}
+                      disabled={controlsDisabled}
+                    >
+                      Remove from bag
+                    </button>
+                  </div>
 
-            </template>
+                  <!-- LINE TOTAL -->
+                  <div class="item-total">
+                    <span>Item Total</span>
+                    <strong> {item.formattedLineTotal} </strong>
+                  </div>
+                </article>
+              </template>
 
-        </div>
+              <!-- CONTINUE SHOPPING -->
+              <button
+                type="button"
+                class="continue-shopping"
+                onclick={handleContinueShopping}
+              >
+                ← Continue Shopping
+              </button>
+            </div>
 
-    </section>
+            <!-- RIGHT: ORDER SUMMARY -->
+            <aside class="summary-column">
+              <div class="summary-card">
+                <p class="summary-eyebrow">YOUR GOLDVUEE ORDER</p>
+
+                <h2>Order Summary</h2>
+
+                <div class="summary-divider"></div>
+
+                <div class="summary-row">
+                  <span>Items</span>
+                  <span>{itemCount}</span>
+                </div>
+
+                <div class="summary-row">
+                  <span>Subtotal</span>
+                  <span>{formattedTotal}</span>
+                </div>
+
+                <div class="summary-row">
+                  <span>Shipping</span>
+                  <span>Calculated at checkout</span>
+                </div>
+
+                <div class="summary-divider"></div>
+
+                <div class="summary-total">
+                  <span>Subtotal</span>
+                  <strong>{formattedTotal}</strong>
+                </div>
+
+                <p class="summary-note">
+                  Taxes and delivery charges, if applicable, will be calculated
+                  at checkout.
+                </p>
+
+                <!-- CHECKOUT PLACEHOLDER -->
+                <button
+                  type="button"
+                  class="checkout-button"
+                  onclick={handleCheckout}
+                  disabled={controlsDisabled}
+                >
+                  Proceed to Checkout
+                </button>
+
+                <p class="secure-note">
+                  ✦ A secure GoldVuee shopping experience
+                </p>
+              </div>
+
+              <div class="brand-message">
+                <span>✦</span>
+                Crafted for timeless elegance.
+              </div>
+            </aside>
+          </div>
+        </template>
+
+        <!-- EMPTY SHOPPING BAG -->
+        <template lwc:elseif={isEmpty}>
+          <div class="empty-cart">
+            <div class="empty-icon">✧</div>
+
+            <h2>Your Shopping Bag Is Empty</h2>
+
+            <p>
+              Discover exceptional jewellery and find something truly timeless.
+            </p>
+
+            <button
+              type="button"
+              class="shop-now-button"
+              onclick={handleContinueShopping}
+            >
+              Explore Our Collection
+            </button>
+          </div>
+        </template>
+      </template>
+    </div>
+  </section>
 </template>

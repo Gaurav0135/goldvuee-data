@@ -1,0 +1,1 @@
+export default '/goldvueevforcesite/s';

@@ -1,85 +1,66 @@
-
 <template>
-    <header class="gv-header">
-        <div class="gv-container">
+  <header class="gv-header">
+    <div class="gv-container">
+      <!-- GoldVuee Logo -->
+      <a href={homeUrl} class="gv-brand" aria-label="GoldVuee Home">
+        <img src={logoUrl} alt="GoldVuee Luxury Jewellery" class="gv-logo" />
+      </a>
 
-            <!-- GoldVuee Logo -->
-            <a href={homeUrl}
-               class="gv-brand"
-               aria-label="GoldVuee Home">
-                <img
-                    src={logoUrl}
-                    alt="GoldVuee Luxury Jewellery"
-                    class="gv-logo"
-                />
-            </a>
+      <!-- Desktop Navigation -->
+      <nav class="gv-nav" aria-label="Main navigation">
+        <a href={homeUrl}>Home</a>
+        <a href={collectionsUrl}>Collections</a>
+        <a href={newArrivalsUrl}>New Arrivals</a>
+        <a href={storyUrl}>Our Story</a>
+        <a href={contactUrl}>Contact</a>
+      </nav>
 
-            <!-- Desktop Navigation -->
-            <nav class="gv-nav"
-                 aria-label="Main navigation">
-                <a href={homeUrl}>Home</a>
-                <a href={collectionsUrl}>Collections</a>
-                <a href={newArrivalsUrl}>New Arrivals</a>
-                <a href={storyUrl}>Our Story</a>
-                <a href={contactUrl}>Contact</a>
-            </nav>
+      <!-- Customer Actions -->
+      <div class="gv-actions">
+        <template lwc:if={isLoggedIn}>
+          <a href={cartUrl} class="gv-action" title="My Cart">
+            <lightning-icon
+              icon-name="utility:cart"
+              size="small"
+              alternative-text="Cart"
+            >
+            </lightning-icon>
+            <span class="gv-action-label"> Cart </span>
+          </a>
 
-            <!-- Customer Actions -->
-            <div class="gv-actions">
-
-                <template lwc:if={isLoggedIn}>
-                    <a href={cartUrl}
-                       class="gv-action"
-                       title="My Cart">
-                        <lightning-icon
-                            icon-name="utility:cart"
-                            size="small"
-                            alternative-text="Cart">
-                        </lightning-icon>
-                        <span class="gv-action-label">
-                            Cart
-                        </span>
-                    </a>
-
-                    <a href={accountUrl}
-                       class="gv-account">
-                        My Account
-                    </a>
-                </template>
-
-                <template lwc:else>
-                    <a href={loginUrl}
-                       class="gv-login">
-                        Login
-                    </a>
-                </template>
-
-                <!-- Mobile Menu -->
-                <button
-                    class="gv-menu-button"
-                    onclick={toggleMobileMenu}
-                    aria-label="Toggle navigation"
-                    aria-expanded={isMobileMenuOpen}>
-                    <lightning-icon
-                        icon-name={mobileMenuIcon}
-                        size="small"
-                        alternative-text="Menu">
-                    </lightning-icon>
-                </button>
-            </div>
-        </div>
-
-        <!-- Mobile Navigation -->
-        <template lwc:if={isMobileMenuOpen}>
-            <nav class="gv-mobile-nav"
-                 aria-label="Mobile navigation">
-                <a href={homeUrl}>Home</a>
-                <a href={collectionsUrl}>Collections</a>
-                <a href={newArrivalsUrl}>New Arrivals</a>
-                <a href={storyUrl}>Our Story</a>
-                <a href={contactUrl}>Contact</a>
-            </nav>
+          <a href={accountUrl} class="gv-account"> My Account </a>
         </template>
 
-    </header>
+        <template lwc:else>
+          <a href={loginUrl} class="gv-login"> Login </a>
+        </template>
+
+        <!-- Mobile Menu -->
+        <button
+          class="gv-menu-button"
+          onclick={toggleMobileMenu}
+          aria-label="Toggle navigation"
+          aria-expanded={isMobileMenuOpen}
+        >
+          <lightning-icon
+            icon-name={mobileMenuIcon}
+            size="small"
+            alternative-text="Menu"
+          >
+          </lightning-icon>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <template lwc:if={isMobileMenuOpen}>
+      <nav class="gv-mobile-nav" aria-label="Mobile navigation">
+        <a href={homeUrl}>Home</a>
+        <a href={collectionsUrl}>Collections</a>
+        <a href={newArrivalsUrl}>New Arrivals</a>
+        <a href={storyUrl}>Our Story</a>
+        <a href={contactUrl}>Contact</a>
+      </nav>
+    </template>
+  </header>
 </template>

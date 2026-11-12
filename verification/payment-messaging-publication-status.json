@@ -1,0 +1,17 @@
+﻿{
+  "status": 0,
+  "result": {
+    "records": [
+      {
+        "attributes": {
+          "type": "BackgroundOperation",
+          "url": "/services/data/v68.0/sobjects/BackgroundOperation/08PjV00000GvGbhUAF"
+        },
+        "Status": "Complete"
+      }
+    ],
+    "totalSize": 1,
+    "done": true
+  },
+  "warnings": []
+}

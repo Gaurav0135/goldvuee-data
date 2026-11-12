@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Category__c</fullName>
+    <deleteConstraint>Restrict</deleteConstraint>
+    <description>Establishes a lookup relationship between Jewellery Product and Jewellery Category, allowing each jewellery product to be associated with a category for product organization, filtering, and display on the GoldVuee e-commerce website.</description>
+    <inlineHelpText>Select the jewellery category to which this product belongs, such as Rings, Necklaces, Earrings, Bangles, or Bracelets.</inlineHelpText>
+    <label>Category</label>
+    <referenceTo>Jewellery_Category__c</referenceTo>
+    <relationshipLabel>Jewellery Products</relationshipLabel>
+    <relationshipName>Jewellery_Products</relationshipName>
+    <required>true</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

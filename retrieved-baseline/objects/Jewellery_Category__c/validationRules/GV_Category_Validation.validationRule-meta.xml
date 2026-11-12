@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GV_Category_Validation</fullName>
+    <active>true</active>
+    <description>Display Order cannot be negative</description>
+    <errorConditionFormula>AND(
+    NOT(ISBLANK(Display_Order__c)),
+    Display_Order__c &lt; 0
+)</errorConditionFormula>
+    <errorDisplayField>Display_Order__c</errorDisplayField>
+    <errorMessage>Category Display Order cannot be negative.</errorMessage>
+</ValidationRule>

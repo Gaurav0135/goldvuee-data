@@ -1,52 +1,43 @@
-import { createElement } from '@lwc/engine-dom';
-import GoldvueeHeader from 'c/goldvueeHeader';
-
-describe('c-goldvuee-header', () => {
-    afterEach(() => {
-        // The jsdom instance is shared across test cases in a single file so reset the DOM
-        while (document.body.firstChild) {
-            document.body.removeChild(document.body.firstChild);
-        }
-    });
-
-    it('renders the compact brand, navigation and customer actions', () => {
-        const element = createElement('c-goldvuee-header', {
-            is: GoldvueeHeader
-        });
-
-        document.body.appendChild(element);
-
-        expect(element.shadowRoot.querySelector('.gv-logo-name').textContent).toBe('GOLDVUEE');
-        expect(element.shadowRoot.querySelectorAll('.gv-desktop-nav a')).toHaveLength(4);
-        expect(element.shadowRoot.querySelector('.gv-cart')).not.toBeNull();
-        expect(element.shadowRoot.querySelector('.gv-account-button').textContent).toContain('My Account');
-        expect(element.shadowRoot.querySelector('.gv-count').textContent).toBe('0');
-    });
-
-    it('opens collections and closes menus with Escape', () => {
-        const element = createElement('c-goldvuee-header', {
-            is: GoldvueeHeader
-        });
-        document.body.appendChild(element);
-
-        element.shadowRoot.querySelector('.gv-nav-button').click();
-        expect(element.shadowRoot.querySelector('.gv-dropdown-menu')).not.toBeNull();
-
-        document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
-        return Promise.resolve().then(() => {
-            expect(element.shadowRoot.querySelector('.gv-dropdown-menu')).toBeNull();
-        });
-    });
-
-    it('opens the account menu for guest actions', () => {
-        const element = createElement('c-goldvuee-header', {
-            is: GoldvueeHeader
-        });
-        document.body.appendChild(element);
-
-        element.shadowRoot.querySelector('.gv-account-button').click();
-        return Promise.resolve().then(() => {
-            expect(element.shadowRoot.querySelector('.gv-account-menu').textContent).toContain('Sign In');
-        });
-    });
+import { createElement } from "lwc";
+import Component from "c/goldvueeHeader";
+jest.mock("@salesforce/user/isGuest", () => ({ default: true }), {
+  virtual: true
+});
+const flush = async () => {
+  await Promise.resolve();
+  await Promise.resolve();
+  await Promise.resolve();
+  await Promise.resolve();
+  await Promise.resolve();
+  await Promise.resolve();
+  await Promise.resolve();
+  await Promise.resolve();
+};
+afterEach(() => {
+  while (document.body.firstChild)
+    document.body.removeChild(document.body.firstChild);
+  jest.clearAllMocks();
+});
+const mount = () => {
+  const el = createElement("c-goldvuee-header", { is: Component });
+  document.body.appendChild(el);
+  return el;
+};
+it("provides site-relative navigation and guest login", () => {
+  const el = mount();
+  expect(el.shadowRoot.querySelector(".gv-logo").alt).toContain("GoldVuee");
+  expect(
+    el.shadowRoot.querySelector(".gv-login").getAttribute("href")
+  ).toContain("/goldvueevforcesite/login");
+  expect(el.shadowRoot.querySelectorAll(".gv-nav a")).toHaveLength(5);
+});
+it("opens and closes mobile navigation", async () => {
+  const el = mount();
+  const button = el.shadowRoot.querySelector(".gv-menu-button");
+  button.click();
+  await flush();
+  expect(el.shadowRoot.querySelector(".gv-mobile-nav")).not.toBeNull();
+  button.click();
+  await flush();
+  expect(el.shadowRoot.querySelector(".gv-mobile-nav")).toBeNull();
 });

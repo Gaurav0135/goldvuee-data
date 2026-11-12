@@ -1,0 +1,12 @@
+{
+  "type" : "sfdc_cms__route",
+  "title" : "My Account",
+  "contentBody" : {
+    "activeViewId" : "My_Account",
+    "configurationTags" : [ ],
+    "pageAccess" : "RequiresLogin",
+    "routeType" : "custom-my-account",
+    "urlPrefix" : "my-account"
+  },
+  "urlName" : "my-account"
+}

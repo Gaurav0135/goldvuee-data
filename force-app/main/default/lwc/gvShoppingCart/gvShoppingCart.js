@@ -1,9 +1,8 @@
-
-import { LightningElement } from 'lwc';
-import getCart from '@salesforce/apex/GVCartController.getCart';
-import updateCartItem from '@salesforce/apex/GVCartController.updateCartItem';
-import removeCartItem from '@salesforce/apex/GVCartController.removeCartItem';
-import communityBasePath from '@salesforce/community/basePath';
+import { LightningElement } from "lwc";
+import getCart from "@salesforce/apex/GVCartController.getCart";
+import updateCartItem from "@salesforce/apex/GVCartController.updateCartItem";
+import removeCartItem from "@salesforce/apex/GVCartController.removeCartItem";
+import communityBasePath from "@salesforce/community/basePath";
 
 // ============================================================
 // GOLDVUEE | SHOPPING CART
@@ -14,240 +13,237 @@ import communityBasePath from '@salesforce/community/basePath';
 // ============================================================
 
 const FALLBACK_IMAGE =
-    'https://placehold.co/800x800/f8f3ee/6b1834?text=GoldVuee';
+  "https://placehold.co/800x800/f8f3ee/6b1834?text=GoldVuee";
 
 export default class GvShoppingCart extends LightningElement {
+  cartId = null;
+  cartItems = [];
+  totalAmount = 0;
+  itemCount = 0;
 
-    cartId = null;
-    cartItems = [];
-    totalAmount = 0;
-    itemCount = 0;
+  isLoading = true;
+  isProcessing = false;
+  errorMessage = "";
+  successMessage = "";
 
-    isLoading = true;
-    isProcessing = false;
-    errorMessage = '';
-    successMessage = '';
+  currencyFormatter = new Intl.NumberFormat("en-IN", {
+    style: "currency",
+    currency: "INR",
+    maximumFractionDigits: 2
+  });
 
-    currencyFormatter = new Intl.NumberFormat('en-IN', {
-        style: 'currency',
-        currency: 'INR',
-        maximumFractionDigits: 2
+  // ========================================================
+  // INITIAL LOAD
+  // ========================================================
+
+  connectedCallback() {
+    this.loadCart();
+  }
+
+  // ========================================================
+  // LOAD CUSTOMER CART
+  // ========================================================
+
+  async loadCart() {
+    this.isLoading = true;
+    this.errorMessage = "";
+
+    try {
+      const response = await getCart();
+      this.applyCartResponse(response);
+    } catch (error) {
+      this.errorMessage = this.getErrorMessage(error);
+      console.error("GoldVuee cart loading error:", error);
+    } finally {
+      this.isLoading = false;
+    }
+  }
+
+  // ========================================================
+  // CONVERT APEX RESPONSE INTO DISPLAY DATA
+  // ========================================================
+
+  applyCartResponse(response) {
+    this.cartId = response?.cartId || null;
+    this.totalAmount = Number(response?.totalAmount || 0);
+    this.itemCount = Number(response?.itemCount || 0);
+
+    this.cartItems = (response?.items || []).map((item) => {
+      const product = item.Jewellery_Product__r || {};
+      const quantity = Number(item.Quantity__c || 0);
+      const unitPrice = Number(item.Unit_Price__c || 0);
+      const lineTotal = Number(item.Line_Total__c || 0);
+
+      return {
+        id: item.Id,
+        productId: item.Jewellery_Product__c,
+        name: product.Name || "Jewellery Product",
+        image: product.Main_Image_URL__c || FALLBACK_IMAGE,
+        quantity,
+        unitPrice,
+        lineTotal,
+        formattedUnitPrice: this.formatCurrency(unitPrice),
+        formattedLineTotal: this.formatCurrency(lineTotal),
+        detailsUrl:
+          `${communityBasePath}/product-details?c__productId=` +
+          encodeURIComponent(item.Jewellery_Product__c),
+        decreaseDisabled: quantity <= 1
+      };
     });
+  }
 
-    // ========================================================
-    // INITIAL LOAD
-    // ========================================================
+  // ========================================================
+  // UPDATE QUANTITY
+  // ========================================================
 
-    connectedCallback() {
-        this.loadCart();
+  async handleIncrease(event) {
+    const itemId = event.currentTarget.dataset.id;
+    const item = this.cartItems.find((row) => row.id === itemId);
+
+    if (!item || this.isProcessing) {
+      return;
     }
 
-    // ========================================================
-    // LOAD CUSTOMER CART
-    // ========================================================
+    await this.changeQuantity(itemId, item.quantity + 1);
+  }
 
-    async loadCart() {
-        this.isLoading = true;
-        this.errorMessage = '';
+  async handleDecrease(event) {
+    const itemId = event.currentTarget.dataset.id;
+    const item = this.cartItems.find((row) => row.id === itemId);
 
-        try {
-            const response = await getCart();
-            this.applyCartResponse(response);
-        } catch (error) {
-            this.errorMessage = this.getErrorMessage(error);
-            console.error('GoldVuee cart loading error:', error);
-        } finally {
-            this.isLoading = false;
-        }
+    if (!item || this.isProcessing || item.quantity <= 1) {
+      return;
     }
 
-    // ========================================================
-    // CONVERT APEX RESPONSE INTO DISPLAY DATA
-    // ========================================================
+    await this.changeQuantity(itemId, item.quantity - 1);
+  }
 
-    applyCartResponse(response) {
-        this.cartId = response?.cartId || null;
-        this.totalAmount = Number(response?.totalAmount || 0);
-        this.itemCount = Number(response?.itemCount || 0);
+  async changeQuantity(itemId, quantity) {
+    this.isProcessing = true;
+    this.errorMessage = "";
+    this.successMessage = "";
 
-        this.cartItems = (response?.items || []).map(item => {
-            const product = item.Jewellery_Product__r || {};
-            const quantity = Number(item.Quantity__c || 0);
-            const unitPrice = Number(item.Unit_Price__c || 0);
-            const lineTotal = Number(item.Line_Total__c || 0);
+    try {
+      const response = await updateCartItem({
+        cartItemId: itemId,
+        quantity
+      });
 
-            return {
-                id: item.Id,
-                productId: item.Jewellery_Product__c,
-                name: product.Name || 'Jewellery Product',
-                image: product.Main_Image_URL__c || FALLBACK_IMAGE,
-                quantity,
-                unitPrice,
-                lineTotal,
-                formattedUnitPrice: this.formatCurrency(unitPrice),
-                formattedLineTotal: this.formatCurrency(lineTotal),
-                detailsUrl:
-                    '/goldvuee/product-details?c__productId=' +
-                    encodeURIComponent(item.Jewellery_Product__c),
-                decreaseDisabled: quantity <= 1
-            };
-        });
+      this.applyCartResponse(response);
+      this.successMessage = "Shopping bag updated successfully.";
+    } catch (error) {
+      this.errorMessage = this.getErrorMessage(error);
+      console.error("GoldVuee quantity update error:", error);
+    } finally {
+      this.isProcessing = false;
+    }
+  }
+
+  // ========================================================
+  // REMOVE CART ITEM
+  // ========================================================
+
+  async handleRemove(event) {
+    const itemId = event.currentTarget.dataset.id;
+
+    if (!itemId || this.isProcessing) {
+      return;
     }
 
-    // ========================================================
-    // UPDATE QUANTITY
-    // ========================================================
+    this.isProcessing = true;
+    this.errorMessage = "";
+    this.successMessage = "";
 
-    async handleIncrease(event) {
-        const itemId = event.currentTarget.dataset.id;
-        const item = this.cartItems.find(row => row.id === itemId);
+    try {
+      const response = await removeCartItem({
+        cartItemId: itemId
+      });
 
-        if (!item || this.isProcessing) {
-            return;
-        }
+      this.applyCartResponse(response);
+      this.successMessage = "Jewellery removed from your bag.";
+    } catch (error) {
+      this.errorMessage = this.getErrorMessage(error);
+      console.error("GoldVuee remove item error:", error);
+    } finally {
+      this.isProcessing = false;
+    }
+  }
 
-        await this.changeQuantity(itemId, item.quantity + 1);
+  // ========================================================
+  // NAVIGATION
+  // ========================================================
+
+  handleContinueShopping() {
+    window.location.assign(`${communityBasePath}/collections`);
+  }
+
+  // ========================================================
+  // CHECKOUT NAVIGATION — CONNECTED
+  // ========================================================
+
+  handleCheckout() {
+    this.errorMessage = "";
+    this.successMessage = "";
+
+    // Prevent navigation while cart is being updated.
+    if (this.isProcessing || this.isLoading) {
+      return;
     }
 
-    async handleDecrease(event) {
-        const itemId = event.currentTarget.dataset.id;
-        const item = this.cartItems.find(row => row.id === itemId);
-
-        if (!item || this.isProcessing || item.quantity <= 1) {
-            return;
-        }
-
-        await this.changeQuantity(itemId, item.quantity - 1);
+    // Do not allow checkout with an empty cart.
+    if (!this.cartId || !this.hasItems) {
+      this.errorMessage = "Your shopping bag is empty.";
+      return;
     }
 
-    async changeQuantity(itemId, quantity) {
-        this.isProcessing = true;
-        this.errorMessage = '';
-        this.successMessage = '';
+    // Navigate to the GoldVuee Experience Cloud
+    // Checkout page.
+    window.location.assign(`${communityBasePath}/checkout`);
+  }
 
-        try {
-            const response = await updateCartItem({
-                cartItemId: itemId,
-                quantity
-            });
+  // ========================================================
+  // DISPLAY HELPERS
+  // ========================================================
 
-            this.applyCartResponse(response);
-            this.successMessage = 'Shopping bag updated successfully.';
-        } catch (error) {
-            this.errorMessage = this.getErrorMessage(error);
-            console.error('GoldVuee quantity update error:', error);
-        } finally {
-            this.isProcessing = false;
-        }
-    }
+  get hasItems() {
+    return this.cartItems.length > 0;
+  }
 
-    // ========================================================
-    // REMOVE CART ITEM
-    // ========================================================
+  get isEmpty() {
+    return !this.isLoading && !this.hasItems;
+  }
 
-    async handleRemove(event) {
-        const itemId = event.currentTarget.dataset.id;
+  get formattedTotal() {
+    return this.formatCurrency(this.totalAmount);
+  }
 
-        if (!itemId || this.isProcessing) {
-            return;
-        }
+  get itemCountLabel() {
+    return this.itemCount === 1
+      ? "1 exquisite piece"
+      : `${this.itemCount} exquisite pieces`;
+  }
 
-        this.isProcessing = true;
-        this.errorMessage = '';
-        this.successMessage = '';
+  get controlsDisabled() {
+    return this.isProcessing;
+  }
 
-        try {
-            const response = await removeCartItem({
-                cartItemId: itemId
-            });
+  // ========================================================
+  // CURRENCY FORMATTING
+  // ========================================================
 
-            this.applyCartResponse(response);
-            this.successMessage = 'Jewellery removed from your bag.';
-        } catch (error) {
-            this.errorMessage = this.getErrorMessage(error);
-            console.error('GoldVuee remove item error:', error);
-        } finally {
-            this.isProcessing = false;
-        }
-    }
+  formatCurrency(value) {
+    return this.currencyFormatter.format(Number(value || 0));
+  }
 
-    // ========================================================
-    // NAVIGATION
-    // ========================================================
+  // ========================================================
+  // ERROR HANDLING
+  // ========================================================
 
-    handleContinueShopping() {
-        window.location.assign('/goldvuee/collections');
-    }
-
-    // ========================================================
-    // CHECKOUT NAVIGATION — CONNECTED
-    // ========================================================
-
-    handleCheckout() {
-        this.errorMessage = '';
-        this.successMessage = '';
-
-        // Prevent navigation while cart is being updated.
-        if (this.isProcessing || this.isLoading) {
-            return;
-        }
-
-        // Do not allow checkout with an empty cart.
-        if (!this.cartId || !this.hasItems) {
-            this.errorMessage = 'Your shopping bag is empty.';
-            return;
-        }
-
-        // Navigate to the GoldVuee Experience Cloud
-        // Checkout page.
-        window.location.assign(
-            `${communityBasePath}/checkout`
-        );
-    }
-
-    // ========================================================
-    // DISPLAY HELPERS
-    // ========================================================
-
-    get hasItems() {
-        return this.cartItems.length > 0;
-    }
-
-    get isEmpty() {
-        return !this.isLoading && !this.hasItems;
-    }
-
-    get formattedTotal() {
-        return this.formatCurrency(this.totalAmount);
-    }
-
-    get itemCountLabel() {
-        return this.itemCount === 1
-            ? '1 exquisite piece'
-            : `${this.itemCount} exquisite pieces`;
-    }
-
-    get controlsDisabled() {
-        return this.isProcessing;
-    }
-
-    // ========================================================
-    // CURRENCY FORMATTING
-    // ========================================================
-
-    formatCurrency(value) {
-        return this.currencyFormatter.format(Number(value || 0));
-    }
-
-    // ========================================================
-    // ERROR HANDLING
-    // ========================================================
-
-    getErrorMessage(error) {
-        return (
-            error?.body?.message ||
-            error?.message ||
-            'Something went wrong. Please try again.'
-        );
-    }
+  getErrorMessage(error) {
+    return (
+      error?.body?.message ||
+      error?.message ||
+      "Something went wrong. Please try again."
+    );
+  }
 }

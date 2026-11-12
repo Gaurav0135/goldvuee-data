@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Stone_Type__c</fullName>
+    <description>Identifies the gemstone used in the jewellery product.</description>
+    <inlineHelpText>Select the main gemstone, if any.</inlineHelpText>
+    <label>Stone Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Sapphire</fullName>
+                <default>false</default>
+                <label>Sapphire</label>
+            </value>
+            <value>
+                <fullName>Emerald</fullName>
+                <default>false</default>
+                <label>Emerald</label>
+            </value>
+            <value>
+                <fullName>Diamond</fullName>
+                <default>false</default>
+                <label>Diamond</label>
+            </value>
+            <value>
+                <fullName>Ruby</fullName>
+                <default>false</default>
+                <label>Ruby</label>
+            </value>
+            <value>
+                <fullName>Pearl</fullName>
+                <default>false</default>
+                <label>Pearl</label>
+            </value>
+            <value>
+                <fullName>None</fullName>
+                <default>false</default>
+                <label>None</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

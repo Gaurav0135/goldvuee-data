@@ -1,0 +1,32 @@
+﻿{
+  "status": 0,
+  "result": [
+    {
+      "createdById": "005jV000003akdhQAA",
+      "createdByName": "Gaurav Patel",
+      "createdDate": "2026-11-03T12:57:50.000Z",
+      "fileName": "digitalExperiences/site/GoldVuee1.digitalExperience",
+      "fullName": "site/GoldVuee1",
+      "id": "0jdjV0000014Jd0QAE",
+      "lastModifiedById": "005jV000003akdhQAA",
+      "lastModifiedByName": "Gaurav Patel",
+      "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+      "manageableState": "unmanaged",
+      "type": "DigitalExperienceBundle"
+    },
+    {
+      "createdById": "005jV000003I46gQAC",
+      "createdByName": "Automated Process",
+      "createdDate": "2026-10-27T02:38:21.000Z",
+      "fileName": "digitalExperiences/enablement/sfdcEnablement_EnablementWorkspace.digitalExperience",
+      "fullName": "enablement/sfdcEnablement_EnablementWorkspace",
+      "id": "0jdjV000000z9j7QAA",
+      "lastModifiedById": "005jV000003I46gQAC",
+      "lastModifiedByName": "Automated Process",
+      "lastModifiedDate": "2026-10-27T02:38:21.000Z",
+      "manageableState": "unmanaged",
+      "type": "DigitalExperienceBundle"
+    }
+  ],
+  "warnings": []
+}

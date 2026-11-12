@@ -1,0 +1,2526 @@
+﻿{
+  "status": 0,
+  "result": {
+    "done": true,
+    "fileProperties": [
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:48:43.000Z",
+        "fileName": "unpackaged/pages/ForgotPasswordConfirm.page",
+        "fullName": "ForgotPasswordConfirm",
+        "id": "066jV000001gqozQAA",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:49:37.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexPage"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:48:43.000Z",
+        "fileName": "unpackaged/pages/SiteLogin.page",
+        "fullName": "SiteLogin",
+        "id": "066jV000001gqoyQAA",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:49:37.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexPage"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:48:43.000Z",
+        "fileName": "unpackaged/pages/ForgotPassword.page",
+        "fullName": "ForgotPassword",
+        "id": "066jV000001gqoxQAA",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:49:37.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexPage"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-11T13:36:33.000Z",
+        "fileName": "unpackaged/pages/GVRazorpayPopupDemo.page",
+        "fullName": "GVRazorpayPopupDemo",
+        "id": "066jV000001iu5xQAA",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-11T13:46:00.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexPage"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:48:43.000Z",
+        "fileName": "unpackaged/pages/ChangePassword.page",
+        "fullName": "ChangePassword",
+        "id": "066jV000001gqowQAA",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:49:56.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexPage"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:48:42.000Z",
+        "fileName": "unpackaged/pages/SiteRegister.page",
+        "fullName": "SiteRegister",
+        "id": "066jV000001gqovQAA",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:49:37.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexPage"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-11T13:01:38.000Z",
+        "fileName": "unpackaged/pages/GVRazorpayHost.page",
+        "fullName": "GVRazorpayHost",
+        "id": "066jV000001itzVQAQ",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-11T13:46:00.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexPage"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:48:45.000Z",
+        "fileName": "unpackaged/pages/CommunitiesLogin.page",
+        "fullName": "CommunitiesLogin",
+        "id": "066jV000001gqpDQAQ",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:48:46.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexPage"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:48:45.000Z",
+        "fileName": "unpackaged/pages/CommunitiesTemplate.page",
+        "fullName": "CommunitiesTemplate",
+        "id": "066jV000001gqpCQAQ",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:48:45.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexPage"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:48:45.000Z",
+        "fileName": "unpackaged/pages/AnswersHome.page",
+        "fullName": "AnswersHome",
+        "id": "066jV000001gqpBQAQ",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:48:45.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexPage"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:48:45.000Z",
+        "fileName": "unpackaged/pages/IdeasHome.page",
+        "fullName": "IdeasHome",
+        "id": "066jV000001gqpAQAQ",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:48:45.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexPage"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:48:45.000Z",
+        "fileName": "unpackaged/pages/CommunitiesSelfRegConfirm.page",
+        "fullName": "CommunitiesSelfRegConfirm",
+        "id": "066jV000001gqpGQAQ",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:49:37.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexPage"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:48:45.000Z",
+        "fileName": "unpackaged/pages/CommunitiesSelfReg.page",
+        "fullName": "CommunitiesSelfReg",
+        "id": "066jV000001gqpFQAQ",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:48:46.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexPage"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:48:45.000Z",
+        "fileName": "unpackaged/pages/CommunitiesLanding.page",
+        "fullName": "CommunitiesLanding",
+        "id": "066jV000001gqpEQAQ",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:48:46.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexPage"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:48:45.000Z",
+        "fileName": "unpackaged/pages/UnderConstruction.page",
+        "fullName": "UnderConstruction",
+        "id": "066jV000001gqp9QAA",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:48:45.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexPage"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:48:45.000Z",
+        "fileName": "unpackaged/pages/FileNotFound.page",
+        "fullName": "FileNotFound",
+        "id": "066jV000001gqp4QAA",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:49:37.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexPage"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:48:44.000Z",
+        "fileName": "unpackaged/pages/SiteTemplate.page",
+        "fullName": "SiteTemplate",
+        "id": "066jV000001gqp3QAA",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:49:56.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexPage"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:48:44.000Z",
+        "fileName": "unpackaged/pages/StdExceptionTemplate.page",
+        "fullName": "StdExceptionTemplate",
+        "id": "066jV000001gqp2QAA",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:49:37.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexPage"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:48:43.000Z",
+        "fileName": "unpackaged/pages/MyProfilePage.page",
+        "fullName": "MyProfilePage",
+        "id": "066jV000001gqp1QAA",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:48:44.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexPage"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:48:45.000Z",
+        "fileName": "unpackaged/pages/Unauthorized.page",
+        "fullName": "Unauthorized",
+        "id": "066jV000001gqp8QAA",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:49:37.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexPage"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:48:45.000Z",
+        "fileName": "unpackaged/pages/InMaintenance.page",
+        "fullName": "InMaintenance",
+        "id": "066jV000001gqp7QAA",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:48:45.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexPage"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:48:45.000Z",
+        "fileName": "unpackaged/pages/Exception.page",
+        "fullName": "Exception",
+        "id": "066jV000001gqp6QAA",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:49:37.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexPage"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:48:45.000Z",
+        "fileName": "unpackaged/pages/BandwidthExceeded.page",
+        "fullName": "BandwidthExceeded",
+        "id": "066jV000001gqp5QAA",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:48:45.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexPage"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:48:43.000Z",
+        "fileName": "unpackaged/pages/SiteRegisterConfirm.page",
+        "fullName": "SiteRegisterConfirm",
+        "id": "066jV000001gqp0QAA",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:49:37.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexPage"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:55:14.000Z",
+        "fileName": "unpackaged/pages/MicrobatchSelfReg.page",
+        "fullName": "MicrobatchSelfReg",
+        "id": "066jV000001h4pNQAQ",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:55:14.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexPage"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-04T09:36:13.000Z",
+        "fileName": "unpackaged/objects/Cart_Item__c.object",
+        "fullName": "Cart_Item__c",
+        "id": "01IjV000001ne8bUAA",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-04T09:36:13.000Z",
+        "manageableState": "unmanaged",
+        "type": "CustomObject"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-04T08:37:23.000Z",
+        "fileName": "unpackaged/objects/Shopping_Cart__c.object",
+        "fullName": "Shopping_Cart__c",
+        "id": "01IjV000001ncWbUAI",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-04T08:37:23.000Z",
+        "manageableState": "unmanaged",
+        "type": "CustomObject"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-04T11:28:52.000Z",
+        "fileName": "unpackaged/objects/Payment__c.object",
+        "fullName": "Payment__c",
+        "id": "01IjV000001ngwnUAA",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-04T11:30:12.000Z",
+        "manageableState": "unmanaged",
+        "type": "CustomObject"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-04T10:34:25.000Z",
+        "fileName": "unpackaged/objects/Jewellery_Order_Item__c.object",
+        "fullName": "Jewellery_Order_Item__c",
+        "id": "01IjV000001nfmDUAQ",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-04T10:34:25.000Z",
+        "manageableState": "unmanaged",
+        "type": "CustomObject"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-04T10:02:27.000Z",
+        "fileName": "unpackaged/objects/Jewellery_Order__c.object",
+        "fullName": "Jewellery_Order__c",
+        "id": "01IjV000001nfCjUAI",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-04T10:02:27.000Z",
+        "manageableState": "unmanaged",
+        "type": "CustomObject"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-04T06:38:33.000Z",
+        "fileName": "unpackaged/objects/Jewellery_Product__c.object",
+        "fullName": "Jewellery_Product__c",
+        "id": "01IjV000001nYO9UAM",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-04T06:38:33.000Z",
+        "manageableState": "unmanaged",
+        "type": "CustomObject"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-11T10:59:26.000Z",
+        "fileName": "unpackaged/objects/GoldVuee_Payment_Verification__e.object",
+        "fullName": "GoldVuee_Payment_Verification__e",
+        "id": "01IjV000001p4FVUAY",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-11T11:00:49.000Z",
+        "manageableState": "unmanaged",
+        "type": "CustomObject"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-04T08:01:36.000Z",
+        "fileName": "unpackaged/objects/Jewellery_Category__c.object",
+        "fullName": "Jewellery_Category__c",
+        "id": "01IjV000001nbInUAI",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-04T08:01:36.000Z",
+        "manageableState": "unmanaged",
+        "type": "CustomObject"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:48:43.000Z",
+        "fileName": "unpackaged/classes/SiteRegisterController.cls",
+        "fullName": "SiteRegisterController",
+        "id": "01pjV0000051cqtQAA",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:48:43.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexClass"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:48:43.000Z",
+        "fileName": "unpackaged/classes/SiteLoginControllerTest.cls",
+        "fullName": "SiteLoginControllerTest",
+        "id": "01pjV0000051cqsQAA",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:48:43.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexClass"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:48:43.000Z",
+        "fileName": "unpackaged/classes/ChangePasswordController.cls",
+        "fullName": "ChangePasswordController",
+        "id": "01pjV0000051cqvQAA",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:48:43.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexClass"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:48:43.000Z",
+        "fileName": "unpackaged/classes/SiteRegisterControllerTest.cls",
+        "fullName": "SiteRegisterControllerTest",
+        "id": "01pjV0000051cquQAA",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:48:43.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexClass"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-12T08:12:22.000Z",
+        "fileName": "unpackaged/classes/GVAbandonedCheckoutService.cls",
+        "fullName": "GVAbandonedCheckoutService",
+        "id": "01pjV000005CLFVQA4",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-12T08:14:15.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexClass"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:48:43.000Z",
+        "fileName": "unpackaged/classes/SiteLoginController.cls",
+        "fullName": "SiteLoginController",
+        "id": "01pjV0000051cqrQAA",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:48:43.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexClass"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-11T06:29:33.000Z",
+        "fileName": "unpackaged/classes/GVPaymentController.cls",
+        "fullName": "GVPaymentController",
+        "id": "01pjV000005BYzZQAW",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-12T05:49:17.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexClass"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-10T18:00:04.000Z",
+        "fileName": "unpackaged/classes/GVNewArrivalsController.cls",
+        "fullName": "GVNewArrivalsController",
+        "id": "01pjV000005BMITQA4",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-10T18:27:11.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexClass"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:48:43.000Z",
+        "fileName": "unpackaged/classes/ForgotPasswordController.cls",
+        "fullName": "ForgotPasswordController",
+        "id": "01pjV0000051cqxQAA",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:48:43.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexClass"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:48:43.000Z",
+        "fileName": "unpackaged/classes/ChangePasswordControllerTest.cls",
+        "fullName": "ChangePasswordControllerTest",
+        "id": "01pjV0000051cqwQAA",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:48:43.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexClass"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:48:43.000Z",
+        "fileName": "unpackaged/classes/MyProfilePageController.cls",
+        "fullName": "MyProfilePageController",
+        "id": "01pjV0000051cqzQAA",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:48:43.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexClass"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:48:43.000Z",
+        "fileName": "unpackaged/classes/ForgotPasswordControllerTest.cls",
+        "fullName": "ForgotPasswordControllerTest",
+        "id": "01pjV0000051cqyQAA",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:48:43.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexClass"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-10T16:57:24.000Z",
+        "fileName": "unpackaged/classes/GVMyAccountController.cls",
+        "fullName": "GVMyAccountController",
+        "id": "01pjV000005BKmvQAG",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-10T16:57:24.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexClass"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-11T06:25:49.000Z",
+        "fileName": "unpackaged/classes/GVOnlineCheckoutController.cls",
+        "fullName": "GVOnlineCheckoutController",
+        "id": "01pjV000005BYujQAG",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-12T08:14:15.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexClass"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-11T05:58:04.000Z",
+        "fileName": "unpackaged/classes/GVRazorpayService.cls",
+        "fullName": "GVRazorpayService",
+        "id": "01pjV000005BYZlQAO",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-12T05:49:03.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexClass"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-11T06:39:04.000Z",
+        "fileName": "unpackaged/classes/GVPaymentVerificationController.cls",
+        "fullName": "GVPaymentVerificationController",
+        "id": "01pjV000005BZ7dQAG",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-12T05:49:17.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexClass"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-10T08:22:30.000Z",
+        "fileName": "unpackaged/classes/GVOrderHistoryController.cls",
+        "fullName": "GVOrderHistoryController",
+        "id": "01pjV000005B7krQAC",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-10T08:22:30.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexClass"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:48:45.000Z",
+        "fileName": "unpackaged/classes/CommunitiesSelfRegController.cls",
+        "fullName": "CommunitiesSelfRegController",
+        "id": "01pjV0000051cr5QAA",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:48:45.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexClass"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:48:45.000Z",
+        "fileName": "unpackaged/classes/CommunitiesLandingControllerTest.cls",
+        "fullName": "CommunitiesLandingControllerTest",
+        "id": "01pjV0000051cr4QAA",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:48:45.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexClass"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:48:45.000Z",
+        "fileName": "unpackaged/classes/CommunitiesSelfRegConfirmController.cls",
+        "fullName": "CommunitiesSelfRegConfirmController",
+        "id": "01pjV0000051cr7QAA",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:48:45.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexClass"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:48:45.000Z",
+        "fileName": "unpackaged/classes/CommunitiesSelfRegControllerTest.cls",
+        "fullName": "CommunitiesSelfRegControllerTest",
+        "id": "01pjV0000051cr6QAA",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:48:45.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexClass"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-08T16:35:16.000Z",
+        "fileName": "unpackaged/classes/GVCheckoutControllerTest.cls",
+        "fullName": "GVCheckoutControllerTest",
+        "id": "01pjV000005AYDdQAO",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-08T16:35:16.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexClass"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:48:45.000Z",
+        "fileName": "unpackaged/classes/CommunitiesLoginController.cls",
+        "fullName": "CommunitiesLoginController",
+        "id": "01pjV0000051cr1QAA",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:48:45.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexClass"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:55:15.000Z",
+        "fileName": "unpackaged/classes/LightningLoginFormControllerTest.cls",
+        "fullName": "LightningLoginFormControllerTest",
+        "id": "01pjV00000523wgQAA",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:55:15.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexClass"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:48:43.000Z",
+        "fileName": "unpackaged/classes/MyProfilePageControllerTest.cls",
+        "fullName": "MyProfilePageControllerTest",
+        "id": "01pjV0000051cr0QAA",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:48:43.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexClass"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:55:15.000Z",
+        "fileName": "unpackaged/classes/LightningLoginFormController.cls",
+        "fullName": "LightningLoginFormController",
+        "id": "01pjV00000523wfQAA",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:55:15.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexClass"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:48:45.000Z",
+        "fileName": "unpackaged/classes/CommunitiesLandingController.cls",
+        "fullName": "CommunitiesLandingController",
+        "id": "01pjV0000051cr3QAA",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:48:45.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexClass"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:55:15.000Z",
+        "fileName": "unpackaged/classes/LightningSelfRegisterControllerTest.cls",
+        "fullName": "LightningSelfRegisterControllerTest",
+        "id": "01pjV00000523wiQAA",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:55:15.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexClass"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:48:45.000Z",
+        "fileName": "unpackaged/classes/CommunitiesLoginControllerTest.cls",
+        "fullName": "CommunitiesLoginControllerTest",
+        "id": "01pjV0000051cr2QAA",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:48:45.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexClass"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:55:15.000Z",
+        "fileName": "unpackaged/classes/LightningForgotPasswordControllerTest.cls",
+        "fullName": "LightningForgotPasswordControllerTest",
+        "id": "01pjV00000523whQAA",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:55:15.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexClass"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-11T12:28:52.000Z",
+        "fileName": "unpackaged/classes/GVPaymentVerificationEventHandlerTest.cls",
+        "fullName": "GVPaymentVerificationEventHandlerTest",
+        "id": "01pjV000005BjerQAC",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-11T12:28:52.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexClass"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-11T08:45:09.000Z",
+        "fileName": "unpackaged/classes/GVPaymentVerificationService.cls",
+        "fullName": "GVPaymentVerificationService",
+        "id": "01pjV000005BcezQAC",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-12T05:49:17.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexClass"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:48:45.000Z",
+        "fileName": "unpackaged/classes/CommunitiesSelfRegConfirmControllerTest.cls",
+        "fullName": "CommunitiesSelfRegConfirmControllerTest",
+        "id": "01pjV0000051cr8QAA",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:48:45.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexClass"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-09T17:53:04.000Z",
+        "fileName": "unpackaged/classes/GVInventoryService.cls",
+        "fullName": "GVInventoryService",
+        "id": "01pjV000005AqqTQAS",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-12T08:14:15.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexClass"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-09T17:56:41.000Z",
+        "fileName": "unpackaged/classes/GVInventoryServiceTest.cls",
+        "fullName": "GVInventoryServiceTest",
+        "id": "01pjV000005AqyXQAS",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-09T18:11:34.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexClass"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-06T10:56:23.000Z",
+        "fileName": "unpackaged/classes/GVProductController.cls",
+        "fullName": "GVProductController",
+        "id": "01pjV0000059b5VQAQ",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-07T16:09:22.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexClass"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-11T06:44:07.000Z",
+        "fileName": "unpackaged/classes/GVPaymentVerificationControllerTest.cls",
+        "fullName": "GVPaymentVerificationControllerTest",
+        "id": "01pjV000005BZCTQA4",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-11T06:44:07.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexClass"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:55:14.000Z",
+        "fileName": "unpackaged/classes/MicrobatchSelfRegControllerTest.cls",
+        "fullName": "MicrobatchSelfRegControllerTest",
+        "id": "01pjV00000523wcQAA",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:55:14.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexClass"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:55:14.000Z",
+        "fileName": "unpackaged/classes/MicrobatchSelfRegController.cls",
+        "fullName": "MicrobatchSelfRegController",
+        "id": "01pjV00000523wbQAA",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:55:14.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexClass"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:55:15.000Z",
+        "fileName": "unpackaged/classes/LightningForgotPasswordController.cls",
+        "fullName": "LightningForgotPasswordController",
+        "id": "01pjV00000523weQAA",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:55:15.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexClass"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-11T06:50:19.000Z",
+        "fileName": "unpackaged/classes/GVPaymentFinalizationTest.cls",
+        "fullName": "GVPaymentFinalizationTest",
+        "id": "01pjV000005BZSbQAO",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-11T07:27:38.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexClass"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:55:15.000Z",
+        "fileName": "unpackaged/classes/LightningSelfRegisterController.cls",
+        "fullName": "LightningSelfRegisterController",
+        "id": "01pjV00000523wdQAA",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:55:15.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexClass"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-08T15:33:42.000Z",
+        "fileName": "unpackaged/classes/GVCheckoutController.cls",
+        "fullName": "GVCheckoutController",
+        "id": "01pjV000005AXXhQAO",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-09T20:01:06.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexClass"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-11T12:13:42.000Z",
+        "fileName": "unpackaged/classes/GVPaymentVerificationEventHandler.cls",
+        "fullName": "GVPaymentVerificationEventHandler",
+        "id": "01pjV000005Bj3lQAC",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-12T05:49:17.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexClass"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-07T17:32:21.000Z",
+        "fileName": "unpackaged/classes/GVCartController.cls",
+        "fullName": "GVCartController",
+        "id": "01pjV000005ADFdQAO",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-07T19:35:04.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexClass"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-11T09:13:19.000Z",
+        "fileName": "unpackaged/classes/GVRazorpaySignatureServiceTest.cls",
+        "fullName": "GVRazorpaySignatureServiceTest",
+        "id": "01pjV000005BdHiQAK",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-11T09:13:19.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexClass"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-11T09:13:19.000Z",
+        "fileName": "unpackaged/classes/GVRazorpaySignatureService.cls",
+        "fullName": "GVRazorpaySignatureService",
+        "id": "01pjV000005BdHhQAK",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-11T09:13:19.000Z",
+        "manageableState": "unmanaged",
+        "type": "ApexClass"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:42.000Z",
+        "fileName": "unpackaged/profiles/GoldVuee Profile.profile",
+        "fullName": "GoldVuee Profile",
+        "id": "00ejV000002S59OQAS",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-10T18:46:49.000Z",
+        "type": "Profile"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T13:22:16.000Z",
+        "fileName": "unpackaged/profiles/GoldVuee Customer.profile",
+        "fullName": "GoldVuee Customer",
+        "id": "00ejV000002SGALQA4",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-11T10:34:14.000Z",
+        "type": "Profile"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-12T09:27:40.079Z",
+        "fileName": "unpackaged/package.xml",
+        "fullName": "unpackaged/package.xml",
+        "id": "",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-12T09:27:40.079Z",
+        "manageableState": "unmanaged",
+        "type": "Package"
+      }
+    ],
+    "id": "09SjV00000ElMOPUA3",
+    "status": "Succeeded",
+    "success": true,
+    "messages": [],
+    "files": [
+      {
+        "fullName": "ForgotPasswordConfirm",
+        "type": "ApexPage",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\pages\\ForgotPasswordConfirm.page"
+      },
+      {
+        "fullName": "ForgotPasswordConfirm",
+        "type": "ApexPage",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\pages\\ForgotPasswordConfirm.page-meta.xml"
+      },
+      {
+        "fullName": "SiteLogin",
+        "type": "ApexPage",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\pages\\SiteLogin.page"
+      },
+      {
+        "fullName": "SiteLogin",
+        "type": "ApexPage",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\pages\\SiteLogin.page-meta.xml"
+      },
+      {
+        "fullName": "ForgotPassword",
+        "type": "ApexPage",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\pages\\ForgotPassword.page"
+      },
+      {
+        "fullName": "ForgotPassword",
+        "type": "ApexPage",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\pages\\ForgotPassword.page-meta.xml"
+      },
+      {
+        "fullName": "GVRazorpayPopupDemo",
+        "type": "ApexPage",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\pages\\GVRazorpayPopupDemo.page"
+      },
+      {
+        "fullName": "GVRazorpayPopupDemo",
+        "type": "ApexPage",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\pages\\GVRazorpayPopupDemo.page-meta.xml"
+      },
+      {
+        "fullName": "ChangePassword",
+        "type": "ApexPage",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\pages\\ChangePassword.page"
+      },
+      {
+        "fullName": "ChangePassword",
+        "type": "ApexPage",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\pages\\ChangePassword.page-meta.xml"
+      },
+      {
+        "fullName": "SiteRegister",
+        "type": "ApexPage",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\pages\\SiteRegister.page"
+      },
+      {
+        "fullName": "SiteRegister",
+        "type": "ApexPage",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\pages\\SiteRegister.page-meta.xml"
+      },
+      {
+        "fullName": "GVRazorpayHost",
+        "type": "ApexPage",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\pages\\GVRazorpayHost.page"
+      },
+      {
+        "fullName": "GVRazorpayHost",
+        "type": "ApexPage",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\pages\\GVRazorpayHost.page-meta.xml"
+      },
+      {
+        "fullName": "CommunitiesLogin",
+        "type": "ApexPage",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\pages\\CommunitiesLogin.page"
+      },
+      {
+        "fullName": "CommunitiesLogin",
+        "type": "ApexPage",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\pages\\CommunitiesLogin.page-meta.xml"
+      },
+      {
+        "fullName": "CommunitiesTemplate",
+        "type": "ApexPage",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\pages\\CommunitiesTemplate.page"
+      },
+      {
+        "fullName": "CommunitiesTemplate",
+        "type": "ApexPage",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\pages\\CommunitiesTemplate.page-meta.xml"
+      },
+      {
+        "fullName": "AnswersHome",
+        "type": "ApexPage",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\pages\\AnswersHome.page"
+      },
+      {
+        "fullName": "AnswersHome",
+        "type": "ApexPage",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\pages\\AnswersHome.page-meta.xml"
+      },
+      {
+        "fullName": "IdeasHome",
+        "type": "ApexPage",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\pages\\IdeasHome.page"
+      },
+      {
+        "fullName": "IdeasHome",
+        "type": "ApexPage",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\pages\\IdeasHome.page-meta.xml"
+      },
+      {
+        "fullName": "CommunitiesSelfRegConfirm",
+        "type": "ApexPage",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\pages\\CommunitiesSelfRegConfirm.page"
+      },
+      {
+        "fullName": "CommunitiesSelfRegConfirm",
+        "type": "ApexPage",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\pages\\CommunitiesSelfRegConfirm.page-meta.xml"
+      },
+      {
+        "fullName": "CommunitiesSelfReg",
+        "type": "ApexPage",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\pages\\CommunitiesSelfReg.page"
+      },
+      {
+        "fullName": "CommunitiesSelfReg",
+        "type": "ApexPage",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\pages\\CommunitiesSelfReg.page-meta.xml"
+      },
+      {
+        "fullName": "CommunitiesLanding",
+        "type": "ApexPage",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\pages\\CommunitiesLanding.page"
+      },
+      {
+        "fullName": "CommunitiesLanding",
+        "type": "ApexPage",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\pages\\CommunitiesLanding.page-meta.xml"
+      },
+      {
+        "fullName": "UnderConstruction",
+        "type": "ApexPage",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\pages\\UnderConstruction.page"
+      },
+      {
+        "fullName": "UnderConstruction",
+        "type": "ApexPage",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\pages\\UnderConstruction.page-meta.xml"
+      },
+      {
+        "fullName": "FileNotFound",
+        "type": "ApexPage",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\pages\\FileNotFound.page"
+      },
+      {
+        "fullName": "FileNotFound",
+        "type": "ApexPage",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\pages\\FileNotFound.page-meta.xml"
+      },
+      {
+        "fullName": "SiteTemplate",
+        "type": "ApexPage",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\pages\\SiteTemplate.page"
+      },
+      {
+        "fullName": "SiteTemplate",
+        "type": "ApexPage",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\pages\\SiteTemplate.page-meta.xml"
+      },
+      {
+        "fullName": "StdExceptionTemplate",
+        "type": "ApexPage",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\pages\\StdExceptionTemplate.page"
+      },
+      {
+        "fullName": "StdExceptionTemplate",
+        "type": "ApexPage",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\pages\\StdExceptionTemplate.page-meta.xml"
+      },
+      {
+        "fullName": "MyProfilePage",
+        "type": "ApexPage",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\pages\\MyProfilePage.page"
+      },
+      {
+        "fullName": "MyProfilePage",
+        "type": "ApexPage",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\pages\\MyProfilePage.page-meta.xml"
+      },
+      {
+        "fullName": "Unauthorized",
+        "type": "ApexPage",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\pages\\Unauthorized.page"
+      },
+      {
+        "fullName": "Unauthorized",
+        "type": "ApexPage",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\pages\\Unauthorized.page-meta.xml"
+      },
+      {
+        "fullName": "InMaintenance",
+        "type": "ApexPage",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\pages\\InMaintenance.page"
+      },
+      {
+        "fullName": "InMaintenance",
+        "type": "ApexPage",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\pages\\InMaintenance.page-meta.xml"
+      },
+      {
+        "fullName": "Exception",
+        "type": "ApexPage",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\pages\\Exception.page"
+      },
+      {
+        "fullName": "Exception",
+        "type": "ApexPage",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\pages\\Exception.page-meta.xml"
+      },
+      {
+        "fullName": "BandwidthExceeded",
+        "type": "ApexPage",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\pages\\BandwidthExceeded.page"
+      },
+      {
+        "fullName": "BandwidthExceeded",
+        "type": "ApexPage",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\pages\\BandwidthExceeded.page-meta.xml"
+      },
+      {
+        "fullName": "SiteRegisterConfirm",
+        "type": "ApexPage",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\pages\\SiteRegisterConfirm.page"
+      },
+      {
+        "fullName": "SiteRegisterConfirm",
+        "type": "ApexPage",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\pages\\SiteRegisterConfirm.page-meta.xml"
+      },
+      {
+        "fullName": "MicrobatchSelfReg",
+        "type": "ApexPage",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\pages\\MicrobatchSelfReg.page"
+      },
+      {
+        "fullName": "MicrobatchSelfReg",
+        "type": "ApexPage",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\pages\\MicrobatchSelfReg.page-meta.xml"
+      },
+      {
+        "fullName": "Cart_Item__c.Jewellery_Product__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Cart_Item__c\\fields\\Jewellery_Product__c.field-meta.xml"
+      },
+      {
+        "fullName": "Cart_Item__c.Line_Total__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Cart_Item__c\\fields\\Line_Total__c.field-meta.xml"
+      },
+      {
+        "fullName": "Cart_Item__c.Quantity__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Cart_Item__c\\fields\\Quantity__c.field-meta.xml"
+      },
+      {
+        "fullName": "Cart_Item__c.Shopping_Cart__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Cart_Item__c\\fields\\Shopping_Cart__c.field-meta.xml"
+      },
+      {
+        "fullName": "Cart_Item__c.Unit_Price__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Cart_Item__c\\fields\\Unit_Price__c.field-meta.xml"
+      },
+      {
+        "fullName": "Cart_Item__c.All",
+        "type": "ListView",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Cart_Item__c\\listViews\\All.listView-meta.xml"
+      },
+      {
+        "fullName": "Cart_Item__c.GV_Cart_Item_Validation",
+        "type": "ValidationRule",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Cart_Item__c\\validationRules\\GV_Cart_Item_Validation.validationRule-meta.xml"
+      },
+      {
+        "fullName": "Cart_Item__c",
+        "type": "CustomObject",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Cart_Item__c\\Cart_Item__c.object-meta.xml"
+      },
+      {
+        "fullName": "Shopping_Cart__c.Cart_Status__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Shopping_Cart__c\\fields\\Cart_Status__c.field-meta.xml"
+      },
+      {
+        "fullName": "Shopping_Cart__c.Customer__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Shopping_Cart__c\\fields\\Customer__c.field-meta.xml"
+      },
+      {
+        "fullName": "Shopping_Cart__c.Session_ID__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Shopping_Cart__c\\fields\\Session_ID__c.field-meta.xml"
+      },
+      {
+        "fullName": "Shopping_Cart__c.Total_Amount__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Shopping_Cart__c\\fields\\Total_Amount__c.field-meta.xml"
+      },
+      {
+        "fullName": "Shopping_Cart__c.All",
+        "type": "ListView",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Shopping_Cart__c\\listViews\\All.listView-meta.xml"
+      },
+      {
+        "fullName": "Shopping_Cart__c.GV_Shopping_Cart_Validation",
+        "type": "ValidationRule",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Shopping_Cart__c\\validationRules\\GV_Shopping_Cart_Validation.validationRule-meta.xml"
+      },
+      {
+        "fullName": "Shopping_Cart__c",
+        "type": "CustomObject",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Shopping_Cart__c\\Shopping_Cart__c.object-meta.xml"
+      },
+      {
+        "fullName": "Payment__c.Failure_Reason__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Payment__c\\fields\\Failure_Reason__c.field-meta.xml"
+      },
+      {
+        "fullName": "Payment__c.Gateway_Response__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Payment__c\\fields\\Gateway_Response__c.field-meta.xml"
+      },
+      {
+        "fullName": "Payment__c.Jewellery_Order__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Payment__c\\fields\\Jewellery_Order__c.field-meta.xml"
+      },
+      {
+        "fullName": "Payment__c.Payment_Amount__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Payment__c\\fields\\Payment_Amount__c.field-meta.xml"
+      },
+      {
+        "fullName": "Payment__c.Payment_Date__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Payment__c\\fields\\Payment_Date__c.field-meta.xml"
+      },
+      {
+        "fullName": "Payment__c.Payment_Method__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Payment__c\\fields\\Payment_Method__c.field-meta.xml"
+      },
+      {
+        "fullName": "Payment__c.Payment_Status__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Payment__c\\fields\\Payment_Status__c.field-meta.xml"
+      },
+      {
+        "fullName": "Payment__c.Razorpay_Order_ID__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Payment__c\\fields\\Razorpay_Order_ID__c.field-meta.xml"
+      },
+      {
+        "fullName": "Payment__c.Razorpay_Verified_Payment_ID__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Payment__c\\fields\\Razorpay_Verified_Payment_ID__c.field-meta.xml"
+      },
+      {
+        "fullName": "Payment__c.Transaction_ID__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Payment__c\\fields\\Transaction_ID__c.field-meta.xml"
+      },
+      {
+        "fullName": "Payment__c.All",
+        "type": "ListView",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Payment__c\\listViews\\All.listView-meta.xml"
+      },
+      {
+        "fullName": "Payment__c.GV_Payment_Validation",
+        "type": "ValidationRule",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Payment__c\\validationRules\\GV_Payment_Validation.validationRule-meta.xml"
+      },
+      {
+        "fullName": "Payment__c",
+        "type": "CustomObject",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Payment__c\\Payment__c.object-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Order_Item__c.Discount_Amount__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Order_Item__c\\fields\\Discount_Amount__c.field-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Order_Item__c.Jewellery_Order__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Order_Item__c\\fields\\Jewellery_Order__c.field-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Order_Item__c.Jewellery_Product__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Order_Item__c\\fields\\Jewellery_Product__c.field-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Order_Item__c.Line_Total__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Order_Item__c\\fields\\Line_Total__c.field-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Order_Item__c.Quantity__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Order_Item__c\\fields\\Quantity__c.field-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Order_Item__c.Unit_Price__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Order_Item__c\\fields\\Unit_Price__c.field-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Order_Item__c.All",
+        "type": "ListView",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Order_Item__c\\listViews\\All.listView-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Order_Item__c.GV_Order_Item_Validation",
+        "type": "ValidationRule",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Order_Item__c\\validationRules\\GV_Order_Item_Validation.validationRule-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Order_Item__c",
+        "type": "CustomObject",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Order_Item__c\\Jewellery_Order_Item__c.object-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Order__c.Customer__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Order__c\\fields\\Customer__c.field-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Order__c.Discount_Amount__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Order__c\\fields\\Discount_Amount__c.field-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Order__c.Grand_Total__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Order__c\\fields\\Grand_Total__c.field-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Order__c.Order_Date__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Order__c\\fields\\Order_Date__c.field-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Order__c.Order_Status__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Order__c\\fields\\Order_Status__c.field-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Order__c.Payment_Status__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Order__c\\fields\\Payment_Status__c.field-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Order__c.Shipping_Address__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Order__c\\fields\\Shipping_Address__c.field-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Order__c.Shipping_Charges__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Order__c\\fields\\Shipping_Charges__c.field-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Order__c.Shipping_City__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Order__c\\fields\\Shipping_City__c.field-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Order__c.Shipping_Country__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Order__c\\fields\\Shipping_Country__c.field-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Order__c.Shipping_Postal_Code__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Order__c\\fields\\Shipping_Postal_Code__c.field-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Order__c.Shipping_State__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Order__c\\fields\\Shipping_State__c.field-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Order__c.Shopping_Cart__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Order__c\\fields\\Shopping_Cart__c.field-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Order__c.Subtotal__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Order__c\\fields\\Subtotal__c.field-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Order__c.Tax_Amount__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Order__c\\fields\\Tax_Amount__c.field-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Order__c.All",
+        "type": "ListView",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Order__c\\listViews\\All.listView-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Order__c.GV_Order_Validation",
+        "type": "ValidationRule",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Order__c\\validationRules\\GV_Order_Validation.validationRule-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Order__c",
+        "type": "CustomObject",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Order__c\\Jewellery_Order__c.object-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Product__c.Active__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Product__c\\fields\\Active__c.field-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Product__c.Availability_Status__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Product__c\\fields\\Availability_Status__c.field-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Product__c.Available_Quantity__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Product__c\\fields\\Available_Quantity__c.field-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Product__c.Bestseller__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Product__c\\fields\\Bestseller__c.field-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Product__c.Category__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Product__c\\fields\\Category__c.field-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Product__c.Description__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Product__c\\fields\\Description__c.field-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Product__c.Discount_Price__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Product__c\\fields\\Discount_Price__c.field-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Product__c.Featured_Product__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Product__c\\fields\\Featured_Product__c.field-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Product__c.Gender__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Product__c\\fields\\Gender__c.field-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Product__c.Low_Stock_Threshold__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Product__c\\fields\\Low_Stock_Threshold__c.field-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Product__c.Main_Image_URL__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Product__c\\fields\\Main_Image_URL__c.field-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Product__c.Metal_Type__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Product__c\\fields\\Metal_Type__c.field-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Product__c.New_Arrival__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Product__c\\fields\\New_Arrival__c.field-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Product__c.Price__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Product__c\\fields\\Price__c.field-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Product__c.Product_Code__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Product__c\\fields\\Product_Code__c.field-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Product__c.Purity__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Product__c\\fields\\Purity__c.field-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Product__c.Reserved_Quantity__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Product__c\\fields\\Reserved_Quantity__c.field-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Product__c.SKU__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Product__c\\fields\\SKU__c.field-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Product__c.Stock_Quantity__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Product__c\\fields\\Stock_Quantity__c.field-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Product__c.Stone_Type__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Product__c\\fields\\Stone_Type__c.field-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Product__c.Weight__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Product__c\\fields\\Weight__c.field-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Product__c.All",
+        "type": "ListView",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Product__c\\listViews\\All.listView-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Product__c.GV_Prevent_Negative_Inventory",
+        "type": "ValidationRule",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Product__c\\validationRules\\GV_Prevent_Negative_Inventory.validationRule-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Product__c.GV_Product_Business_Validation",
+        "type": "ValidationRule",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Product__c\\validationRules\\GV_Product_Business_Validation.validationRule-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Product__c.GV_Product_Price_Validation",
+        "type": "ValidationRule",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Product__c\\validationRules\\GV_Product_Price_Validation.validationRule-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Product__c",
+        "type": "CustomObject",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Product__c\\Jewellery_Product__c.object-meta.xml"
+      },
+      {
+        "fullName": "GoldVuee_Payment_Verification__e.Payment_Record_ID__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\GoldVuee_Payment_Verification__e\\fields\\Payment_Record_ID__c.field-meta.xml"
+      },
+      {
+        "fullName": "GoldVuee_Payment_Verification__e.Razorpay_Payment_ID__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\GoldVuee_Payment_Verification__e\\fields\\Razorpay_Payment_ID__c.field-meta.xml"
+      },
+      {
+        "fullName": "GoldVuee_Payment_Verification__e.Razorpay_Signature__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\GoldVuee_Payment_Verification__e\\fields\\Razorpay_Signature__c.field-meta.xml"
+      },
+      {
+        "fullName": "GoldVuee_Payment_Verification__e",
+        "type": "CustomObject",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\GoldVuee_Payment_Verification__e\\GoldVuee_Payment_Verification__e.object-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Category__c.Active__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Category__c\\fields\\Active__c.field-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Category__c.Category_Image_URL__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Category__c\\fields\\Category_Image_URL__c.field-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Category__c.Description__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Category__c\\fields\\Description__c.field-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Category__c.Display_Order__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Category__c\\fields\\Display_Order__c.field-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Category__c.Parent_Category__c",
+        "type": "CustomField",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Category__c\\fields\\Parent_Category__c.field-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Category__c.All",
+        "type": "ListView",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Category__c\\listViews\\All.listView-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Category__c.GV_Category_Validation",
+        "type": "ValidationRule",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Category__c\\validationRules\\GV_Category_Validation.validationRule-meta.xml"
+      },
+      {
+        "fullName": "Jewellery_Category__c",
+        "type": "CustomObject",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\objects\\Jewellery_Category__c\\Jewellery_Category__c.object-meta.xml"
+      },
+      {
+        "fullName": "SiteRegisterController",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\SiteRegisterController.cls"
+      },
+      {
+        "fullName": "SiteRegisterController",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\SiteRegisterController.cls-meta.xml"
+      },
+      {
+        "fullName": "SiteLoginControllerTest",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\SiteLoginControllerTest.cls"
+      },
+      {
+        "fullName": "SiteLoginControllerTest",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\SiteLoginControllerTest.cls-meta.xml"
+      },
+      {
+        "fullName": "ChangePasswordController",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\ChangePasswordController.cls"
+      },
+      {
+        "fullName": "ChangePasswordController",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\ChangePasswordController.cls-meta.xml"
+      },
+      {
+        "fullName": "SiteRegisterControllerTest",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\SiteRegisterControllerTest.cls"
+      },
+      {
+        "fullName": "SiteRegisterControllerTest",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\SiteRegisterControllerTest.cls-meta.xml"
+      },
+      {
+        "fullName": "GVAbandonedCheckoutService",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\GVAbandonedCheckoutService.cls"
+      },
+      {
+        "fullName": "GVAbandonedCheckoutService",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\GVAbandonedCheckoutService.cls-meta.xml"
+      },
+      {
+        "fullName": "SiteLoginController",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\SiteLoginController.cls"
+      },
+      {
+        "fullName": "SiteLoginController",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\SiteLoginController.cls-meta.xml"
+      },
+      {
+        "fullName": "GVPaymentController",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\GVPaymentController.cls"
+      },
+      {
+        "fullName": "GVPaymentController",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\GVPaymentController.cls-meta.xml"
+      },
+      {
+        "fullName": "GVNewArrivalsController",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\GVNewArrivalsController.cls"
+      },
+      {
+        "fullName": "GVNewArrivalsController",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\GVNewArrivalsController.cls-meta.xml"
+      },
+      {
+        "fullName": "ForgotPasswordController",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\ForgotPasswordController.cls"
+      },
+      {
+        "fullName": "ForgotPasswordController",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\ForgotPasswordController.cls-meta.xml"
+      },
+      {
+        "fullName": "ChangePasswordControllerTest",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\ChangePasswordControllerTest.cls"
+      },
+      {
+        "fullName": "ChangePasswordControllerTest",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\ChangePasswordControllerTest.cls-meta.xml"
+      },
+      {
+        "fullName": "MyProfilePageController",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\MyProfilePageController.cls"
+      },
+      {
+        "fullName": "MyProfilePageController",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\MyProfilePageController.cls-meta.xml"
+      },
+      {
+        "fullName": "ForgotPasswordControllerTest",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\ForgotPasswordControllerTest.cls"
+      },
+      {
+        "fullName": "ForgotPasswordControllerTest",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\ForgotPasswordControllerTest.cls-meta.xml"
+      },
+      {
+        "fullName": "GVMyAccountController",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\GVMyAccountController.cls"
+      },
+      {
+        "fullName": "GVMyAccountController",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\GVMyAccountController.cls-meta.xml"
+      },
+      {
+        "fullName": "GVOnlineCheckoutController",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\GVOnlineCheckoutController.cls"
+      },
+      {
+        "fullName": "GVOnlineCheckoutController",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\GVOnlineCheckoutController.cls-meta.xml"
+      },
+      {
+        "fullName": "GVRazorpayService",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\GVRazorpayService.cls"
+      },
+      {
+        "fullName": "GVRazorpayService",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\GVRazorpayService.cls-meta.xml"
+      },
+      {
+        "fullName": "GVPaymentVerificationController",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\GVPaymentVerificationController.cls"
+      },
+      {
+        "fullName": "GVPaymentVerificationController",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\GVPaymentVerificationController.cls-meta.xml"
+      },
+      {
+        "fullName": "GVOrderHistoryController",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\GVOrderHistoryController.cls"
+      },
+      {
+        "fullName": "GVOrderHistoryController",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\GVOrderHistoryController.cls-meta.xml"
+      },
+      {
+        "fullName": "CommunitiesSelfRegController",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\CommunitiesSelfRegController.cls"
+      },
+      {
+        "fullName": "CommunitiesSelfRegController",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\CommunitiesSelfRegController.cls-meta.xml"
+      },
+      {
+        "fullName": "CommunitiesLandingControllerTest",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\CommunitiesLandingControllerTest.cls"
+      },
+      {
+        "fullName": "CommunitiesLandingControllerTest",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\CommunitiesLandingControllerTest.cls-meta.xml"
+      },
+      {
+        "fullName": "CommunitiesSelfRegConfirmController",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\CommunitiesSelfRegConfirmController.cls"
+      },
+      {
+        "fullName": "CommunitiesSelfRegConfirmController",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\CommunitiesSelfRegConfirmController.cls-meta.xml"
+      },
+      {
+        "fullName": "CommunitiesSelfRegControllerTest",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\CommunitiesSelfRegControllerTest.cls"
+      },
+      {
+        "fullName": "CommunitiesSelfRegControllerTest",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\CommunitiesSelfRegControllerTest.cls-meta.xml"
+      },
+      {
+        "fullName": "GVCheckoutControllerTest",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\GVCheckoutControllerTest.cls"
+      },
+      {
+        "fullName": "GVCheckoutControllerTest",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\GVCheckoutControllerTest.cls-meta.xml"
+      },
+      {
+        "fullName": "CommunitiesLoginController",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\CommunitiesLoginController.cls"
+      },
+      {
+        "fullName": "CommunitiesLoginController",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\CommunitiesLoginController.cls-meta.xml"
+      },
+      {
+        "fullName": "LightningLoginFormControllerTest",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\LightningLoginFormControllerTest.cls"
+      },
+      {
+        "fullName": "LightningLoginFormControllerTest",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\LightningLoginFormControllerTest.cls-meta.xml"
+      },
+      {
+        "fullName": "MyProfilePageControllerTest",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\MyProfilePageControllerTest.cls"
+      },
+      {
+        "fullName": "MyProfilePageControllerTest",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\MyProfilePageControllerTest.cls-meta.xml"
+      },
+      {
+        "fullName": "LightningLoginFormController",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\LightningLoginFormController.cls"
+      },
+      {
+        "fullName": "LightningLoginFormController",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\LightningLoginFormController.cls-meta.xml"
+      },
+      {
+        "fullName": "CommunitiesLandingController",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\CommunitiesLandingController.cls"
+      },
+      {
+        "fullName": "CommunitiesLandingController",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\CommunitiesLandingController.cls-meta.xml"
+      },
+      {
+        "fullName": "LightningSelfRegisterControllerTest",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\LightningSelfRegisterControllerTest.cls"
+      },
+      {
+        "fullName": "LightningSelfRegisterControllerTest",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\LightningSelfRegisterControllerTest.cls-meta.xml"
+      },
+      {
+        "fullName": "CommunitiesLoginControllerTest",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\CommunitiesLoginControllerTest.cls"
+      },
+      {
+        "fullName": "CommunitiesLoginControllerTest",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\CommunitiesLoginControllerTest.cls-meta.xml"
+      },
+      {
+        "fullName": "LightningForgotPasswordControllerTest",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\LightningForgotPasswordControllerTest.cls"
+      },
+      {
+        "fullName": "LightningForgotPasswordControllerTest",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\LightningForgotPasswordControllerTest.cls-meta.xml"
+      },
+      {
+        "fullName": "GVPaymentVerificationEventHandlerTest",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\GVPaymentVerificationEventHandlerTest.cls"
+      },
+      {
+        "fullName": "GVPaymentVerificationEventHandlerTest",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\GVPaymentVerificationEventHandlerTest.cls-meta.xml"
+      },
+      {
+        "fullName": "GVPaymentVerificationService",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\GVPaymentVerificationService.cls"
+      },
+      {
+        "fullName": "GVPaymentVerificationService",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\GVPaymentVerificationService.cls-meta.xml"
+      },
+      {
+        "fullName": "CommunitiesSelfRegConfirmControllerTest",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\CommunitiesSelfRegConfirmControllerTest.cls"
+      },
+      {
+        "fullName": "CommunitiesSelfRegConfirmControllerTest",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\CommunitiesSelfRegConfirmControllerTest.cls-meta.xml"
+      },
+      {
+        "fullName": "GVInventoryService",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\GVInventoryService.cls"
+      },
+      {
+        "fullName": "GVInventoryService",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\GVInventoryService.cls-meta.xml"
+      },
+      {
+        "fullName": "GVInventoryServiceTest",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\GVInventoryServiceTest.cls"
+      },
+      {
+        "fullName": "GVInventoryServiceTest",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\GVInventoryServiceTest.cls-meta.xml"
+      },
+      {
+        "fullName": "GVProductController",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\GVProductController.cls"
+      },
+      {
+        "fullName": "GVProductController",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\GVProductController.cls-meta.xml"
+      },
+      {
+        "fullName": "GVPaymentVerificationControllerTest",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\GVPaymentVerificationControllerTest.cls"
+      },
+      {
+        "fullName": "GVPaymentVerificationControllerTest",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\GVPaymentVerificationControllerTest.cls-meta.xml"
+      },
+      {
+        "fullName": "MicrobatchSelfRegControllerTest",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\MicrobatchSelfRegControllerTest.cls"
+      },
+      {
+        "fullName": "MicrobatchSelfRegControllerTest",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\MicrobatchSelfRegControllerTest.cls-meta.xml"
+      },
+      {
+        "fullName": "MicrobatchSelfRegController",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\MicrobatchSelfRegController.cls"
+      },
+      {
+        "fullName": "MicrobatchSelfRegController",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\MicrobatchSelfRegController.cls-meta.xml"
+      },
+      {
+        "fullName": "LightningForgotPasswordController",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\LightningForgotPasswordController.cls"
+      },
+      {
+        "fullName": "LightningForgotPasswordController",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\LightningForgotPasswordController.cls-meta.xml"
+      },
+      {
+        "fullName": "GVPaymentFinalizationTest",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\GVPaymentFinalizationTest.cls"
+      },
+      {
+        "fullName": "GVPaymentFinalizationTest",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\GVPaymentFinalizationTest.cls-meta.xml"
+      },
+      {
+        "fullName": "LightningSelfRegisterController",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\LightningSelfRegisterController.cls"
+      },
+      {
+        "fullName": "LightningSelfRegisterController",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\LightningSelfRegisterController.cls-meta.xml"
+      },
+      {
+        "fullName": "GVCheckoutController",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\GVCheckoutController.cls"
+      },
+      {
+        "fullName": "GVCheckoutController",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\GVCheckoutController.cls-meta.xml"
+      },
+      {
+        "fullName": "GVPaymentVerificationEventHandler",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\GVPaymentVerificationEventHandler.cls"
+      },
+      {
+        "fullName": "GVPaymentVerificationEventHandler",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\GVPaymentVerificationEventHandler.cls-meta.xml"
+      },
+      {
+        "fullName": "GVCartController",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\GVCartController.cls"
+      },
+      {
+        "fullName": "GVCartController",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\GVCartController.cls-meta.xml"
+      },
+      {
+        "fullName": "GVRazorpaySignatureServiceTest",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\GVRazorpaySignatureServiceTest.cls"
+      },
+      {
+        "fullName": "GVRazorpaySignatureServiceTest",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\GVRazorpaySignatureServiceTest.cls-meta.xml"
+      },
+      {
+        "fullName": "GVRazorpaySignatureService",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\GVRazorpaySignatureService.cls"
+      },
+      {
+        "fullName": "GVRazorpaySignatureService",
+        "type": "ApexClass",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\classes\\GVRazorpaySignatureService.cls-meta.xml"
+      },
+      {
+        "fullName": "GoldVuee Profile",
+        "type": "Profile",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\profiles\\GoldVuee Profile.profile-meta.xml"
+      },
+      {
+        "fullName": "GoldVuee Customer",
+        "type": "Profile",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\access-complete\\profiles\\GoldVuee Customer.profile-meta.xml"
+      }
+    ]
+  },
+  "warnings": []
+}

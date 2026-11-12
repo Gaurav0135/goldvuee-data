@@ -1,0 +1,13 @@
+﻿{
+  "status": 0,
+  "result": {
+    "successes": [
+      {
+        "name": "gaurav.goldvuee@gmail.com",
+        "value": "GoldVuee_Operations"
+      }
+    ],
+    "failures": []
+  },
+  "warnings": []
+}

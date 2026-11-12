@@ -1,0 +1,142 @@
+﻿{
+  "status": 0,
+  "result": {
+    "checkOnly": false,
+    "completedDate": "2026-11-12T10:32:41.000Z",
+    "createdBy": "005jV000003akdh",
+    "createdByName": "Gaurav Patel",
+    "createdDate": "2026-11-12T10:32:37.000Z",
+    "details": {
+      "componentSuccesses": [
+        {
+          "changed": false,
+          "componentType": "CustomLabels",
+          "created": false,
+          "createdDate": "2026-11-12T10:32:41.000Z",
+          "deleted": false,
+          "fileName": "labels/CustomLabels.labels",
+          "fullName": "CustomLabels",
+          "success": true
+        },
+        {
+          "changed": false,
+          "componentType": "CustomLabel",
+          "created": false,
+          "createdDate": "2026-11-12T10:32:41.000Z",
+          "deleted": false,
+          "fileName": "labels/CustomLabels.labels",
+          "fullName": "GoldVuee_Experience_Origin",
+          "id": "101jV00000Ky6wfQAB",
+          "success": true
+        },
+        {
+          "changed": true,
+          "componentType": "CustomLabel",
+          "created": false,
+          "createdDate": "2026-11-12T10:32:41.000Z",
+          "deleted": false,
+          "fileName": "labels/CustomLabels.labels",
+          "fullName": "GoldVuee_Razorpay_Host_URL",
+          "id": "101jV00000Ky6wgQAB",
+          "success": true
+        },
+        {
+          "changed": false,
+          "componentType": "CustomLabel",
+          "created": false,
+          "createdDate": "2026-11-12T10:32:41.000Z",
+          "deleted": false,
+          "fileName": "labels/CustomLabels.labels",
+          "fullName": "GoldVuee_Razorpay_Test_Key_ID",
+          "id": "101jV00000Ktb0DQAR",
+          "success": true
+        },
+        {
+          "changed": true,
+          "componentType": "Profile",
+          "created": false,
+          "createdDate": "2026-11-12T10:32:41.000Z",
+          "deleted": false,
+          "fileName": "profiles/GoldVuee Profile.profile",
+          "fullName": "GoldVuee Profile",
+          "id": "00ejV000002S59OQAS",
+          "success": true
+        },
+        {
+          "changed": true,
+          "componentType": "",
+          "created": false,
+          "createdDate": "2026-11-12T10:32:41.000Z",
+          "deleted": false,
+          "fileName": "package.xml",
+          "fullName": "package.xml",
+          "success": true
+        }
+      ],
+      "runTestResult": {
+        "numFailures": 0,
+        "numTestsRun": 0,
+        "totalTime": 0,
+        "codeCoverage": [],
+        "codeCoverageWarnings": [],
+        "failures": [],
+        "flowCoverage": [],
+        "flowCoverageWarnings": [],
+        "successes": []
+      },
+      "componentFailures": []
+    },
+    "done": true,
+    "id": "0AfjV000006NO6DSAW",
+    "ignoreWarnings": false,
+    "lastModifiedDate": "2026-11-12T10:32:41.000Z",
+    "numberComponentErrors": 0,
+    "numberComponentsDeployed": 5,
+    "numberComponentsTotal": 5,
+    "numberFiles": "5",
+    "numberTestErrors": 0,
+    "numberTestsCompleted": 0,
+    "numberTestsTotal": 0,
+    "rollbackOnError": true,
+    "runTestsEnabled": false,
+    "startDate": "2026-11-12T10:32:38.000Z",
+    "status": "Succeeded",
+    "success": true,
+    "zipSize": 2794,
+    "files": [
+      {
+        "fullName": "GoldVuee_Experience_Origin",
+        "type": "CustomLabel",
+        "state": "Unchanged",
+        "filePath": "D:\\GoldVuee\\goldvuee\\force-app\\main\\default\\labels\\CustomLabels.labels-meta.xml"
+      },
+      {
+        "fullName": "GoldVuee_Razorpay_Host_URL",
+        "type": "CustomLabel",
+        "state": "Changed",
+        "filePath": "D:\\GoldVuee\\goldvuee\\force-app\\main\\default\\labels\\CustomLabels.labels-meta.xml"
+      },
+      {
+        "fullName": "GoldVuee_Razorpay_Test_Key_ID",
+        "type": "CustomLabel",
+        "state": "Unchanged",
+        "filePath": "D:\\GoldVuee\\goldvuee\\force-app\\main\\default\\labels\\CustomLabels.labels-meta.xml"
+      },
+      {
+        "fullName": "CustomLabels",
+        "type": "CustomLabels",
+        "state": "Unchanged",
+        "filePath": "D:\\GoldVuee\\goldvuee\\force-app\\main\\default\\labels\\CustomLabels.labels-meta.xml"
+      },
+      {
+        "fullName": "GoldVuee Profile",
+        "type": "Profile",
+        "state": "Changed",
+        "filePath": "D:\\GoldVuee\\goldvuee\\force-app\\main\\default\\profiles\\GoldVuee Profile.profile-meta.xml"
+      }
+    ],
+    "zipFileCount": 5,
+    "deployUrl": "https://goldvuee-dev-ed.develop.my.salesforce.com/lightning/setup/DeployStatus/page?address=%2Fchangemgmt%2FmonitorDeploymentsDetails.apexp%3FasyncId%3D0AfjV000006NO6DSAW%26retURL%3D%252Fchangemgmt%252FmonitorDeployment.apexp"
+  },
+  "warnings": []
+}

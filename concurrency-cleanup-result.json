@@ -1,0 +1,14 @@
+﻿{
+  "status": 0,
+  "result": {
+    "success": true,
+    "compiled": true,
+    "compileProblem": "",
+    "exceptionMessage": "",
+    "exceptionStackTrace": "",
+    "line": -1,
+    "column": -1,
+    "logs": "68.0 APEX_CODE,DEBUG;APEX_PROFILING,INFO\nExecute Anonymous: for(Stock_Reservation__c hold:[SELECT Id FROM Stock_Reservation__c WHERE Jewellery_Product__c='a00jV00000PwiXQQAZ' AND Reservation_Status__c='Active']) { GVInventoryService.releaseReservation(hold.Id); } update new Jewellery_Product__c(Id='a00jV00000PwiXQQAZ',Active__c=false); System.debug(LoggingLevel.INFO,'GV_TEST_FIXTURE_RETIRED=true');\n15:37:45.58 (58882137)|USER_INFO|[EXTERNAL]|005jV000003akdh|gaurav.goldvuee@gmail.com|(GMT+05:30) India Standard Time (Asia/Kolkata)|GMT+05:30\n15:37:45.58 (58911548)|EXECUTION_STARTED\n15:37:45.58 (58935988)|CODE_UNIT_STARTED|[EXTERNAL]|execute_anonymous_apex\n15:37:45.58 (118776663)|CODE_UNIT_STARTED|[EXTERNAL]|Validation:Jewellery_Product:a00jV00000PwiXQ\n15:37:45.58 (119125605)|CODE_UNIT_FINISHED|Validation:Jewellery_Product:a00jV00000PwiXQ\n15:37:45.58 (153489253)|CODE_UNIT_STARTED|[EXTERNAL]|Validation:Stock_Reservation:a0BjV000008lGBB\n15:37:45.58 (153562543)|CODE_UNIT_FINISHED|Validation:Stock_Reservation:a0BjV000008lGBB\n15:37:45.58 (184009987)|CODE_UNIT_STARTED|[EXTERNAL]|Validation:Jewellery_Product:a00jV00000PwiXQ\n15:37:45.58 (184135677)|CODE_UNIT_FINISHED|Validation:Jewellery_Product:a00jV00000PwiXQ\n15:37:45.58 (198769222)|USER_DEBUG|[1]|INFO|GV_TEST_FIXTURE_RETIRED=true\n15:37:45.243 (243299588)|CUMULATIVE_LIMIT_USAGE\n15:37:45.243 (243299588)|LIMIT_USAGE_FOR_NS|(default)|\n  Number of SOQL queries: 4 out of 100\n  Number of query rows: 4 out of 50000\n  Number of SOSL queries: 0 out of 20\n  Number of DML statements: 3 out of 150\n  Number of Publish Immediate DML: 0 out of 150\n  Number of DML rows: 3 out of 10000\n  Maximum CPU time: 0 out of 10000\n  Maximum heap size: 0 out of 10000000\n  Number of callouts: 0 out of 100\n  Number of Email Invocations: 0 out of 10\n  Number of future calls: 0 out of 50\n  Number of queueable jobs added to the queue: 0 out of 50\n  Number of Mobile Apex push calls: 0 out of 10\n\n15:37:45.243 (243299588)|CUMULATIVE_LIMIT_USAGE_END\n\n15:37:45.58 (243391478)|CODE_UNIT_FINISHED|execute_anonymous_apex\n15:37:45.58 (243410478)|EXECUTION_FINISHED\n"
+  },
+  "warnings": []
+}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>New_Arrival__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Identifies newly added jewellery products.</description>
+    <inlineHelpText>Check if the product should appear in New Arrivals.</inlineHelpText>
+    <label>New Arrival</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

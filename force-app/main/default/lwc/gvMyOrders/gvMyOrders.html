@@ -1,240 +1,179 @@
-
 <template>
-    <section class="orders-page">
-        <div class="page-header">
-            <p class="eyebrow">THE GOLDVUEE EXPERIENCE</p>
-            <h1>My Orders</h1>
-            <div class="gold-line"></div>
-            <p class="subtitle">
-                Your jewellery journey, beautifully preserved.
+  <section class="orders-page">
+    <div class="page-header">
+      <p class="eyebrow">THE GOLDVUEE EXPERIENCE</p>
+      <h1>My Orders</h1>
+      <div class="gold-line"></div>
+      <p class="subtitle">Your jewellery journey, beautifully preserved.</p>
+    </div>
+
+    <div class="content-area">
+      <template lwc:if={showOrderList}>
+        <div class="toolbar">
+          <h2>Order History</h2>
+          <button
+            class="refresh-button"
+            onclick={handleRefresh}
+            disabled={loading}
+          >
+            Refresh Orders
+          </button>
+        </div>
+
+        <template lwc:if={loading}>
+          <div class="message-panel">
+            <lightning-spinner
+              alternative-text="Loading orders"
+              size="medium"
+            ></lightning-spinner>
+            <p class="loading-text">Loading your orders...</p>
+          </div>
+        </template>
+
+        <template lwc:if={errorMessage}>
+          <div class="error-box" role="alert">{errorMessage}</div>
+        </template>
+
+        <template lwc:if={showEmpty}>
+          <div class="empty-state">
+            <div class="empty-icon">◇</div>
+            <h3>No Orders Yet</h3>
+            <p>
+              Your jewellery story begins with your first GoldVuee purchase.
             </p>
-        </div>
+          </div>
+        </template>
 
-        <div class="content-area">
-            <template lwc:if={showOrderList}>
-                <div class="toolbar">
-                    <h2>Order History</h2>
-                    <button
-                        class="refresh-button"
-                        onclick={handleRefresh}
-                        disabled={loading}
-                    >
-                        Refresh Orders
-                    </button>
+        <template lwc:if={hasOrders}>
+          <div class="orders-list">
+            <template for:each={orders} for:item="order">
+              <article key={order.orderId} class="order-card">
+                <div class="card-header">
+                  <div>
+                    <span class="field-label"> ORDER NUMBER </span>
+                    <h3>{order.orderNumber}</h3>
+                  </div>
+
+                  <span class="status-pill"> {order.displayStatus} </span>
                 </div>
 
-                <template lwc:if={loading}>
-                    <div class="message-panel">
-                        <lightning-spinner
-                            alternative-text="Loading orders"
-                            size="medium"
-                        ></lightning-spinner>
-                        <p class="loading-text">
-                            Loading your orders...
-                        </p>
-                    </div>
-                </template>
+                <div class="order-grid">
+                  <div class="order-field">
+                    <span class="field-label"> ORDER DATE </span>
+                    <span class="field-value"> {order.displayDate} </span>
+                  </div>
 
-                <template lwc:if={errorMessage}>
-                    <div class="error-box" role="alert">
-                        {errorMessage}
-                    </div>
-                </template>
+                  <div class="order-field">
+                    <span class="field-label"> PAYMENT STATUS </span>
+                    <span class="field-value"> {order.displayPayment} </span>
+                  </div>
 
-                <template lwc:if={showEmpty}>
-                    <div class="empty-state">
-                        <div class="empty-icon">◇</div>
-                        <h3>No Orders Yet</h3>
-                        <p>
-                            Your jewellery story begins with
-                            your first GoldVuee purchase.
-                        </p>
-                    </div>
-                </template>
-
-                <template lwc:if={hasOrders}>
-                    <div class="orders-list">
-                        <template for:each={orders} for:item="order">
-                            <article
-                                key={order.orderId}
-                                class="order-card"
-                            >
-                                <div class="card-header">
-                                    <div>
-                                        <span class="field-label">
-                                            ORDER NUMBER
-                                        </span>
-                                        <h3>{order.orderNumber}</h3>
-                                    </div>
-
-                                    <span class="status-pill">
-                                        {order.displayStatus}
-                                    </span>
-                                </div>
-
-                                <div class="order-grid">
-                                    <div class="order-field">
-                                        <span class="field-label">
-                                            ORDER DATE
-                                        </span>
-                                        <span class="field-value">
-                                            {order.displayDate}
-                                        </span>
-                                    </div>
-
-                                    <div class="order-field">
-                                        <span class="field-label">
-                                            PAYMENT STATUS
-                                        </span>
-                                        <span class="field-value">
-                                            {order.displayPayment}
-                                        </span>
-                                    </div>
-
-                                    <div class="order-field">
-                                        <span class="field-label">
-                                            ORDER TOTAL
-                                        </span>
-                                        <span class="total-value">
-                                            {order.displayTotal}
-                                        </span>
-                                    </div>
-                                </div>
-
-                                <div class="card-footer">
-                                    <span class="footer-note">
-                                        Thank you for choosing GoldVuee
-                                    </span>
-
-                                    <button
-                                        class="gold-button"
-                                        data-id={order.orderId}
-                                        onclick={handleViewDetails}
-                                        disabled={detailLoading}
-                                    >
-                                        View Details
-                                    </button>
-                                </div>
-                            </article>
-                        </template>
-                    </div>
-                </template>
-
-                <template lwc:if={detailError}>
-                    <div class="error-box" role="alert">
-                        {detailError}
-                    </div>
-                </template>
-
-                <template lwc:if={detailLoading}>
-                    <div class="loading-inline">
-                        <lightning-spinner
-                            alternative-text="Opening order details"
-                            size="small"
-                        ></lightning-spinner>
-                        Opening order details...
-                    </div>
-                </template>
-            </template>
-
-            <template lwc:else>
-                <div class="detail-toolbar">
-                    <button
-                        class="back-button"
-                        onclick={handleBack}
-                    >
-                        ← Back to My Orders
-                    </button>
+                  <div class="order-field">
+                    <span class="field-label"> ORDER TOTAL </span>
+                    <span class="total-value"> {order.displayTotal} </span>
+                  </div>
                 </div>
 
-                <article class="detail-panel">
-                    <div class="detail-heading">
-                        <div>
-                            <span class="field-label">
-                                ORDER DETAILS
-                            </span>
-                            <h2>
-                                {selectedOrder.order.orderNumber}
-                            </h2>
-                            <p class="detail-date">
-                                Placed on
-                                {selectedOrder.order.displayDate}
-                            </p>
-                        </div>
+                <div class="card-footer">
+                  <span class="footer-note">
+                    Thank you for choosing GoldVuee
+                  </span>
 
-                        <span class="status-pill">
-                            {selectedOrder.order.displayStatus}
-                        </span>
-                    </div>
-
-                    <div class="detail-summary">
-                        <div>
-                            <span class="field-label">
-                                ORDER STATUS
-                            </span>
-                            <p>{selectedOrder.order.displayStatus}</p>
-                        </div>
-
-                        <div>
-                            <span class="field-label">
-                                PAYMENT STATUS
-                            </span>
-                            <p>{selectedOrder.order.displayPayment}</p>
-                        </div>
-
-                        <div>
-                            <span class="field-label">
-                                GRAND TOTAL
-                            </span>
-                            <p class="total-value">
-                                {selectedOrder.order.displayTotal}
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="detail-section">
-                        <h3>Purchased Jewellery</h3>
-
-                        <template
-                            for:each={selectedOrder.items}
-                            for:item="item"
-                        >
-                            <div
-                                key={item.key}
-                                class="product-row"
-                            >
-                                <div>
-                                    <h4>{item.productName}</h4>
-                                    <p>
-                                        Quantity: {item.quantity}
-                                    </p>
-                                    <p>
-                                        Unit Price: {item.displayPrice}
-                                    </p>
-                                </div>
-
-                                <strong>
-                                    {item.displayTotal}
-                                </strong>
-                            </div>
-                        </template>
-                    </div>
-
-                    <div class="detail-section">
-                        <h3>Delivery Address</h3>
-                        <p class="address">
-                            {formattedAddress}
-                        </p>
-                    </div>
-
-                    <div class="detail-total">
-                        <span>Total Amount</span>
-                        <strong>
-                            {selectedOrder.order.displayTotal}
-                        </strong>
-                    </div>
-                </article>
+                  <button
+                    class="gold-button"
+                    data-id={order.orderId}
+                    onclick={handleViewDetails}
+                    disabled={detailLoading}
+                  >
+                    View Details
+                  </button>
+                </div>
+              </article>
             </template>
+          </div>
+        </template>
+
+        <template lwc:if={detailError}>
+          <div class="error-box" role="alert">{detailError}</div>
+        </template>
+
+        <template lwc:if={detailLoading}>
+          <div class="loading-inline">
+            <lightning-spinner
+              alternative-text="Opening order details"
+              size="small"
+            ></lightning-spinner>
+            Opening order details...
+          </div>
+        </template>
+      </template>
+
+      <template lwc:else>
+        <div class="detail-toolbar">
+          <button class="back-button" onclick={handleBack}>
+            ← Back to My Orders
+          </button>
         </div>
-    </section>
+
+        <article class="detail-panel">
+          <div class="detail-heading">
+            <div>
+              <span class="field-label"> ORDER DETAILS </span>
+              <h2>{selectedOrder.order.orderNumber}</h2>
+              <p class="detail-date">
+                Placed on {selectedOrder.order.displayDate}
+              </p>
+            </div>
+
+            <span class="status-pill">
+              {selectedOrder.order.displayStatus}
+            </span>
+          </div>
+
+          <div class="detail-summary">
+            <div>
+              <span class="field-label"> ORDER STATUS </span>
+              <p>{selectedOrder.order.displayStatus}</p>
+            </div>
+
+            <div>
+              <span class="field-label"> PAYMENT STATUS </span>
+              <p>{selectedOrder.order.displayPayment}</p>
+            </div>
+
+            <div>
+              <span class="field-label"> GRAND TOTAL </span>
+              <p class="total-value">{selectedOrder.order.displayTotal}</p>
+            </div>
+          </div>
+
+          <div class="detail-section">
+            <h3>Purchased Jewellery</h3>
+
+            <template for:each={selectedOrder.items} for:item="item">
+              <div key={item.key} class="product-row">
+                <div>
+                  <h4>{item.productName}</h4>
+                  <p>Quantity: {item.quantity}</p>
+                  <p>Unit Price: {item.displayPrice}</p>
+                </div>
+
+                <strong> {item.displayTotal} </strong>
+              </div>
+            </template>
+          </div>
+
+          <div class="detail-section">
+            <h3>Delivery Address</h3>
+            <p class="address">{formattedAddress}</p>
+          </div>
+
+          <div class="detail-total">
+            <span>Total Amount</span>
+            <strong> {selectedOrder.order.displayTotal} </strong>
+          </div>
+        </article>
+      </template>
+    </div>
+  </section>
 </template>

@@ -1,0 +1,12 @@
+{
+  "type" : "sfdc_cms__route",
+  "title" : "Collections",
+  "contentBody" : {
+    "activeViewId" : "Collections",
+    "configurationTags" : [ ],
+    "pageAccess" : "Public",
+    "routeType" : "custom-collections",
+    "urlPrefix" : "collections"
+  },
+  "urlName" : "collections"
+}

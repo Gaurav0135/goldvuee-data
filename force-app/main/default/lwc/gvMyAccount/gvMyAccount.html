@@ -1,205 +1,157 @@
-
 <template>
-    <section class="account-page">
+  <section class="account-page">
+    <header class="page-header">
+      <p class="eyebrow">THE GOLDVUEE EXPERIENCE</p>
+      <h1>My Account</h1>
+      <div class="gold-divider"></div>
+      <p class="subtitle">Your personal GoldVuee experience.</p>
+    </header>
 
-        <header class="page-header">
-            <p class="eyebrow">THE GOLDVUEE EXPERIENCE</p>
-            <h1>My Account</h1>
-            <div class="gold-divider"></div>
-            <p class="subtitle">
-                Your personal GoldVuee experience.
-            </p>
-        </header>
-
-        <div class="account-container">
-
-            <template lwc:if={loading}>
-                <div class="message-card loading-card">
-                    <lightning-spinner
-                        alternative-text="Loading account"
-                        size="medium">
-                    </lightning-spinner>
-                    <p>Loading your account...</p>
-                </div>
-            </template>
-
-            <template lwc:elseif={errorMessage}>
-                <div class="message-card error-card" role="alert">
-                    <h2>Unable to load your account</h2>
-                    <p>{errorMessage}</p>
-                    <button
-                        class="outline-button"
-                        onclick={handleRefresh}>
-                        Try Again
-                    </button>
-                </div>
-            </template>
-
-            <template lwc:elseif={showGuest}>
-                <div class="message-card">
-                    <div class="guest-icon">◇</div>
-                    <h2>Welcome to GoldVuee</h2>
-                    <p>
-                        Sign in to view your account
-                        and manage your jewellery purchases.
-                    </p>
-                    <a class="primary-button" href={loginUrl}>
-                        Sign In
-                    </a>
-                </div>
-            </template>
-
-            <template lwc:else>
-                <div class="welcome-card">
-                    <div class="avatar">
-                        {customerInitial}
-                    </div>
-
-                    <div class="welcome-text">
-                        <p class="mini-label">
-                            GOLDVUEE MEMBER
-                        </p>
-                        <h2>Welcome, {customerName}!</h2>
-                        <p>
-                            Discover your orders and enjoy
-                            your GoldVuee shopping experience.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="dashboard-grid">
-
-                    <article class="profile-card">
-                        <div class="section-heading">
-                            <div>
-                                <p class="mini-label">
-                                    ACCOUNT INFORMATION
-                                </p>
-                                <h3>My Profile</h3>
-                            </div>
-
-                            <span class="gold-symbol">◇</span>
-                        </div>
-
-                        <div class="profile-field">
-                            <span class="field-label">
-                                FULL NAME
-                            </span>
-                            <p>{fullName}</p>
-                        </div>
-
-                        <div class="profile-field">
-                            <span class="field-label">
-                                EMAIL ADDRESS
-                            </span>
-                            <p class="email-value">
-                                {customerEmail}
-                            </p>
-                        </div>
-
-                        <div class="profile-footer">
-                            <span class="member-dot"></span>
-                            GoldVuee Customer Account
-                        </div>
-                    </article>
-
-                    <article class="orders-card">
-                        <p class="mini-label">
-                            YOUR PURCHASES
-                        </p>
-
-                        <div class="feature-icon">
-                            ♢
-                        </div>
-
-                        <h3>My Orders</h3>
-                        <p>
-                            View your jewellery purchases,
-                            delivery details and payment status.
-                        </p>
-
-                        <a
-                            class="primary-button"
-                            href={ordersUrl}>
-                            View My Orders
-                            <span aria-hidden="true">→</span>
-                        </a>
-                    </article>
-
-                </div>
-
-                <div class="quick-links-section">
-                    <div class="quick-header">
-                        <p class="mini-label">
-                            EXPLORE MORE
-                        </p>
-                        <h2>Quick Links</h2>
-                    </div>
-
-                    <div class="links-grid">
-                        <a
-                            class="quick-link"
-                            href={collectionsUrl}>
-
-                            <span class="quick-icon">◇</span>
-
-                            <div>
-                                <h3>Collections</h3>
-                                <p>Explore beautiful jewellery</p>
-                            </div>
-
-                            <span class="link-arrow">→</span>
-                        </a>
-
-                        <a
-                            class="quick-link"
-                            href={cartUrl}>
-
-                            <span class="quick-icon">♢</span>
-
-                            <div>
-                                <h3>Shopping Cart</h3>
-                                <p>Continue your shopping journey</p>
-                            </div>
-
-                            <span class="link-arrow">→</span>
-                        </a>
-                    </div>
-                </div>
-
-
-                <div class="account-actions">
-                    <div class="logout-info">
-                        <h3>Account Security</h3>
-                        <p>
-                            Finished shopping? Sign out to keep
-                            your GoldVuee account secure.
-                        </p>
-                    </div>
-
-                    <a
-                        class="logout-button"
-                        href="/goldvuee/secur/logout.jsp"
-                    >
-                        <lightning-icon
-                            icon-name="utility:logout"
-                            size="x-small"
-                            alternative-text="Logout"
-                            class="logout-icon">
-                        </lightning-icon>
-                        Logout
-                    </a>
-                </div>
-
-
-
-                <div class="bottom-message">
-                    <span>✦</span>
-                    Thank you for being part of the GoldVuee family.
-                    <span>✦</span>
-                </div>
-
-            </template>
+    <div class="account-container">
+      <template lwc:if={loading}>
+        <div class="message-card loading-card">
+          <lightning-spinner alternative-text="Loading account" size="medium">
+          </lightning-spinner>
+          <p>Loading your account...</p>
         </div>
-    </section>
+      </template>
+
+      <template lwc:elseif={errorMessage}>
+        <div class="message-card error-card" role="alert">
+          <h2>Unable to load your account</h2>
+          <p>{errorMessage}</p>
+          <button class="outline-button" onclick={handleRefresh}>
+            Try Again
+          </button>
+        </div>
+      </template>
+
+      <template lwc:elseif={showGuest}>
+        <div class="message-card">
+          <div class="guest-icon">◇</div>
+          <h2>Welcome to GoldVuee</h2>
+          <p>
+            Sign in to view your account and manage your jewellery purchases.
+          </p>
+          <a class="primary-button" href={loginUrl}> Sign In </a>
+        </div>
+      </template>
+
+      <template lwc:else>
+        <div class="welcome-card">
+          <div class="avatar">{customerInitial}</div>
+
+          <div class="welcome-text">
+            <p class="mini-label">GOLDVUEE MEMBER</p>
+            <h2>Welcome, {customerName}!</h2>
+            <p>
+              Discover your orders and enjoy your GoldVuee shopping experience.
+            </p>
+          </div>
+        </div>
+
+        <div class="dashboard-grid">
+          <article class="profile-card">
+            <div class="section-heading">
+              <div>
+                <p class="mini-label">ACCOUNT INFORMATION</p>
+                <h3>My Profile</h3>
+              </div>
+
+              <span class="gold-symbol">◇</span>
+            </div>
+
+            <div class="profile-field">
+              <span class="field-label"> FULL NAME </span>
+              <p>{fullName}</p>
+            </div>
+
+            <div class="profile-field">
+              <span class="field-label"> EMAIL ADDRESS </span>
+              <p class="email-value">{customerEmail}</p>
+            </div>
+
+            <div class="profile-footer">
+              <span class="member-dot"></span>
+              GoldVuee Customer Account
+            </div>
+          </article>
+
+          <article class="orders-card">
+            <p class="mini-label">YOUR PURCHASES</p>
+
+            <div class="feature-icon">♢</div>
+
+            <h3>My Orders</h3>
+            <p>
+              View your jewellery purchases, delivery details and payment
+              status.
+            </p>
+
+            <a class="primary-button" href={ordersUrl}>
+              View My Orders
+              <span aria-hidden="true">→</span>
+            </a>
+          </article>
+        </div>
+
+        <div class="quick-links-section">
+          <div class="quick-header">
+            <p class="mini-label">EXPLORE MORE</p>
+            <h2>Quick Links</h2>
+          </div>
+
+          <div class="links-grid">
+            <a class="quick-link" href={collectionsUrl}>
+              <span class="quick-icon">◇</span>
+
+              <div>
+                <h3>Collections</h3>
+                <p>Explore beautiful jewellery</p>
+              </div>
+
+              <span class="link-arrow">→</span>
+            </a>
+
+            <a class="quick-link" href={cartUrl}>
+              <span class="quick-icon">♢</span>
+
+              <div>
+                <h3>Shopping Cart</h3>
+                <p>Continue your shopping journey</p>
+              </div>
+
+              <span class="link-arrow">→</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="account-actions">
+          <div class="logout-info">
+            <h3>Account Security</h3>
+            <p>
+              Finished shopping? Sign out to keep your GoldVuee account secure.
+            </p>
+          </div>
+
+          <a class="logout-button" href="/goldvuee/secur/logout.jsp">
+            <lightning-icon
+              icon-name="utility:logout"
+              size="x-small"
+              alternative-text="Logout"
+              class="logout-icon"
+            >
+            </lightning-icon>
+            Logout
+          </a>
+        </div>
+
+        <div class="bottom-message">
+          <span>✦</span>
+          Thank you for being part of the GoldVuee family.
+          <span>✦</span>
+        </div>
+      </template>
+    </div>
+  </section>
 </template>

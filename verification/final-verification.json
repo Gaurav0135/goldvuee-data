@@ -1,0 +1,61 @@
+{
+  "verifiedOn": "2026-11-12",
+  "target": "goldvuee-dev",
+  "organizationType": "Developer Edition",
+  "release": {
+    "status": "Succeeded",
+    "id": "0AfjV000006NLZmSAO",
+    "apexTests": 72,
+    "apexFailures": 0,
+    "overallApexCoveragePercent": 83.24,
+    "components": 204
+  },
+  "jest": {
+    "passed": 30,
+    "failed": 0,
+    "suites": 14,
+    "success": true
+  },
+  "lint": {
+    "errors": 0,
+    "warnings": 0
+  },
+  "gatewayReadConnectivity": true,
+  "concurrency": {
+    "realOverlappingTransactions": true,
+    "successfulReservations": 1,
+    "rejectedReservations": 1,
+    "testFixtureReleasedAndDeactivated": true
+  },
+  "subscriberDeployment": "Succeeded",
+  "paymentHostDeployment": "Succeeded",
+  "publication": [
+    "Complete"
+  ],
+  "maintenance": [
+    {
+      "state": "WAITING",
+      "cron": "0 0 * * * ?"
+    }
+  ],
+  "readiness": {
+    "webhookSecretReady": false,
+    "checkoutSecretReady": true,
+    "scheduled": true
+  },
+  "activeCartDuplicateGroups": 0,
+  "browser": {
+    "guestCatalogue": true,
+    "guestProductDetail": true,
+    "siteVisualforcePaymentHost": true,
+    "guestCheckoutSignIn": true,
+    "authenticatedCustomerPaymentCompleted": false
+  },
+  "unsignedWebhookHttpStatus": 401,
+  "remaining": [
+    "Provision the same webhook secret in Razorpay Test Mode and the encrypted Salesforce Webhook_Secret__c field.",
+    "Complete an authenticated customer Razorpay Test Mode browser payment and real signed webhook delivery."
+  ],
+  "existingFilesDeleted": false,
+  "productionDeployed": false
+}

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>GoldVuee_Razorpay_Test_Key_ID</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>GoldVuee Razorpay Test Key ID</shortDescription>
+        <value>rzp_test_TykeswVls3Qc3W</value>
+    </labels>
+</CustomLabels>

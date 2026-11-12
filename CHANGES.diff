@@ -1,0 +1,193 @@
+--- original/classes/GVCheckoutControllerTest.cls
++++ patched/classes/GVCheckoutControllerTest.cls
+@@ -114,13 +114,28 @@
+         Decimal stock
+     ) {
+ 
++        // Active jewellery requires a category, SKU, code and weight.
++        // Match the actual Jewellery_Product__c required-field metadata
++        // and GV_Product_Business_Validation rule.
++        Jewellery_Category__c category =
++            new Jewellery_Category__c(
++                Name = 'GoldVuee COD Test Category',
++                Active__c = true
++            );
++        insert category;
++
+         Jewellery_Product__c product =
+             new Jewellery_Product__c(
+                 Name = 'GoldVuee Test Necklace',
++                Product_Code__c = 'GV-COD-TEST-001',
++                SKU__c = 'GV-COD-SKU-001',
++                Category__c = category.Id,
++                Weight__c = 10.000,
+                 Active__c = true,
+                 Price__c = 10000,
+                 Discount_Price__c = 9000,
+-                Stock_Quantity__c = stock
++                Stock_Quantity__c = stock,
++                Reserved_Quantity__c = 0
+             );
+ 
+         insert product;
+@@ -227,7 +242,7 @@
+             );
+ 
+             System.assertEquals(
+-                'pending',
++                'Confirmed',
+                 orderRecord.Order_Status__c
+             );
+ 
+@@ -275,6 +290,24 @@
+                 updatedProduct.Stock_Quantity__c
+             );
+ 
++            System.assertEquals(
++                1,
++                [SELECT COUNT()
++                 FROM Inventory_Movement__c
++                 WHERE Jewellery_Order__c = :result.orderId
++                   AND Movement_Type__c = 'Sale'],
++                'COD checkout should create exactly one sale movement.'
++            );
++
++            System.assertEquals(
++                1,
++                [SELECT COUNT()
++                 FROM Stock_Reservation__c
++                 WHERE Jewellery_Order__c = :result.orderId
++                   AND Reservation_Status__c = 'Committed'],
++                'COD reservation must be committed once.'
++            );
++
+             Shopping_Cart__c updatedCart = [
+                 SELECT Cart_Status__c
+                 FROM Shopping_Cart__c
+--- original/classes/GVCartController.cls
++++ patched/classes/GVCartController.cls
+@@ -106,8 +106,14 @@
+                 AND Cart_Status__c = 'Active'
+             WITH USER_MODE
+             ORDER BY CreatedDate DESC
+-            LIMIT 1
+-        ];
++            LIMIT 2
++        ];
++
++        if (carts.size() > 1) {
++            throw new AuraHandledException(
++                'Multiple active shopping bags were found. Please contact support.'
++            );
++        }
+ 
+         return carts.isEmpty() ? null : carts[0];
+     }
+@@ -163,7 +169,6 @@
+                 Id,
+                 Name,
+                 Active__c,
+-                Stock_Quantity__c,
+                 Price__c,
+                 Discount_Price__c
+             FROM Jewellery_Product__c
+@@ -185,6 +190,35 @@
+ 
+ 
+     // ========================================================
++    // PRIVATE INVENTORY AVAILABILITY READ
++    // ========================================================
++    // Cart availability is advisory only; checkout revalidates with
++    // FOR UPDATE locks. This narrow system-mode query keeps internal
++    // inventory fields private from the Experience Cloud customer.
++    // Call only AFTER getCustomerContactId() and getValidProduct().
++    private without sharing class InventoryAvailabilityReader {
++        private static Decimal available(Id authorizedProductId) {
++            if (authorizedProductId == null) return 0;
++
++            List<Jewellery_Product__c> stockRows = [
++                SELECT Stock_Quantity__c, Reserved_Quantity__c
++                FROM Jewellery_Product__c
++                WHERE Id = :authorizedProductId
++                WITH SYSTEM_MODE
++                LIMIT 1
++            ];
++            if (stockRows.isEmpty()) return 0;
++
++            Decimal onHand = stockRows[0].Stock_Quantity__c == null
++                ? 0 : stockRows[0].Stock_Quantity__c;
++            Decimal reserved = stockRows[0].Reserved_Quantity__c == null
++                ? 0 : stockRows[0].Reserved_Quantity__c;
++            Decimal availableStock = onHand - reserved;
++            return availableStock > 0 ? availableStock : 0;
++        }
++    }
++
++    // ========================================================
+     // 6. CALCULATE ACTUAL SELLING PRICE
+     // ========================================================
+     // The browser never supplies the product price.
+@@ -272,11 +306,10 @@
+         Jewellery_Product__c product =
+             getValidProduct(productId);
+ 
+-        // Step 3: Validate requested quantity.
+-        validateQuantity(
+-            quantity,
+-            product.Stock_Quantity__c
+-        );
++        // Step 3: Validate available quantity (physical minus reserved).
++        Decimal availableStock =
++            InventoryAvailabilityReader.available(product.Id);
++        validateQuantity(quantity, availableStock);
+ 
+         // Step 4: Calculate Salesforce selling price.
+         Decimal sellingPrice =
+@@ -310,10 +343,7 @@
+                 Integer.valueOf(existingItem.Quantity__c)
+                 + quantity;
+ 
+-            validateQuantity(
+-                newQuantity,
+-                product.Stock_Quantity__c
+-            );
++            validateQuantity(newQuantity, availableStock);
+ 
+             existingItem.Quantity__c = newQuantity;
+ 
+@@ -480,7 +510,7 @@
+         // STEP 5: Check current inventory.
+         validateQuantity(
+             quantity,
+-            product.Stock_Quantity__c
++            InventoryAvailabilityReader.available(product.Id)
+         );
+ 
+         // STEP 6: Calculate the current selling price.
+--- original/classes/GVCheckoutController.cls
++++ patched/classes/GVCheckoutController.cls
+@@ -496,10 +496,10 @@
+                 );
+             }
+ 
++            // Detailed diagnostics stay in the server debug log.
++            // Do not return exception types, query details or data to guests.
+             throw new AuraHandledException(
+-                'COD DEBUG | Stage=' + stage +
+-                ' | Type=' + e.getTypeName() +
+-                ' | Error=' + e.getMessage()
++                'Unable to place your order. Please try again or contact support.'
+             );
+         }
+     }
+--- original/objects/Jewellery_Product__c/fields/Availability_Status__c.field-meta.xml
++++ patched/objects/Jewellery_Product__c/fields/Availability_Status__c.field-meta.xml
+@@ -5,7 +5,7 @@
+     <externalId>false</externalId>
+     <formula>IF(
+     AND(
+-        Stock_Quantity__c &gt; 0,
++        Available_Quantity__c &gt; 0,
+         Active__c = TRUE
+     ),
+     &quot;In Stock&quot;,

@@ -1,0 +1,14 @@
+﻿{
+  "status": 0,
+  "result": {
+    "success": true,
+    "compiled": true,
+    "compileProblem": "",
+    "exceptionMessage": "",
+    "exceptionStackTrace": "",
+    "line": -1,
+    "column": -1,
+    "logs": "68.0 APEX_CODE,DEBUG;APEX_PROFILING,INFO\nExecute Anonymous: try { Id hold=GVInventoryService.reserveStock('a00jV00000PwiXQQAZ',1,null); System.debug(LoggingLevel.INFO,'GV_RESERVE_OK='+hold); } catch(GVInventoryService.InventoryException e) { System.debug(LoggingLevel.INFO,'GV_RESERVE_REJECTED='+e.getMessage()); }\n15:31:31.46 (46182336)|USER_INFO|[EXTERNAL]|005jV000003akdh|gaurav.goldvuee@gmail.com|(GMT+05:30) India Standard Time (Asia/Kolkata)|GMT+05:30\n15:31:31.46 (46216776)|EXECUTION_STARTED\n15:31:31.46 (46234886)|CODE_UNIT_STARTED|[EXTERNAL]|execute_anonymous_apex\n15:31:31.46 (62014308)|EXCEPTION_THROWN|[25]|GVInventoryService.InventoryException: Insufficient available stock for GoldVuee concurrency verification\n15:31:31.46 (62056518)|EXCEPTION_THROWN|[30]|GVInventoryService.InventoryException: Insufficient available stock for GoldVuee concurrency verification\n15:31:31.46 (62062838)|EXCEPTION_THROWN|[5]|GVInventoryService.InventoryException: Insufficient available stock for GoldVuee concurrency verification\n15:31:31.46 (62068449)|EXCEPTION_THROWN|[1]|GVInventoryService.InventoryException: Insufficient available stock for GoldVuee concurrency verification\n15:31:31.46 (62166719)|USER_DEBUG|[1]|INFO|GV_RESERVE_REJECTED=Insufficient available stock for GoldVuee concurrency verification\n15:31:31.62 (62269490)|CUMULATIVE_LIMIT_USAGE\n15:31:31.62 (62269490)|LIMIT_USAGE_FOR_NS|(default)|\n  Number of SOQL queries: 1 out of 100\n  Number of query rows: 1 out of 50000\n  Number of SOSL queries: 0 out of 20\n  Number of DML statements: 0 out of 150\n  Number of Publish Immediate DML: 0 out of 150\n  Number of DML rows: 0 out of 10000\n  Maximum CPU time: 0 out of 10000\n  Maximum heap size: 0 out of 10000000\n  Number of callouts: 0 out of 100\n  Number of Email Invocations: 0 out of 10\n  Number of future calls: 0 out of 50\n  Number of queueable jobs added to the queue: 0 out of 50\n  Number of Mobile Apex push calls: 0 out of 10\n\n15:31:31.62 (62269490)|CUMULATIVE_LIMIT_USAGE_END\n\n15:31:31.46 (62330901)|CODE_UNIT_FINISHED|execute_anonymous_apex\n15:31:31.46 (62349441)|EXECUTION_FINISHED\n"
+  },
+  "warnings": []
+}

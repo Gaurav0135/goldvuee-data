@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Jewellery_Order__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Order linked to the reservation.</description>
+    <inlineHelpText>Select the related order.</inlineHelpText>
+    <label>Jewellery Order</label>
+    <referenceTo>Jewellery_Order__c</referenceTo>
+    <relationshipLabel>Stock Reservations</relationshipLabel>
+    <relationshipName>Stock_Reservations</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

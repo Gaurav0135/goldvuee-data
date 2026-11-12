@@ -1,0 +1,67 @@
+{
+  "type" : "sfdc_cms__view",
+  "title" : "Shopping Cart",
+  "contentBody" : {
+    "component" : {
+      "children" : [ {
+        "children" : [ {
+          "attributes" : {
+            "backgroundImageConfig" : "",
+            "backgroundImageOverlay" : "rgba(0,0,0,0)",
+            "componentSpacerSize" : "",
+            "layoutDirectionDesktop" : "row",
+            "layoutDirectionMobile" : "column",
+            "layoutDirectionTablet" : "column",
+            "maxContentWidth" : "",
+            "sectionColumnGutterWidth" : "",
+            "sectionConfig" : "{\"UUID\":\"03bad26e-23b7-4db4-b72c-e6c877a8d877\",\"columns\":[{\"UUID\":\"15f0fa6e-461b-49c6-83d9-36c273729eec\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}",
+            "sectionMinHeight" : "",
+            "sectionVerticalAlign" : "flex-start"
+          },
+          "children" : [ {
+            "children" : [ {
+              "attributes" : { },
+              "definition" : "c:gvShoppingCart",
+              "id" : "36cf675e-6dd6-40dc-9713-80a5a712bac3",
+              "type" : "component"
+            } ],
+            "id" : "15f0fa6e-461b-49c6-83d9-36c273729eec",
+            "name" : "col1",
+            "title" : "Column 1",
+            "type" : "region"
+          } ],
+          "definition" : "community_layout:section",
+          "id" : "03bad26e-23b7-4db4-b72c-e6c877a8d877",
+          "type" : "component"
+        } ],
+        "id" : "8bda60fb-0da7-43e0-926e-94e189b9ec52",
+        "name" : "content",
+        "title" : "Content",
+        "type" : "region"
+      }, {
+        "children" : [ {
+          "attributes" : {
+            "customHeadTags" : "",
+            "description" : "",
+            "pageTitle" : "Shopping Cart",
+            "recordId" : "{!recordId}"
+          },
+          "definition" : "community_builder:seoAssistant",
+          "id" : "ddf7066f-56b7-46dd-931f-13744be0ca2b",
+          "type" : "component"
+        } ],
+        "id" : "73b279be-4abf-40cc-bd97-f43e61d39e55",
+        "name" : "sfdcHiddenRegion",
+        "title" : "sfdcHiddenRegion",
+        "type" : "region"
+      } ],
+      "definition" : "community_layout:sldsFlexibleLayout",
+      "id" : "d37909fb-6911-4722-927f-7043a0184c15",
+      "type" : "component"
+    },
+    "dataProviders" : [ ],
+    "themeLayoutType" : "Inner",
+    "viewType" : "custom-shopping-cart"
+  },
+  "urlName" : "shopping-cart"
+}

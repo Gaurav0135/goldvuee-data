@@ -1,0 +1,46 @@
+﻿{
+  "status": 0,
+  "result": {
+    "done": true,
+    "fileProperties": [
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-12T11:06:27.978Z",
+        "fileName": "unpackaged/labels/CustomLabels.labels",
+        "fullName": "CustomLabels",
+        "id": "000000000000000AAA",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-12T11:06:27.978Z",
+        "type": "CustomLabels"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-12T11:06:27.982Z",
+        "fileName": "unpackaged/package.xml",
+        "fullName": "unpackaged/package.xml",
+        "id": "",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-12T11:06:27.982Z",
+        "manageableState": "unmanaged",
+        "type": "Package"
+      }
+    ],
+    "id": "09SjV00000ElTRVUA3",
+    "status": "Succeeded",
+    "success": true,
+    "messages": [],
+    "files": [
+      {
+        "fullName": "CustomLabels",
+        "type": "CustomLabels",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\verification\\browser-config-live\\labels\\CustomLabels.labels-meta.xml"
+      }
+    ]
+  },
+  "warnings": []
+}

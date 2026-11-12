@@ -1,0 +1,103 @@
+<template>
+  <lightning-card title="GoldVuee Operations" icon-name="standard:orders">
+    <div class="slds-p-around_medium">
+      <p>Administrator inventory, payment review and paid-order fulfillment.</p>
+      <lightning-button
+        label="Refresh"
+        onclick={refresh}
+        disabled={busy}
+      ></lightning-button>
+      <template lwc:if={error}
+        ><p role="alert" class="slds-text-color_error">{error}</p></template
+      >
+      <template lwc:if={message}><p role="status">{message}</p></template>
+      <h2 class="slds-text-heading_small slds-m-top_large">Inventory</h2>
+      <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>On hand</th>
+            <th>Reserved</th>
+            <th>Available</th>
+          </tr>
+        </thead>
+        <tbody>
+          <template for:each={products} for:item="p"
+            ><tr key={p.Id}>
+              <td>{p.Name}</td>
+              <td>{p.Stock_Quantity__c}</td>
+              <td>{p.Reserved_Quantity__c}</td>
+              <td>{p.Available_Quantity__c}</td>
+            </tr></template
+          >
+        </tbody>
+      </table>
+      <lightning-combobox
+        label="Product"
+        name="productId"
+        value={productId}
+        options={productOptions}
+        onchange={handleField}
+        disabled={busy}
+      ></lightning-combobox>
+      <lightning-input
+        label="Stock change (+ receive, - remove)"
+        type="number"
+        name="delta"
+        value={delta}
+        onchange={handleField}
+        disabled={busy}
+        step="1"
+      ></lightning-input>
+      <lightning-input
+        label="Adjustment reason"
+        name="reason"
+        value={reason}
+        onchange={handleField}
+        disabled={busy}
+        maxlength="200"
+      ></lightning-input>
+      <lightning-button
+        label="Record Adjustment"
+        onclick={handleAdjustment}
+        disabled={busy}
+      ></lightning-button>
+      <h2 class="slds-text-heading_small slds-m-top_large">Payment review</h2>
+      <p>
+        Late captured payments require stock review before fulfillment. Refunds
+        must be approved and performed in Razorpay; this console never issues
+        refunds.
+      </p>
+      <template lwc:if={hasPayments}
+        ><template for:each={payments} for:item="p"
+          ><div key={p.Id} class="slds-box slds-m-top_small">
+            <strong>{p.orderName}</strong>
+            <p>{p.Payment_Amount__c} INR — {p.Reconciliation_State__c}</p>
+            <lightning-button
+              label="Reconcile"
+              data-id={p.Id}
+              onclick={handleReconcile}
+              disabled={busy}
+            ></lightning-button></div></template
+      ></template>
+      <template lwc:else><p>No pending payments.</p></template>
+      <h2 class="slds-text-heading_small slds-m-top_large">
+        Paid orders awaiting fulfillment
+      </h2>
+      <template lwc:if={hasOrders}
+        ><template for:each={orders} for:item="o"
+          ><div key={o.Id} class="slds-box slds-m-top_small">
+            <strong>{o.Name}</strong>
+            <p>{o.Order_Status__c} — {o.Grand_Total__c} INR</p>
+            <lightning-button
+              label={o.next}
+              data-id={o.Id}
+              data-next={o.next}
+              onclick={handleAdvance}
+              disabled={busy}
+            ></lightning-button></div></template
+      ></template>
+      <template lwc:else><p>No paid orders awaiting fulfillment.</p></template>
+    </div>
+  </lightning-card>
+</template>

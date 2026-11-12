@@ -1,0 +1,14 @@
+﻿{
+  "status": 0,
+  "result": {
+    "success": true,
+    "compiled": true,
+    "compileProblem": "",
+    "exceptionMessage": "",
+    "exceptionStackTrace": "",
+    "line": -1,
+    "column": -1,
+    "logs": "68.0 APEX_CODE,DEBUG;APEX_PROFILING,INFO\nExecute Anonymous: // Read-only gateway connectivity probe. Never log credentials, request headers or configuration values.\nExecute Anonymous: try {\nExecute Anonymous:     String found=GVRazorpayService.findOrder('GV-CONNECTIVITY-PROBE-NONE',1);\nExecute Anonymous:     System.debug(LoggingLevel.INFO,'GV_GATEWAY_READ_OK='+String.isBlank(found));\nExecute Anonymous: } catch(Exception e) {\nExecute Anonymous:     System.debug(LoggingLevel.ERROR,'GV_GATEWAY_READ_FAILED='+e.getTypeName()+': '+e.getMessage());\nExecute Anonymous: }\n15:13:19.54 (54724935)|USER_INFO|[EXTERNAL]|005jV000003akdh|gaurav.goldvuee@gmail.com|(GMT+05:30) India Standard Time (Asia/Kolkata)|GMT+05:30\n15:13:19.54 (54758175)|EXECUTION_STARTED\n15:13:19.54 (54778965)|CODE_UNIT_STARTED|[EXTERNAL]|execute_anonymous_apex\n15:13:19.54 (893598963)|USER_DEBUG|[4]|INFO|GV_GATEWAY_READ_OK=true\n15:13:19.893 (893660924)|CUMULATIVE_LIMIT_USAGE\n15:13:19.893 (893660924)|LIMIT_USAGE_FOR_NS|(default)|\n  Number of SOQL queries: 0 out of 100\n  Number of query rows: 0 out of 50000\n  Number of SOSL queries: 0 out of 20\n  Number of DML statements: 0 out of 150\n  Number of Publish Immediate DML: 0 out of 150\n  Number of DML rows: 0 out of 10000\n  Maximum CPU time: 0 out of 10000\n  Maximum heap size: 0 out of 10000000\n  Number of callouts: 1 out of 100\n  Number of Email Invocations: 0 out of 10\n  Number of future calls: 0 out of 50\n  Number of queueable jobs added to the queue: 0 out of 50\n  Number of Mobile Apex push calls: 0 out of 10\n\n15:13:19.893 (893660924)|CUMULATIVE_LIMIT_USAGE_END\n\n15:13:19.54 (893718824)|CODE_UNIT_FINISHED|execute_anonymous_apex\n15:13:19.54 (893733934)|EXECUTION_FINISHED\n"
+  },
+  "warnings": []
+}

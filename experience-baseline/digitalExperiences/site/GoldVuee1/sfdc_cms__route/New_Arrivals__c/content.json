@@ -1,0 +1,12 @@
+{
+  "type" : "sfdc_cms__route",
+  "title" : "New Arrivals",
+  "contentBody" : {
+    "activeViewId" : "New_Arrivals",
+    "configurationTags" : [ ],
+    "pageAccess" : "UseParent",
+    "routeType" : "custom-new-arrivals",
+    "urlPrefix" : "new-arrivals"
+  },
+  "urlName" : "new-arrivals"
+}

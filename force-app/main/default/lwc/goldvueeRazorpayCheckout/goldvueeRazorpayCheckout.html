@@ -1,31 +1,34 @@
-
 <template>
-    <div class="goldvuee-razorpay-panel">
+  <div class="goldvuee-razorpay-panel">
+    <template lwc:if={errorMessage}>
+      <p class="razorpay-error" role="alert">{errorMessage}</p>
+    </template>
 
-        <template lwc:if={errorMessage}>
-            <p class="razorpay-error" role="alert">
-                {errorMessage}
-            </p>
-        </template>
+    <template lwc:if={statusMessage}>
+      <p class="razorpay-status" role="status">{statusMessage}</p>
+    </template>
 
-        <template lwc:if={statusMessage}>
-            <p class="razorpay-status" role="status">
-                {statusMessage}
-            </p>
-        </template>
+    <button
+      type="button"
+      class="razorpay-pay-button"
+      onclick={handlePay}
+      disabled={isButtonDisabled}
+    >
+      {buttonLabel}
+    </button>
+    <template lwc:if={pendingOrder}>
+      <button
+        type="button"
+        class="razorpay-status-button"
+        onclick={handleCheckStatus}
+        disabled={isButtonDisabled}
+      >
+        Check Payment Status
+      </button>
+    </template>
 
-        <button
-            type="button"
-            class="razorpay-pay-button"
-            onclick={handlePay}
-            disabled={isButtonDisabled}>
-            {buttonLabel}
-        </button>
-
-        <p class="razorpay-security-note">
-            Secure Razorpay Test Mode checkout.
-            No real money is charged.
-        </p>
-
-    </div>
+    <p class="razorpay-security-note">
+      Secure Razorpay Test Mode checkout. No real money is charged.
+    </p>
+  </div>
 </template>

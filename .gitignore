@@ -42,6 +42,9 @@ $RECYCLE.BIN/
 # Local environment variables
 .env
 
+# Generated environment-specific subscriber identity (no secrets).
+deployment-config/
+
 # Python Salesforce Functions
 **/__pycache__/
 **/.venv/

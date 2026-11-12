@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GV_Prevent_Negative_Inventory</fullName>
+    <active>true</active>
+    <description>Prevents physical or reserved stock from becoming negative or reserved stock exceeding physical stock.</description>
+    <errorConditionFormula>OR(
+    Stock_Quantity__c &lt; 0,
+    Reserved_Quantity__c &lt; 0,
+    BLANKVALUE(Reserved_Quantity__c, 0) &gt;
+    BLANKVALUE(Stock_Quantity__c, 0)
+)</errorConditionFormula>
+    <errorMessage>Inventory quantities cannot be negative, and reserved stock cannot exceed physical stock.</errorMessage>
+</ValidationRule>

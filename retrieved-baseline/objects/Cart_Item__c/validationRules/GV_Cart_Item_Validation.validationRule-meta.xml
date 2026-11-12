@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GV_Cart_Item_Validation</fullName>
+    <active>true</active>
+    <description>Ensure cart quantity is at least 1 and prices are not negative</description>
+    <errorConditionFormula>OR(
+    ISBLANK(Quantity__c),
+    Quantity__c &lt; 1,
+    ISBLANK(Unit_Price__c),
+    Unit_Price__c &lt; 0,
+    AND(
+        NOT(ISBLANK(Line_Total__c)),
+        Line_Total__c &lt; 0
+    )
+)</errorConditionFormula>
+    <errorMessage>Cart quantity must be at least 1, and item prices and totals cannot be negative.</errorMessage>
+</ValidationRule>

@@ -1,254 +1,207 @@
-
 <template>
-    <section class="details-page">
+  <section class="details-page">
+    <!-- LOADING STATE -->
+    <template lwc:if={isLoading}>
+      <div class="status-message">Loading your jewellery...</div>
+    </template>
 
-        <!-- LOADING STATE -->
-        <template lwc:if={isLoading}>
-            <div class="status-message">
-                Loading your jewellery...
-            </div>
-        </template>
+    <!-- ERROR STATE -->
+    <template lwc:elseif={errorMessage}>
+      <div class="status-message error">{errorMessage}</div>
+    </template>
 
-        <!-- ERROR STATE -->
-        <template lwc:elseif={errorMessage}>
-            <div class="status-message error">
-                {errorMessage}
-            </div>
-        </template>
+    <!-- PRODUCT DETAILS -->
+    <template lwc:elseif={hasProduct}>
+      <div class="details-container">
+        <!-- ====================================== -->
+        <!-- PRODUCT IMAGE                          -->
+        <!-- ====================================== -->
+        <div class="image-column">
+          <div class="main-image">
+            <img src={product.image} alt={product.name} />
 
-        <!-- PRODUCT DETAILS -->
-        <template lwc:elseif={hasProduct}>
+            <template lwc:if={product.isNew}>
+              <span class="new-badge"> NEW ARRIVAL </span>
+            </template>
+          </div>
+        </div>
 
-            <div class="details-container">
+        <!-- ====================================== -->
+        <!-- PRODUCT INFORMATION                    -->
+        <!-- ====================================== -->
+        <div class="information-column">
+          <p class="eyebrow">THE GOLDVUEE COLLECTION</p>
 
-                <!-- ====================================== -->
-                <!-- PRODUCT IMAGE                          -->
-                <!-- ====================================== -->
-                <div class="image-column">
-                    <div class="main-image">
+          <p class="product-category">{product.category}</p>
 
-                        <img
-                            src={product.image}
-                            alt={product.name}
-                        />
+          <h1>{product.name}</h1>
 
-                        <template lwc:if={product.isNew}>
-                            <span class="new-badge">
-                                NEW ARRIVAL
-                            </span>
-                        </template>
+          <div class="gold-divider"></div>
 
-                    </div>
-                </div>
+          <!-- ================================== -->
+          <!-- PRODUCT PRICING                    -->
+          <!-- ================================== -->
+          <div class="price-row">
+            <span class="current-price"> {product.formattedPrice} </span>
 
-                <!-- ====================================== -->
-                <!-- PRODUCT INFORMATION                    -->
-                <!-- ====================================== -->
-                <div class="information-column">
+            <template lwc:if={product.hasDiscount}>
+              <span class="original-price">
+                {product.formattedOriginalPrice}
+              </span>
+            </template>
+          </div>
 
-                    <p class="eyebrow">
-                        THE GOLDVUEE COLLECTION
-                    </p>
+          <!-- ================================== -->
+          <!-- INVENTORY STATUS                   -->
+          <!-- ================================== -->
+          <p class={availabilityClass}>
+            <span class="status-dot"></span>
+            {stockLabel}
+          </p>
 
-                    <p class="product-category">
-                        {product.category}
-                    </p>
+          <!-- ================================== -->
+          <!-- SHOPPING CART SECTION              -->
+          <!-- ================================== -->
+          <div class="cart-section">
+            <h2 class="cart-section-title">Add to Your Collection</h2>
 
-                    <h1>{product.name}</h1>
+            <!-- QUANTITY SELECTOR -->
+            <div class="quantity-container">
+              <span class="quantity-label"> Quantity </span>
 
-                    <div class="gold-divider"></div>
+              <div class="quantity-selector">
+                <!-- DECREASE QUANTITY -->
+                <button
+                  type="button"
+                  class="quantity-button"
+                  onclick={handleDecreaseQuantity}
+                  disabled={isDecreaseDisabled}
+                  aria-label="Decrease quantity"
+                >
+                  −
+                </button>
 
-                    <!-- ================================== -->
-                    <!-- PRODUCT PRICING                    -->
-                    <!-- ================================== -->
-                    <div class="price-row">
+                <!-- SELECTED QUANTITY -->
+                <span class="quantity-value" aria-live="polite">
+                  {quantity}
+                </span>
 
-                        <span class="current-price">
-                            {product.formattedPrice}
-                        </span>
-
-                        <template lwc:if={product.hasDiscount}>
-                            <span class="original-price">
-                                {product.formattedOriginalPrice}
-                            </span>
-                        </template>
-
-                    </div>
-
-                    <!-- ================================== -->
-                    <!-- INVENTORY STATUS                   -->
-                    <!-- ================================== -->
-                    <p class={availabilityClass}>
-                        <span class="status-dot"></span>
-                        {stockLabel}
-                    </p>
-
-                    <!-- ================================== -->
-                    <!-- SHOPPING CART SECTION              -->
-                    <!-- ================================== -->
-                    <div class="cart-section">
-
-                        <h2 class="cart-section-title">
-                            Add to Your Collection
-                        </h2>
-
-                        <!-- QUANTITY SELECTOR -->
-                        <div class="quantity-container">
-
-                            <span class="quantity-label">
-                                Quantity
-                            </span>
-
-                            <div class="quantity-selector">
-
-                                <!-- DECREASE QUANTITY -->
-                                <button
-                                    type="button"
-                                    class="quantity-button"
-                                    onclick={handleDecreaseQuantity}
-                                    disabled={isDecreaseDisabled}
-                                    aria-label="Decrease quantity">
-                                    −
-                                </button>
-
-                                <!-- SELECTED QUANTITY -->
-                                <span
-                                    class="quantity-value"
-                                    aria-live="polite">
-                                    {quantity}
-                                </span>
-
-                                <!-- INCREASE QUANTITY -->
-                                <button
-                                    type="button"
-                                    class="quantity-button"
-                                    onclick={handleIncreaseQuantity}
-                                    disabled={isIncreaseDisabled}
-                                    aria-label="Increase quantity">
-                                    +
-                                </button>
-
-                            </div>
-
-                        </div>
-
-                        <!-- ADD TO CART BUTTON -->
-                        <button
-                            type="button"
-                            class="add-to-cart-button"
-                            onclick={handleAddToCart}
-                            disabled={isAddToCartDisabled}>
-
-                            <template lwc:if={isAddingToCart}>
-                                Adding to Cart...
-                            </template>
-
-                            <template lwc:else>
-                                Add to Cart
-                            </template>
-
-                        </button>
-
-                        <!-- SUCCESS MESSAGE -->
-                        <template lwc:if={cartSuccessMessage}>
-                            <div
-                                class="cart-message cart-success"
-                                role="status">
-                                {cartSuccessMessage}
-                            </div>
-                        </template>
-
-                        <!-- ERROR MESSAGE -->
-                        <template lwc:if={cartErrorMessage}>
-                            <div
-                                class="cart-message cart-error"
-                                role="alert">
-                                {cartErrorMessage}
-                            </div>
-                        </template>
-
-                        <!-- INVENTORY NOTE -->
-                        <template lwc:if={isInStock}>
-                            <p class="cart-inventory-note">
-                                Available for secure checkout.
-                            </p>
-                        </template>
-
-                    </div>
-
-                    <!-- ================================== -->
-                    <!-- PRODUCT DESCRIPTION                -->
-                    <!-- ================================== -->
-                    <div class="description-block">
-                        <h2>Product Description</h2>
-                        <p>{product.description}</p>
-                    </div>
-
-                    <!-- ================================== -->
-                    <!-- PRODUCT SPECIFICATIONS             -->
-                    <!-- ================================== -->
-                    <div class="specifications">
-
-                        <h2>Product Details</h2>
-
-                        <dl>
-                            <div class="spec-row">
-                                <dt>Metal Type</dt>
-                                <dd>{product.metal}</dd>
-                            </div>
-
-                            <div class="spec-row">
-                                <dt>Purity</dt>
-                                <dd>{product.purity}</dd>
-                            </div>
-
-                            <div class="spec-row">
-                                <dt>Stone Type</dt>
-                                <dd>{product.stone}</dd>
-                            </div>
-
-                            <div class="spec-row">
-                                <dt>Weight</dt>
-                                <dd>{formattedWeight}</dd>
-                            </div>
-
-                            <div class="spec-row">
-                                <dt>SKU</dt>
-                                <dd>{product.sku}</dd>
-                            </div>
-
-                            <div class="spec-row">
-                                <dt>Product Code</dt>
-                                <dd>{product.productCode}</dd>
-                            </div>
-
-                            <div class="spec-row">
-                                <dt>Availability</dt>
-                                <dd>{product.availability}</dd>
-                            </div>
-                        </dl>
-
-                    </div>
-
-                    <!-- ================================== -->
-                    <!-- GOLDVUEE BRAND MESSAGE             -->
-                    <!-- ================================== -->
-                    <div class="service-note">
-                        <span>✦</span>
-                        Crafted for timeless elegance.
-                    </div>
-
-                </div>
+                <!-- INCREASE QUANTITY -->
+                <button
+                  type="button"
+                  class="quantity-button"
+                  onclick={handleIncreaseQuantity}
+                  disabled={isIncreaseDisabled}
+                  aria-label="Increase quantity"
+                >
+                  +
+                </button>
+              </div>
             </div>
 
-        </template>
+            <!-- ADD TO CART BUTTON -->
+            <template lwc:if={isGuestUser}>
+              <p><a href={loginUrl}>Sign in to shop</a></p>
+            </template>
+            <button
+              type="button"
+              class="add-to-cart-button"
+              onclick={handleAddToCart}
+              disabled={isAddToCartDisabled}
+            >
+              <template lwc:if={isAddingToCart}> Adding to Cart... </template>
 
-        <!-- NO PRODUCT SELECTED -->
-        <template lwc:else>
-            <div class="status-message">
-                Select a jewellery product to view its details.
-            </div>
-        </template>
+              <template lwc:else> Add to Cart </template>
+            </button>
 
-    </section>
+            <!-- SUCCESS MESSAGE -->
+            <template lwc:if={cartSuccessMessage}>
+              <div class="cart-message cart-success" role="status">
+                {cartSuccessMessage}
+              </div>
+            </template>
+
+            <!-- ERROR MESSAGE -->
+            <template lwc:if={cartErrorMessage}>
+              <div class="cart-message cart-error" role="alert">
+                {cartErrorMessage}
+              </div>
+            </template>
+
+            <!-- INVENTORY NOTE -->
+            <template lwc:if={isInStock}>
+              <p class="cart-inventory-note">Available for secure checkout.</p>
+            </template>
+          </div>
+
+          <!-- ================================== -->
+          <!-- PRODUCT DESCRIPTION                -->
+          <!-- ================================== -->
+          <div class="description-block">
+            <h2>Product Description</h2>
+            <p>{product.description}</p>
+          </div>
+
+          <!-- ================================== -->
+          <!-- PRODUCT SPECIFICATIONS             -->
+          <!-- ================================== -->
+          <div class="specifications">
+            <h2>Product Details</h2>
+
+            <dl>
+              <div class="spec-row">
+                <dt>Metal Type</dt>
+                <dd>{product.metal}</dd>
+              </div>
+
+              <div class="spec-row">
+                <dt>Purity</dt>
+                <dd>{product.purity}</dd>
+              </div>
+
+              <div class="spec-row">
+                <dt>Stone Type</dt>
+                <dd>{product.stone}</dd>
+              </div>
+
+              <div class="spec-row">
+                <dt>Weight</dt>
+                <dd>{formattedWeight}</dd>
+              </div>
+
+              <div class="spec-row">
+                <dt>SKU</dt>
+                <dd>{product.sku}</dd>
+              </div>
+
+              <div class="spec-row">
+                <dt>Product Code</dt>
+                <dd>{product.productCode}</dd>
+              </div>
+
+              <div class="spec-row">
+                <dt>Availability</dt>
+                <dd>{product.availability}</dd>
+              </div>
+            </dl>
+          </div>
+
+          <!-- ================================== -->
+          <!-- GOLDVUEE BRAND MESSAGE             -->
+          <!-- ================================== -->
+          <div class="service-note">
+            <span>✦</span>
+            Crafted for timeless elegance.
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <!-- NO PRODUCT SELECTED -->
+    <template lwc:else>
+      <div class="status-message">
+        Select a jewellery product to view its details.
+      </div>
+    </template>
+  </section>
 </template>

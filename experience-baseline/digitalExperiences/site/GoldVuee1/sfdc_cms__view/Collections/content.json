@@ -1,0 +1,96 @@
+{
+  "type" : "sfdc_cms__view",
+  "title" : "Collections",
+  "contentBody" : {
+    "component" : {
+      "children" : [ {
+        "children" : [ {
+          "attributes" : {
+            "backgroundImageConfig" : "",
+            "backgroundImageOverlay" : "rgba(0,0,0,0)",
+            "componentSpacerSize" : "",
+            "layoutDirectionDesktop" : "row",
+            "layoutDirectionMobile" : "column",
+            "layoutDirectionTablet" : "column",
+            "maxContentWidth" : "",
+            "sectionColumnGutterWidth" : "",
+            "sectionConfig" : "{\"UUID\":\"9cc309b5-f4ee-4d77-aa78-f4e7d2d481e1\",\"columns\":[{\"UUID\":\"82a9d75b-0d73-4d57-86cc-c26a44f52351\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}",
+            "sectionMinHeight" : "",
+            "sectionVerticalAlign" : "flex-start"
+          },
+          "children" : [ {
+            "children" : [ {
+              "attributes" : { },
+              "definition" : "c:goldvueeCategoryCarousel",
+              "id" : "6f7847bc-e673-4e55-9dfb-9c4859280c6e",
+              "type" : "component"
+            } ],
+            "id" : "82a9d75b-0d73-4d57-86cc-c26a44f52351",
+            "name" : "col1",
+            "title" : "Column 1",
+            "type" : "region"
+          } ],
+          "definition" : "community_layout:section",
+          "id" : "9cc309b5-f4ee-4d77-aa78-f4e7d2d481e1",
+          "type" : "component"
+        }, {
+          "attributes" : {
+            "backgroundImageConfig" : "",
+            "backgroundImageOverlay" : "rgba(0,0,0,0)",
+            "componentSpacerSize" : "",
+            "layoutDirectionDesktop" : "row",
+            "layoutDirectionMobile" : "column",
+            "layoutDirectionTablet" : "column",
+            "maxContentWidth" : "",
+            "sectionColumnGutterWidth" : "",
+            "sectionConfig" : "{\"UUID\":\"32395417-ee7e-4bfc-9430-b035f53086fd\",\"columns\":[{\"UUID\":\"09b1d455-51b5-4325-9428-d594cca57569\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}",
+            "sectionMinHeight" : "",
+            "sectionVerticalAlign" : "flex-start"
+          },
+          "children" : [ {
+            "children" : [ {
+              "attributes" : { },
+              "definition" : "c:gvProductCatalog",
+              "id" : "c482f022-e9ca-482e-b95a-6ab9b4a052cc",
+              "type" : "component"
+            } ],
+            "id" : "09b1d455-51b5-4325-9428-d594cca57569",
+            "name" : "col1",
+            "title" : "Column 1",
+            "type" : "region"
+          } ],
+          "definition" : "community_layout:section",
+          "id" : "32395417-ee7e-4bfc-9430-b035f53086fd",
+          "type" : "component"
+        } ],
+        "id" : "3676479e-a550-4eaa-b800-e894088bd106",
+        "name" : "content",
+        "title" : "Content",
+        "type" : "region"
+      }, {
+        "children" : [ {
+          "attributes" : {
+            "customHeadTags" : "",
+            "description" : "",
+            "pageTitle" : "Collections",
+            "recordId" : "{!recordId}"
+          },
+          "definition" : "community_builder:seoAssistant",
+          "id" : "fe98db41-eb66-4952-a1af-7471b5f733f6",
+          "type" : "component"
+        } ],
+        "id" : "a0d33d17-82fa-4153-8930-38c848bdc58a",
+        "name" : "sfdcHiddenRegion",
+        "title" : "sfdcHiddenRegion",
+        "type" : "region"
+      } ],
+      "definition" : "community_layout:sldsFlexibleLayout",
+      "id" : "8c2275f3-01a2-4028-905a-d1026888d90c",
+      "type" : "component"
+    },
+    "dataProviders" : [ ],
+    "themeLayoutType" : "Inner",
+    "viewType" : "custom-collections"
+  },
+  "urlName" : "collections"
+}

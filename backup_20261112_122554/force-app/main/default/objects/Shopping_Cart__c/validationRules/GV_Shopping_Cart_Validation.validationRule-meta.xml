@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GV_Shopping_Cart_Validation</fullName>
+    <active>true</active>
+    <description>Prevent negative cart totals and allow guest shopping carts</description>
+    <errorConditionFormula>AND(
+    NOT(ISBLANK(Total_Amount__c)),
+    Total_Amount__c &lt; 0
+)</errorConditionFormula>
+    <errorMessage>Shopping Cart Total Amount cannot be negative.</errorMessage>
+</ValidationRule>

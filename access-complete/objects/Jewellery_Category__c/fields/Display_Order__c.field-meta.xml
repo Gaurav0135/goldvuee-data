@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Display_Order__c</fullName>
+    <description>Defines the order in which jewellery categories are displayed on the website</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Enter a number to control the category display sequence. Lower numbers appear first.</inlineHelpText>
+    <label>Display Order</label>
+    <precision>3</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

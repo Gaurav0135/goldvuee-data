@@ -1,0 +1,1693 @@
+﻿{
+  "status": 0,
+  "result": {
+    "done": true,
+    "fileProperties": [
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__appPage/mainAppPage/_meta.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__appPage/mainAppPage/_meta",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__appPage/mainAppPage/content.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__appPage/mainAppPage/content",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__brandingSet/Build_Your_Own_LWR/_meta.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__brandingSet/Build_Your_Own_LWR/_meta",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__brandingSet/Build_Your_Own_LWR/content.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__brandingSet/Build_Your_Own_LWR/content",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__languageSettings/languages/_meta.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__languageSettings/languages/_meta",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__languageSettings/languages/content.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__languageSettings/languages/content",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__mobilePublisherConfig/mobilePublisherConfig/_meta.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__mobilePublisherConfig/mobilePublisherConfig/_meta",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__mobilePublisherConfig/mobilePublisherConfig/content.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__mobilePublisherConfig/mobilePublisherConfig/content",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__route/Check_Password/_meta.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__route/Check_Password/_meta",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__route/Check_Password/content.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__route/Check_Password/content",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__route/Checkout__c/_meta.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__route/Checkout__c/_meta",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__route/Checkout__c/content.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__route/Checkout__c/content",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__route/Error/_meta.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__route/Error/_meta",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__route/Error/content.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__route/Error/content",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__route/Forgot_Password/_meta.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__route/Forgot_Password/_meta",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__route/Forgot_Password/content.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__route/Forgot_Password/content",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__route/Home/_meta.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__route/Home/_meta",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__route/Home/content.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__route/Home/content",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__route/Login/_meta.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__route/Login/_meta",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__route/Login/content.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__route/Login/content",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__route/My_Account__c/_meta.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__route/My_Account__c/_meta",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__route/My_Account__c/content.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__route/My_Account__c/content",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__route/My_Orders__c/_meta.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__route/My_Orders__c/_meta",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__route/My_Orders__c/content.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__route/My_Orders__c/content",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__route/New_Arrivals__c/_meta.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__route/New_Arrivals__c/_meta",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__route/New_Arrivals__c/content.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__route/New_Arrivals__c/content",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__route/News_Detail__c/_meta.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__route/News_Detail__c/_meta",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__route/News_Detail__c/content.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__route/News_Detail__c/content",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__route/Product_Details__c/_meta.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__route/Product_Details__c/_meta",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__route/Product_Details__c/content.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__route/Product_Details__c/content",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__route/Register/_meta.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__route/Register/_meta",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__route/Register/content.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__route/Register/content",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__route/Service_Not_Available/_meta.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__route/Service_Not_Available/_meta",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__route/Service_Not_Available/content.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__route/Service_Not_Available/content",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__route/Shopping_Cart__c/_meta.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__route/Shopping_Cart__c/_meta",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__route/Shopping_Cart__c/content.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__route/Shopping_Cart__c/content",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__route/Too_Many_Requests/_meta.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__route/Too_Many_Requests/_meta",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__route/Too_Many_Requests/content.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__route/Too_Many_Requests/content",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__route/collections__c/_meta.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__route/collections__c/_meta",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__route/collections__c/content.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__route/collections__c/content",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__site/GoldVuee1/_meta.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__site/GoldVuee1/_meta",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__site/GoldVuee1/content.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__site/GoldVuee1/content",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__styles/print_css/_meta.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__styles/print_css/_meta",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__styles/print_css/content.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__styles/print_css/content",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__styles/print_css/print.css",
+        "fullName": "site/GoldVuee1/sfdc_cms__styles/print_css/print",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__styles/styles_css/_meta.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__styles/styles_css/_meta",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__styles/styles_css/content.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__styles/styles_css/content",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__styles/styles_css/styles.css",
+        "fullName": "site/GoldVuee1/sfdc_cms__styles/styles_css/styles",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__theme/Build_Your_Own_LWR/_meta.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__theme/Build_Your_Own_LWR/_meta",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__theme/Build_Your_Own_LWR/content.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__theme/Build_Your_Own_LWR/content",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__themeLayout/scopedHeaderAndFooter/_meta.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__themeLayout/scopedHeaderAndFooter/_meta",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__themeLayout/scopedHeaderAndFooter/content.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__themeLayout/scopedHeaderAndFooter/content",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__themeLayout/snaThemeLayout/_meta.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__themeLayout/snaThemeLayout/_meta",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__themeLayout/snaThemeLayout/content.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__themeLayout/snaThemeLayout/content",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__view/Checkout/_meta.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__view/Checkout/_meta",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__view/Checkout/content.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__view/Checkout/content",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__view/Collections/_meta.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__view/Collections/_meta",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__view/Collections/content.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__view/Collections/content",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__view/My_Account/_meta.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__view/My_Account/_meta",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__view/My_Account/content.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__view/My_Account/content",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__view/My_Orders/_meta.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__view/My_Orders/_meta",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__view/My_Orders/content.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__view/My_Orders/content",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__view/New_Arrivals/_meta.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__view/New_Arrivals/_meta",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__view/New_Arrivals/content.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__view/New_Arrivals/content",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__view/Product_Details/_meta.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__view/Product_Details/_meta",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__view/Product_Details/content.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__view/Product_Details/content",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__view/Shopping_Cart/_meta.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__view/Shopping_Cart/_meta",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__view/Shopping_Cart/content.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__view/Shopping_Cart/content",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__view/checkPasswordResetEmail/_meta.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__view/checkPasswordResetEmail/_meta",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__view/checkPasswordResetEmail/content.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__view/checkPasswordResetEmail/content",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__view/error/_meta.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__view/error/_meta",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__view/error/content.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__view/error/content",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__view/forgotPassword/_meta.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__view/forgotPassword/_meta",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__view/forgotPassword/content.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__view/forgotPassword/content",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__view/home/_meta.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__view/home/_meta",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__view/home/content.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__view/home/content",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__view/login/_meta.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__view/login/_meta",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__view/login/content.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__view/login/content",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__view/newsDetail/_meta.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__view/newsDetail/_meta",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__view/newsDetail/content.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__view/newsDetail/content",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__view/register/_meta.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__view/register/_meta",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__view/register/content.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__view/register/content",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__view/serviceNotAvailable/_meta.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__view/serviceNotAvailable/_meta",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__view/serviceNotAvailable/content.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__view/serviceNotAvailable/content",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__view/tooManyRequests/_meta.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__view/tooManyRequests/_meta",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/sfdc_cms__view/tooManyRequests/content.json",
+        "fullName": "site/GoldVuee1/sfdc_cms__view/tooManyRequests/content",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-03T12:57:50.000Z",
+        "fileName": "unpackaged/digitalExperiences/site/GoldVuee1/GoldVuee1.digitalExperience",
+        "fullName": "site/GoldVuee1",
+        "id": "0jdjV0000014Jd0QAE",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-03T12:57:50.000Z",
+        "manageableState": "unmanaged",
+        "type": "DigitalExperienceBundle"
+      },
+      {
+        "createdById": "005jV000003akdhQAA",
+        "createdByName": "Gaurav Patel",
+        "createdDate": "2026-11-12T09:47:52.629Z",
+        "fileName": "unpackaged/package.xml",
+        "fullName": "unpackaged/package.xml",
+        "id": "",
+        "lastModifiedById": "005jV000003akdhQAA",
+        "lastModifiedByName": "Gaurav Patel",
+        "lastModifiedDate": "2026-11-12T09:47:52.629Z",
+        "manageableState": "unmanaged",
+        "type": "Package"
+      }
+    ],
+    "id": "09SjV00000ElNynUAF",
+    "messages": [
+      {
+        "fileName": "unpackaged/package.xml",
+        "problem": "Entity of type 'DigitalExperienceConfig' named 'site/GoldVuee1' cannot be found"
+      }
+    ],
+    "status": "Succeeded",
+    "success": true,
+    "files": [
+      {
+        "fullName": "site/GoldVuee1",
+        "type": "DigitalExperienceConfig",
+        "state": "Failed",
+        "error": "Entity of type 'DigitalExperienceConfig' named 'site/GoldVuee1' cannot be found",
+        "problemType": "Error"
+      },
+      {
+        "fullName": "site/GoldVuee1",
+        "type": "DigitalExperienceBundle",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\GoldVuee1.digitalExperience-meta.xml"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__appPage/mainAppPage",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__appPage\\mainAppPage\\content.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__appPage/mainAppPage",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__appPage\\mainAppPage\\_meta.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__brandingSet/Build_Your_Own_LWR",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__brandingSet\\Build_Your_Own_LWR\\content.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__brandingSet/Build_Your_Own_LWR",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__brandingSet\\Build_Your_Own_LWR\\_meta.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__languageSettings/languages",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__languageSettings\\languages\\content.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__languageSettings/languages",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__languageSettings\\languages\\_meta.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__mobilePublisherConfig/mobilePublisherConfig",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__mobilePublisherConfig\\mobilePublisherConfig\\content.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__mobilePublisherConfig/mobilePublisherConfig",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__mobilePublisherConfig\\mobilePublisherConfig\\_meta.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__route/Check_Password",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__route\\Check_Password\\content.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__route/Check_Password",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__route\\Check_Password\\_meta.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__route/Checkout__c",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__route\\Checkout__c\\content.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__route/Checkout__c",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__route\\Checkout__c\\_meta.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__route/Error",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__route\\Error\\content.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__route/Error",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__route\\Error\\_meta.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__route/Forgot_Password",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__route\\Forgot_Password\\content.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__route/Forgot_Password",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__route\\Forgot_Password\\_meta.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__route/Home",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__route\\Home\\content.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__route/Home",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__route\\Home\\_meta.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__route/Login",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__route\\Login\\content.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__route/Login",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__route\\Login\\_meta.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__route/My_Account__c",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__route\\My_Account__c\\content.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__route/My_Account__c",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__route\\My_Account__c\\_meta.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__route/My_Orders__c",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__route\\My_Orders__c\\content.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__route/My_Orders__c",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__route\\My_Orders__c\\_meta.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__route/New_Arrivals__c",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__route\\New_Arrivals__c\\content.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__route/New_Arrivals__c",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__route\\New_Arrivals__c\\_meta.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__route/News_Detail__c",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__route\\News_Detail__c\\content.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__route/News_Detail__c",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__route\\News_Detail__c\\_meta.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__route/Product_Details__c",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__route\\Product_Details__c\\content.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__route/Product_Details__c",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__route\\Product_Details__c\\_meta.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__route/Register",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__route\\Register\\content.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__route/Register",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__route\\Register\\_meta.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__route/Service_Not_Available",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__route\\Service_Not_Available\\content.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__route/Service_Not_Available",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__route\\Service_Not_Available\\_meta.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__route/Shopping_Cart__c",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__route\\Shopping_Cart__c\\content.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__route/Shopping_Cart__c",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__route\\Shopping_Cart__c\\_meta.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__route/Too_Many_Requests",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__route\\Too_Many_Requests\\content.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__route/Too_Many_Requests",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__route\\Too_Many_Requests\\_meta.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__route/collections__c",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__route\\collections__c\\content.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__route/collections__c",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__route\\collections__c\\_meta.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__site/GoldVuee1",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__site\\GoldVuee1\\content.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__site/GoldVuee1",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__site\\GoldVuee1\\_meta.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__styles/print_css",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__styles\\print_css\\content.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__styles/print_css",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__styles\\print_css\\print.css"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__styles/print_css",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__styles\\print_css\\_meta.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__styles/styles_css",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__styles\\styles_css\\content.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__styles/styles_css",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__styles\\styles_css\\styles.css"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__styles/styles_css",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__styles\\styles_css\\_meta.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__theme/Build_Your_Own_LWR",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__theme\\Build_Your_Own_LWR\\content.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__theme/Build_Your_Own_LWR",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__theme\\Build_Your_Own_LWR\\_meta.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__themeLayout/scopedHeaderAndFooter",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__themeLayout\\scopedHeaderAndFooter\\content.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__themeLayout/scopedHeaderAndFooter",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__themeLayout\\scopedHeaderAndFooter\\_meta.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__themeLayout/snaThemeLayout",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__themeLayout\\snaThemeLayout\\content.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__themeLayout/snaThemeLayout",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__themeLayout\\snaThemeLayout\\_meta.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__view/Checkout",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__view\\Checkout\\content.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__view/Checkout",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__view\\Checkout\\_meta.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__view/Collections",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__view\\Collections\\content.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__view/Collections",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__view\\Collections\\_meta.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__view/My_Account",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__view\\My_Account\\content.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__view/My_Account",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__view\\My_Account\\_meta.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__view/My_Orders",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__view\\My_Orders\\content.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__view/My_Orders",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__view\\My_Orders\\_meta.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__view/New_Arrivals",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__view\\New_Arrivals\\content.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__view/New_Arrivals",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__view\\New_Arrivals\\_meta.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__view/Product_Details",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__view\\Product_Details\\content.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__view/Product_Details",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__view\\Product_Details\\_meta.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__view/Shopping_Cart",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__view\\Shopping_Cart\\content.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__view/Shopping_Cart",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__view\\Shopping_Cart\\_meta.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__view/checkPasswordResetEmail",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__view\\checkPasswordResetEmail\\content.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__view/checkPasswordResetEmail",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__view\\checkPasswordResetEmail\\_meta.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__view/error",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__view\\error\\content.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__view/error",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__view\\error\\_meta.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__view/forgotPassword",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__view\\forgotPassword\\content.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__view/forgotPassword",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__view\\forgotPassword\\_meta.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__view/home",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__view\\home\\content.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__view/home",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__view\\home\\_meta.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__view/login",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__view\\login\\content.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__view/login",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__view\\login\\_meta.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__view/newsDetail",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__view\\newsDetail\\content.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__view/newsDetail",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__view\\newsDetail\\_meta.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__view/register",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__view\\register\\content.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__view/register",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__view\\register\\_meta.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__view/serviceNotAvailable",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__view\\serviceNotAvailable\\content.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__view/serviceNotAvailable",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__view\\serviceNotAvailable\\_meta.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__view/tooManyRequests",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__view\\tooManyRequests\\content.json"
+      },
+      {
+        "fullName": "site/GoldVuee1.sfdc_cms__view/tooManyRequests",
+        "type": "DigitalExperience",
+        "state": "Created",
+        "filePath": "D:\\GoldVuee\\goldvuee\\experience-baseline\\digitalExperiences\\site\\GoldVuee1\\sfdc_cms__view\\tooManyRequests\\_meta.json"
+      }
+    ]
+  },
+  "warnings": []
+}

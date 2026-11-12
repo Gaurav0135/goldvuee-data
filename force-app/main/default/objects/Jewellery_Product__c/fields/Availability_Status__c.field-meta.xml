@@ -5,7 +5,7 @@
     <externalId>false</externalId>
     <formula>IF(
     AND(
-        Stock_Quantity__c &gt; 0,
+        Available_Quantity__c &gt; 0,
         Active__c = TRUE
     ),
     &quot;In Stock&quot;,

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GV_Product_Price_Validation</fullName>
+    <active>true</active>
+    <description>Prevent negative or zero product prices and invalid discount prices</description>
+    <errorConditionFormula>OR(
+    Price__c &lt;= 0,
+    AND(
+        NOT(ISBLANK(Discount_Price__c)),
+        OR(
+            Discount_Price__c &lt;= 0,
+            Discount_Price__c &gt;= Price__c
+        )
+    )
+)</errorConditionFormula>
+    <errorMessage>Enter a valid product price. Discounted price must be greater than zero and lower than the original price.</errorMessage>
+</ValidationRule>

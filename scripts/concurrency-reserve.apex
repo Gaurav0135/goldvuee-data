@@ -1,0 +1,1 @@
+try { Id hold=GVInventoryService.reserveStock('a00jV00000PwiXQQAZ',1,null); Long started=DateTime.now().getTime(); while(DateTime.now().getTime()-started<4000){} System.debug(LoggingLevel.INFO,'GV_RESERVE_OK='+hold); } catch(GVInventoryService.InventoryException e) { System.debug(LoggingLevel.INFO,'GV_RESERVE_REJECTED='+e.getMessage()); }

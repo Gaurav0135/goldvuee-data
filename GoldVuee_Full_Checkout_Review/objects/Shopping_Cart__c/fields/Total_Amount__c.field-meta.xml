@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Amount__c</fullName>
+    <description>Calculates the total amount of all products in the shopping cart.</description>
+    <inlineHelpText>Displays the sum of all cart item totals automatically.</inlineHelpText>
+    <label>Total Amount</label>
+    <summarizedField>Cart_Item__c.Line_Total__c</summarizedField>
+    <summaryForeignKey>Cart_Item__c.Shopping_Cart__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

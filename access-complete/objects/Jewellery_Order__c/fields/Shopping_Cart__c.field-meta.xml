@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Shopping_Cart__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Links jewellery orders to their original shopping carts.</description>
+    <inlineHelpText>Select the shopping cart used to place this order.</inlineHelpText>
+    <label>Shopping Cart</label>
+    <referenceTo>Shopping_Cart__c</referenceTo>
+    <relationshipLabel>Jewellery Orders</relationshipLabel>
+    <relationshipName>Jewellery_Orders</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>
