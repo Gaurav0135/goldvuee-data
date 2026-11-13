@@ -49,3 +49,7 @@ $RECYCLE.BIN/
 
 # Checkout audit checkpoint and deployed rollback source
 /backups/checkout-ux-20261113/
+
+/verification/clean-checkout/org-source/
+/verification/clean-checkout/org-ui/
+/verification/clean-checkout/reference/
