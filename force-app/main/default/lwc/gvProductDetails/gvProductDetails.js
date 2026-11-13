@@ -1,4 +1,6 @@
-import { customerMessage } from 'c/gvCheckoutRecovery';
+import isGuest from '@salesforce/user/isGuest';
+import basePath from '@salesforce/community/basePath';
+import { customerMessage } from 'c/gvStorefront';
 
 import { LightningElement, api, wire } from 'lwc';
 import { CurrentPageReference } from 'lightning/navigation';
@@ -351,7 +353,10 @@ export default class GvProductDetails extends LightningElement {
     //
     // --------------------------------------------------------
 
+    get loginUrl() { return `${basePath}/login`; }
+    get guestUser() { return isGuest; }
     async handleAddToCart() {
+        if (isGuest) { this.cartErrorMessage = 'Please sign in before adding jewellery to your bag.'; return; }
 
         // Prevent invalid or repeated submissions.
         if (
@@ -385,11 +390,7 @@ export default class GvProductDetails extends LightningElement {
                 `${selectedQuantity} × ${selectedProductName} ` +
                 'added to your cart successfully!';
 
-            // Useful for debugging during development.
-            console.log(
-                'GoldVuee Cart Updated:',
-                cartResponse
-            );
+            window.dispatchEvent(new CustomEvent('goldvueecartchange', { detail: { count: cartResponse.itemCount } }));
 
             // Reset quantity after successful addition.
             if (this.product?.id === selectedProductId) {

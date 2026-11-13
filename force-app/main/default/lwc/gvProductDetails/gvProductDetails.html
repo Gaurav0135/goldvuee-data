@@ -108,7 +108,7 @@
                                     onclick={handleDecreaseQuantity}
                                     disabled={isDecreaseDisabled}
                                     aria-label="Decrease quantity">
-                                    −
+                                    Ã¢Ë†â€™
                                 </button>
 
                                 <!-- SELECTED QUANTITY -->
@@ -158,6 +158,7 @@
                             </div>
                         </template>
 
+                        <a lwc:if={guestUser} href={loginUrl}>Sign in to add to your bag</a>
                         <!-- ERROR MESSAGE -->
                         <template lwc:if={cartErrorMessage}>
                             <div
@@ -234,7 +235,7 @@
                     <!-- GOLDVUEE BRAND MESSAGE             -->
                     <!-- ================================== -->
                     <div class="service-note">
-                        <span>✦</span>
+                        <span>Ã¢Å“Â¦</span>
                         Crafted for timeless elegance.
                     </div>
 

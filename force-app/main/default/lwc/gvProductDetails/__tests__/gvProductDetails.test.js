@@ -1,3 +1,5 @@
+jest.mock('@salesforce/community/basePath',()=>({__esModule:true,default:'/shop/s'}),{virtual:true});
+jest.mock('@salesforce/user/isGuest',()=>({__esModule:true,default:false}),{virtual:true});
 import { createElement } from "lwc";
 import Product from "c/gvProductDetails";
 import getProductById from "@salesforce/apex/GVProductController.getProductById";

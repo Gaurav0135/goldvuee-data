@@ -87,3 +87,13 @@ Live wishlist and bag counts still need to be supplied by the storefront state l
 an Apex/Commerce API integration. No custom object or field API names are assumed.
 Login, registration, logout, and session handling must be configured in Experience
 Cloud authentication; the component does not invent authentication or checkout.
+
+## Clean hosted checkout (13 November 2026)
+
+The active checkout uses `GVCartController`, `GVCheckoutController`, `GVRazorpayController`, `GVPaymentWebhook` and internal `GVCheckoutService`. Cart/checkout/result UI is LWC; hosted Razorpay Payment Links handle payment entry. New checkout never creates stock reservations. Inventory is deducted only after verified capture, and captured stock exceptions remain paid.
+
+Use the narrow `manifest/clean-checkout.xml` deployment manifest. Read [the operational runbook](verification/clean-checkout/RUNBOOK.md), [actual validation results](verification/clean-checkout/RESULTS.md), [schema mapping](verification/clean-checkout/SCHEMA-MAPPING.md) and [retrieved field definitions](verification/clean-checkout/FIELD-METADATA.md) before enabling payments. Test Mode, webhook access/signing configuration and live end-to-end acceptance still require completion. Archived source is under `backups/clean-checkout-20261113/source`; it is outside the deployment package. Org metadata deletion needs a separate dependency review and was not executed.
+
+## Urgent cart and checkout corrections
+
+The deployed follow-up removes payment-based cart freezing, preserves old payable snapshots while editing an independent current bag, fixes address normalization/navigation and adds the 120-second verified-payment monitoring window. See [the current fix report and remaining payment setup](verification/urgent-checkout/REPORT.md). This supersedes the earlier frozen-cart behavior. Deployment 0AfjV000006QL3lSAG passed 28 Apex tests; the local LWC suite passed 32 tests. Actual hosted-payment acceptance still requires the configuration listed in the report.

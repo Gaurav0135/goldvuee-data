@@ -1,0 +1,93 @@
+<template
+  ><main class="shell">
+    <p class="eyebrow">GOLDVUEE &middot; YOUR SELECTION</p>
+    <h1>Your shopping bag</h1>
+    <template lwc:if={guest}
+      ><section class="card">
+        <p>Sign in to keep your jewellery selection safely in your account.</p>
+        <a class="button" href={loginUrl}>Sign in</a>
+      </section></template
+    >
+    <template lwc:else
+      ><p role="alert" class="error">{error}</p>
+      <template lwc:if={busy}
+        ><p role="status">Updating your bag...</p></template
+      >
+      <template lwc:if={hasItems}
+        ><section class="card">
+          <template for:each={items} for:item="item"
+            ><article class="product" key={item.id}>
+              <img lwc:if={item.image} src={item.image} alt={item.name} />
+              <div>
+                <h2>{item.name}</h2>
+                <lightning-formatted-number
+                  value={item.price}
+                  format-style="currency"
+                  currency-code="INR"
+                ></lightning-formatted-number>
+                <div class="actions">
+                  <button
+                    class="qty"
+                    data-id={item.id}
+                    data-action="minus"
+                    onclick={change}
+                    disabled={item.min}
+                    aria-label="Decrease quantity"
+                  >
+                    -</button
+                  ><span>{item.quantity}</span
+                  ><button
+                    class="qty"
+                    data-id={item.id}
+                    data-action="plus"
+                    onclick={change}
+                    disabled={busy}
+                    aria-label="Increase quantity"
+                  >
+                    +</button
+                  ><button
+                    class="secondary"
+                    data-id={item.id}
+                    data-action="remove"
+                    onclick={change}
+                    disabled={busy}
+                  >
+                    Remove
+                  </button>
+                </div>
+              </div>
+              <div class="line">
+                <lightning-formatted-number
+                  value={item.total}
+                  format-style="currency"
+                  currency-code="INR"
+                ></lightning-formatted-number>
+              </div></article
+          ></template>
+          <div class="row">
+            <p>{count} pieces</p>
+            <p class="amount">
+              <lightning-formatted-number
+                value={total}
+                format-style="currency"
+                currency-code="INR"
+              ></lightning-formatted-number>
+            </p>
+          </div>
+          <div class="actions">
+            <a class="button" href={checkoutUrl}>Proceed to checkout</a
+            ><a class="button secondary" href={shoppingUrl}
+              >Continue shopping</a
+            >
+          </div>
+        </section></template
+      >
+      <template lwc:else
+        ><section class="card">
+          <h2>Your bag awaits something beautiful.</h2>
+          <a class="button" href={shoppingUrl}>Explore collections</a>
+        </section></template
+      ></template
+    >
+  </main></template
+>

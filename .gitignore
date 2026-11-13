@@ -53,3 +53,5 @@ $RECYCLE.BIN/
 /verification/clean-checkout/org-source/
 /verification/clean-checkout/org-ui/
 /verification/clean-checkout/reference/
+/verification/urgent-checkout/before/
+/verification/urgent-checkout/after/

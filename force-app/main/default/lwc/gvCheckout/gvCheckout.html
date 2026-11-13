@@ -1,313 +1,216 @@
-<template>
-  <section class="checkout-page">
-    <!-- HEADER -->
-    <header class="checkout-header">
-      <p class="eyebrow">THE GOLDVUEE EXPERIENCE</p>
-
-      <h1>Secure Checkout</h1>
-
-      <div class="gold-divider"></div>
-
-      <p>Complete your order with confidence.</p>
-    </header>
-
-    <div class="checkout-container">
-      <nav class="checkout-journey" aria-label="Checkout progress">
-        <span>Shopping Bag</span><span aria-hidden="true">→</span>
-        <span>Delivery Information</span><span aria-hidden="true">→</span>
-        <span>Secure Payment</span><span aria-hidden="true">→</span>
-        <span>Order Confirmation</span>
-        <p class="current-step" aria-live="polite">
-          Current step: {journeyLabel}
-        </p>
-      </nav>
-      <template lwc:if={hasItems}>
-        <template lwc:if={orderPlaced}></template>
-        <template lwc:else>
-          <button
-            type="button"
-            class="back-to-bag"
-            onclick={handleBackToCart}
-            disabled={isReturning}
-          >
-            {backButtonLabel}
-          </button>
-        </template>
-      </template>
-      <!-- LOADING -->
-      <template lwc:if={isGuestUser}>
-        <div class="empty-checkout">
-          <h2>Sign in to Checkout</h2>
-          <p>
-            Sign in to your GoldVuee customer account to view your bag and pay
-            securely.
-          </p>
-          <a href={loginUrl}>Sign in</a>
-        </div>
-      </template>
-      <template lwc:elseif={isLoading}>
-        <div class="status-message">Loading your checkout details...</div>
-      </template>
-
-      <template lwc:else>
-        <!-- ERROR -->
-        <template lwc:if={errorMessage}>
-          <div class="message error-message" role="alert">{errorMessage}</div>
-        </template>
-
-        <!-- ORDER CONFIRMATION -->
-        <template lwc:if={orderPlaced}>
-          <div class="empty-checkout">
-            <p class="section-eyebrow">ORDER CONFIRMED</p>
-
-            <h2>Thank you for shopping at GoldVuee!</h2>
-
-            <p class="message success-message" role="status">
-              {successMessage}
-            </p>
-
-            <p>
-              <strong>Order:</strong>
-              {orderNumber}
-            </p>
-
-            <p>
-              <strong>Grand Total:</strong>
-              {formattedOrderGrandTotal}
-            </p>
-
-            <p>
-              <strong>Order Status:</strong>
-              {orderStatus}
-            </p>
-
-            <p>
-              <strong>Payment:</strong>
-              {confirmedPaymentMethod} ({paymentStatus})
-            </p>
-
-            <p>Your payment has been securely verified by Razorpay.</p>
-          </div>
-        </template>
-
-        <template lwc:else>
-          <template lwc:if={hasItems}>
-            <div class="checkout-layout">
-              <!-- LEFT COLUMN -->
-              <div class="checkout-form-column">
-                <!-- STEP 01: SHIPPING -->
-                <div class="checkout-card">
-                  <p class="section-eyebrow">STEP 01</p>
-
-                  <h2>Delivery Information</h2>
-
-                  <p class="section-description">
-                    Where should we deliver your GoldVuee jewellery?
-                  </p>
-
-                  <div class="form-grid">
-                    <!-- ADDRESS -->
-                    <div class="form-field full-width">
-                      <label for="shippingAddress"> Street Address * </label>
-
-                      <textarea
-                        id="shippingAddress"
-                        name="shippingAddress"
-                        autocomplete="street-address"
-                        disabled={deliveryDisabled}
-                        oninput={handleInputChange}
-                        placeholder="House number, street, apartment"
-                        required
-                      >
-                      </textarea>
-                    </div>
-
-                    <!-- CITY -->
-                    <div class="form-field">
-                      <label for="shippingCity"> City * </label>
-
-                      <input
-                        id="shippingCity"
-                        type="text"
-                        name="shippingCity"
-                        autocomplete="address-level2"
-                        maxlength="50"
-                        disabled={deliveryDisabled}
-                        value={shippingCity}
-                        oninput={handleInputChange}
-                        required
-                      />
-                    </div>
-
-                    <!-- STATE -->
-                    <div class="form-field">
-                      <label for="shippingState"> State * </label>
-
-                      <input
-                        id="shippingState"
-                        type="text"
-                        name="shippingState"
-                        autocomplete="address-level1"
-                        maxlength="50"
-                        disabled={deliveryDisabled}
-                        value={shippingState}
-                        oninput={handleInputChange}
-                        required
-                      />
-                    </div>
-
-                    <!-- PIN -->
-                    <div class="form-field">
-                      <label for="shippingPostalCode"> PIN Code * </label>
-
-                      <input
-                        id="shippingPostalCode"
-                        type="text"
-                        name="shippingPostalCode"
-                        autocomplete="postal-code"
-                        pattern="[1-9][0-9]{5}"
-                        disabled={deliveryDisabled}
-                        value={shippingPostalCode}
-                        oninput={handleInputChange}
-                        maxlength="6"
-                        inputmode="numeric"
-                        required
-                      />
-                    </div>
-
-                    <!-- COUNTRY -->
-                    <div class="form-field">
-                      <label for="shippingCountry"> Country * </label>
-
-                      <input
-                        id="shippingCountry"
-                        type="text"
-                        name="shippingCountry"
-                        autocomplete="country-name"
-                        maxlength="100"
-                        disabled={deliveryDisabled}
-                        value={shippingCountry}
-                        oninput={handleInputChange}
-                        required
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                <!-- STEP 02: PAYMENT -->
-                <div class="checkout-card">
-                  <p class="section-eyebrow">STEP 02</p>
-
-                  <h2>Payment Method</h2>
-
-                  <p class="section-description">
-                    Pay securely through the official Razorpay Test Mode
-                    checkout.
-                  </p>
-
-                  <div class="payment-option razorpay-option">
-                    <strong>Razorpay — Test Mode</strong>
-                    <span> UPI, Cards, Net Banking and Wallets. </span>
-                    <span> No real money is charged. </span>
-                  </div>
-
-                  <p class="payment-notice">
-                    Your order is confirmed only after we verify the captured
-                    payment.
-                  </p>
-                </div>
-              </div>
-
-              <!-- RIGHT COLUMN -->
-              <aside class="checkout-summary">
-                <div class="summary-card">
-                  <p class="section-eyebrow">YOUR GOLDVUEE ORDER</p>
-
-                  <h2>Order Summary</h2>
-
-                  <!-- CART ITEMS -->
-                  <template for:each={cartItems} for:item="item">
-                    <div class="summary-item" key={item.id}>
-                      <div class="summary-item-info">
-                        <strong> {item.name} </strong>
-
-                        <span> Qty: {item.quantity} </span>
-                      </div>
-
-                      <span class="item-price">
-                        {item.formattedLineTotal}
-                      </span>
-                    </div>
-                  </template>
-
-                  <div class="summary-divider"></div>
-
-                  <!-- ITEM COUNT -->
-                  <div class="summary-row">
-                    <span>Items</span>
-                    <span>{itemCount}</span>
-                  </div>
-
-                  <!-- SUBTOTAL -->
-                  <div class="summary-row">
-                    <span>Subtotal</span>
-                    <span>{formattedSubtotal}</span>
-                  </div>
-
-                  <!-- SHIPPING -->
-                  <div class="summary-row">
-                    <span>Shipping</span>
-                    <span>Free</span>
-                  </div>
-
-                  <div class="summary-divider"></div>
-
-                  <!-- TOTAL -->
-                  <div class="summary-total">
-                    <span>Order Total</span>
-
-                    <strong> {formattedSubtotal} </strong>
-                  </div>
-
-                  <p class="summary-note">
-                    Final total and stock availability are validated securely
-                    before confirmation.
-                  </p>
-
-                  <!-- RAZORPAY PAYMENT PANEL -->
-                  <c-goldvuee-razorpay-checkout
-                    amount={subtotal}
-                    shipping-address={shippingAddress}
-                    shipping-city={shippingCity}
-                    shipping-state={shippingState}
-                    shipping-postal-code={shippingPostalCode}
-                    shipping-country={shippingCountry}
-                    oncheckoutstate={handleCheckoutState}
-                    onpaymentsuccess={handleRazorpaySuccess}
-                    oncheckoutcancelled={handleCheckoutCancelled}
-                  >
-                  </c-goldvuee-razorpay-checkout>
-
-                  <p class="secure-note">✦ Secure GoldVuee Checkout</p>
-                </div>
-              </aside>
+<template
+  ><main class="shell">
+    <p class="eyebrow">GOLDVUEE &middot; THOUGHTFULLY CHOSEN</p>
+    <h1>A little closer to yours</h1>
+    <template lwc:if={guest}
+      ><section class="card">
+        <p>Sign in to continue to checkout.</p>
+        <a class="button" href={loginUrl}>Sign in</a>
+      </section></template
+    ><template lwc:else
+      ><ol class="progress" aria-label="Checkout progress">
+        <li class={addressClass}>1 &middot; Delivery</li>
+        <li class={summaryClass}>2 &middot; Review</li>
+        <li class={paymentClass}>3 &middot; Payment</li>
+      </ol>
+      <p role="alert" class="error">{error}</p>
+      <p role="status">{notice}</p>
+      <p lwc:if={monitoring} role="status">
+        Verifying payment: {remainingSeconds} seconds remaining. You can
+        continue shopping at any time.
+      </p>
+      <a href={shoppingUrl}>Continue shopping</a>
+      <p lwc:if={busy} role="status">Please waitâ€¦</p>
+      <template lwc:if={addressStep}
+        ><section class="card">
+          <h2>Where should we deliver?</h2>
+          <div class="grid">
+            <div>
+              <label for="name">Full name</label
+              ><input
+                id="name"
+                name="fullName"
+                value={delivery.fullName}
+                onchange={input}
+                oninput={input}
+                required
+                maxlength="120"
+                autocomplete="shipping name"
+              />
             </div>
-          </template>
+            <div>
+              <label for="phone">Mobile number</label
+              >
+<input
+  id="phone"
+  name="phone"
+  type="tel"
+  maxlength="20"
+  value={delivery.phone}
+  onchange={input}
+  oninput={input}
+  required
+  autocomplete="tel"
+  title="Enter a valid Indian mobile number"
+/>
 
-          <!-- EMPTY CART -->
-          <template lwc:else>
-            <div class="empty-checkout">
-              <h2>Your Shopping Bag Is Empty</h2>
-
-              <p>Add jewellery to your bag before proceeding to checkout.</p>
-
-              <button type="button" onclick={handleBackToCart}>
-                Return to Shopping Bag
+              <p id="phone-help">10-digit Indian mobile; +91 is optional.</p>
+            </div>
+          </div>
+          <label for="street">Street address</label
+          ><textarea
+            id="street"
+            name="street"
+            onchange={input}
+            oninput={input}
+            required
+            maxlength="1000"
+            autocomplete="shipping street-address"
+          ></textarea>
+          <div class="grid">
+            <div>
+              <label for="city">City</label
+              ><input
+                id="city"
+                name="city"
+                value={delivery.city}
+                onchange={input}
+                oninput={input}
+                required
+                maxlength="50"
+                autocomplete="shipping address-level2"
+              />
+            </div>
+            <div>
+              <label for="state">State</label
+              ><input
+                id="state"
+                name="state"
+                type="text"
+                value={delivery.state}
+                onchange={input}
+                oninput={input}
+                required
+                maxlength="50"
+                autocomplete="shipping address-level1"
+              />
+            </div>
+            <div>
+              <label for="pin">PIN code</label
+              ><input
+                id="pin"
+                name="postalCode"
+                value={delivery.postalCode}
+                onchange={input}
+                oninput={input}
+                required
+                pattern="[1-9][0-9]{5}"
+                maxlength="6"
+                autocomplete="shipping postal-code"
+              />
+            </div>
+            <div>
+              <label for="country">Country</label
+              ><input
+                id="country"
+                name="country"
+                autocomplete="shipping country-name"
+                value={delivery.country}
+                onchange={input}
+                oninput={input}
+                required
+                maxlength="50"
+              />
+            </div>
+          </div>
+          <div class="actions">
+            <button onclick={review} disabled={busy}>
+              Continue to order summary</button
+            ><a href={cartUrl}>Back to bag</a>
+          </div>
+        </section></template
+      >
+      <template lwc:if={summaryStep}
+        ><section class="card">
+          <div class="row">
+            <h2>Delivery address</h2>
+            <button class="secondary" onclick={address}>Change address</button>
+          </div>
+          <p class="address">{snapshot}</p>
+        </section>
+        <section class="card">
+          <h2>Your jewellery selection</h2>
+          <template for:each={items} for:item="item"
+            ><article class="product" key={item.id}>
+              <img lwc:if={item.image} src={item.image} alt={item.name} />
+              <div>
+                <h2>{item.name}</h2>
+                <p>Quantity: {item.quantity}</p>
+              </div>
+              <lightning-formatted-number
+                value={item.total}
+                format-style="currency"
+                currency-code="INR"
+              ></lightning-formatted-number></article
+          ></template>
+          <div class="row">
+            <p>Grand total</p>
+            <p class="amount">
+              <lightning-formatted-number
+                value={total}
+                format-style="currency"
+                currency-code="INR"
+              ></lightning-formatted-number>
+            </p>
+          </div>
+          <p class="muted">No additional checkout charges are configured.</p>
+          <button onclick={paymentStepNext}>Continue to payment</button>
+        </section></template
+      >
+      <template lwc:if={paymentStep}
+        ><section class="card">
+          <h2>Secure Razorpay test payment</h2>
+          <button class="secondary" onclick={backToSummary}>
+            Back to order summary
+          </button>
+          <p class="amount">
+            <lightning-formatted-number
+              value={total}
+              format-style="currency"
+              currency-code="INR"
+            ></lightning-formatted-number>
+          </p>
+          <p role="status">{message}</p>
+          <template lwc:if={showResult}
+            ><c-gv-payment-result
+              payment-id={paymentId}
+            ></c-gv-payment-result></template
+          ><template lwc:if={unpaid}
+            ><div class="actions">
+              <button onclick={pay} disabled={payDisabled}>
+                Pay now &middot; Test mode</button
+              ><button
+                lwc:if={hasPaymentUrl}
+                onclick={openPayment}
+                disabled={busy}
+              >
+                Open secure Razorpay payment</button
+              ><button class="secondary" onclick={refresh} disabled={busy}>
+                Refresh payment status</button
+              ><button class="secondary" onclick={cancel} disabled={busy}>
+                Cancel unpaid payment</button
+              ><button class="secondary" onclick={retry} disabled={busy}>
+                Retry payment
               </button>
             </div>
-          </template>
-        </template>
-      </template>
-    </div>
-  </section>
-</template>
+            <p class="muted">
+              Razorpay opens in a separate tab. This page checks verified
+              payment status for two minutes. If payment is still pending, you
+              can keep shopping while server verification continues.
+            </p></template
+          >
+        </section></template
+      ></template
+    >
+  </main></template
+>

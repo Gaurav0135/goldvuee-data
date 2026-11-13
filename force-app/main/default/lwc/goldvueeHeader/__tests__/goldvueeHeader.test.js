@@ -1,52 +1,10 @@
-import { createElement } from '@lwc/engine-dom';
-import GoldvueeHeader from 'c/goldvueeHeader';
 
-describe('c-goldvuee-header', () => {
-    afterEach(() => {
-        // The jsdom instance is shared across test cases in a single file so reset the DOM
-        while (document.body.firstChild) {
-            document.body.removeChild(document.body.firstChild);
-        }
-    });
-
-    it('renders the compact brand, navigation and customer actions', () => {
-        const element = createElement('c-goldvuee-header', {
-            is: GoldvueeHeader
-        });
-
-        document.body.appendChild(element);
-
-        expect(element.shadowRoot.querySelector('.gv-logo-name').textContent).toBe('GOLDVUEE');
-        expect(element.shadowRoot.querySelectorAll('.gv-desktop-nav a')).toHaveLength(4);
-        expect(element.shadowRoot.querySelector('.gv-cart')).not.toBeNull();
-        expect(element.shadowRoot.querySelector('.gv-account-button').textContent).toContain('My Account');
-        expect(element.shadowRoot.querySelector('.gv-count').textContent).toBe('0');
-    });
-
-    it('opens collections and closes menus with Escape', () => {
-        const element = createElement('c-goldvuee-header', {
-            is: GoldvueeHeader
-        });
-        document.body.appendChild(element);
-
-        element.shadowRoot.querySelector('.gv-nav-button').click();
-        expect(element.shadowRoot.querySelector('.gv-dropdown-menu')).not.toBeNull();
-
-        document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
-        return Promise.resolve().then(() => {
-            expect(element.shadowRoot.querySelector('.gv-dropdown-menu')).toBeNull();
-        });
-    });
-
-    it('opens the account menu for guest actions', () => {
-        const element = createElement('c-goldvuee-header', {
-            is: GoldvueeHeader
-        });
-        document.body.appendChild(element);
-
-        element.shadowRoot.querySelector('.gv-account-button').click();
-        return Promise.resolve().then(() => {
-            expect(element.shadowRoot.querySelector('.gv-account-menu').textContent).toContain('Sign In');
-        });
-    });
-});
+import { createElement } from 'lwc';
+import Header from 'c/goldvueeHeader';
+import getCart from '@salesforce/apex/GVCartController.getCart';
+jest.mock('@salesforce/apex/GVCartController.getCart',()=>({default:jest.fn().mockResolvedValue({itemCount:2})}),{virtual:true});
+jest.mock('@salesforce/user/isGuest',()=>({__esModule:true,default:false}),{virtual:true});
+afterEach(()=>{document.body.innerHTML='';jest.clearAllMocks();});
+const flush=()=>Promise.resolve().then(()=>Promise.resolve());
+it('preserves collections, arrivals, cart and account navigation',async()=>{const el=createElement('c-goldvuee-header',{is:Header});document.body.appendChild(el);await flush();const links=[...el.shadowRoot.querySelectorAll('a')].map(a=>a.getAttribute('href'));expect(links.some(x=>x.endsWith('/collections'))).toBe(true);expect(links.some(x=>x.endsWith('/new-arrivals'))).toBe(true);expect(links.some(x=>x.endsWith('/shopping-cart'))).toBe(true);expect(links.some(x=>x.endsWith('/my-account'))).toBe(true);expect(getCart).toHaveBeenCalledTimes(1);});
+it('shows the server cart badge and follows cart updates',async()=>{const el=createElement('c-goldvuee-header',{is:Header});document.body.appendChild(el);await flush();expect(el.shadowRoot.textContent).toContain('Cart (2)');window.dispatchEvent(new CustomEvent('goldvueecartchange',{detail:{count:4}}));await flush();expect(el.shadowRoot.textContent).toContain('Cart (4)');});

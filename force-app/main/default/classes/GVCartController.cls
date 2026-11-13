@@ -12,7 +12,7 @@ public without sharing class GVCartController {
   }
   @AuraEnabled
   public static CartResponse getCart() {
-    Id cid = GVCheckoutEngine.customer();
+    Id cid = GVCheckoutService.customer();
     CartResponse result = new CartResponse();
     List<Shopping_Cart__c> carts = [
       SELECT Id, Total_Amount__c
@@ -51,10 +51,11 @@ public without sharing class GVCartController {
   }
   @AuraEnabled
   public static CartResponse addToCart(Id productId, Integer quantity) {
-    Id cid = GVCheckoutEngine.customer();
-    GVCheckoutEngine.lockCustomer(cid);
-    Shopping_Cart__c cart = GVCheckoutEngine.activeCart(cid, true);
-    GVCheckoutEngine.assertMutable(cart.Id);
+    GVCheckoutService.quantity(quantity);
+    Id cid = GVCheckoutService.customer();
+    GVCheckoutService.lockCustomer(cid);
+    Shopping_Cart__c cart = activeCart(cid);
+    cart.Id = GVCheckoutService.editableCart(cart.Id, cid);
     List<Cart_Item__c> items = [
       SELECT Id, Quantity__c
       FROM Cart_Item__c
@@ -84,10 +85,10 @@ public without sharing class GVCartController {
   }
   @AuraEnabled
   public static CartResponse updateCartItem(Id cartItemId, Integer quantity) {
-    Id cid = GVCheckoutEngine.customer();
-    GVCheckoutEngine.lockCustomer(cid);
+    Id cid = GVCheckoutService.customer();
+    GVCheckoutService.lockCustomer(cid);
     Cart_Item__c item = ownedItem(cartItemId, cid);
-    GVCheckoutEngine.assertMutable(item.Shopping_Cart__c);
+    item = editableItem(item, cid);
     update as system new Cart_Item__c(
       Id = item.Id,
       Quantity__c = quantity,
@@ -97,12 +98,32 @@ public without sharing class GVCartController {
   }
   @AuraEnabled
   public static CartResponse removeCartItem(Id cartItemId) {
-    Id cid = GVCheckoutEngine.customer();
-    GVCheckoutEngine.lockCustomer(cid);
+    Id cid = GVCheckoutService.customer();
+    GVCheckoutService.lockCustomer(cid);
     Cart_Item__c item = ownedItem(cartItemId, cid);
-    GVCheckoutEngine.assertMutable(item.Shopping_Cart__c);
+    item = editableItem(item, cid);
     delete as system item;
     return getCart();
+  }
+  private static Shopping_Cart__c activeCart(Id cid) {
+    List<Shopping_Cart__c> rows = [
+      SELECT Id
+      FROM Shopping_Cart__c
+      WHERE Customer__c = :cid AND Cart_Status__c = 'Active'
+      WITH SYSTEM_MODE
+      LIMIT 2
+      FOR UPDATE
+    ];
+    if (rows.size() > 1)
+      throw new AuraHandledException('Multiple active bags require support.');
+    if (!rows.isEmpty())
+      return rows[0];
+    Shopping_Cart__c cart = new Shopping_Cart__c(
+      Customer__c = cid,
+      Cart_Status__c = 'Active'
+    );
+    insert as system cart;
+    return cart;
   }
   private static Cart_Item__c ownedItem(Id iid, Id cid) {
     List<Cart_Item__c> rows = [
@@ -118,6 +139,20 @@ public without sharing class GVCartController {
       throw new AuraHandledException('Bag item not found or access denied.');
     return rows[0];
   }
+  private static Cart_Item__c editableItem(Cart_Item__c item, Id cid) {
+    Id cartId = GVCheckoutService.editableCart(item.Shopping_Cart__c, cid);
+    if (cartId == item.Shopping_Cart__c)
+      return item;
+    return [
+      SELECT Id, Shopping_Cart__c, Jewellery_Product__c
+      FROM Cart_Item__c
+      WHERE
+        Shopping_Cart__c = :cartId
+        AND Jewellery_Product__c = :item.Jewellery_Product__c
+      WITH SYSTEM_MODE
+      LIMIT 1
+    ];
+  }
   private static Decimal validateProduct(Id pid, Integer qty) {
     if (qty == null || qty < 1 || qty > 100)
       throw new AuraHandledException('Quantity must be between 1 and 100.');
@@ -129,6 +164,6 @@ public without sharing class GVCartController {
     ];
     if (rows.isEmpty() || rows[0].Available_Quantity__c < qty)
       throw new AuraHandledException('Insufficient available stock.');
-    return GVCheckoutEngine.price(rows[0]);
+    return GVCheckoutService.price(rows[0]);
   }
 }

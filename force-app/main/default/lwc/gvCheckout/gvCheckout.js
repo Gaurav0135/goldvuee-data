@@ -1,374 +1,1057 @@
+
 import { LightningElement } from "lwc";
-import { NavigationMixin } from "lightning/navigation";
 import isGuest from "@salesforce/user/isGuest";
+import basePath from "@salesforce/community/basePath";
+
+import loadDelivery from "@salesforce/apex/GVCheckoutController.loadDelivery";
+import prepareOrder from "@salesforce/apex/GVCheckoutController.prepareOrder";
+import loadOrder from "@salesforce/apex/GVCheckoutController.loadOrder";
+
+import startPayment from "@salesforce/apex/GVRazorpayController.startPayment";
+import paymentStatus from "@salesforce/apex/GVRazorpayController.paymentStatus";
+import refreshPayment from "@salesforce/apex/GVRazorpayController.refreshPayment";
+import cancelPayment from "@salesforce/apex/GVRazorpayController.cancelPayment";
 
 import getCart from "@salesforce/apex/GVCartController.getCart";
-import checkoutRecovery from "@salesforce/apex/GVOnlineCheckoutController.checkoutRecovery";
-import {
-  savedPaymentId,
-  rememberPayment,
-  cancelCheckout,
-  pollingScope,
-  checkoutMessage,
-  customerMessage
-} from "c/gvCheckoutRecovery";
 
-import communityBasePath from "@salesforce/community/basePath";
+const WINDOW_MS = 120000;
 
-export default class GvCheckout extends NavigationMixin(LightningElement) {
-  get isGuestUser() {
-    return isGuest;
+const PHONE_MESSAGE =
+  "Enter a valid Indian mobile number: 9691184503, +919691184503 or +91 9691184503.";
+
+const EMPTY_ADDRESS = {
+  fullName: "",
+  phone: "",
+  street: "",
+  city: "",
+  state: "",
+  postalCode: "",
+  country: "India"
+};
+
+// FIX 1: Correct Indian mobile validation.
+
+function normalizeIndianPhone(value) {
+  const digits = String(value || "")
+    .replace(/\D/g, "");
+
+  let phone = digits;
+
+  if (
+    phone.length === 12 &&
+    phone.startsWith("91")
+  ) {
+    phone = phone.substring(2);
   }
+
+  if (
+    phone.length === 10 &&
+    /^[6-9][0-9]{9}$/.test(phone)
+  ) {
+    return phone;
+  }
+
+  return "";
+}
+
+
+// Detect phone numbers incorrectly saved as street.
+function looksLikePhoneNumber(value) {
+  const text = String(value ?? "").trim();
+
+  return (
+    normalizeIndianPhone(text) !== "" ||
+    /^\+?[0-9][0-9\s().-]{8,}$/.test(text)
+  );
+}
+
+export default class GvCheckout extends LightningElement {
+  guest = isGuest;
+
+  step = 1;
+  busy = false;
+
+  error = "";
+  notice = "";
+
+  delivery = { ...EMPTY_ADDRESS };
+
+  summary;
+  payment;
+
+  timer;
+  deadlineTimer;
+
+  monitoring = false;
+  timedOut = false;
+  remainingSeconds = 0;
+
+  deadline = 0;
+  nextGatewayCheck = 0;
+
+  detached = false;
+  pollInFlight = false;
+  monitorVersion = 0;
+
+  paymentWindow;
+  intentOpen = false;
+
+  // NAVIGATION
+
   get loginUrl() {
-    return `${communityBasePath}/login`;
-  }
-  // ==========================================
-  // CART
-  // ==========================================
-
-  cartId = null;
-  cartItems = [];
-  itemCount = 0;
-  subtotal = 0;
-
-  // ==========================================
-  // CHECKOUT STATES
-  // ==========================================
-
-  isLoading = true;
-  isPlacingOrder = false;
-  orderPlaced = false;
-  isReturning = false;
-  pendingOrder = null;
-  navigationTarget = null;
-  backScope;
-  disconnectedCallback() {
-    this.backScope?.cancel();
-  }
-  get deliveryDisabled() {
-    return this.isPlacingOrder || this.isReturning;
-  }
-  get backButtonLabel() {
-    return this.isReturning
-      ? "Checking Your Checkout…"
-      : "← Back to Shopping Bag";
-  }
-  get journeyLabel() {
-    return this.orderPlaced
-      ? "Order Confirmation"
-      : this.pendingOrder?.shippingAddress
-        ? "Secure Payment"
-        : "Delivery Information";
+    return `${basePath}/login`;
   }
 
-  // ==========================================
-  // PAYMENT METHOD
-  // ==========================================
-
-  confirmedPaymentMethod = "Razorpay";
-  // ==========================================
-  // MESSAGES
-  // ==========================================
-
-  errorMessage = "";
-  successMessage = "";
-
-  // ==========================================
-  // ORDER CONFIRMATION
-  // ==========================================
-
-  orderNumber = "";
-  orderGrandTotal = 0;
-  orderStatus = "";
-  paymentStatus = "";
-
-  // ==========================================
-  // SHIPPING
-  // ==========================================
-
-  shippingAddress = "";
-  shippingCity = "";
-  shippingState = "";
-  shippingPostalCode = "";
-  shippingCountry = "India";
-
-  // ==========================================
-  // INITIALIZE
-  // ==========================================
-
-  connectedCallback() {
-    this.loadCheckout();
+  get cartUrl() {
+    return `${basePath}/shopping-cart`;
   }
-  renderedCallback() {
-    const address = this.template.querySelector(
-      'textarea[name="shippingAddress"]'
+
+  get shoppingUrl() {
+    return `${basePath}/collections`;
+  }
+
+  // CHECKOUT STEPS
+
+  get addressStep() {
+    return this.step === 1;
+  }
+
+  get summaryStep() {
+    return this.step === 2;
+  }
+
+  get paymentStep() {
+    return this.step === 3;
+  }
+
+  get addressClass() {
+    return this.addressStep ? "active" : "";
+  }
+
+  get summaryClass() {
+    return this.summaryStep ? "active" : "";
+  }
+
+  get paymentClass() {
+    return this.paymentStep ? "active" : "";
+  }
+
+  // ORDER ITEMS
+
+  get items() {
+    return (this.summary?.items || []).map((i) => ({
+      id: i.Id,
+      name: i.Jewellery_Product__r?.Name || "",
+      image:
+        i.Jewellery_Product__r?.Main_Image_URL__c,
+      quantity: i.Quantity__c,
+      total: i.Line_Total__c
+    }));
+  }
+
+  get total() {
+    return this.summary?.total || 0;
+  }
+
+  get snapshot() {
+    const d = this.summary?.delivery || {};
+
+    return [
+      d.fullName || "",
+      d.phone || "",
+      d.street || "",
+      [d.city, d.state, d.postalCode]
+        .filter(Boolean)
+        .join(", "),
+      d.country || "India"
+    ]
+      .filter(Boolean)
+      .join("\n");
+  }
+
+  // PAYMENT STATE
+
+  get hasPaymentUrl() {
+    return !!this.payment?.paymentUrl;
+  }
+
+  get payDisabled() {
+    return this.busy || this.monitoring || this.paid;
+  }
+
+  get paid() {
+    return (
+      this.payment?.paymentStatus === "Success"
     );
-    if (address && address.value !== this.shippingAddress)
-      address.value = this.shippingAddress;
   }
 
-  // ==========================================
-  // LOAD CUSTOMER CART
-  // ==========================================
+  get unpaid() {
+    return !this.paid;
+  }
 
-  async loadCheckout() {
-    if (isGuest) {
-      this.isLoading = false;
-      return;
+  get terminal() {
+    return (
+      ["Cancelled", "Expired"].includes(
+        this.payment?.state
+      ) ||
+      this.payment?.paymentStatus === "Failed"
+    );
+  }
+
+  get failedAttempt() {
+    return (
+      this.payment?.state === "Ready" &&
+      this.payment?.lastFailureState === "failed"
+    );
+  }
+
+  get showResult() {
+    return (
+      this.paid ||
+      this.terminal ||
+      this.failedAttempt
+    );
+  }
+
+  get paymentId() {
+    return this.summary?.paymentId;
+  }
+
+  get deadlineKey() {
+    return `gvPaymentDeadline:${this.paymentId}`;
+  }
+
+  get message() {
+    if (
+      this.timedOut &&
+      !this.paid &&
+      !this.terminal
+    ) {
+      return "Payment not confirmed yet. You can keep shopping. This attempt remains pending verification; do not create a replacement charge.";
     }
-    this.isLoading = true;
-    this.errorMessage = "";
 
-    try {
-      const response = await getCart();
-      const reference = savedPaymentId();
-      if (reference) {
-        try {
-          const snapshot = await checkoutRecovery({ paymentId: reference });
-          if (
-            snapshot?.state === "Confirmed" &&
-            (!response?.cartId || response.cartId === snapshot.order.cartId)
-          ) {
-            this.handleRazorpaySuccess({
-              detail: { ...snapshot.order, success: true }
-            });
-            return;
-          }
-          if (snapshot?.state === "Cancelled") rememberPayment(null);
-          if (
-            snapshot?.state === "Confirmed" &&
-            response?.cartId &&
-            response.cartId !== snapshot.order.cartId
-          )
-            rememberPayment(null);
-        } catch {
-          rememberPayment(null);
-        }
+    return (
+      this.payment?.message ||
+      "Pay securely on Razorpay using Test Mode."
+    );
+  }
+
+  // ADDRESS NORMALIZATION
+
+  normalizeDelivery(data, autofill = true) {
+    const result = {};
+
+    Object.keys(EMPTY_ADDRESS).forEach((key) => {
+      const value = data?.[key];
+
+      const clean =
+        value === null || value === undefined
+          ? ""
+          : String(value).trim();
+
+      result[key] =
+        /^(undefined|null)$/i.test(clean)
+          ? ""
+          : clean;
+    });
+
+    result.country = result.country || "India";
+
+    if (autofill) {
+      // Normalize valid Contact mobile numbers.
+      result.phone =
+        normalizeIndianPhone(result.phone) ||
+        result.phone;
+
+      // Never prefill street with a mobile number.
+      if (looksLikePhoneNumber(result.street)) {
+        result.street = "";
       }
 
-      this.cartId = response?.cartId || null;
+      // Prevent invalid Contact values from autofilling.
+      const limits = {
+        fullName: 120,
+        street: 1000,
+        city: 50,
+        state: 50
+      };
 
-      this.itemCount = Number(response?.itemCount || 0);
+      Object.keys(limits).forEach((key) => {
+        if (result[key].length > limits[key]) {
+          result[key] = "";
+        }
+      });
 
-      this.subtotal = Number(response?.totalAmount || 0);
+      if (
+        !/^[1-9][0-9]{5}$/.test(
+          result.postalCode
+        )
+      ) {
+        result.postalCode = "";
+      }
 
-      this.cartItems = (response?.items || []).map((item) => ({
-        id: item.Id,
+      if (
+        result.country.toLowerCase() !== "india"
+      ) {
+        result.country = "India";
+      }
+    }
 
-        name: item.Jewellery_Product__r?.Name || "GoldVuee Jewellery",
+    return result;
+  }
 
-        quantity: Number(item.Quantity__c || 0),
+  // LOAD CUSTOMER DELIVERY INFORMATION
 
-        formattedLineTotal: this.formatCurrency(item.Line_Total__c || 0)
-      }));
-    } catch (error) {
-      this.errorMessage = this.getErrorMessage(error);
+  async connectedCallback() {
+    this.detached = false;
 
-      console.error("[GoldVuee] Cart loading failed", error);
+    if (this.guest) {
+      return;
+    }
+
+    this.busy = true;
+
+    try {
+      this.delivery = this.normalizeDelivery(
+        await loadDelivery()
+      );
+
+      const pid = sessionStorage.getItem(
+        "gvHostedPayment"
+      );
+
+      if (pid) {
+        const state = await paymentStatus({
+          paymentId: pid
+        });
+
+        const cart = await getCart();
+
+        if (
+          cart.itemCount > 0 &&
+          (state.paymentStatus === "Success" ||
+            (state.cartId &&
+              cart.cartId &&
+              state.cartId !== cart.cartId))
+        ) {
+          sessionStorage.removeItem(
+            "gvHostedPayment"
+          );
+
+          this.notice =
+            state.paymentStatus === "Success"
+              ? ""
+              : "Your previous payment is being verified independently. You can check out your current bag.";
+
+          return;
+        }
+
+        this.summary = await loadOrder({
+          orderId: state.orderId
+        });
+
+        if (this.detached) {
+          return;
+        }
+
+        this.step = 3;
+        this.acceptPayment(state);
+
+        const savedDeadline = Number(
+          sessionStorage.getItem(
+            this.deadlineKey
+          )
+        );
+
+        if (
+          !this.paid &&
+          !this.terminal &&
+          !this.failedAttempt &&
+          savedDeadline
+        ) {
+          this.beginMonitoring(savedDeadline);
+        }
+      }
+    } catch (e) {
+      this.error =
+        e?.body?.message ||
+        "Unable to restore checkout. You can enter your delivery details below.";
     } finally {
-      this.isLoading = false;
+      this.busy = false;
     }
   }
 
-  // ==========================================
-  // HANDLE SHIPPING INPUT
-  // ==========================================
+  // KEEP STREET TEXTAREA SYNCHRONIZED
 
-  handleInputChange(event) {
-    if (this.isPlacingOrder || this.orderPlaced) {
+  renderedCallback() {
+    const street = this.template.querySelector(
+      'textarea[name="street"]'
+    );
+
+    if (
+      street &&
+      street.value !== this.delivery.street
+    ) {
+      street.value = this.delivery.street;
+    }
+  }
+
+  disconnectedCallback() {
+    this.detached = true;
+    this.monitoring = false;
+
+    clearTimeout(this.timer);
+    clearTimeout(this.deadlineTimer);
+  }
+
+  // FIX 2: INPUT HANDLING
+
+  input(event) {
+    const field = event.target;
+
+    field.setCustomValidity("");
+
+    this.delivery = {
+      ...this.delivery,
+      [field.name]: field.value || ""
+    };
+
+    // Clear previous error after user edits.
+    this.error = "";
+  }
+
+  // FIX 3: COMPLETE ADDRESS VALIDATION
+
+  async review() {
+    if (this.busy) {
       return;
     }
 
-    const field = event.target.name;
+    this.error = "";
 
-    const allowed = [
-      "shippingAddress",
-      "shippingCity",
-      "shippingState",
-      "shippingPostalCode",
-      "shippingCountry"
+    const fields = [
+      ...this.template.querySelectorAll(
+        "input[name], textarea[name]"
+      )
     ];
 
-    if (allowed.includes(field)) {
-      this[field] = event.target.value;
-    }
+    // Read latest values directly from fields.
+    const formData = { ...this.delivery };
 
-    this.errorMessage = "";
-  }
+    fields.forEach((field) => {
+      field.setCustomValidity("");
 
-  handleCheckoutState(event) {
-    this.isPlacingOrder = event.detail.locked;
-    const order = event.detail.order;
-    this.pendingOrder = order || null;
-    if (order) {
-      this.subtotal = Number(order.grandTotal);
-      if (order.items)
-        this.cartItems = order.items.map((item) => ({
-          id: item.Id,
-          name: item.Jewellery_Product__r?.Name || "GoldVuee Jewellery",
-          quantity: Number(item.Quantity__c),
-          formattedLineTotal: this.formatCurrency(item.Line_Total__c)
-        }));
-    }
-    if (order?.shippingAddress) {
-      this.shippingAddress = order.shippingAddress;
-      this.shippingCity = order.shippingCity;
-      this.shippingState = order.shippingState;
-      this.shippingPostalCode = order.shippingPostalCode;
-      this.shippingCountry = order.shippingCountry;
-    }
-  }
-
-  // ==========================================
-  // ==========================================
-  // VALIDATE SHIPPING
-  // ==========================================
-
-  validateShipping() {
-    const values = [
-      this.shippingAddress,
-      this.shippingCity,
-      this.shippingState,
-      this.shippingPostalCode,
-      this.shippingCountry
-    ];
-
-    if (values.some((value) => !String(value || "").trim())) {
-      this.errorMessage = "Please complete all delivery fields.";
-
-      return false;
-    }
-
-    if (
-      this.shippingCountry.trim().toLowerCase() !== "india" ||
-      !/^[1-9][0-9]{5}$/.test(this.shippingPostalCode.trim())
-    ) {
-      this.errorMessage =
-        "Please enter a valid Indian address and six-digit PIN code.";
-
-      return false;
-    }
-
-    return true;
-  }
-
-  // ==========================================
-  // ==========================================
-  // BACK TO CART
-  // ==========================================
-
-  
-  async handleBackToCart() {
-    if (this.isReturning || this.orderPlaced) return;
-
-    this.isReturning = true;
-    this.errorMessage = "";
-
-    // Cancel only local polling, not a gateway payment.
-    this.backScope?.cancel();
-
-    // Returning to the bag must not depend on
-    // checkout cancellation or inventory reservations.
-    this.navigateTo("shopping-cart");
-  }
-
-
-  handleCheckoutCancelled() {
-    this.pendingOrder = null;
-    this.navigateTo("shopping-cart");
-  }
-
-  navigateTo(page) {
-    if (this.navigationTarget === page) return;
-    this.navigationTarget = page;
-    this[NavigationMixin.Navigate]({
-      type: "standard__webPage",
-      attributes: { url: `${communityBasePath}/${page}` }
+      formData[field.name] =
+        field.value || "";
     });
-  }
 
-  handleRazorpaySuccess(event) {
-    const result = event.detail;
+    const normalized =
+      this.normalizeDelivery(formData, false);
 
-    if (
-      !result?.success ||
-      result.orderStatus !== "Confirmed" ||
-      result.paymentStatus !== "Paid"
-    ) {
-      this.errorMessage =
-        "Checking payment securely. Please view My Orders before trying another payment.";
+    const phone = normalizeIndianPhone(
+      normalized.phone
+      
+    );
+console.log("PHONE DEBUG:", {
+  length: String(normalized.phone).length,
+  digits: String(normalized.phone).replace(/\D/g, "").length,
+  valid: Boolean(phone)
+});
+
+
+    const phoneInput = this.template.querySelector(
+      'input[name="phone"]'
+    );
+
+    // Mobile number validation.
+    if (!phone) {
+      if (phoneInput) {
+        phoneInput.setCustomValidity(
+          PHONE_MESSAGE
+        );
+
+        phoneInput.reportValidity();
+      }
+
+      this.error = PHONE_MESSAGE;
       return;
     }
 
-    this.orderPlaced = true;
-    this.confirmedPaymentMethod = "Razorpay";
+    const requiredFields = [
+      "fullName",
+      "street",
+      "city",
+      "state",
+      "postalCode",
+      "country"
+    ];
 
-    this.orderNumber = result.orderNumber || "";
-    this.orderGrandTotal = Number(result.grandTotal || this.subtotal);
+    const missingField = requiredFields.find(
+      (key) =>
+        !String(normalized[key] || "").trim()
+    );
 
-    this.orderStatus = result.orderStatus;
-    this.paymentStatus = result.paymentStatus;
+    if (missingField) {
+      const field = this.template.querySelector(
+        `[name="${missingField}"]`
+      );
 
-    this.successMessage =
-      "Your Razorpay Test Mode payment was verified. " +
-      "Your GoldVuee jewellery order is confirmed.";
+      if (field) {
+        field.setCustomValidity(
+          "This field is required."
+        );
 
-    this.errorMessage = "";
+        field.reportValidity();
+      }
 
-    this.cartId = null;
-    this.cartItems = [];
-    this.itemCount = 0;
-    this.subtotal = 0;
-    rememberPayment(null);
-    this.navigateTo("my-orders");
+      this.error =
+        "Please complete all delivery fields.";
+
+      return;
+    }
+
+    // Indian PIN validation.
+    if (
+      !/^[1-9][0-9]{5}$/.test(
+        normalized.postalCode
+      )
+    ) {
+      this.error =
+        "Enter a valid six-digit Indian PIN code.";
+
+      const pinInput =
+        this.template.querySelector(
+          'input[name="postalCode"]'
+        );
+
+      if (pinInput) {
+        pinInput.setCustomValidity(
+          this.error
+        );
+
+        pinInput.reportValidity();
+      }
+
+      return;
+    }
+
+    // Country validation.
+    if (
+      normalized.country.toLowerCase() !==
+      "india"
+    ) {
+      this.error =
+        "Delivery is currently available in India only.";
+
+      return;
+    }
+
+    // Street should not be a phone number.
+    if (
+      looksLikePhoneNumber(normalized.street)
+    ) {
+      this.error =
+        "Enter your street address, not a phone number.";
+
+      return;
+    }
+
+    // Match Apex field length restrictions.
+    if (
+      normalized.fullName.length > 120 ||
+      normalized.street.length > 1000 ||
+      normalized.city.length > 50 ||
+      normalized.state.length > 50 ||
+      normalized.country.length > 50
+    ) {
+      this.error =
+        "One or more address fields exceed the allowed length.";
+
+      return;
+    }
+
+    // Apex always receives 10-digit number.
+    normalized.phone = phone;
+
+    // Check other native HTML constraints.
+    // Phone HTML pattern must be removed.
+    const formValid = fields
+      .map((field) => field.reportValidity())
+      .every(Boolean);
+
+    if (!formValid) {
+      this.error =
+        "Please correct the highlighted fields.";
+
+      return;
+    }
+
+    this.delivery = normalized;
+
+    this.busy = true;
+    this.error = "";
+
+    try {
+      const next = await prepareOrder({
+        delivery: normalized
+      });
+
+      if (
+        this.summary?.paymentId &&
+        this.summary.paymentId !== next.paymentId
+      ) {
+        this.stopMonitoring();
+
+        this.payment = null;
+        this.timedOut = false;
+
+        sessionStorage.removeItem(
+          "gvHostedPayment"
+        );
+      }
+
+      this.summary = next;
+
+      if (!this.detached) {
+        this.step = 2;
+      }
+    } catch (e) {
+      this.error =
+        e?.body?.message ||
+        e?.message ||
+        "Unable to prepare your order.";
+    } finally {
+      this.busy = false;
+    }
   }
 
-  // ==========================================
-  // GETTERS
-  // ==========================================
+  // CHECKOUT NAVIGATION
 
-  get hasItems() {
-    return this.cartItems.length > 0;
+  address() {
+    this.stopMonitoring();
+    this.step = 1;
   }
 
-  get formattedSubtotal() {
-    return this.formatCurrency(this.subtotal);
+  paymentStepNext() {
+    this.step = 3;
   }
 
-  get formattedOrderGrandTotal() {
-    return this.formatCurrency(this.orderGrandTotal);
+  backToSummary() {
+    this.stopMonitoring();
+    this.step = 2;
   }
 
-  get isCheckoutDisabled() {
-    return (
-      this.isLoading ||
-      this.isPlacingOrder ||
-      this.orderPlaced ||
-      !this.hasItems
+  // PAYMENT MONITORING
+
+  beginMonitoring(
+    deadline = Date.now() + WINDOW_MS
+  ) {
+    this.monitorVersion += 1;
+    this.pollInFlight = false;
+
+    clearTimeout(this.timer);
+
+    this.deadline = deadline;
+    this.timedOut = false;
+    this.monitoring = true;
+    this.nextGatewayCheck = 0;
+
+    sessionStorage.setItem(
+      this.deadlineKey,
+      String(deadline)
+    );
+
+    const left = deadline - Date.now();
+
+    if (left <= 0) {
+      this.expireWindow();
+      return;
+    }
+
+    clearTimeout(this.deadlineTimer);
+
+    // eslint-disable-next-line @lwc/lwc/no-async-operation
+    this.deadlineTimer = setTimeout(
+      () => this.expireWindow(),
+      left
+    );
+
+    this.schedule();
+  }
+
+  stopMonitoring() {
+    this.monitorVersion += 1;
+    this.pollInFlight = false;
+
+    clearTimeout(this.timer);
+    clearTimeout(this.deadlineTimer);
+
+    this.monitoring = false;
+    this.remainingSeconds = 0;
+    this.intentOpen = false;
+
+    sessionStorage.removeItem(
+      this.deadlineKey
     );
   }
 
-  // ==========================================
-  // CURRENCY HELPER
-  // ==========================================
+  expireWindow() {
+    this.monitorVersion += 1;
+    this.pollInFlight = false;
 
-  formatCurrency(value) {
-    return new Intl.NumberFormat("en-IN", {
-      style: "currency",
-      currency: "INR",
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2
-    }).format(Number(value || 0));
+    clearTimeout(this.timer);
+    clearTimeout(this.deadlineTimer);
+
+    this.monitoring = false;
+    this.remainingSeconds = 0;
+    this.busy = false;
+    this.timedOut = true;
+    this.intentOpen = false;
+
+    // Server reconciliation remains active.
+    // Payment is not automatically marked failed.
   }
 
-  // ==========================================
-  // ERROR HELPER
-  // ==========================================
+  acceptPayment(state) {
+    this.payment = state;
 
-  getErrorMessage(error) {
-    return customerMessage(
-      error,
-      "We could not load your checkout. Please try again."
+    if (
+      this.paid ||
+      this.terminal ||
+      this.failedAttempt
+    ) {
+      this.timedOut = false;
+      this.stopMonitoring();
+      return;
+    }
+
+    if (
+      this.intentOpen &&
+      state.paymentUrl
+    ) {
+      this.launchHosted(state.paymentUrl);
+    }
+  }
+
+  // START RAZORPAY PAYMENT
+
+  async pay() {
+    if (
+      this.payDisabled ||
+      !this.summary?.paymentId
+    ) {
+      return;
+    }
+
+    this.busy = true;
+    this.error = "";
+    this.intentOpen = true;
+
+    // Open tab during click to avoid popup blocking.
+    this.paymentWindow = window.open(
+      "about:blank",
+      "_blank"
     );
+
+    if (this.paymentWindow) {
+      this.paymentWindow.opener = null;
+    }
+
+    const deadline =
+      Date.now() + WINDOW_MS;
+
+    try {
+      sessionStorage.setItem(
+        "gvHostedPayment",
+        this.paymentId
+      );
+
+      this.acceptPayment(
+        await startPayment({
+          paymentId: this.paymentId
+        })
+      );
+
+      if (
+        !this.paid &&
+        !this.terminal &&
+        !this.failedAttempt
+      ) {
+        this.beginMonitoring(deadline);
+      }
+    } catch (e) {
+      this.intentOpen = false;
+
+      if (
+        this.paymentWindow &&
+        !this.paymentWindow.closed
+      ) {
+        this.paymentWindow.close();
+      }
+
+      this.error =
+        e?.body?.message ||
+        "Unable to start payment. Verify the existing attempt before retrying.";
+    } finally {
+      this.busy = false;
+    }
+  }
+
+  launchHosted(url) {
+    if (
+      !url?.startsWith("https://rzp.io/")
+    ) {
+      return;
+    }
+
+    this.intentOpen = false;
+
+    if (
+      this.paymentWindow &&
+      !this.paymentWindow.closed
+    ) {
+      this.paymentWindow.location.replace(url);
+    } else {
+      this.notice =
+        "Allow popups or use Open secure Razorpay payment. This checkout remains here to verify the result.";
+    }
+  }
+
+  openPayment() {
+    const url =
+      this.payment?.paymentUrl;
+
+    if (
+      url?.startsWith("https://rzp.io/")
+    ) {
+      window.open(
+        url,
+        "_blank",
+        "noopener,noreferrer"
+      );
+    }
+  }
+
+  // PAYMENT POLLING
+
+  schedule() {
+    if (
+      this.detached ||
+      !this.monitoring
+    ) {
+      return;
+    }
+
+    const left =
+      this.deadline - Date.now();
+
+    if (left <= 0) {
+      this.expireWindow();
+      return;
+    }
+
+    this.remainingSeconds =
+      Math.ceil(left / 1000);
+
+    // eslint-disable-next-line @lwc/lwc/no-async-operation
+    this.timer = setTimeout(
+      () => this.poll(),
+      Math.min(1500, left)
+    );
+  }
+
+  async poll() {
+    if (
+      !this.monitoring ||
+      this.detached
+    ) {
+      return;
+    }
+
+    if (
+      Date.now() >= this.deadline
+    ) {
+      this.expireWindow();
+      return;
+    }
+
+    if (this.pollInFlight) {
+      this.schedule();
+      return;
+    }
+
+    this.pollInFlight = true;
+
+    const pid = this.paymentId;
+    const version = this.monitorVersion;
+
+    try {
+      const waiting = [
+        "Queued",
+        "Checking",
+        "Cancelling",
+        "Verifying"
+      ].includes(this.payment?.state);
+
+      const gatewayCheck =
+        !waiting &&
+        Date.now() >= this.nextGatewayCheck;
+
+      if (gatewayCheck) {
+        this.nextGatewayCheck =
+          Date.now() + 5000;
+      }
+
+      const state = gatewayCheck
+        ? await refreshPayment({
+            paymentId: pid
+          })
+        : await paymentStatus({
+            paymentId: pid
+          });
+
+      if (
+        this.detached ||
+        this.paymentId !== pid ||
+        version !== this.monitorVersion
+      ) {
+        return;
+      }
+
+      this.acceptPayment(state);
+    } catch {
+      if (
+        version === this.monitorVersion
+      ) {
+        this.error =
+          "Payment verification is temporarily unavailable. Your payment has not been marked failed.";
+      }
+    } finally {
+      if (
+        version === this.monitorVersion
+      ) {
+        this.pollInFlight = false;
+        this.schedule();
+      }
+    }
+  }
+
+  // REFRESH PAYMENT STATUS
+
+  async refresh() {
+    if (
+      this.busy ||
+      !this.paymentId
+    ) {
+      return;
+    }
+
+    this.busy = true;
+    this.error = "";
+
+    try {
+      this.acceptPayment(
+        await refreshPayment({
+          paymentId: this.paymentId
+        })
+      );
+
+      if (
+        !this.paid &&
+        !this.terminal &&
+        !this.failedAttempt &&
+        !this.monitoring
+      ) {
+        this.beginMonitoring();
+      }
+    } catch (e) {
+      this.error =
+        e?.body?.message ||
+        "Verification unavailable. Please try again.";
+    } finally {
+      this.busy = false;
+    }
+  }
+
+  // CANCEL UNPAID PAYMENT
+
+  async cancel() {
+    if (
+      this.busy ||
+      !this.paymentId
+    ) {
+      return;
+    }
+
+    this.busy = true;
+    this.error = "";
+    this.intentOpen = false;
+
+    try {
+      this.acceptPayment(
+        await cancelPayment({
+          paymentId: this.paymentId
+        })
+      );
+
+      if (
+        !this.paid &&
+        !this.terminal &&
+        !this.failedAttempt &&
+        !this.monitoring
+      ) {
+        this.beginMonitoring();
+      }
+    } catch (e) {
+      this.error =
+        e?.body?.message ||
+        "Cancellation is not confirmed. The attempt remains pending verification.";
+    } finally {
+      this.busy = false;
+    }
+  }
+
+  // RETRY PAYMENT SAFELY
+
+  async retry() {
+    if (this.busy) {
+      return;
+    }
+
+    if (!this.terminal) {
+      this.notice =
+        "Reusing and verifying the existing payment attempt. No second charge is being created.";
+
+      if (!this.monitoring) {
+        await this.pay();
+      }
+
+      return;
+    }
+
+    this.stopMonitoring();
+    this.busy = true;
+    this.error = "";
+
+    try {
+      this.summary = await prepareOrder({
+        delivery: this.delivery
+      });
+
+      this.payment = null;
+      this.timedOut = false;
+      this.step = 3;
+
+      sessionStorage.setItem(
+        "gvHostedPayment",
+        this.paymentId
+      );
+    } catch (e) {
+      this.error =
+        e?.body?.message ||
+        "Unable to prepare a safe retry. Please verify payment status.";
+    } finally {
+      this.busy = false;
+    }
   }
 }

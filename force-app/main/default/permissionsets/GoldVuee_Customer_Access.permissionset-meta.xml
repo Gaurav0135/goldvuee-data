@@ -18,7 +18,7 @@
     </classAccesses>
     <classAccesses>
         <apexClass>GVOnlineCheckoutController</apexClass>
-        <enabled>true</enabled>
+        <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>GVOrderHistoryController</apexClass>
@@ -26,16 +26,18 @@
     </classAccesses>
     <classAccesses>
         <apexClass>GVPaymentController</apexClass>
-        <enabled>true</enabled>
+        <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>GVPaymentVerificationController</apexClass>
-        <enabled>true</enabled>
+        <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>GVProductController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
+    <classAccesses><apexClass>GVCheckoutController</apexClass><enabled>true</enabled></classAccesses>
+    <classAccesses><apexClass>GVRazorpayController</apexClass><enabled>true</enabled></classAccesses>
     <description>Permissions for GoldVuee Experience Cloud customers to browse jewellery and manage their own shopping carts.</description>
     <fieldPermissions>
         <editable>false</editable>
