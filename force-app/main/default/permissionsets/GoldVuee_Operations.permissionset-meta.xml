@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <classAccesses>
+        <apexClass>GVCheckoutOperations</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <description>Operations UI for existing org administrators. Apex independently enforces administrator access.</description>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>GV_Payment_Config__c.Webhook_Secret__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>GoldVuee Operations</label>
+    <tabSettings>
+        <tab>GoldVuee_Operations</tab>
+        <visibility>Available</visibility>
+    </tabSettings>
+</PermissionSet>

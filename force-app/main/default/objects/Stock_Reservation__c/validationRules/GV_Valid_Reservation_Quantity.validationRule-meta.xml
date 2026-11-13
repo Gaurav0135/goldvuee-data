@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GV_Valid_Reservation_Quantity</fullName>
+    <active>true</active>
+    <description>Ensures every stock reservation contains a positive quantity and references a jewellery product.</description>
+    <errorConditionFormula>OR(
+    ISBLANK(Reserved_Quantity__c),
+    Reserved_Quantity__c &lt;= 0,
+    ISBLANK(Jewellery_Product__c)
+)</errorConditionFormula>
+    <errorMessage>Reservation quantity must be greater than zero and a jewellery product must be selected.</errorMessage>
+</ValidationRule>

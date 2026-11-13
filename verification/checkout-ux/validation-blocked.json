@@ -1,0 +1,82 @@
+{
+  "id": "0AfjV000006PLFVSA4",
+  "status": "Failed",
+  "checkOnly": true,
+  "failures": [
+    {
+      "fullName": "GVCartController",
+      "problem": "This schedulable class has jobs pending or in progress - CronTrigger IDs ()",
+      "lineNumber": null
+    },
+    {
+      "fullName": "GVCartController",
+      "problem": "You can bypass this error by allowing deployments with Apex jobs in the Deployment Settings page in Setup.",
+      "lineNumber": null
+    },
+    {
+      "fullName": "GVCheckoutEngine",
+      "problem": "This schedulable class has jobs pending or in progress - CronTrigger IDs (08ejV0000083fEx)",
+      "lineNumber": null
+    },
+    {
+      "fullName": "GVCheckoutEngine",
+      "problem": "You can bypass this error by allowing deployments with Apex jobs in the Deployment Settings page in Setup.",
+      "lineNumber": null
+    },
+    {
+      "fullName": "GVCheckoutJourneyTest",
+      "problem": "This schedulable class has jobs pending or in progress - CronTrigger IDs ()",
+      "lineNumber": null
+    },
+    {
+      "fullName": "GVCheckoutJourneyTest",
+      "problem": "You can bypass this error by allowing deployments with Apex jobs in the Deployment Settings page in Setup.",
+      "lineNumber": null
+    },
+    {
+      "fullName": "GVGatewayWorker",
+      "problem": "This schedulable class has jobs pending or in progress - CronTrigger IDs (08ejV0000083fEx)",
+      "lineNumber": null
+    },
+    {
+      "fullName": "GVGatewayWorker",
+      "problem": "You can bypass this error by allowing deployments with Apex jobs in the Deployment Settings page in Setup.",
+      "lineNumber": null
+    },
+    {
+      "fullName": "GVOnlineCheckoutController",
+      "problem": "This schedulable class has jobs pending or in progress - CronTrigger IDs (08ejV0000083fEx)",
+      "lineNumber": null
+    },
+    {
+      "fullName": "GVOnlineCheckoutController",
+      "problem": "You can bypass this error by allowing deployments with Apex jobs in the Deployment Settings page in Setup.",
+      "lineNumber": null
+    },
+    {
+      "fullName": "GVPaymentController",
+      "problem": "This schedulable class has jobs pending or in progress - CronTrigger IDs ()",
+      "lineNumber": null
+    },
+    {
+      "fullName": "GVPaymentController",
+      "problem": "You can bypass this error by allowing deployments with Apex jobs in the Deployment Settings page in Setup.",
+      "lineNumber": null
+    },
+    {
+      "fullName": "GVRazorpayService",
+      "problem": "This schedulable class has jobs pending or in progress - CronTrigger IDs (08ejV0000083fEx)",
+      "lineNumber": null
+    },
+    {
+      "fullName": "GVRazorpayService",
+      "problem": "You can bypass this error by allowing deployments with Apex jobs in the Deployment Settings page in Setup.",
+      "lineNumber": null
+    },
+    {
+      "fullName": "gvCheckoutRecovery",
+      "problem": "Unable to find Apex action method referenced as 'GVOnlineCheckoutController.checkoutRecovery'.",
+      "lineNumber": null
+    }
+  ]
+}

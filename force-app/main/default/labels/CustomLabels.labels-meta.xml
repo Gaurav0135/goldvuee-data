@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
     <labels>
+        <fullName>GoldVuee_Experience_Origin</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Allowed Experience origin</shortDescription>
+        <value>https://goldvuee-dev-ed.develop.my.site.com</value>
+    </labels>
+    <labels>
+        <fullName>GoldVuee_Razorpay_Host_URL</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Razorpay popup host URL</shortDescription>
+        <value>https://goldvuee-dev-ed.develop.my.site.com/goldvueevforcesite/apex/GVRazorpayHost</value>
+    </labels>
+    <labels>
         <fullName>GoldVuee_Razorpay_Test_Key_ID</fullName>
         <language>en_US</language>
         <protected>false</protected>

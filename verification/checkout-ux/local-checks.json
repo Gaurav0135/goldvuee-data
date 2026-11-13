@@ -1,0 +1,18 @@
+{
+  "frontend": {
+    "suites": 4,
+    "passing": 23,
+    "failing": 0
+  },
+  "eslint": {
+    "exitCode": 0,
+    "output": ""
+  },
+  "diffWhitespace": {
+    "command": "git -c core.whitespace=cr-at-eol diff --check",
+    "exitCode": 0,
+    "output": ""
+  },
+  "apexValidation": "Blocked by org setting and GoldVuee Hourly Reconciliation schedule. Changed Apex tests have not run.",
+  "deployed": false
+}

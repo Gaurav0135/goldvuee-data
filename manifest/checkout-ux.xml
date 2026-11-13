@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata"><types><members
+    >GVCartController</members><members>GVCheckoutEngine</members><members
+    >GVOnlineCheckoutController</members><members
+    >GVPaymentController</members><members>GVGatewayWorker</members><members
+    >GVRazorpayService</members><members>GVCheckoutJourneyTest</members><name
+    >ApexClass</name></types><types><members>gvShoppingCart</members><members
+    >gvCheckout</members><members>goldvueeRazorpayCheckout</members><members
+    >gvCheckoutRecovery</members><name
+    >LightningComponentBundle</name></types><version>68.0</version></Package>

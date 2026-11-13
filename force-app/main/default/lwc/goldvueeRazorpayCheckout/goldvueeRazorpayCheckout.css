@@ -1,161 +1,210 @@
-
 :host {
-    display: block;
-    --burgundy: #57142d;
-    --gold: #bd965b;
+  display: block;
+  --burgundy: #57142d;
+  --gold: #bd965b;
 }
 
 .razorpay-panel {
-    padding: 32px;
-    background: #fffaf5;
-    border: 1px solid #e6d9cc;
-    border-radius: 6px;
-    color: #321d25;
-    box-shadow: 0 8px 28px rgba(61, 26, 37, 0.06);
+  padding: 32px;
+  background: #fffaf5;
+  border: 1px solid #e6d9cc;
+  border-radius: 6px;
+  color: #321d25;
+  box-shadow: 0 8px 28px rgba(61, 26, 37, 0.06);
 }
 
 .eyebrow {
-    color: #a5824e;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 2px;
+  color: #a5824e;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
 }
 
 h2 {
-    margin: 12px 0;
-    color: var(--burgundy);
-    font-family: Georgia, serif;
-    font-size: 27px;
-    font-weight: 500;
+  margin: 12px 0;
+  color: var(--burgundy);
+  font-family: Georgia, serif;
+  font-size: 27px;
+  font-weight: 500;
 }
 
 .description {
-    color: #827279;
-    font-size: 13px;
-    line-height: 1.7;
+  color: #827279;
+  font-size: 13px;
+  line-height: 1.7;
 }
 
 .amount-box {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 12px;
-    padding: 22px;
-    margin: 25px 0;
-    background: #f7f0e8;
-    border: 1px solid #e7d9c8;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 22px;
+  margin: 25px 0;
+  background: #f7f0e8;
+  border: 1px solid #e7d9c8;
 }
 
 .amount-box span {
-    font-size: 13px;
+  font-size: 13px;
 }
 
 .amount-box strong {
-    color: var(--burgundy);
-    font-size: 22px;
+  color: var(--burgundy);
+  font-size: 22px;
 }
 
 .payment-methods {
-    margin: 15px 0;
-    font-size: 12px;
-    text-align: center;
-    color: #806a73;
-    line-height: 1.8;
+  margin: 15px 0;
+  font-size: 12px;
+  text-align: center;
+  color: #806a73;
+  line-height: 1.8;
 }
 
 .test-notice {
-    color: #967342;
-    font-size: 12px;
-    text-align: center;
+  color: #967342;
+  font-size: 12px;
+  text-align: center;
 }
 
 .gateway-status {
-    margin: 18px 0;
-    font-size: 12px;
-    color: #76676c;
-    text-align: center;
+  margin: 18px 0;
+  font-size: 12px;
+  color: #76676c;
+  text-align: center;
 }
 
 .pay-button {
-    width: 100%;
-    padding: 16px;
-    background: var(--burgundy);
-    color: white;
-    border: none;
-    border-radius: 3px;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.6px;
+  width: 100%;
+  padding: 16px;
+  background: var(--burgundy);
+  color: white;
+  border: none;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
 }
 
 .pay-button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .security-note {
-    margin-top: 15px;
-    color: #917b82;
-    font-size: 11px;
-    text-align: center;
-    line-height: 1.6;
+  margin-top: 15px;
+  color: #917b82;
+  font-size: 11px;
+  text-align: center;
+  line-height: 1.6;
 }
 
 @media (max-width: 600px) {
-    .razorpay-panel {
-        padding: 22px;
-    }
+  .razorpay-panel {
+    padding: 22px;
+  }
 
-    .amount-box {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+  .amount-box {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
-
-
 .razorpay-pay-button {
-    width: 100%;
-    min-height: 54px;
-    padding: 14px 20px;
-    border: 1px solid #57142d;
-    border-radius: 4px;
-    background: #57142d;
-    color: #ffffff;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    cursor: pointer;
+  width: 100%;
+  min-height: 54px;
+  padding: 14px 20px;
+  border: 1px solid #57142d;
+  border-radius: 4px;
+  background: #57142d;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
 }
 
 .razorpay-pay-button:hover:not(:disabled) {
-    background: #3b0b1d;
+  background: #3b0b1d;
 }
 
 .razorpay-pay-button:disabled {
-    opacity: 0.55;
-    cursor: not-allowed;
+  opacity: 0.55;
+  cursor: not-allowed;
 }
 
 .razorpay-security-note {
-    margin: 16px 0 0;
-    text-align: center;
-    color: #96784c;
-    font-size: 12px;
-    line-height: 1.6;
+  margin: 16px 0 0;
+  text-align: center;
+  color: #96784c;
+  font-size: 12px;
+  line-height: 1.6;
 }
 
 .razorpay-error {
-    margin-bottom: 15px;
-    padding: 13px;
-    border: 1px solid #e9c3c7;
-    background: #fff1f2;
-    color: #a12c43;
-    font-size: 12px;
+  margin-bottom: 15px;
+  padding: 13px;
+  border: 1px solid #e9c3c7;
+  background: #fff1f2;
+  color: #a12c43;
+  font-size: 12px;
 }
 
 .razorpay-status {
-    margin-bottom: 15px;
-    color: #57142d;
-    font-size: 13px;
+  margin-bottom: 15px;
+  color: #57142d;
+  font-size: 13px;
+}
+.razorpay-status-button {
+  width: 100%;
+  margin-top: 12px;
+  padding: 13px 18px;
+  background: transparent;
+  border: 1px solid #9e7d64;
+  color: #57142d;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.orders-link {
+  display: block;
+  margin-top: 18px;
+  text-align: center;
+  color: #57142d;
+  font-size: 13px;
+}
+.test-mode-note {
+  display: block;
+  margin-top: 5px;
+  color: #75615b;
+}
+.payment-progress {
+  display: block;
+  width: 24px;
+  height: 24px;
+  margin: 12px auto;
+  border: 2px solid #e6d9cc;
+  border-top-color: #57142d;
+  border-radius: 50%;
+  animation: payment-spin 1s linear infinite;
+}
+@keyframes payment-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .payment-progress {
+    animation: none;
+    border-style: dotted;
+  }
+}
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid #bd965b;
+  outline-offset: 4px;
+}
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
 }

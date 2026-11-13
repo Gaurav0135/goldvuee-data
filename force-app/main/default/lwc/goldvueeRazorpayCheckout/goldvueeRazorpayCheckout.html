@@ -1,31 +1,39 @@
-
 <template>
-    <div class="goldvuee-razorpay-panel">
+  <div class="goldvuee-razorpay-panel" aria-busy={isWorking}>
+    <template lwc:if={showProgress}
+      ><span class="payment-progress" aria-hidden="true"></span
+    ></template>
+    <template lwc:if={errorMessage}>
+      <p class="razorpay-error" role="alert">{errorMessage}</p>
+    </template>
 
-        <template lwc:if={errorMessage}>
-            <p class="razorpay-error" role="alert">
-                {errorMessage}
-            </p>
-        </template>
+    <template lwc:if={statusMessage}>
+      <p class="razorpay-status" role="status">{statusMessage}</p>
+    </template>
 
-        <template lwc:if={statusMessage}>
-            <p class="razorpay-status" role="status">
-                {statusMessage}
-            </p>
-        </template>
+    <button
+      type="button"
+      class="razorpay-pay-button"
+      onclick={handlePay}
+      disabled={isButtonDisabled}
+    >
+      {buttonLabel}
+    </button>
+    <template lwc:if={hasPendingOrder}>
+      <button
+        type="button"
+        class="razorpay-status-button"
+        onclick={handleCancel}
+        disabled={cancelDisabled}
+      >
+        Cancel Unpaid Checkout
+      </button>
+      <a class="orders-link" href={ordersUrl}>View My Orders</a>
+    </template>
 
-        <button
-            type="button"
-            class="razorpay-pay-button"
-            onclick={handlePay}
-            disabled={isButtonDisabled}>
-            {buttonLabel}
-        </button>
-
-        <p class="razorpay-security-note">
-            Secure Razorpay Test Mode checkout.
-            No real money is charged.
-        </p>
-
-    </div>
+    <p class="razorpay-security-note">
+      Secure payments powered by Razorpay.
+      <span class="test-mode-note">Test mode · No real money is charged.</span>
+    </p>
+  </div>
 </template>

@@ -1,0 +1,17 @@
+{
+  "scope": "Existing deployed baseline only; local changes were not deployed",
+  "summary": {
+    "outcome": "Failed",
+    "passing": 45,
+    "failing": 1,
+    "testsRan": 46,
+    "testRunId": "707jV00000BCjxV"
+  },
+  "failures": [
+    {
+      "FullName": "GVCheckoutJourneyTest.browseAndOwnership",
+      "Message": "System.AssertException: Assertion Failed: Expected: 1, Actual: 0",
+      "StackTrace": "Class.GVCheckoutJourneyTest.browseAndOwnership: line 356, column 1"
+    }
+  ]
+}

@@ -1,0 +1,972 @@
+{
+  "org": "goldvuee-dev",
+  "originalGitHead": "c8b20f3cf2685c3ab7cd05e10284c0e8e1c77f2f",
+  "baselineDirectory": "backups/checkout-ux-20261113/deployed",
+  "files": [
+    {
+      "path": "force-app/main/default/classes/GVAbandonedCheckoutService.cls",
+      "baselineSha256": "4401aae8182169d79b07e5b62273168dc2c237441656a7494bda72a872fb36c5",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/classes/GVAbandonedCheckoutService.cls-meta.xml",
+      "baselineSha256": "d61a5e940622b0ba248df9de701b26c9b9bb440ffaf0d2325ae8e446eb7bf728",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/classes/GVCartController.cls",
+      "baselineSha256": "c2cf24f1d5fb20553e219ca7427f1e920afb9081c01f197bfd59d537e683b756",
+      "differsFromDeployedBaseline": true
+    },
+    {
+      "path": "force-app/main/default/classes/GVCartController.cls-meta.xml",
+      "baselineSha256": "a242f6e22b472afffbd726be71165de394e417355cdf1edd81b5601278ddea32",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/classes/GVCheckoutController.cls",
+      "baselineSha256": "cd5fc4f48ad0ceedadf36cb3823f842ce671531f3aa58f6bf4f78321831a44be",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/classes/GVCheckoutController.cls-meta.xml",
+      "baselineSha256": "d61a5e940622b0ba248df9de701b26c9b9bb440ffaf0d2325ae8e446eb7bf728",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/classes/GVCheckoutControllerTest.cls",
+      "baselineSha256": "d1ba6e9ec4b47cbc086e0ef36041fd4ba5e41e64088d8c1e2a1d2f585ff41e30",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/classes/GVCheckoutControllerTest.cls-meta.xml",
+      "baselineSha256": "a242f6e22b472afffbd726be71165de394e417355cdf1edd81b5601278ddea32",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/classes/GVCheckoutEngine.cls",
+      "baselineSha256": "7a61b42100faff88d7feb5da1c9e8345be3f058248036070a740c0659eae8ccb",
+      "differsFromDeployedBaseline": true
+    },
+    {
+      "path": "force-app/main/default/classes/GVCheckoutEngine.cls-meta.xml",
+      "baselineSha256": "d61a5e940622b0ba248df9de701b26c9b9bb440ffaf0d2325ae8e446eb7bf728",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/classes/GVCheckoutJourneyTest.cls",
+      "baselineSha256": "0a43b0876ab5b07dc5e52e726df02d107b7a45edb177eae119feac97122d64fa",
+      "differsFromDeployedBaseline": true
+    },
+    {
+      "path": "force-app/main/default/classes/GVCheckoutJourneyTest.cls-meta.xml",
+      "baselineSha256": "d61a5e940622b0ba248df9de701b26c9b9bb440ffaf0d2325ae8e446eb7bf728",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/classes/GVCheckoutOperations.cls",
+      "baselineSha256": "65475910de5155cbe9710d76dff73cc093fabf272f292e59434c467cc6acd69a",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/classes/GVCheckoutOperations.cls-meta.xml",
+      "baselineSha256": "d61a5e940622b0ba248df9de701b26c9b9bb440ffaf0d2325ae8e446eb7bf728",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/classes/GVCheckoutRebuildTest.cls",
+      "baselineSha256": "0fe6cc0b6023df0faa20e7bb0b2ed5645f590788f3c754b1b289ee371122211b",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/classes/GVCheckoutRebuildTest.cls-meta.xml",
+      "baselineSha256": "d61a5e940622b0ba248df9de701b26c9b9bb440ffaf0d2325ae8e446eb7bf728",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/classes/GVGatewayWorker.cls",
+      "baselineSha256": "caec40136bc0bf0ef1dd78a9d102ec8568fb0fe38f93d847a8249afda345c2ec",
+      "differsFromDeployedBaseline": true
+    },
+    {
+      "path": "force-app/main/default/classes/GVGatewayWorker.cls-meta.xml",
+      "baselineSha256": "d61a5e940622b0ba248df9de701b26c9b9bb440ffaf0d2325ae8e446eb7bf728",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/classes/GVInventoryService.cls",
+      "baselineSha256": "cfc01043ad3aad1a8e21bf8f9437cbb1620cae7c664d3d5afaa896928d0c3e6a",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/classes/GVInventoryService.cls-meta.xml",
+      "baselineSha256": "d61a5e940622b0ba248df9de701b26c9b9bb440ffaf0d2325ae8e446eb7bf728",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/classes/GVInventoryServiceTest.cls",
+      "baselineSha256": "10973e18e386cb0b2ef69bed0a0d32320edf0bdac1c46bb764cfa5546f9e1466",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/classes/GVInventoryServiceTest.cls-meta.xml",
+      "baselineSha256": "d61a5e940622b0ba248df9de701b26c9b9bb440ffaf0d2325ae8e446eb7bf728",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/classes/GVOnlineCheckoutController.cls",
+      "baselineSha256": "9103a12a6417d7011c4d2901dbcb0681e7668d44afa0af99c3e9cd66f9cdb31d",
+      "differsFromDeployedBaseline": true
+    },
+    {
+      "path": "force-app/main/default/classes/GVOnlineCheckoutController.cls-meta.xml",
+      "baselineSha256": "d61a5e940622b0ba248df9de701b26c9b9bb440ffaf0d2325ae8e446eb7bf728",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/classes/GVPaymentController.cls",
+      "baselineSha256": "c0397119b2bd8debdd5573537a96a7d899a14fa513238995806339325c5546b9",
+      "differsFromDeployedBaseline": true
+    },
+    {
+      "path": "force-app/main/default/classes/GVPaymentController.cls-meta.xml",
+      "baselineSha256": "d61a5e940622b0ba248df9de701b26c9b9bb440ffaf0d2325ae8e446eb7bf728",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/classes/GVPaymentEventPublisher.cls",
+      "baselineSha256": "d2ff26e4420615e2fe163219f29fae5a15a3947b53391b94fe3a2272ab70c1f7",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/classes/GVPaymentEventPublisher.cls-meta.xml",
+      "baselineSha256": "87b91a7450c6f89862eaf12fd41e143807888c976d917c53283bcfa8bf75cb1f",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/classes/GVPaymentFinalizationTest.cls",
+      "baselineSha256": "f2cb1ea14efa3de31c5230f3c32cfd8450449b02cb32736431d670782fef8838",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/classes/GVPaymentFinalizationTest.cls-meta.xml",
+      "baselineSha256": "d61a5e940622b0ba248df9de701b26c9b9bb440ffaf0d2325ae8e446eb7bf728",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/classes/GVPaymentVerificationController.cls",
+      "baselineSha256": "909723d36110088fbf9d50ed4ed79b9bbd8fdaaf79b5c11d707ef1258d0b0125",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/classes/GVPaymentVerificationController.cls-meta.xml",
+      "baselineSha256": "d61a5e940622b0ba248df9de701b26c9b9bb440ffaf0d2325ae8e446eb7bf728",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/classes/GVPaymentVerificationControllerTest.cls",
+      "baselineSha256": "cb63479672b3ed81f1218db2d9135694f59235f77bd19166c9a80d19258f46d5",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/classes/GVPaymentVerificationControllerTest.cls-meta.xml",
+      "baselineSha256": "d61a5e940622b0ba248df9de701b26c9b9bb440ffaf0d2325ae8e446eb7bf728",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/classes/GVPaymentVerificationEventHandler.cls",
+      "baselineSha256": "fdf853b925774199add079f38702dce0490a8e80ebbbeb3ea9e80914dea0d03a",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/classes/GVPaymentVerificationEventHandler.cls-meta.xml",
+      "baselineSha256": "d61a5e940622b0ba248df9de701b26c9b9bb440ffaf0d2325ae8e446eb7bf728",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/classes/GVPaymentVerificationEventHandlerTest.cls",
+      "baselineSha256": "addcb5577cf5615f9ef72d0af15d141974b5bb68fccc57afacfa26ca69b22600",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/classes/GVPaymentVerificationEventHandlerTest.cls-meta.xml",
+      "baselineSha256": "d61a5e940622b0ba248df9de701b26c9b9bb440ffaf0d2325ae8e446eb7bf728",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/classes/GVPaymentVerificationService.cls",
+      "baselineSha256": "d09d9285eef39d12e7aa6f29694e73f3047af021f707fe447a896e91f66bfdf3",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/classes/GVPaymentVerificationService.cls-meta.xml",
+      "baselineSha256": "d61a5e940622b0ba248df9de701b26c9b9bb440ffaf0d2325ae8e446eb7bf728",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/classes/GVRazorpayService.cls",
+      "baselineSha256": "321c5c7e48acb76ea217cf410950ba2eac426fdb10a91d45ecc6d73e57b73894",
+      "differsFromDeployedBaseline": true
+    },
+    {
+      "path": "force-app/main/default/classes/GVRazorpayService.cls-meta.xml",
+      "baselineSha256": "d61a5e940622b0ba248df9de701b26c9b9bb440ffaf0d2325ae8e446eb7bf728",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/classes/GVRazorpaySignatureService.cls",
+      "baselineSha256": "15e076c301e44b1d5b3f0a8a3ed5b11bd5c506be3b4d79813e6e168caa3d5d4d",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/classes/GVRazorpaySignatureService.cls-meta.xml",
+      "baselineSha256": "d61a5e940622b0ba248df9de701b26c9b9bb440ffaf0d2325ae8e446eb7bf728",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/classes/GVRazorpaySignatureServiceTest.cls",
+      "baselineSha256": "7acee4e8053ef7e15291abfdde09e5ab0a4d227742ddfbd18236d47dc3b80731",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/classes/GVRazorpaySignatureServiceTest.cls-meta.xml",
+      "baselineSha256": "d61a5e940622b0ba248df9de701b26c9b9bb440ffaf0d2325ae8e446eb7bf728",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/classes/GVRazorpayWebhook.cls",
+      "baselineSha256": "377053b6721065dc5a7241d9844438540ef25f5d0bd33f711e11718d3b634ba9",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/classes/GVRazorpayWebhook.cls-meta.xml",
+      "baselineSha256": "d61a5e940622b0ba248df9de701b26c9b9bb440ffaf0d2325ae8e446eb7bf728",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/classes/GVReconciliationScheduler.cls",
+      "baselineSha256": "cbeeeeccf00467d52566b59d3bce089845318395c58663d6269027dc58bcca1b",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/classes/GVReconciliationScheduler.cls-meta.xml",
+      "baselineSha256": "d61a5e940622b0ba248df9de701b26c9b9bb440ffaf0d2325ae8e446eb7bf728",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/classes/GVWebhookTest.cls",
+      "baselineSha256": "21f6737e4886571f0124955ff3e637c6ef84375c43208bfb7ad00783fecb6ab4",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/classes/GVWebhookTest.cls-meta.xml",
+      "baselineSha256": "d61a5e940622b0ba248df9de701b26c9b9bb440ffaf0d2325ae8e446eb7bf728",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/labels/CustomLabels.labels-meta.xml",
+      "baselineSha256": "d154d55897a58040bd00cc4ee1fd93d5491f9fc7ba6fed638ff2daa7be360ca8",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/lwc/goldvueeRazorpayCheckout/goldvueeRazorpayCheckout.css",
+      "baselineSha256": "28570959fcb4bc376e8cffec01fc4f6314be1778c542d0c4bfd5ca3a32154377",
+      "differsFromDeployedBaseline": true
+    },
+    {
+      "path": "force-app/main/default/lwc/goldvueeRazorpayCheckout/goldvueeRazorpayCheckout.html",
+      "baselineSha256": "a543847e7b52d9700178c9ff994f49f25f9d511822eaedbbdd54e447cd6b68b5",
+      "differsFromDeployedBaseline": true
+    },
+    {
+      "path": "force-app/main/default/lwc/goldvueeRazorpayCheckout/goldvueeRazorpayCheckout.js",
+      "baselineSha256": "e5788176bdc003530f7001559a58464f0a5d45152e801d26bd432d91f806f269",
+      "differsFromDeployedBaseline": true
+    },
+    {
+      "path": "force-app/main/default/lwc/goldvueeRazorpayCheckout/goldvueeRazorpayCheckout.js-meta.xml",
+      "baselineSha256": "ddefb90d15382c7377e917bb00fc265eda11afa7d1617d2fef21ea5f91f9b910",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/lwc/gvCheckout/gvCheckout.css",
+      "baselineSha256": "96a3df3e7a44ac55f3279481f3bb785aeba7f05e8a19c16fe45c4ef2a975dbff",
+      "differsFromDeployedBaseline": true
+    },
+    {
+      "path": "force-app/main/default/lwc/gvCheckout/gvCheckout.html",
+      "baselineSha256": "551289913b4435901f6ea05be47c63b7df66880743a11aa04e19e86dd14076c8",
+      "differsFromDeployedBaseline": true
+    },
+    {
+      "path": "force-app/main/default/lwc/gvCheckout/gvCheckout.js",
+      "baselineSha256": "f662d4c30ca3ba242bdb4e77737b7e3d8bc9dc72217ab945c269658cf656bc0e",
+      "differsFromDeployedBaseline": true
+    },
+    {
+      "path": "force-app/main/default/lwc/gvCheckout/gvCheckout.js-meta.xml",
+      "baselineSha256": "ace615e4126fdd00047ac1583e1be4d4252b484da67d34d26950e940450f36f6",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/lwc/gvShoppingCart/gvShoppingCart.css",
+      "baselineSha256": "3b98d30ce82394b3dbca9833416d5288f40e79d3792b59b72347cf7e8e64a0db",
+      "differsFromDeployedBaseline": true
+    },
+    {
+      "path": "force-app/main/default/lwc/gvShoppingCart/gvShoppingCart.html",
+      "baselineSha256": "486e2098680728fc390897ee2d48f213ae293f77cbbe2d65876c7df402d00fd1",
+      "differsFromDeployedBaseline": true
+    },
+    {
+      "path": "force-app/main/default/lwc/gvShoppingCart/gvShoppingCart.js",
+      "baselineSha256": "8368f2a076bd159eb58738eafc2a38d22b51a6812ebbbfe972d864a6e367ad82",
+      "differsFromDeployedBaseline": true
+    },
+    {
+      "path": "force-app/main/default/lwc/gvShoppingCart/gvShoppingCart.js-meta.xml",
+      "baselineSha256": "2644e8f3a1565c9345b342957790966281e6132f23f7aafef82b8c3d7dbb8d97",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Cart_Item__c/Cart_Item__c.object-meta.xml",
+      "baselineSha256": "047f2150c173bc16323ee7d9e3376e361898c286657823f13db50469ee0ce066",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Cart_Item__c/fields/Jewellery_Product__c.field-meta.xml",
+      "baselineSha256": "cdec37cbd980c17c0ce09608c4bafaf56d0357d7a4bdf86551ed1734fa3a60f1",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Cart_Item__c/fields/Line_Total__c.field-meta.xml",
+      "baselineSha256": "37e731199da161b958d5bb912e6be6b9191ed9e660a6ece6a23e199085ef8178",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Cart_Item__c/fields/Quantity__c.field-meta.xml",
+      "baselineSha256": "37fa6f2515f60622d83e0721b2b0074f2e67509b734cb1bf2605e0eafb43f3a3",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Cart_Item__c/fields/Shopping_Cart__c.field-meta.xml",
+      "baselineSha256": "63829610795206d7876a11ce1409cbe28a10622eecfec2a5c129cc3caaebd919",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Cart_Item__c/fields/Unit_Price__c.field-meta.xml",
+      "baselineSha256": "5f13d754caaf2357aedb19ee242a2102ebf8674db6b20877eedd491d03bb5bb3",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Cart_Item__c/listViews/All.listView-meta.xml",
+      "baselineSha256": "c32656e1466c3598b3ea1ed3cdfe53e7abdb6f65a28466a914823bff81c81379",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Cart_Item__c/validationRules/GV_Cart_Item_Validation.validationRule-meta.xml",
+      "baselineSha256": "1eabc5c1a690d9541a1da23deed76943696d20f0835453bf3591442af75ecf38",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/GoldVuee_Payment_Verification__e/fields/Payment_Record_ID__c.field-meta.xml",
+      "baselineSha256": "e5d1d996cbffe862644f1400386a5764b43065fd99e6d2d080d26e99e52e81d2",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/GoldVuee_Payment_Verification__e/fields/Raw_Body__c.field-meta.xml",
+      "baselineSha256": "e6ccaa0e37e0f336113a2bd99ca83af9c594f5b35bbdd84a32bf6271c43a2abf",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/GoldVuee_Payment_Verification__e/fields/Razorpay_Payment_ID__c.field-meta.xml",
+      "baselineSha256": "2d6196c19c2ecd5537e0103061ab607d11475984685e62c7c6a03717e1587699",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/GoldVuee_Payment_Verification__e/fields/Razorpay_Signature__c.field-meta.xml",
+      "baselineSha256": "538c7f71d32360eaae15f28c0f93b1df86f139e76196b72a5f49e67b6a8035f5",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/GoldVuee_Payment_Verification__e/fields/Source__c.field-meta.xml",
+      "baselineSha256": "aef25a77eb3b3437087555dd7dad7c3975feb2ea20974ce06a7680642dd1560a",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/GoldVuee_Payment_Verification__e/GoldVuee_Payment_Verification__e.object-meta.xml",
+      "baselineSha256": "88b2b174bdee973ddf4c29275ae067c9e4f7c365fb87123890594e2e4207ada3",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/GV_Payment_Config__c/fields/Razorpay_Test_Secret__c.field-meta.xml",
+      "baselineSha256": "b73333014f3af615b2bbf58badae15037d3789e80564c375c13025419cbf2d88",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/GV_Payment_Config__c/fields/Webhook_Secret__c.field-meta.xml",
+      "baselineSha256": "9c70700e598ba821a00dd6def46a5a778b59ced49efad2950c890481aeaf79cd",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/GV_Payment_Config__c/GV_Payment_Config__c.object-meta.xml",
+      "baselineSha256": "e1db6bb4c5a78d9aa07daff25abef599541137dd319b76b6b0b1f51ee15de3a1",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/GV_Payment_Config__c/listViews/All.listView-meta.xml",
+      "baselineSha256": "c32656e1466c3598b3ea1ed3cdfe53e7abdb6f65a28466a914823bff81c81379",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/GV_Webhook_Receipt__c/fields/Digest__c.field-meta.xml",
+      "baselineSha256": "6a185b8184913bd51e5eff55388d687e28967418aea861b70d58fa0a4ec3b90c",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/GV_Webhook_Receipt__c/fields/Payment__c.field-meta.xml",
+      "baselineSha256": "b07782ae52373ac01a3738adccf55db622ce54b3828369a29521e70042e5f4a4",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/GV_Webhook_Receipt__c/GV_Webhook_Receipt__c.object-meta.xml",
+      "baselineSha256": "70f15c6e10839a5a0e5fc79c8f96a4fa74d3e53e3473bb5be32f5752fe199c46",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Inventory_Movement__c/fields/Jewellery_Order__c.field-meta.xml",
+      "baselineSha256": "fa1bca86435104a190ad78d7d15a818611e957a62c5dc82489d3143f776dbd1a",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Inventory_Movement__c/fields/Jewellery_Product__c.field-meta.xml",
+      "baselineSha256": "029f97930c201e37ca89f5ca802334d6d9c910262261c2c2a7218ad2b52c9b61",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Inventory_Movement__c/fields/Movement_Date__c.field-meta.xml",
+      "baselineSha256": "0fad2f3e48299f60e7e472fd52a21ce549244ad6dcafe2ada797ffae3d9f4c7b",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Inventory_Movement__c/fields/Movement_Type__c.field-meta.xml",
+      "baselineSha256": "0bfa611d342ac47b4e217620740e7f4c4a040a3e7c723c4b58ad07440c8d904b",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Inventory_Movement__c/fields/Quantity__c.field-meta.xml",
+      "baselineSha256": "3c5ae108619a037a1f044f2e47b4dd9de1eccec3e6feac1702366fa23e109189",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Inventory_Movement__c/fields/Reason__c.field-meta.xml",
+      "baselineSha256": "cf1526d00998188b5bdf8d5c3af7213bcddb0c0d7b9cdf9aa649a2b808fa7058",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Inventory_Movement__c/fields/Stock_After__c.field-meta.xml",
+      "baselineSha256": "c601ba5f2374029385f0fd0cd5d65a5e119fdf28ef9204409af858729ae6fafb",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Inventory_Movement__c/fields/Stock_Before__c.field-meta.xml",
+      "baselineSha256": "51ed4dd16ced26eafde7027aa4ea02921faea87d4a9ba7726be2f9a1ebfcc381",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Inventory_Movement__c/Inventory_Movement__c.object-meta.xml",
+      "baselineSha256": "41beab8002ee8be26ab2ec20e75100faa16718860ca802b1bbb64fa72f76f829",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Inventory_Movement__c/listViews/All.listView-meta.xml",
+      "baselineSha256": "c32656e1466c3598b3ea1ed3cdfe53e7abdb6f65a28466a914823bff81c81379",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Order_Item__c/fields/Discount_Amount__c.field-meta.xml",
+      "baselineSha256": "2282f3d2a5cc736644fa6118e1e0b0dbaa59a53149c76279a594812595bd4516",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Order_Item__c/fields/Jewellery_Order__c.field-meta.xml",
+      "baselineSha256": "d46c352a80108813fb2baf3f699d35048c22ceb1390dfba4ae6674d633fb60c5",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Order_Item__c/fields/Jewellery_Product__c.field-meta.xml",
+      "baselineSha256": "2ff027288f7e0376cdd139affa5c744a777bf7e022c6a19dc87a51ac3ed471aa",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Order_Item__c/fields/Line_Total__c.field-meta.xml",
+      "baselineSha256": "ab864aa0750591880faa0077c751958e8850937b1b9ddc6e66a927508ffc53e9",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Order_Item__c/fields/Quantity__c.field-meta.xml",
+      "baselineSha256": "359915eb934cae954bd51a2af86c1b1054a2be9e04216941ef6b1ec96a278cae",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Order_Item__c/fields/Unit_Price__c.field-meta.xml",
+      "baselineSha256": "756fde3e7ed64db9341a6c2e28d910f5ff31b1969c8b424ab5386c8403fd0042",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Order_Item__c/Jewellery_Order_Item__c.object-meta.xml",
+      "baselineSha256": "67645646377b6d8853d9fd0c91a9f578023b508880bf59c8ec08f11135c73407",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Order_Item__c/listViews/All.listView-meta.xml",
+      "baselineSha256": "c32656e1466c3598b3ea1ed3cdfe53e7abdb6f65a28466a914823bff81c81379",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Order_Item__c/validationRules/GV_Order_Item_Validation.validationRule-meta.xml",
+      "baselineSha256": "afd058905ec8a9d55e706169ef859531a702bf048fc9a42f8bf4fd4b4de7f40a",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Order__c/fields/Customer__c.field-meta.xml",
+      "baselineSha256": "75615a16c960f6c37ba909ce49eba828fd301f4618b6a091539e976a5781ae3b",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Order__c/fields/Discount_Amount__c.field-meta.xml",
+      "baselineSha256": "8bc5c3bccde9c0c184080b4a5759dad24ced159ddd061b73bade5fd076877b38",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Order__c/fields/Grand_Total__c.field-meta.xml",
+      "baselineSha256": "0bb91a82d3da113080f77ff6256dbdc90404a27ae162d0c075bc9c4fb5026e06",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Order__c/fields/Order_Date__c.field-meta.xml",
+      "baselineSha256": "061d3766f7132ab477adb143a78efe4d7ca2bae7978dc2fce1235c820d550285",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Order__c/fields/Order_Status__c.field-meta.xml",
+      "baselineSha256": "cab06c5510f0aac6f723685ad173b093424993c053a1d113ab873a9c396c7e67",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Order__c/fields/Payment_Status__c.field-meta.xml",
+      "baselineSha256": "14597b2046fa83c278e0f5420acd2b066eb77de3bd5069dec7c94b02dfb77a0f",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Order__c/fields/Shipping_Address__c.field-meta.xml",
+      "baselineSha256": "2e0100e67c4811125a00703a35a916ce86e30558087b0d4a9b496bb5e8caebbd",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Order__c/fields/Shipping_Charges__c.field-meta.xml",
+      "baselineSha256": "558419be38b6dd6367f705d999fd94c175b40a1703334691a0909cff8abb30f3",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Order__c/fields/Shipping_City__c.field-meta.xml",
+      "baselineSha256": "1aefdf3bf4ee336176280af62c37d6a7e92b95b04c8e7e1224574122896b7d53",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Order__c/fields/Shipping_Country__c.field-meta.xml",
+      "baselineSha256": "8560fb71dae4a05b3cca1fbfe7fec7f3b4c4daeac60f11b62d5bd15351c3e9aa",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Order__c/fields/Shipping_Postal_Code__c.field-meta.xml",
+      "baselineSha256": "6879e191e6393dbc0ddd78d7ede0c6f0926c88ed689de0bf691447f670f1e8f4",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Order__c/fields/Shipping_State__c.field-meta.xml",
+      "baselineSha256": "a7e4f5f2f42ecfd39a831d07eb4a5585cec944bd40951f8502b760037a12ff40",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Order__c/fields/Shopping_Cart__c.field-meta.xml",
+      "baselineSha256": "17a1619031034a66d4cf39cb0bdd0d8eb07c3be9d6c8cfc3637c022036878efd",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Order__c/fields/Subtotal__c.field-meta.xml",
+      "baselineSha256": "f9a17424e3287f7415b2ef72d7418afd842c7ff5d44676d1e3eec327542d87f4",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Order__c/fields/Tax_Amount__c.field-meta.xml",
+      "baselineSha256": "c1ce9d1d8c8a2195f692d56f917d88f42f23fd9ccc41cb221b40cd76c2f3580a",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Order__c/Jewellery_Order__c.object-meta.xml",
+      "baselineSha256": "ee797df8198f9148bc4af13431afbb0e2e9ac996d4eacac6ec6df4a2728308da",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Order__c/listViews/All.listView-meta.xml",
+      "baselineSha256": "c32656e1466c3598b3ea1ed3cdfe53e7abdb6f65a28466a914823bff81c81379",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Order__c/validationRules/GV_Order_Validation.validationRule-meta.xml",
+      "baselineSha256": "2ff4bbc288651def5f14e537c6dc8c676a15e069a1bbcdc4a4c5053c52c817d9",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Product__c/fields/Active__c.field-meta.xml",
+      "baselineSha256": "91118c8702a9d0cfc48404abf2b3d22e3ccacfbf4cc654752fdd1b5507616b8a",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Product__c/fields/Availability_Status__c.field-meta.xml",
+      "baselineSha256": "ae65af324bdc2360e11fc94848ba77d2a73fa0fe5e216a48e908aea12dfa633d",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Product__c/fields/Available_Quantity__c.field-meta.xml",
+      "baselineSha256": "b432a1d137776cc865ad8da536874bbcd60dfb475f7167e769baf22f7c320b7e",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Product__c/fields/Bestseller__c.field-meta.xml",
+      "baselineSha256": "d512ffd0b2b73ee92ebe0f10cf0ae69b3fddc2093cb00e9bae7fe5c83ab61e74",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Product__c/fields/Category__c.field-meta.xml",
+      "baselineSha256": "89c8e31b81d26b44c7bbd75106d08144a32b2c2ba0e8147484b8d8b3a6cb8539",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Product__c/fields/Description__c.field-meta.xml",
+      "baselineSha256": "c4860be05dd292b52932c2a42b80be001713fb22c81eb3b5bd99c827809fc755",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Product__c/fields/Discount_Price__c.field-meta.xml",
+      "baselineSha256": "8a718e73bf958199e1af7fce96b6e83519faf8d2b1aa3d6b159303096ad58b94",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Product__c/fields/Featured_Product__c.field-meta.xml",
+      "baselineSha256": "215f39d61353636c28691a0e039d83e780b29f4e4898e70523fd54f10ea75dbb",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Product__c/fields/Gender__c.field-meta.xml",
+      "baselineSha256": "661f7a61c9c09e35bd8fee2af3834c19d6081bda9c42029d316f82aa4fe12f08",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Product__c/fields/Low_Stock_Threshold__c.field-meta.xml",
+      "baselineSha256": "517a24b73f158c506fe94acc0b301f5d8520b0d140d21d92ec2179be808e310c",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Product__c/fields/Main_Image_URL__c.field-meta.xml",
+      "baselineSha256": "da3c91b9d2778a55bd4e93365d07da20e81d151f359b1c0b6d246c6a19310db6",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Product__c/fields/Metal_Type__c.field-meta.xml",
+      "baselineSha256": "97b8ad996e23b99eff21e6323580dfe14876f0e4448e764e75182610342d1f1f",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Product__c/fields/New_Arrival__c.field-meta.xml",
+      "baselineSha256": "b05baab08ef990ff4014a3458b3b6530fba3b4d2dff2d2d9c9c7454b5e005a4c",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Product__c/fields/Price__c.field-meta.xml",
+      "baselineSha256": "149bce05abafa1d0fcd78aa1af7a86a837591220b71e40a86d64c720e565b991",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Product__c/fields/Product_Code__c.field-meta.xml",
+      "baselineSha256": "942a871384e61d7bd7c8c160e2b60fdcb1deb3874792b2cd1b33550e411aaa21",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Product__c/fields/Purity__c.field-meta.xml",
+      "baselineSha256": "229884594af2bb158a4f26438b570b09fa0c1b745cfec71ba99f4380c647f314",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Product__c/fields/Reserved_Quantity__c.field-meta.xml",
+      "baselineSha256": "76eb55a31507c4b0b731cc39c8dcfc1a6ac5a2c1d34d118ce165863528103cc9",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Product__c/fields/SKU__c.field-meta.xml",
+      "baselineSha256": "af18389d7e59ee529780f7fe1ba8ad645392015140c9cc530503cbc304944240",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Product__c/fields/Stock_Quantity__c.field-meta.xml",
+      "baselineSha256": "b3f35a45ad5a73885a08e2ab6d87a93ba06486065231f572ab066096cf0131b6",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Product__c/fields/Stone_Type__c.field-meta.xml",
+      "baselineSha256": "15b7cbd399ee204d6549d971a8b4ff911ef235b86c0b502956b64e083e11967a",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Product__c/fields/Weight__c.field-meta.xml",
+      "baselineSha256": "b4b98fedfb13b8d6e8012abad113b947662f0176738b7423e62eba313b37bbfe",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Product__c/Jewellery_Product__c.object-meta.xml",
+      "baselineSha256": "68743532c138c15b66b91435db95a9e4c4d857c05037d320ac2bf02200d5aa58",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Product__c/listViews/All.listView-meta.xml",
+      "baselineSha256": "c32656e1466c3598b3ea1ed3cdfe53e7abdb6f65a28466a914823bff81c81379",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Product__c/validationRules/GV_Prevent_Negative_Inventory.validationRule-meta.xml",
+      "baselineSha256": "bf073995df54227296c249e17407aa63efc4554ffa866869a09932ce3204221f",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Product__c/validationRules/GV_Product_Business_Validation.validationRule-meta.xml",
+      "baselineSha256": "55a091d7ca4d7dc7ef78650d6a4d821dd1a818c2ae47c03954a93ffee1f88092",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Product__c/validationRules/GV_Product_Price_Validation.validationRule-meta.xml",
+      "baselineSha256": "4c8fdadf0cb816d1cf4a46c942328c9d181dde6d72def46f04934e38b72dc2cb",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Jewellery_Product__c/validationRules/GV_Stock_Invariants.validationRule-meta.xml",
+      "baselineSha256": "287fbed130aaa076e981e625521fadb9be6a427d6b68356d229f97b3846751a4",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Payment__c/fields/Failure_Reason__c.field-meta.xml",
+      "baselineSha256": "007ba49194ed6e4c01844d2befcf6eed2b6591d1aa7ec678456f5d78f911138c",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Payment__c/fields/Gateway_Response__c.field-meta.xml",
+      "baselineSha256": "74c23f48d825390ed6504c3ef04d90fa16cfe1fcde739a1e32e42bbda6607890",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Payment__c/fields/Initialization_Job__c.field-meta.xml",
+      "baselineSha256": "053214278118085da36ba744aa33beffd54fcd619529554995d80d322777ab73",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Payment__c/fields/Initialization_State__c.field-meta.xml",
+      "baselineSha256": "86ee7022f2416f771bec932ac0c1c26dda0aedeb2f29859db12776a2e952b63c",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Payment__c/fields/Jewellery_Order__c.field-meta.xml",
+      "baselineSha256": "777f702c25eb7e2147fb1a8404e9b7a7d6aff7239523a6e4369cb7fbce53f003",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Payment__c/fields/Last_Checked_At__c.field-meta.xml",
+      "baselineSha256": "dd845f0f6b68b460f9bb6bfb811bea52682fc6a452f25c36c70141b0117261b3",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Payment__c/fields/Payment_Amount__c.field-meta.xml",
+      "baselineSha256": "be906d5af0256a7cd68b834aa8babce42a2cdcd5270af96e87bfe384ad27b2c5",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Payment__c/fields/Payment_Date__c.field-meta.xml",
+      "baselineSha256": "2be5a53fa9b20962d46fe2de477f3dbecf37f38a2b51b5de65fcecdd302d6c4f",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Payment__c/fields/Payment_Method__c.field-meta.xml",
+      "baselineSha256": "c23cfa7bfa1f1548381c29344c927bac6c31db2b3f277f97dd731f03c1314a7c",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Payment__c/fields/Payment_Status__c.field-meta.xml",
+      "baselineSha256": "e82a7538db72efa9a7b8342b931ec11e1eb7ced0e58d80ef97a84511ffe52ab4",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Payment__c/fields/Razorpay_Order_ID__c.field-meta.xml",
+      "baselineSha256": "e0e2594710feed7fa6333aa9143b5ee8cd97195799ae3d9d036f2f05314abc89",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Payment__c/fields/Razorpay_Verified_Payment_ID__c.field-meta.xml",
+      "baselineSha256": "92938fe3ca79936c1b85cfc52e1ca12e075fff10624134cb81699989814ea0e5",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Payment__c/fields/Reconciliation_Requested_At__c.field-meta.xml",
+      "baselineSha256": "689778877979f30d9a314f1bd3950d13dc559e5864dbfe7cdb2bb007d299873e",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Payment__c/fields/Reconciliation_State__c.field-meta.xml",
+      "baselineSha256": "5857d7997cc274db247363072df90dcb0e5eadb157cf26682e089bf99fada443",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Payment__c/fields/Transaction_ID__c.field-meta.xml",
+      "baselineSha256": "f61ab5c8fc8353c3ed474bad0674312dfd6add142fdeb9f13a6bf5fa15d8fa88",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Payment__c/listViews/All.listView-meta.xml",
+      "baselineSha256": "c32656e1466c3598b3ea1ed3cdfe53e7abdb6f65a28466a914823bff81c81379",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Payment__c/Payment__c.object-meta.xml",
+      "baselineSha256": "b6b8d79f126079013fb5ca6abbc63a57f59cc990190cf84e129bad9121c7ad87",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Payment__c/validationRules/GV_No_New_COD.validationRule-meta.xml",
+      "baselineSha256": "477ac8cd4cdc57b6889a117f075555ea7824e9d9152789f0e7e4bc03c464432c",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Payment__c/validationRules/GV_Payment_Validation.validationRule-meta.xml",
+      "baselineSha256": "18b089844bc4bb1eeb71b8fe67504834cd8db9525198ccd5803afbc846178dc6",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Shopping_Cart__c/fields/Cart_Status__c.field-meta.xml",
+      "baselineSha256": "128c27e646a63d7e2111b8f5aa7cecf656ef57c8ee55c17fc79a545adc09952d",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Shopping_Cart__c/fields/Customer__c.field-meta.xml",
+      "baselineSha256": "b2ae2f07a50c5377d2eccdf6edf41a008474c381754289dfd0a1bf75209f7f30",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Shopping_Cart__c/fields/Session_ID__c.field-meta.xml",
+      "baselineSha256": "98eef274997503436917873590dc2568178336f33a4bcc7c64773b57e13fb562",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Shopping_Cart__c/fields/Total_Amount__c.field-meta.xml",
+      "baselineSha256": "7fbf3e515dc47a467ba055c00e2e2ba8ad4866ecfe799eef8fa5d9f103c2def8",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Shopping_Cart__c/listViews/All.listView-meta.xml",
+      "baselineSha256": "c32656e1466c3598b3ea1ed3cdfe53e7abdb6f65a28466a914823bff81c81379",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Shopping_Cart__c/Shopping_Cart__c.object-meta.xml",
+      "baselineSha256": "403ebbe07aab36e0b7a3b7b1ffb309dd6aaf177723a72dc0f4879dc5b33a9de9",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Shopping_Cart__c/validationRules/GV_Shopping_Cart_Validation.validationRule-meta.xml",
+      "baselineSha256": "944a70fbaa75f2937fa3d6e7bbb16516dae7c403227a825446e32f4382c43891",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Stock_Reservation__c/fields/Expires_At__c.field-meta.xml",
+      "baselineSha256": "f58bdd2c74e7422337316a188194c31ef2e7b281588877922b1383a5bfff0f94",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Stock_Reservation__c/fields/Jewellery_Order__c.field-meta.xml",
+      "baselineSha256": "54bf654530b9f869779352e62cd02b00a0aebdfb7b00e62f7fe12fc35ae99c3d",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Stock_Reservation__c/fields/Jewellery_Product__c.field-meta.xml",
+      "baselineSha256": "146137777eff687fdf3fdbbc731046f723832e03008024e54d79f517fd87880a",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Stock_Reservation__c/fields/Released_At__c.field-meta.xml",
+      "baselineSha256": "6aac2cc6a70bfb9bae2e4071b132bd484e55b6155971be4f110232e8cddfb0c1",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Stock_Reservation__c/fields/Reservation_Reason__c.field-meta.xml",
+      "baselineSha256": "e7e0618c30bd6167080bd5ba02b09a8e6a19acc0abd8e3e6bbe7c16e9f4b8852",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Stock_Reservation__c/fields/Reservation_Status__c.field-meta.xml",
+      "baselineSha256": "6c9c255290b0073f4af6c9f6547f46d1a2e64ac2148a5aa3bfce0566aa7e94dc",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Stock_Reservation__c/fields/Reserved_At__c.field-meta.xml",
+      "baselineSha256": "e88d89f0aaf377a9e6df34d6fa3762c51a0cd920355299f55d2270eccf21c6b7",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Stock_Reservation__c/fields/Reserved_Quantity__c.field-meta.xml",
+      "baselineSha256": "ed5179f14c9269fa32f4893d23bfa0c099955fc62cba9c3a96f3e6ae48b6e41a",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Stock_Reservation__c/Stock_Reservation__c.object-meta.xml",
+      "baselineSha256": "8b172a31e3725b431cc9ed38ba52357e49b2c2b3c49ffa5556a8579ef3097fd7",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/objects/Stock_Reservation__c/validationRules/GV_Valid_Reservation_Quantity.validationRule-meta.xml",
+      "baselineSha256": "ae5764186c9f2faf2fc7f6b1da9058ceb74e9c86ddc7ce2bbbe5e412e80f57d2",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/pages/GVRazorpayHost.page",
+      "baselineSha256": "a81c33a849019d4bdee34daed6f262a851232eeae147c256aab9b7fa58d23dc5",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/pages/GVRazorpayHost.page-meta.xml",
+      "baselineSha256": "6196ed7870e9db109649d625e6b97ae14786200ea1763668e9987d3483c2c84a",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/permissionsets/GoldVuee_Customer_Access.permissionset-meta.xml",
+      "baselineSha256": "6bd5d5c24093e66bad9e128fe1bb8bb6fd948e668c500540d1eb9ff733568da4",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/permissionsets/GoldVuee_Operations.permissionset-meta.xml",
+      "baselineSha256": "736ccf1ea29cd3c5fcdd3ebdf9db1c1bbce8d46e57146bf4f3a39a787b017272",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/permissionsets/GoldVuee_Razorpay_Access.permissionset-meta.xml",
+      "baselineSha256": "d4cd0f284858c9354a42514c4c59cfb65839a310497d6edf911b2de6d0333e48",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/triggers/GVPaymentVerificationProbe.trigger",
+      "baselineSha256": "ee5635478ad9e13df0b93c818919db2ddeae1b8b3db5fde490c64dcc478a3a9b",
+      "differsFromDeployedBaseline": false
+    },
+    {
+      "path": "force-app/main/default/triggers/GVPaymentVerificationProbe.trigger-meta.xml",
+      "baselineSha256": "f12e29844fe1e896f4ba69355d0bb1309c3f75deb2589b0f33ddd440d1a3f131",
+      "differsFromDeployedBaseline": false
+    }
+  ]
+}
