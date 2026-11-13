@@ -1,161 +1,87 @@
-
 <template>
-    <section class="arrivals-page">
-
-        <div class="hero">
-            <p class="eyebrow">THE GOLDVUEE EXPERIENCE</p>
-
-            <h1>New Arrivals</h1>
-
-            <div class="gold-line"></div>
-
-            <p class="hero-description">
-                Discover our latest expressions of elegance.
-                Timeless jewellery, thoughtfully curated
-                for your most treasured moments.
-            </p>
+<section class="arrivals-page">
+  <header class="hero">
+    <p class="eyebrow">THE GOLDVUEE EXPERIENCE</p>
+    <h1>New Arrivals</h1><div class="gold-line"></div>
+    <p class="hero-description">Discover our latest expressions of elegance. Timeless jewellery, thoughtfully curated for your most treasured moments.</p>
+  </header>
+  <div class="content">
+    <div class="section-intro"><p class="eyebrow">JUST DISCOVERED</p><h2>Fresh From Our Collection</h2><p>Explore the newest additions to GoldVuee.</p></div>
+    <div class="actions"><span class="result-count">◇ {productCount} Pieces</span><button type="button" class="filter-toggle" onclick={toggleFilters}>{filterToggleLabel}</button></div>
+    <div class={catalogLayoutClass}>
+      <template lwc:if={showFilters}>
+        <aside class="filter-panel" aria-label="New arrival filters">
+          <div class="filter-heading"><div><p class="filter-kicker">CURATE YOUR COLLECTION</p><h2>Filter Jewellery</h2></div><button type="button" class="close-filters" aria-label="Close filters" onclick={toggleFilters}>×</button></div>
+          <div class="filter-section">
+            <button class="filter-section-toggle" type="button" data-section="metal" aria-expanded={metalOpen} onclick={toggleSection}><span>Metal Type</span><span>{metalArrow}</span></button>
+            <template lwc:if={metalOpen}>
+              <div class="filter-options"><template for:each={metalOptions} for:item="option"><label class="filter-option" key={option.value}><input type="checkbox" data-group="metal" value={option.value} checked={option.checked} onchange={handleFilterChange}/><span>{option.label}</span></label></template></div>
+            </template>
+          </div>
+          <div class="filter-section">
+            <button class="filter-section-toggle" type="button" data-section="category" aria-expanded={categoryOpen} onclick={toggleSection}><span>Jewellery Category</span><span>{categoryArrow}</span></button>
+            <template lwc:if={categoryOpen}>
+              <div class="filter-options"><template for:each={categoryOptions} for:item="option"><label class="filter-option" key={option.value}><input type="checkbox" data-group="category" value={option.value} checked={option.checked} onchange={handleFilterChange}/><span>{option.label}</span></label></template></div>
+            </template>
+          </div>
+          <div class="filter-section">
+            <button class="filter-section-toggle" type="button" data-section="gender" aria-expanded={genderOpen} onclick={toggleSection}><span>Shop For</span><span>{genderArrow}</span></button>
+            <template lwc:if={genderOpen}>
+              <div class="filter-options"><template for:each={genderOptions} for:item="option"><label class="filter-option" key={option.value}><input type="checkbox" data-group="gender" value={option.value} checked={option.checked} onchange={handleFilterChange}/><span>{option.label}</span></label></template></div>
+            </template>
+          </div>
+          <div class="filter-section">
+            <button class="filter-section-toggle" type="button" data-section="purity" aria-expanded={purityOpen} onclick={toggleSection}><span>Purity</span><span>{purityArrow}</span></button>
+            <template lwc:if={purityOpen}>
+              <div class="filter-options"><template for:each={purityOptions} for:item="option"><label class="filter-option" key={option.value}><input type="checkbox" data-group="purity" value={option.value} checked={option.checked} onchange={handleFilterChange}/><span>{option.label}</span></label></template></div>
+            </template>
+          </div>
+          <div class="filter-section">
+            <button class="filter-section-toggle" type="button" data-section="stone" aria-expanded={stoneOpen} onclick={toggleSection}><span>Stone Type</span><span>{stoneArrow}</span></button>
+            <template lwc:if={stoneOpen}>
+              <div class="filter-options"><template for:each={stoneOptions} for:item="option"><label class="filter-option" key={option.value}><input type="checkbox" data-group="stone" value={option.value} checked={option.checked} onchange={handleFilterChange}/><span>{option.label}</span></label></template></div>
+            </template>
+          </div>
+          <div class="filter-section">
+            <button class="filter-section-toggle" type="button" data-section="collection" aria-expanded={collectionOpen} onclick={toggleSection}><span>Collections</span><span>{collectionArrow}</span></button>
+            <template lwc:if={collectionOpen}>
+              <div class="filter-options"><template for:each={collectionOptions} for:item="option"><label class="filter-option" key={option.value}><input type="checkbox" data-group="collection" value={option.value} checked={option.checked} onchange={handleFilterChange}/><span>{option.label}</span></label></template></div>
+            </template>
+          </div>
+          <div class="filter-section">
+            <button class="filter-section-toggle" type="button" data-section="availability" aria-expanded={availabilityOpen} onclick={toggleSection}><span>Availability</span><span>{availabilityArrow}</span></button>
+            <template lwc:if={availabilityOpen}>
+              <div class="filter-options"><template for:each={availabilityOptions} for:item="option"><label class="filter-option" key={option.value}><input type="checkbox" data-group="availability" value={option.value} checked={option.checked} onchange={handleFilterChange}/><span>{option.label}</span></label></template></div>
+            </template>
+          </div>
+          <div class="filter-section">
+            <button class="filter-section-toggle" type="button" data-section="budget" aria-expanded={budgetOpen} onclick={toggleSection}><span>Budget</span><span>{budgetArrow}</span></button>
+            <template lwc:if={budgetOpen}>
+              <div class="budget-options"><label for="max-budget">Maximum price</label><input id="max-budget" type="range" min="0" max={budgetMaximum} step="1000" value={maxBudget} oninput={handleBudgetChange}/><div class="budget-labels"><span>₹0</span><strong>{formattedMaxBudget}</strong></div></div>
+            </template>
+          </div>
+          <button type="button" class="clear-filters" onclick={clearFilters}>CLEAR ALL FILTERS</button>
+        </aside>
+      </template>
+      <main class="arrivals-main">
+        <div class="toolbar">
+          <input type="search" class="search-box" placeholder="Search your perfect piece..." aria-label="Search new arrivals" value={searchTerm} oninput={handleSearch}/>
+          <div class="sort-field"><label>Sort By</label><lightning-combobox variant="label-hidden" value={sortBy} options={sortOptions} onchange={handleSortChange}></lightning-combobox></div>
         </div>
-
-        <div class="content">
-
-            <div class="section-intro">
-                <p class="eyebrow">JUST DISCOVERED</p>
-                <h2>Fresh From Our Collection</h2>
-                <p>
-                    Explore the newest additions to GoldVuee.
-                </p>
-            </div>
-
-            <div class="toolbar">
-                <div class="result-count">
-                    <span class="gold-diamond">◇</span>
-                    {productCount} Pieces
-                </div>
-
-                <div class="filters">
-                    <div class="filter-field">
-                        <label>Category</label>
-                        <lightning-combobox
-                            variant="label-hidden"
-                            value={selectedCategory}
-                            options={categoryOptions}
-                            onchange={handleCategoryChange}>
-                        </lightning-combobox>
-                    </div>
-
-                    <div class="filter-field">
-                        <label>Sort By</label>
-                        <lightning-combobox
-                            variant="label-hidden"
-                            value={sortBy}
-                            options={sortOptions}
-                            onchange={handleSortChange}>
-                        </lightning-combobox>
-                    </div>
-                </div>
-            </div>
-
-            <template lwc:if={loading}>
-                <div class="state-box loading-box">
-                    <lightning-spinner
-                        alternative-text="Loading jewellery"
-                        size="medium">
-                    </lightning-spinner>
-                    <p>Discovering our newest pieces...</p>
-                </div>
-            </template>
-
-            <template lwc:elseif={errorMessage}>
-                <div class="state-box error-box" role="alert">
-                    <h3>Unable to Load Jewellery</h3>
-                    <p>{errorMessage}</p>
-                </div>
-            </template>
-
-            <template lwc:elseif={hasProducts}>
-                <div class="product-grid">
-                    <template
-                        for:each={filteredProducts}
-                        for:item="product">
-
-                        <article
-                            class="product-card"
-                            key={product.id}>
-
-                            <div class="product-visual">
-                                <span class="new-tag">
-                                    NEW ARRIVAL
-                                </span>
-
-                                <div class="jewel-symbol">
-                                    ◇
-                                </div>
-
-                                <template lwc:if={product.inStock}>
-                                    <span class="stock-label">
-                                        Available
-                                    </span>
-                                </template>
-
-                                <template lwc:else>
-                                    <span class="stock-label sold-out">
-                                        Sold Out
-                                    </span>
-                                </template>
-                            </div>
-
-                            <div class="product-info">
-                                <p class="category">
-                                    {product.categoryLabel}
-                                </p>
-
-                                <h3>{product.name}</h3>
-
-                                <div class="price-row">
-                                    <span class="price">
-                                        <lightning-formatted-number
-                                            value={product.displayPrice}
-                                            format-style="currency"
-                                            currency-code="INR"
-                                            minimum-fraction-digits="2">
-                                        </lightning-formatted-number>
-                                    </span>
-
-                                    <template lwc:if={product.hasDiscount}>
-                                        <span class="old-price">
-                                            <lightning-formatted-number
-                                                value={product.price}
-                                                format-style="currency"
-                                                currency-code="INR"
-                                                minimum-fraction-digits="2">
-                                            </lightning-formatted-number>
-                                        </span>
-                                    </template>
-                                </div>
-                            </div>
-                        </article>
-
-                    </template>
-                </div>
-            </template>
-
-            <template lwc:else>
-                <div class="state-box">
-                    <div class="empty-symbol">◇</div>
-                    <h3>No Jewellery Found</h3>
-                    <p>
-                        Try another category or check back
-                        for our newest designs.
-                    </p>
-                </div>
-            </template>
-
-            <div class="closing-message">
-                <span>✦</span>
-                A new chapter of timeless elegance.
-                <span>✦</span>
-            </div>
-
-        </div>
-    </section>
+        <template lwc:if={loading}><div class="state-box"><lightning-spinner alternative-text="Loading jewellery" size="medium"></lightning-spinner><p>Discovering our newest pieces...</p></div></template>
+        <template lwc:elseif={errorMessage}><div class="state-box error-box" role="alert"><h3>Unable to Load Jewellery</h3><p>{errorMessage}</p></div></template>
+        <template lwc:elseif={hasProducts}>
+          <div class="product-grid"><template for:each={filteredProducts} for:item="product">
+            <article class="product-card" key={product.id}>
+              <div class="product-visual"><a href={product.detailsUrl} aria-label={product.name} class="image-link"><img src={product.image} alt={product.name} loading="lazy"/></a><span class="new-tag">NEW ARRIVAL</span><template lwc:if={product.inStock}><span class="stock-label">Available</span></template><template lwc:else><span class="stock-label sold-out">Sold Out</span></template></div>
+              <div class="product-info"><p class="category">{product.categoryLabel}</p><h3><a href={product.detailsUrl}>{product.name}</a></h3><div class="price-row"><span class="price">{product.formattedPrice}</span><template lwc:if={product.hasDiscount}><span class="old-price">{product.formattedOriginalPrice}</span></template></div></div>
+            </article>
+          </template></div>
+        </template>
+        <template lwc:else><div class="state-box"><h3>No Jewellery Found</h3><p>Try clearing some filters or search again.</p></div></template>
+      </main>
+    </div>
+    <div class="closing-message">✦ A new chapter of timeless elegance. ✦</div>
+  </div>
+</section>
 </template>

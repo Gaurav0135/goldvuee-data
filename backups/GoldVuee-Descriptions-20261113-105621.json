@@ -1,0 +1,152 @@
+﻿[
+    {
+        "Id":  "a00jV00000PTZX7QAP",
+        "Product_Code__c":  "GV-ER-001",
+        "Description__c":  "Premium GoldVuee jewellery collection: Traditional Gold Jhumka Earrings. Elegant craftsmanship and luxury finish."
+    },
+    {
+        "Id":  "a00jV00000PTZX8QAP",
+        "Product_Code__c":  "GV-ER-002",
+        "Description__c":  "Premium GoldVuee jewellery collection: Floral 22K Gold Stud Earrings. Elegant craftsmanship and luxury finish."
+    },
+    {
+        "Id":  "a00jV00000PTZX9QAP",
+        "Product_Code__c":  "GV-BR-001",
+        "Description__c":  "Premium GoldVuee jewellery collection: Sterling Silver Charm Bracelet. Elegant craftsmanship and luxury finish."
+    },
+    {
+        "Id":  "a00jV00000PTZXAQA5",
+        "Product_Code__c":  "GV-BR-002",
+        "Description__c":  "Premium GoldVuee jewellery collection: Silver Infinity Bracelet. Elegant craftsmanship and luxury finish."
+    },
+    {
+        "Id":  "a00jV00000PTZXBQA5",
+        "Product_Code__c":  "GV-BG-001",
+        "Description__c":  "Premium GoldVuee jewellery collection: Classic 22K Gold Bangles. Elegant craftsmanship and luxury finish."
+    },
+    {
+        "Id":  "a00jV00000PTZXCQA5",
+        "Product_Code__c":  "GV-BG-002",
+        "Description__c":  "Premium GoldVuee jewellery collection: Royal Floral Gold Bangles. Elegant craftsmanship and luxury finish."
+    },
+    {
+        "Id":  "a00jV00000PzdxLQAR",
+        "Product_Code__c":  "GV-BR-009",
+        "Description__c":  "Multi-Strand Bracelet from the GoldVuee curated jewellery collection. Silver design with None detailing. Prices and specifications are demonstration data, not supplier-certified."
+    },
+    {
+        "Id":  "a00jV00000PzfMQQAZ",
+        "Product_Code__c":  "GV-BR-005",
+        "Description__c":  "Charm Bracelet from the GoldVuee curated jewellery collection. Silver design with None detailing. Prices and specifications are demonstration data, not supplier-certified."
+    },
+    {
+        "Id":  "a00jV00000Pzh4tQAB",
+        "Product_Code__c":  "GV-BG-010",
+        "Description__c":  "Gemstone Gold Bangles from the GoldVuee curated jewellery collection. Gold design with Emerald detailing. Prices and specifications are demonstration data, not supplier-certified."
+    },
+    {
+        "Id":  "a00jV00000PzheMQAR",
+        "Product_Code__c":  "GV-BR-004",
+        "Description__c":  "Infinity Bracelet from the GoldVuee curated jewellery collection. Silver design with Diamond detailing. Prices and specifications are demonstration data, not supplier-certified."
+    },
+    {
+        "Id":  "a00jV00000PzhjBQAR",
+        "Product_Code__c":  "GV-ER-003",
+        "Description__c":  "Traditional Jhumka Earrings from the GoldVuee curated jewellery collection. Gold design with Pearl detailing. Prices and specifications are demonstration data, not supplier-certified."
+    },
+    {
+        "Id":  "a00jV00000PzhmPQAR",
+        "Product_Code__c":  "GV-ER-004",
+        "Description__c":  "Chandbali Earrings from the GoldVuee curated jewellery collection. Gold design with Ruby detailing. Prices and specifications are demonstration data, not supplier-certified."
+    },
+    {
+        "Id":  "a00jV00000Pzho1QAB",
+        "Product_Code__c":  "GV-ER-005",
+        "Description__c":  "Floral Stud Earrings from the GoldVuee curated jewellery collection. Gold design with Diamond detailing. Prices and specifications are demonstration data, not supplier-certified."
+    },
+    {
+        "Id":  "a00jV00000PzhpdQAB",
+        "Product_Code__c":  "GV-ER-006",
+        "Description__c":  "Ruby Drop Earrings from the GoldVuee curated jewellery collection. Gold design with Ruby detailing. Prices and specifications are demonstration data, not supplier-certified."
+    },
+    {
+        "Id":  "a00jV00000PzhrFQAR",
+        "Product_Code__c":  "GV-ER-007",
+        "Description__c":  "Leaf Design Earrings from the GoldVuee curated jewellery collection. Gold design with Diamond detailing. Prices and specifications are demonstration data, not supplier-certified."
+    },
+    {
+        "Id":  "a00jV00000PzhsrQAB",
+        "Product_Code__c":  "GV-ER-008",
+        "Description__c":  "Classic Hoop Earrings from the GoldVuee curated jewellery collection. Gold design with Diamond detailing. Prices and specifications are demonstration data, not supplier-certified."
+    },
+    {
+        "Id":  "a00jV00000PzhuTQAR",
+        "Product_Code__c":  "GV-ER-009",
+        "Description__c":  "Emerald Floral Studs from the GoldVuee curated jewellery collection. Gold design with Emerald detailing. Prices and specifications are demonstration data, not supplier-certified."
+    },
+    {
+        "Id":  "a00jV00000PzhxhQAB",
+        "Product_Code__c":  "GV-ER-010",
+        "Description__c":  "Contemporary Drop Earrings from the GoldVuee curated jewellery collection. Gold design with Diamond detailing. Prices and specifications are demonstration data, not supplier-certified."
+    },
+    {
+        "Id":  "a00jV00000PzhzJQAR",
+        "Product_Code__c":  "GV-BR-003",
+        "Description__c":  "Tennis Bracelet from the GoldVuee curated jewellery collection. Silver design with Diamond detailing. Prices and specifications are demonstration data, not supplier-certified."
+    },
+    {
+        "Id":  "a00jV00000Pzi7NQAR",
+        "Product_Code__c":  "GV-BR-006",
+        "Description__c":  "Leaf Cuff Bracelet from the GoldVuee curated jewellery collection. Silver design with Diamond detailing. Prices and specifications are demonstration data, not supplier-certified."
+    },
+    {
+        "Id":  "a00jV00000Pzi8zQAB",
+        "Product_Code__c":  "GV-BR-007",
+        "Description__c":  "Floral Link Bracelet from the GoldVuee curated jewellery collection. Silver design with Diamond detailing. Prices and specifications are demonstration data, not supplier-certified."
+    },
+    {
+        "Id":  "a00jV00000PziDpQAJ",
+        "Product_Code__c":  "GV-BR-008",
+        "Description__c":  "Braided Bracelet from the GoldVuee curated jewellery collection. Silver design with None detailing. Prices and specifications are demonstration data, not supplier-certified."
+    },
+    {
+        "Id":  "a00jV00000PziIfQAJ",
+        "Product_Code__c":  "GV-BR-010",
+        "Description__c":  "Geometric Bracelet from the GoldVuee curated jewellery collection. Silver design with None detailing. Prices and specifications are demonstration data, not supplier-certified."
+    },
+    {
+        "Id":  "a00jV00000PziKHQAZ",
+        "Product_Code__c":  "GV-BG-003",
+        "Description__c":  "Traditional Gold Bangles from the GoldVuee curated jewellery collection. Gold design with Ruby detailing. Prices and specifications are demonstration data, not supplier-certified."
+    },
+    {
+        "Id":  "a00jV00000PziLtQAJ",
+        "Product_Code__c":  "GV-BG-004",
+        "Description__c":  "Textured Gold Bangles from the GoldVuee curated jewellery collection. Gold design with None detailing. Prices and specifications are demonstration data, not supplier-certified."
+    },
+    {
+        "Id":  "a00jV00000PziNVQAZ",
+        "Product_Code__c":  "GV-BG-005",
+        "Description__c":  "Floral Gold Bangles from the GoldVuee curated jewellery collection. Gold design with Ruby detailing. Prices and specifications are demonstration data, not supplier-certified."
+    },
+    {
+        "Id":  "a00jV00000PziP7QAJ",
+        "Product_Code__c":  "GV-BG-006",
+        "Description__c":  "Temple Gold Bangles from the GoldVuee curated jewellery collection. Gold design with None detailing. Prices and specifications are demonstration data, not supplier-certified."
+    },
+    {
+        "Id":  "a00jV00000PziTxQAJ",
+        "Product_Code__c":  "GV-BG-007",
+        "Description__c":  "Lattice Gold Bangles from the GoldVuee curated jewellery collection. Gold design with None detailing. Prices and specifications are demonstration data, not supplier-certified."
+    },
+    {
+        "Id":  "a00jV00000PziXBQAZ",
+        "Product_Code__c":  "GV-BG-008",
+        "Description__c":  "Diamond Cut Gold Bangles from the GoldVuee curated jewellery collection. Gold design with Diamond detailing. Prices and specifications are demonstration data, not supplier-certified."
+    },
+    {
+        "Id":  "a00jV00000PziaPQAR",
+        "Product_Code__c":  "GV-BG-009",
+        "Description__c":  "Leaf Design Gold Bangles from the GoldVuee curated jewellery collection. Gold design with None detailing. Prices and specifications are demonstration data, not supplier-certified."
+    }
+]
