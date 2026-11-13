@@ -68,6 +68,32 @@ public with sharing class GVRazorpayService {
     }
     return null;
   }
+  /** Read-only retry eligibility; creating or changing gateway orders is never recovery. */
+  public static Boolean orderAllowsRetry(String orderId, Decimal amount) {
+    if (!Pattern.matches('^order_[A-Za-z0-9]+$', orderId))
+      throw new RazorpayException('Invalid gateway order.');
+    HttpRequest req = new HttpRequest();
+    req.setEndpoint('callout:GV_Razorpay_Test/v1/orders/' + orderId);
+    req.setMethod('GET');
+    req.setTimeout(30000);
+    HttpResponse res = new Http().send(req);
+    if (res.getStatusCode() != 200)
+      throw new RazorpayException('Gateway reconciliation unavailable.');
+    Map<String, Object> data = (Map<String, Object>) JSON.deserializeUntyped(
+      res.getBody()
+    );
+    return data != null &&
+      data.get('id') == orderId &&
+      data.get('currency') == 'INR' &&
+      (data.get('status') == 'created' ||
+      data.get('status') == 'attempted') &&
+      data.get('amount') != null &&
+      Decimal.valueOf(String.valueOf(data.get('amount'))) == amount * 100 &&
+      data.get('amount_paid') != null &&
+      Decimal.valueOf(String.valueOf(data.get('amount_paid'))) == 0 &&
+      data.get('amount_due') != null &&
+      Decimal.valueOf(String.valueOf(data.get('amount_due'))) == amount * 100;
+  }
   private static Map<String, Object> getJson(String path) {
     HttpRequest req = new HttpRequest();
     req.setEndpoint('callout:GV_Razorpay_Test' + path);

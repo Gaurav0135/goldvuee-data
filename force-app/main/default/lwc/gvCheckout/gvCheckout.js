@@ -1,14 +1,21 @@
 import { LightningElement } from "lwc";
+import { NavigationMixin } from "lightning/navigation";
 import isGuest from "@salesforce/user/isGuest";
 
 import getCart from "@salesforce/apex/GVCartController.getCart";
 import checkoutRecovery from "@salesforce/apex/GVOnlineCheckoutController.checkoutRecovery";
-import cancelUnpaidCheckout from "@salesforce/apex/GVOnlineCheckoutController.cancelUnpaidCheckout";
-import { savedPaymentId, rememberPayment } from "c/gvCheckoutRecovery";
+import {
+  savedPaymentId,
+  rememberPayment,
+  cancelCheckout,
+  pollingScope,
+  checkoutMessage,
+  customerMessage
+} from "c/gvCheckoutRecovery";
 
 import communityBasePath from "@salesforce/community/basePath";
 
-export default class GvCheckout extends LightningElement {
+export default class GvCheckout extends NavigationMixin(LightningElement) {
   get isGuestUser() {
     return isGuest;
   }
@@ -33,6 +40,11 @@ export default class GvCheckout extends LightningElement {
   orderPlaced = false;
   isReturning = false;
   pendingOrder = null;
+  navigationTarget = null;
+  backScope;
+  disconnectedCallback() {
+    this.backScope?.cancel();
+  }
   get deliveryDisabled() {
     return this.isPlacingOrder || this.isReturning;
   }
@@ -44,7 +56,7 @@ export default class GvCheckout extends LightningElement {
   get journeyLabel() {
     return this.orderPlaced
       ? "Order Confirmation"
-      : this.pendingOrder
+      : this.pendingOrder?.shippingAddress
         ? "Secure Payment"
         : "Delivery Information";
   }
@@ -245,42 +257,34 @@ export default class GvCheckout extends LightningElement {
   // BACK TO CART
   // ==========================================
 
+  
   async handleBackToCart() {
     if (this.isReturning || this.orderPlaced) return;
+
     this.isReturning = true;
     this.errorMessage = "";
-    try {
-      const payment = this.template.querySelector(
-        "c-goldvuee-razorpay-checkout"
-      );
-      let result;
-      if (payment) result = await payment.cancelForBack();
-      else {
-        const snapshot = await checkoutRecovery({ paymentId: null });
-        result = snapshot.order
-          ? await cancelUnpaidCheckout({ paymentId: snapshot.order.paymentId })
-          : { state: "Cancelled" };
-      }
-      if (result.state === "Cancelled")
-        window.location.assign(`${communityBasePath}/shopping-cart`);
-      else if (result.state === "Confirmed")
-        this.handleRazorpaySuccess({
-          detail: { ...result.order, success: true }
-        });
-      else
-        this.errorMessage =
-          result.message ||
-          "Verifying your payment. Your bag remains reserved. Please visit My Orders for help.";
-    } catch (error) {
-      this.errorMessage = this.getErrorMessage(error);
-    } finally {
-      this.isReturning = false;
-    }
+
+    // Cancel only local polling, not a gateway payment.
+    this.backScope?.cancel();
+
+    // Returning to the bag must not depend on
+    // checkout cancellation or inventory reservations.
+    this.navigateTo("shopping-cart");
   }
+
 
   handleCheckoutCancelled() {
     this.pendingOrder = null;
-    this.loadCheckout();
+    this.navigateTo("shopping-cart");
+  }
+
+  navigateTo(page) {
+    if (this.navigationTarget === page) return;
+    this.navigationTarget = page;
+    this[NavigationMixin.Navigate]({
+      type: "standard__webPage",
+      attributes: { url: `${communityBasePath}/${page}` }
+    });
   }
 
   handleRazorpaySuccess(event) {
@@ -291,7 +295,8 @@ export default class GvCheckout extends LightningElement {
       result.orderStatus !== "Confirmed" ||
       result.paymentStatus !== "Paid"
     ) {
-      this.errorMessage = "Salesforce did not confirm the online payment.";
+      this.errorMessage =
+        "Checking payment securely. Please view My Orders before trying another payment.";
       return;
     }
 
@@ -314,6 +319,8 @@ export default class GvCheckout extends LightningElement {
     this.cartItems = [];
     this.itemCount = 0;
     this.subtotal = 0;
+    rememberPayment(null);
+    this.navigateTo("my-orders");
   }
 
   // ==========================================
@@ -359,17 +366,9 @@ export default class GvCheckout extends LightningElement {
   // ==========================================
 
   getErrorMessage(error) {
-    if (Array.isArray(error?.body)) {
-      return (
-        error.body
-          .map((item) => item?.message)
-          .filter(Boolean)
-          .join(", ") || "Checkout failed."
-      );
-    }
-
-    return (
-      error?.body?.message || error?.message || "Unable to complete checkout."
+    return customerMessage(
+      error,
+      "We could not load your checkout. Please try again."
     );
   }
 }

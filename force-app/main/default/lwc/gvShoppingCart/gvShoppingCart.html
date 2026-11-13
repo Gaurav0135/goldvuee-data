@@ -40,10 +40,7 @@
             aria-busy={isProcessing}
           >
             <h2>Your previous checkout is waiting.</h2>
-            <p>
-              Continue your secure payment, or cancel the unpaid checkout to
-              update your shopping bag.
-            </p>
+            <p>Continue your existing checkout securely.</p>
             <p>{recoveryMessage}</p>
             <div class="recovery-actions">
               <button
@@ -55,6 +52,7 @@
                 {resumeLabel}
               </button>
               <button
+                lwc:if={canCancelCheckout}
                 type="button"
                 class="recovery-cancel"
                 onclick={handleCancelCheckout}

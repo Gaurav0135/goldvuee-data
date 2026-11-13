@@ -1,11 +1,18 @@
 import { LightningElement } from "lwc";
+import { NavigationMixin } from "lightning/navigation";
+import beginCheckout from "@salesforce/apex/GVOnlineCheckoutController.beginCheckout";
 import getCart from "@salesforce/apex/GVCartController.getCart";
 import updateCartItem from "@salesforce/apex/GVCartController.updateCartItem";
 import removeCartItem from "@salesforce/apex/GVCartController.removeCartItem";
 import communityBasePath from "@salesforce/community/basePath";
 import checkoutRecovery from "@salesforce/apex/GVOnlineCheckoutController.checkoutRecovery";
-import cancelUnpaidCheckout from "@salesforce/apex/GVOnlineCheckoutController.cancelUnpaidCheckout";
-import { pollingScope, reconcile } from "c/gvCheckoutRecovery";
+import {
+  pollingScope,
+  cancelCheckout,
+  rememberPayment,
+  checkoutMessage,
+  customerMessage
+} from "c/gvCheckoutRecovery";
 
 // ============================================================
 // GOLDVUEE | SHOPPING CART
@@ -18,7 +25,7 @@ import { pollingScope, reconcile } from "c/gvCheckoutRecovery";
 const FALLBACK_IMAGE =
   "https://placehold.co/800x800/f8f3ee/6b1834?text=GoldVuee";
 
-export default class GvShoppingCart extends LightningElement {
+export default class GvShoppingCart extends NavigationMixin(LightningElement) {
   cartId = null;
   cartItems = [];
   totalAmount = 0;
@@ -35,15 +42,17 @@ export default class GvShoppingCart extends LightningElement {
     return !!this.recovery?.order && this.recovery.state !== "Cancelled";
   }
   get recoveryMessage() {
-    const message = this.recovery?.message;
-    return message && message !== "Your previous checkout is waiting."
-      ? message
-      : "Your jewellery is reserved while you decide.";
+    return checkoutMessage(this.recovery);
   }
   get resumeLabel() {
     return this.recovery?.state === "Confirmed"
       ? "View Order Confirmation"
-      : "Resume Secure Payment";
+      : this.recovery?.state === "StockUnavailable"
+        ? "Check Availability"
+        : "Continue Secure Payment";
+  }
+  get canCancelCheckout() {
+    return !!this.recovery?.canCancel;
   }
   get ordersUrl() {
     return `${communityBasePath}/my-orders`;
@@ -67,21 +76,14 @@ export default class GvShoppingCart extends LightningElement {
     this.recoveryScope?.cancel();
     this.recoveryScope = pollingScope();
     try {
-      let result = await cancelUnpaidCheckout({ paymentId });
-      if (this.detached) return;
-      if (result.state === "Uncertain") {
-        this.recovery = result;
-        this.successMessage =
-          "Verifying your payment. Your shopping bag remains reserved.";
-        const verified = await reconcile(paymentId, this.recoveryScope);
-        if (this.detached) return;
-        if (verified?.state === "Confirmed") result = verified;
-      }
+      const result = await cancelCheckout(paymentId, this.recoveryScope);
+      if (!result || this.detached) return;
       this.recovery = result;
-      this.successMessage =
-        result.state === "Cancelled"
-          ? "Unpaid checkout cancelled. You can update your shopping bag."
-          : result.message;
+      this.successMessage = checkoutMessage(result);
+      if (result.state === "Confirmed") {
+        this.navigateTo("my-orders");
+        return;
+      }
       if (result.state === "Cancelled") await this.loadCart();
     } catch (error) {
       if (!this.detached) this.errorMessage = this.getErrorMessage(error);
@@ -118,6 +120,10 @@ export default class GvShoppingCart extends LightningElement {
       const recovery = await checkoutRecovery({ paymentId: null });
       if (this.detached) return;
       this.recovery = recovery;
+      if (recovery?.state === "Confirmed") {
+        this.navigateTo("my-orders");
+        return;
+      }
       this.applyCartResponse(response);
     } catch (error) {
       this.errorMessage = this.getErrorMessage(error);
@@ -254,7 +260,7 @@ export default class GvShoppingCart extends LightningElement {
   // CHECKOUT NAVIGATION — CONNECTED
   // ========================================================
 
-  handleCheckout() {
+  async handleCheckout() {
     this.errorMessage = "";
     this.successMessage = "";
 
@@ -263,7 +269,7 @@ export default class GvShoppingCart extends LightningElement {
       return;
     }
     if (this.recovery?.state === "Confirmed") {
-      window.location.assign(this.ordersUrl);
+      this.navigateTo("my-orders");
       return;
     }
 
@@ -275,13 +281,33 @@ export default class GvShoppingCart extends LightningElement {
 
     // Navigate to the GoldVuee Experience Cloud
     // Checkout page.
-    window.location.assign(`${communityBasePath}/checkout`);
+    this.isProcessing = true;
+    try {
+      if (!this.hasPendingCheckout) {
+        const order = await beginCheckout();
+        if (this.detached) return;
+        if (!order?.orderId || !order?.paymentId)
+          throw new Error("Checkout could not be prepared.");
+        rememberPayment(order.paymentId);
+      }
+      this.navigateTo("checkout");
+    } catch (error) {
+      if (!this.detached) this.errorMessage = this.getErrorMessage(error);
+    } finally {
+      if (!this.detached) this.isProcessing = false;
+    }
   }
 
   // ========================================================
   // DISPLAY HELPERS
   // ========================================================
 
+  navigateTo(page) {
+    this[NavigationMixin.Navigate]({
+      type: "standard__webPage",
+      attributes: { url: communityBasePath + "/" + page }
+    });
+  }
   get hasItems() {
     return this.cartItems.length > 0;
   }
@@ -317,10 +343,9 @@ export default class GvShoppingCart extends LightningElement {
   // ========================================================
 
   getErrorMessage(error) {
-    return (
-      error?.body?.message ||
-      error?.message ||
-      "Something went wrong. Please try again."
+    return customerMessage(
+      error,
+      "We could not update your shopping bag. Please try again."
     );
   }
 }

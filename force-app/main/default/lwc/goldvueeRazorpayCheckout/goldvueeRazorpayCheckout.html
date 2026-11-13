@@ -21,6 +21,7 @@
     </button>
     <template lwc:if={hasPendingOrder}>
       <button
+        lwc:if={canCancelCheckout}
         type="button"
         class="razorpay-status-button"
         onclick={handleCancel}

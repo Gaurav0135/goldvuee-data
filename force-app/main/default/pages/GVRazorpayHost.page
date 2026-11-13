@@ -179,6 +179,8 @@
                     },
 
                     handler: function (response) {
+                        // A later modal-dismiss event must not interrupt verification of this response.
+                        paymentStarted = false;
                         setStatus(
                             'Payment received. Confirming with Salesforce...'
                         );
@@ -216,10 +218,8 @@
                 checkout.on(
                     'payment.failed',
                     function (response) {
-                        paymentStarted = false;
-
-                        retryButton.style.display =
-                            'inline-block';
+                        // Keep the current SDK modal alive for its own retry/dismiss lifecycle.
+                        retryButton.style.display = 'none';
 
                         setError(
                             response &&

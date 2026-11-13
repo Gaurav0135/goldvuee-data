@@ -1,3 +1,4 @@
+import { customerMessage } from 'c/gvCheckoutRecovery';
 
 import { LightningElement, api, wire } from 'lwc';
 import { CurrentPageReference } from 'lightning/navigation';
@@ -164,7 +165,7 @@ export default class GvProductDetails extends LightningElement {
                 weight: data.Weight__c,
 
                 stock:
-                    Number(data.Stock_Quantity__c || 0),
+                    Number(data.Available_Quantity__c ?? data.Stock_Quantity__c ?? 0),
 
                 availability:
                     data.Availability_Status__c,
@@ -173,7 +174,7 @@ export default class GvProductDetails extends LightningElement {
                     data.New_Arrival__c === true,
 
                 isAvailable:
-                    data.Availability_Status__c === 'In Stock',
+                    data.Active__c !== false && Number(data.Available_Quantity__c ?? data.Stock_Quantity__c ?? 0) > 0,
 
                 hasDiscount,
 
@@ -202,10 +203,7 @@ export default class GvProductDetails extends LightningElement {
 
             this.product = null;
 
-            const apexMessage =
-                error?.body?.message ||
-                error?.message ||
-                'Unknown Salesforce error';
+            const apexMessage = customerMessage(error, 'Please try loading this jewellery again.');
 
             this.errorMessage =
                 'Unable to load this jewellery product. ' +
@@ -405,10 +403,7 @@ export default class GvProductDetails extends LightningElement {
 
             // Salesforce may return an AuraHandledException
             // for login, stock, access or validation problems.
-            const apexMessage =
-                error?.body?.message ||
-                error?.message ||
-                'Unable to add this product to your cart.';
+            const apexMessage = customerMessage(error, 'We could not add this jewellery to your bag. Please try again.');
 
             this.cartErrorMessage = apexMessage;
 

@@ -68,7 +68,8 @@ public without sharing class GVAbandonedCheckoutService {
     update as system p;
     update as system new Jewellery_Order__c(
       Id = oid,
-      Order_Status__c = 'Cancelled'
+      Order_Status__c = 'Cancelled',
+      Payment_Status__c = 'Failed'
     );
     return true;
   }

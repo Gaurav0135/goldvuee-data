@@ -2,6 +2,19 @@ import { createElement } from "lwc";
 import Checkout from "c/gvCheckout";
 import getCart from "@salesforce/apex/GVCartController.getCart";
 import recovery from "@salesforce/apex/GVOnlineCheckoutController.checkoutRecovery";
+import { __navigate as navigate } from "lightning/navigation";
+jest.mock("lightning/navigation", () => {
+  const navigate = jest.fn();
+  const key = Symbol("Navigate");
+  const NavigationMixin = (Base) =>
+    class extends Base {
+      [key](reference) {
+        navigate(reference);
+      }
+    };
+  NavigationMixin.Navigate = key;
+  return { NavigationMixin, __navigate: navigate };
+});
 jest.mock(
   "@salesforce/apex/GVOnlineCheckoutController.checkoutRecovery",
   () => ({ default: jest.fn() }),
@@ -31,6 +44,25 @@ async function mount() {
   return el;
 }
 describe("checkout journey", () => {
+  it("does not navigate on an unverified payment outcome", async () => {
+    const el = await mount();
+    el.shadowRoot
+      .querySelector("c-goldvuee-razorpay-checkout")
+      .dispatchEvent(
+        new CustomEvent("paymentsuccess", {
+          detail: {
+            success: true,
+            orderStatus: "pending",
+            paymentStatus: "Pending"
+          }
+        })
+      );
+    await flush();
+    expect(navigate).not.toHaveBeenCalled();
+    expect(el.shadowRoot.querySelector('[role="alert"]').textContent).toContain(
+      "Checking payment securely"
+    );
+  });
   it("restores confirmation after refresh using only a saved reference and server status", async () => {
     window.sessionStorage.setItem("goldvuee.checkout.payment", "payment1");
     getCart.mockResolvedValueOnce({ cartId: null, items: [], itemCount: 0 });
@@ -46,6 +78,10 @@ describe("checkout journey", () => {
     const el = await mount();
     expect(recovery).toHaveBeenCalledWith({ paymentId: "payment1" });
     expect(el.shadowRoot.textContent).toContain("GV-RESTORED");
+    expect(navigate).toHaveBeenCalledWith({
+      type: "standard__webPage",
+      attributes: { url: "/goldvuee/my-orders" }
+    });
   });
   it("does not show an old confirmation over a newly created active bag", async () => {
     window.sessionStorage.setItem("goldvuee.checkout.payment", "payment1");
@@ -133,8 +169,9 @@ describe("checkout journey", () => {
     el.shadowRoot.querySelector(".back-to-bag").click();
     await flush();
     expect(child.cancelForBack).toHaveBeenCalledTimes(1);
+    expect(navigate).not.toHaveBeenCalled();
     expect(el.shadowRoot.querySelector('[role="alert"]').textContent).toContain(
-      "Verifying your payment."
+      "Checking payment securely"
     );
   });
   it("shows confirmation for a server-confirmed payment during Back to Bag", async () => {
@@ -153,9 +190,39 @@ describe("checkout journey", () => {
     await flush();
     expect(el.shadowRoot.textContent).toContain("GV-001");
     expect(el.shadowRoot.querySelector(".back-to-bag")).toBeNull();
+    expect(navigate).toHaveBeenCalledWith({
+      type: "standard__webPage",
+      attributes: { url: "/goldvuee/my-orders" }
+    });
+  });
+  it("redirects to Shopping Bag only after successful cancellation", async () => {
+    const el = await mount();
+    el.shadowRoot.querySelector("c-goldvuee-razorpay-checkout").cancelForBack =
+      jest.fn().mockResolvedValue({ state: "Cancelled" });
+    el.shadowRoot.querySelector(".back-to-bag").click();
+    await flush();
+    expect(navigate).toHaveBeenCalledWith({
+      type: "standard__webPage",
+      attributes: { url: "/goldvuee/shopping-cart" }
+    });
+  });
+  it("redirects to Shopping Bag after the payment component confirms cancellation", async () => {
+    const el = await mount();
+    el.shadowRoot
+      .querySelector("c-goldvuee-razorpay-checkout")
+      .dispatchEvent(new CustomEvent("checkoutcancelled"));
+    await flush();
+    expect(navigate).toHaveBeenCalledWith({
+      type: "standard__webPage",
+      attributes: { url: "/goldvuee/shopping-cart" }
+    });
   });
 });
 
-jest.mock("@salesforce/community/basePath", () => ({ default: "/goldvuee" }), {
-  virtual: true
-});
+jest.mock(
+  "@salesforce/community/basePath",
+  () => ({ __esModule: true, default: "/goldvuee" }),
+  {
+    virtual: true
+  }
+);

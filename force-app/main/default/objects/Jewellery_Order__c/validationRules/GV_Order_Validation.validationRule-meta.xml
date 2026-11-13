@@ -2,7 +2,7 @@
 <ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>GV_Order_Validation</fullName>
     <active>true</active>
-    <description>Validate order totals, discounts, shipping charges and shipping address</description>
+    <description>Validate amounts and delivery details while allowing an untouched pending checkout draft.</description>
     <errorConditionFormula>OR(
     Grand_Total__c &lt; 0,
     Discount_Amount__c &lt; 0,
@@ -10,7 +10,21 @@
     AND(
         ISPICKVAL(Order_Status__c, &quot;Confirmed&quot;),
         ISBLANK(Shipping_Address__c)
+    ),
+    AND(
+        OR(
+            ISPICKVAL(Order_Status__c, &quot;Confirmed&quot;),
+            NOT(ISBLANK(Shipping_Address__c)),
+            NOT(ISBLANK(Shipping_City__c)),
+            NOT(ISBLANK(Shipping_State__c)),
+            NOT(ISBLANK(Shipping_Postal_Code__c))
+        ),
+        OR(
+            ISBLANK(Shipping_City__c),
+            ISBLANK(Shipping_State__c),
+            ISBLANK(Shipping_Postal_Code__c)
+        )
     )
 )</errorConditionFormula>
-    <errorMessage>Order amounts cannot be negative, and confirmed orders must have a shipping address.</errorMessage>
+    <errorMessage>Order amounts cannot be negative. Enter complete delivery details when adding an address or confirming an order.</errorMessage>
 </ValidationRule>

@@ -6,7 +6,7 @@
     <inlineHelpText>Enter city name.</inlineHelpText>
     <label>Shipping City</label>
     <length>50</length>
-    <required>true</required>
+    <required>false</required>
     <trackTrending>false</trackTrending>
     <type>Text</type>
     <unique>false</unique>

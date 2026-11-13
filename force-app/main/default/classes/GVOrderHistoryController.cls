@@ -58,7 +58,7 @@ public without sharing class GVOrderHistoryController {
         return result;
     }
 
-    @AuraEnabled(cacheable=true)
+    @AuraEnabled
     public static List<OrderSummary> getMyOrders() {
         Id contactId = getCustomerContactId();
 
@@ -84,7 +84,7 @@ public without sharing class GVOrderHistoryController {
         return results;
     }
 
-    @AuraEnabled(cacheable=true)
+    @AuraEnabled
     public static OrderDetail getMyOrderDetail(Id orderId) {
         if (orderId == null) {
             throw new AuraHandledException('Order ID is required.');

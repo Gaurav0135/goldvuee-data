@@ -570,7 +570,8 @@ private class GVCheckoutJourneyTest {
     update as system new Payment__c(
       Id = order.paymentId,
       Reconciliation_State__c = 'Expired - stock released',
-      Last_Checked_At__c = System.now()
+      // Keep the prior completed check strictly older than the new in-flight request.
+      Last_Checked_At__c = System.now().addMinutes(-2)
     );
     System.runAs(user) {
       System.assertEquals(
@@ -594,6 +595,17 @@ private class GVCheckoutJourneyTest {
       Test.startTest();
       Integer before = Limits.getQueueableJobs();
       GVOnlineCheckoutController.requestReconciliation(order.paymentId);
+      System.assertEquals(before + 1, Limits.getQueueableJobs());
+      Payment__c requested = [
+        SELECT Last_Checked_At__c, Reconciliation_Requested_At__c
+        FROM Payment__c
+        WHERE Id = :order.paymentId
+        WITH SYSTEM_MODE
+      ];
+      System.assert(
+        requested.Last_Checked_At__c < requested.Reconciliation_Requested_At__c,
+        'The first request must be in flight, not already completed.'
+      );
       GVOnlineCheckoutController.requestReconciliation(order.paymentId);
       System.assertEquals(before + 1, Limits.getQueueableJobs());
       Test.stopTest();
@@ -617,6 +629,10 @@ private class GVCheckoutJourneyTest {
       );
       System.assertEquals(0, product().Reserved_Quantity__c);
       System.assertEquals(10, product().Stock_Quantity__c);
+      System.assertEquals(
+        'Failed',
+        GVOrderHistoryController.getMyOrderDetail(o.orderId).order.paymentStatus
+      );
       System.assertEquals(null, GVOnlineCheckoutController.resumeCheckout());
       GVCartController.CartResponse bag = GVCartController.getCart();
       System.assertEquals(
@@ -672,14 +688,17 @@ private class GVCheckoutJourneyTest {
   @IsTest
   static void paidOrderReturnsConfirmationWithoutRelease() {
     Test.setMock(HttpCalloutMock.class, new GatewayMock());
+    // Match the passing gateway tests: fetch as the test runner before customer DML/savepoints.
+    Test.startTest();
+    GVRazorpayService.RazorpayPaymentDetails gateway = GVRazorpayService.fetchPayment(
+      'pay_Journey'
+    );
+    Test.stopTest();
     System.runAs(customer()) {
       GVOnlineCheckoutController.CheckoutResult o = prepare();
       update as system new Payment__c(
         Id = o.paymentId,
         Razorpay_Order_ID__c = 'order_Journey'
-      );
-      GVRazorpayService.RazorpayPaymentDetails gateway = GVRazorpayService.fetchPayment(
-        'pay_Journey'
       );
       System.assert(
         GVCheckoutEngine.finalizeCaptured(o.paymentId, gateway).success
@@ -847,5 +866,461 @@ private class GVCheckoutJourneyTest {
         GVOnlineCheckoutController.cancelUnpaidCheckout(o.paymentId).state
       );
     }
+  }
+
+  @IsTest
+  static void bagDraftIsIdempotentAndDeliveryUsesTheSameReservation() {
+    System.runAs(customer()) {
+      Id productId = product().Id;
+      GVCartController.addToCart(productId, 1);
+      GVCartController.CartResponse bag = GVCartController.addToCart(
+        productId,
+        1
+      );
+      System.assertEquals(
+        1,
+        bag.items.size(),
+        'Add must merge the existing product line.'
+      );
+      System.assertEquals(
+        0,
+        product().Reserved_Quantity__c,
+        'Adding to the bag must not reserve stock.'
+      );
+      System.assertEquals(
+        0,
+        [SELECT COUNT() FROM Jewellery_Order__c WITH SYSTEM_MODE]
+      );
+      System.assertEquals(0, [SELECT COUNT() FROM Payment__c WITH SYSTEM_MODE]);
+      GVCartController.updateCartItem(bag.items[0].Id, 1);
+      GVOnlineCheckoutController.CheckoutResult draft = GVOnlineCheckoutController.beginCheckout();
+      GVOnlineCheckoutController.CheckoutResult retry = GVOnlineCheckoutController.beginCheckout();
+      System.assertEquals(draft.orderId, retry.orderId);
+      System.assertEquals(draft.paymentId, retry.paymentId);
+      System.assert(String.isBlank(draft.shippingAddress));
+      Jewellery_Order__c draftOrder = [
+        SELECT Shipping_City__c, Shipping_State__c, Shipping_Postal_Code__c
+        FROM Jewellery_Order__c
+        WHERE Id = :draft.orderId
+        WITH SYSTEM_MODE
+      ];
+      System.assert(String.isBlank(draftOrder.Shipping_City__c));
+      System.assert(String.isBlank(draftOrder.Shipping_State__c));
+      System.assert(String.isBlank(draftOrder.Shipping_Postal_Code__c));
+      System.assertEquals(1, product().Reserved_Quantity__c);
+      Integer jobs = Limits.getQueueableJobs();
+      Boolean denied = false;
+      try {
+        GVPaymentController.initiatePayment(draft.paymentId);
+      } catch (GVCheckoutEngine.CheckoutException e) {
+        denied = true;
+      }
+      System.assert(
+        denied,
+        'An incomplete draft must never initialize a gateway payment.'
+      );
+      System.assertEquals(jobs, Limits.getQueueableJobs());
+      GVOnlineCheckoutController.CheckoutResult saved = GVOnlineCheckoutController.prepareOnlineOrder(
+        '10 Gold Street',
+        'Indore',
+        'Madhya Pradesh',
+        '452001',
+        'India'
+      );
+      System.assertEquals(draft.orderId, saved.orderId);
+      System.assertEquals(draft.paymentId, saved.paymentId);
+      System.assertEquals('10 Gold Street', saved.shippingAddress);
+      GVCheckoutEngine.requireDelivery(saved.orderId);
+      System.assertEquals(
+        1,
+        [SELECT COUNT() FROM Jewellery_Order__c WITH SYSTEM_MODE]
+      );
+      System.assertEquals(1, [SELECT COUNT() FROM Payment__c WITH SYSTEM_MODE]);
+      System.assertEquals(
+        1,
+        [SELECT COUNT() FROM Stock_Reservation__c WITH SYSTEM_MODE]
+      );
+      System.assertEquals(1, product().Reserved_Quantity__c);
+    }
+  }
+  @IsTest
+  static void draftCancellationUnlocksCartAndAllowsOneFreshCheckout() {
+    System.runAs(customer()) {
+      GVCartController.addToCart(product().Id, 1);
+      GVOnlineCheckoutController.CheckoutResult draft = GVOnlineCheckoutController.beginCheckout();
+      System.assertEquals(
+        'Cancelled',
+        GVOnlineCheckoutController.cancelUnpaidCheckout(draft.paymentId).state
+      );
+      System.assertEquals(
+        'Cancelled',
+        GVOnlineCheckoutController.cancelUnpaidCheckout(draft.paymentId).state
+      );
+      System.assertEquals(0, product().Reserved_Quantity__c);
+      System.assertEquals(10, product().Stock_Quantity__c);
+      GVCartController.CartResponse bag = GVCartController.getCart();
+      GVCartController.updateCartItem(bag.items[0].Id, 2);
+      GVOnlineCheckoutController.CheckoutResult fresh = GVOnlineCheckoutController.beginCheckout();
+      System.assertNotEquals(draft.orderId, fresh.orderId);
+      System.assertEquals(
+        fresh.orderId,
+        GVOnlineCheckoutController.beginCheckout().orderId
+      );
+      System.assertEquals(2, product().Reserved_Quantity__c);
+      System.assertEquals(
+        1,
+        [
+          SELECT COUNT()
+          FROM Stock_Reservation__c
+          WHERE Reservation_Status__c = 'Active'
+          WITH SYSTEM_MODE
+        ]
+      );
+      System.assertEquals(
+        'Cancelled',
+        GVOrderHistoryController.getMyOrderDetail(draft.orderId)
+          .order.orderStatus
+      );
+    }
+  }
+  @IsTest
+  static void invalidDeliveryDoesNotCreateAnotherCheckout() {
+    System.runAs(customer()) {
+      Boolean denied = false;
+      try {
+        GVOnlineCheckoutController.beginCheckout();
+      } catch (AuraHandledException e) {
+        denied = true;
+      }
+      System.assert(denied, 'Empty bags cannot prepare checkout.');
+      GVCartController.addToCart(product().Id, 1);
+      GVOnlineCheckoutController.CheckoutResult draft = GVOnlineCheckoutController.beginCheckout();
+      denied = false;
+      try {
+        GVOnlineCheckoutController.prepareOnlineOrder(
+          '10 Gold Street',
+          'Indore',
+          'Madhya Pradesh',
+          '000000',
+          'India'
+        );
+      } catch (AuraHandledException e) {
+        denied = true;
+      }
+      System.assert(
+        denied,
+        'Delivery validation must remain enforced for existing drafts.'
+      );
+      System.assertEquals(
+        draft.orderId,
+        GVOnlineCheckoutController.resumeCheckout().orderId
+      );
+      System.assertEquals(
+        1,
+        [SELECT COUNT() FROM Jewellery_Order__c WITH SYSTEM_MODE]
+      );
+      System.assertEquals(1, product().Reserved_Quantity__c);
+    }
+  }
+
+  @IsTest
+  static void staleCartStockCannotPrepareCheckout() {
+    Id productId = product().Id;
+    System.runAs(customer()) {
+      GVCartController.addToCart(productId, 2);
+    }
+    // Catalogue stock changes belong to the internal fixture owner, not a shopper.
+    update as system new Jewellery_Product__c(
+      Id = productId,
+      Stock_Quantity__c = 1
+    );
+    System.runAs(customer()) {
+      Boolean denied = false;
+      try {
+        GVOnlineCheckoutController.beginCheckout();
+      } catch (AuraHandledException e) {
+        denied = true;
+      }
+      System.assert(
+        denied,
+        'Preparation must recheck stock after the bag was edited.'
+      );
+      System.assertEquals(
+        0,
+        [SELECT COUNT() FROM Jewellery_Order__c WITH SYSTEM_MODE]
+      );
+      System.assertEquals(0, [SELECT COUNT() FROM Payment__c WITH SYSTEM_MODE]);
+      System.assertEquals(0, product().Reserved_Quantity__c);
+    }
+  }
+  private class RecoveryGatewayMock implements HttpCalloutMock {
+    private String status;
+    RecoveryGatewayMock(String value) {
+      status = value;
+    }
+    public HttpResponse respond(HttpRequest req) {
+      System.assertEquals(
+        'GET',
+        req.getMethod(),
+        'Recovery must never create a gateway order.'
+      );
+      if (
+        status == 'captured' ||
+        req.getEndpoint().endsWith('/payments/pay_Journey')
+      )
+        return new GatewayMock().respond(req);
+      HttpResponse res = new HttpResponse();
+      res.setStatusCode(status == 'unavailable' ? 503 : 200);
+      if (req.getEndpoint().endsWith('/orders/order_Journey'))
+        res.setBody(
+          '{"id":"order_Journey","amount":90000,"amount_paid":0,"amount_due":90000,"currency":"INR","status":"' +
+            (status == 'paid' ? 'paid' : 'attempted') +
+            '"}'
+        );
+      else if (status == 'authorized')
+        res.setBody(
+          '{"count":1,"items":[{"id":"pay_Journey","order_id":"order_Journey","status":"authorized"}]}'
+        );
+      else
+        res.setBody('{"count":0,"items":[]}');
+      return res;
+    }
+  }
+  private static GVOnlineCheckoutController.CheckoutResult expiredInitializedCheckout() {
+    return expiredInitializedCheckout(true);
+  }
+  private static GVOnlineCheckoutController.CheckoutResult expiredInitializedCheckout(
+    Boolean releaseHold
+  ) {
+    GVOnlineCheckoutController.CheckoutResult o;
+    System.runAs(customer()) {
+      o = prepare();
+    }
+    update as system new Payment__c(
+      Id = o.paymentId,
+      Razorpay_Order_ID__c = 'order_Journey',
+      Initialization_State__c = 'Ready',
+      Reconciliation_State__c = 'Unpaid - verified',
+      Last_Checked_At__c = System.now().addMinutes(-2)
+    );
+    Stock_Reservation__c hold = [
+      SELECT Id
+      FROM Stock_Reservation__c
+      WHERE Jewellery_Order__c = :o.orderId
+      WITH SYSTEM_MODE
+    ];
+    update as system new Stock_Reservation__c(
+      Id = hold.Id,
+      Expires_At__c = System.now().addMinutes(-1)
+    );
+    if (releaseHold)
+      GVInventoryService.change(new Set<Id>{ hold.Id }, false);
+    return o;
+  }
+  @IsTest
+  static void expiredInitializedPaymentRecoversOnlyOneNewHold() {
+    GVOnlineCheckoutController.CheckoutResult o = expiredInitializedCheckout();
+    Test.setMock(HttpCalloutMock.class, new RecoveryGatewayMock('unpaid'));
+    Test.startTest();
+    System.runAs(customer()) {
+      System.assertEquals(
+        'RecoveryRequired',
+        GVOnlineCheckoutController.checkoutRecovery(o.paymentId).state
+      );
+      GVOnlineCheckoutController.requestReconciliation(o.paymentId);
+      GVOnlineCheckoutController.requestReconciliation(o.paymentId);
+      System.assertEquals(
+        1,
+        Limits.getQueueableJobs(),
+        'Double-click must queue only one recovery.'
+      );
+    }
+    // A second queued worker represents another transaction that reached the gateway concurrently.
+    System.enqueueJob(new GVGatewayWorker(o.paymentId, 'recover'));
+    Test.stopTest();
+    System.assertEquals(1, product().Reserved_Quantity__c);
+    System.assertEquals(10, product().Stock_Quantity__c);
+    System.assertEquals(
+      1,
+      [
+        SELECT COUNT()
+        FROM Stock_Reservation__c
+        WHERE
+          Jewellery_Order__c = :o.orderId
+          AND Reservation_Status__c = 'Active'
+        WITH SYSTEM_MODE
+      ]
+    );
+    System.assertEquals(
+      1,
+      [
+        SELECT COUNT()
+        FROM Stock_Reservation__c
+        WHERE
+          Jewellery_Order__c = :o.orderId
+          AND Reservation_Status__c = 'Expired'
+        WITH SYSTEM_MODE
+      ]
+    );
+    System.assertEquals(
+      1,
+      [SELECT COUNT() FROM Jewellery_Order__c WITH SYSTEM_MODE]
+    );
+    System.assertEquals(1, [SELECT COUNT() FROM Payment__c WITH SYSTEM_MODE]);
+    System.assertEquals(
+      'order_Journey',
+      [
+        SELECT Razorpay_Order_ID__c
+        FROM Payment__c
+        WHERE Id = :o.paymentId
+        WITH SYSTEM_MODE
+      ]
+      .Razorpay_Order_ID__c
+    );
+    System.runAs(customer()) {
+      GVOnlineCheckoutController.RecoveryResult r = GVOnlineCheckoutController.checkoutRecovery(
+        o.paymentId
+      );
+      System.assert(r.canRetry);
+      System.assert(!r.canCancel);
+      System.assertEquals(o.orderId, r.order.orderId);
+      System.assertEquals(o.paymentId, r.order.paymentId);
+      System.assertEquals(
+        'order_Journey',
+        GVPaymentController.initiatePayment(o.paymentId).razorpayOrderId
+      );
+    }
+  }
+  @IsTest
+  static void expiredStillHeldInventoryGetsANewReservation() {
+    GVOnlineCheckoutController.CheckoutResult o = expiredInitializedCheckout(
+      false
+    );
+    Test.setMock(HttpCalloutMock.class, new RecoveryGatewayMock('unpaid'));
+    Test.startTest();
+    System.runAs(customer()) {
+      GVOnlineCheckoutController.requestReconciliation(o.paymentId);
+    }
+    Test.stopTest();
+    System.assertEquals(1, product().Reserved_Quantity__c);
+    System.assertEquals(10, product().Stock_Quantity__c);
+    System.assertEquals(
+      1,
+      [
+        SELECT COUNT()
+        FROM Stock_Reservation__c
+        WHERE Reservation_Status__c = 'Active'
+        WITH SYSTEM_MODE
+      ]
+    );
+    System.assertEquals(
+      1,
+      [
+        SELECT COUNT()
+        FROM Stock_Reservation__c
+        WHERE Reservation_Status__c = 'Expired'
+        WITH SYSTEM_MODE
+      ]
+    );
+  }
+  @IsTest
+  static void expiredInitializedStockUnavailableIsExplicit() {
+    GVOnlineCheckoutController.CheckoutResult o = expiredInitializedCheckout();
+    update as system new Jewellery_Product__c(
+      Id = product().Id,
+      Stock_Quantity__c = 0
+    );
+    Test.setMock(HttpCalloutMock.class, new RecoveryGatewayMock('unpaid'));
+    Test.startTest();
+    System.runAs(customer()) {
+      GVOnlineCheckoutController.requestReconciliation(o.paymentId);
+    }
+    Test.stopTest();
+    System.assertEquals(0, product().Reserved_Quantity__c);
+    System.assertEquals(
+      1,
+      [SELECT COUNT() FROM Stock_Reservation__c WITH SYSTEM_MODE]
+    );
+    System.runAs(customer()) {
+      GVOnlineCheckoutController.RecoveryResult r = GVOnlineCheckoutController.checkoutRecovery(
+        o.paymentId
+      );
+      System.assertEquals('StockUnavailable', r.state);
+      System.assert(r.canRecover && !r.canRetry && !r.canCancel);
+    }
+  }
+  @IsTest
+  static void authorizedPaymentKeepsExpiredInventoryProtected() {
+    GVOnlineCheckoutController.CheckoutResult o = expiredInitializedCheckout(
+      false
+    );
+    Test.setMock(HttpCalloutMock.class, new RecoveryGatewayMock('authorized'));
+    Test.startTest();
+    System.runAs(customer()) {
+      GVOnlineCheckoutController.requestReconciliation(o.paymentId);
+    }
+    Test.stopTest();
+    System.assertEquals(1, product().Reserved_Quantity__c);
+    System.assertEquals(10, product().Stock_Quantity__c);
+    System.assertEquals(
+      1,
+      [
+        SELECT COUNT()
+        FROM Stock_Reservation__c
+        WHERE Reservation_Status__c = 'Active'
+        WITH SYSTEM_MODE
+      ]
+    );
+    System.assertEquals(
+      0,
+      [
+        SELECT COUNT()
+        FROM Stock_Reservation__c
+        WHERE Reservation_Status__c = 'Expired'
+        WITH SYSTEM_MODE
+      ]
+    );
+  }
+  private static void assertUnsafeRecovery(String status) {
+    GVOnlineCheckoutController.CheckoutResult o = expiredInitializedCheckout();
+    Test.setMock(HttpCalloutMock.class, new RecoveryGatewayMock(status));
+    Test.startTest();
+    System.runAs(customer()) {
+      GVOnlineCheckoutController.requestReconciliation(o.paymentId);
+    }
+    Test.stopTest();
+    System.assertEquals(0, product().Reserved_Quantity__c);
+    System.assertEquals(10, product().Stock_Quantity__c);
+    System.assertEquals(
+      1,
+      [SELECT COUNT() FROM Stock_Reservation__c WITH SYSTEM_MODE]
+    );
+    System.assertEquals(
+      0,
+      [SELECT COUNT() FROM Inventory_Movement__c WITH SYSTEM_MODE]
+    );
+    System.runAs(customer()) {
+      GVOnlineCheckoutController.RecoveryResult r = GVOnlineCheckoutController.checkoutRecovery(
+        o.paymentId
+      );
+      System.assert(!r.canRetry && !r.canCancel && !r.canRecover);
+      System.assertEquals('Review', r.state);
+    }
+  }
+  @IsTest
+  static void capturedExpiredPaymentNeverRestarts() {
+    assertUnsafeRecovery('captured');
+  }
+  @IsTest
+  static void authorizedExpiredPaymentNeverRestarts() {
+    assertUnsafeRecovery('authorized');
+  }
+  @IsTest
+  static void uncertainExpiredPaymentNeverRestarts() {
+    assertUnsafeRecovery('unavailable');
+  }
+  @IsTest
+  static void paidGatewayOrderNeverRestarts() {
+    assertUnsafeRecovery('paid');
   }
 }

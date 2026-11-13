@@ -71,8 +71,11 @@ export default class GvMyOrders extends LightningElement {
             ...order,
             displayTotal: this.formatMoney(order.grandTotal),
             displayDate: this.formatDate(order.orderDate),
-            displayStatus: order.orderStatus || 'Pending',
-            displayPayment: order.paymentStatus || 'Pending'
+            displayStatus: order.orderStatus === 'pending' || !order.orderStatus
+                ? 'Processing' : order.orderStatus,
+            displayPayment: order.paymentStatus === 'Paid' ? 'Confirmed' :
+                order.paymentStatus === 'Failed' ? 'Failed' :
+                order.paymentStatus === 'Refunded' ? 'Refunded' : 'Processing'
         };
     }
 

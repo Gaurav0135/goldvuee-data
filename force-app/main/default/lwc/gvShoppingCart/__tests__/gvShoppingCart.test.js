@@ -5,6 +5,25 @@ import updateCartItem from "@salesforce/apex/GVCartController.updateCartItem";
 import removeCartItem from "@salesforce/apex/GVCartController.removeCartItem";
 import checkoutRecovery from "@salesforce/apex/GVOnlineCheckoutController.checkoutRecovery";
 import cancelUnpaidCheckout from "@salesforce/apex/GVOnlineCheckoutController.cancelUnpaidCheckout";
+import beginCheckout from "@salesforce/apex/GVOnlineCheckoutController.beginCheckout";
+import { __navigate as navigate } from "lightning/navigation";
+jest.mock(
+  "@salesforce/apex/GVOnlineCheckoutController.beginCheckout",
+  () => ({ default: jest.fn() }),
+  { virtual: true }
+);
+jest.mock("lightning/navigation", () => {
+  const mockNavigate = jest.fn();
+  const key = Symbol("Navigate");
+  const NavigationMixin = (Base) =>
+    class extends Base {
+      [key](reference) {
+        mockNavigate(reference);
+      }
+    };
+  NavigationMixin.Navigate = key;
+  return { NavigationMixin, __navigate: mockNavigate };
+});
 jest.mock(
   "@salesforce/apex/GVCartController.getCart",
   () => ({ default: jest.fn() }),
@@ -51,6 +70,7 @@ const pending = {
   order: { paymentId: "payment1" }
 };
 const flush = async () => {
+  // eslint-disable-next-line no-await-in-loop -- Settle the sequential LWC render microtasks.
   for (let i = 0; i < 12; i++) await Promise.resolve();
 };
 async function mount() {
@@ -60,6 +80,70 @@ async function mount() {
   return el;
 }
 describe("shopping bag recovery", () => {
+  it("offers recovery without cancellation or background polling for an expired initialized checkout", async () => {
+    checkoutRecovery.mockResolvedValue({
+      state: "RecoveryRequired",
+      canCancel: false,
+      canRecover: true,
+      order: { paymentId: "payment1" }
+    });
+    const el = await mount();
+    expect(el.shadowRoot.querySelector(".recovery-cancel")).toBeNull();
+    expect(
+      el.shadowRoot.querySelector(".recovery-actions .checkout-button")
+        .textContent
+    ).toContain("Continue Secure Payment");
+    expect(checkoutRecovery).toHaveBeenCalledTimes(1);
+    expect(el.shadowRoot.textContent).toContain("reservation expired");
+    el.shadowRoot.querySelector(".recovery-actions .checkout-button").click();
+    await flush();
+    expect(beginCheckout).not.toHaveBeenCalled();
+    expect(navigate).toHaveBeenCalledTimes(1);
+  });
+  it("navigates a confirmed checkout to My Orders", async () => {
+    checkoutRecovery.mockResolvedValue({
+      state: "Confirmed",
+      order: { paymentId: "payment1" }
+    });
+    await mount();
+    expect(navigate).toHaveBeenCalledWith({
+      type: "standard__webPage",
+      attributes: { url: "/goldvuee/my-orders" }
+    });
+  });
+  it("prepares exactly one checkout before navigation despite repeated clicks", async () => {
+    let finish;
+    beginCheckout.mockImplementation(
+      () =>
+        new Promise((resolve) => {
+          finish = resolve;
+        })
+    );
+    const el = await mount();
+    const button = el.shadowRoot.querySelector(".checkout-button");
+    button.click();
+    button.click();
+    await flush();
+    expect(beginCheckout).toHaveBeenCalledTimes(1);
+    expect(navigate).not.toHaveBeenCalled();
+    finish({ orderId: "order1", paymentId: "payment1" });
+    await flush();
+    expect(navigate).toHaveBeenCalledWith({
+      type: "standard__webPage",
+      attributes: { url: "/goldvuee/checkout" }
+    });
+  });
+  it("resumes an existing checkout without preparing another order", async () => {
+    checkoutRecovery.mockResolvedValue(pending);
+    const el = await mount();
+    el.shadowRoot.querySelector(".recovery-actions .checkout-button").click();
+    await flush();
+    expect(beginCheckout).not.toHaveBeenCalled();
+    expect(navigate).toHaveBeenCalledWith({
+      type: "standard__webPage",
+      attributes: { url: "/goldvuee/checkout" }
+    });
+  });
   beforeEach(() => {
     getCart.mockResolvedValue(cart);
     checkoutRecovery.mockResolvedValue({ state: "Ready" });
@@ -97,6 +181,7 @@ describe("shopping bag recovery", () => {
   it("refreshes and unlocks after server cancellation", async () => {
     checkoutRecovery
       .mockResolvedValueOnce(pending)
+      .mockResolvedValueOnce(pending)
       .mockResolvedValue({ state: "Ready" });
     cancelUnpaidCheckout.mockResolvedValue({ state: "Cancelled" });
     const el = await mount();
@@ -120,7 +205,7 @@ describe("shopping bag recovery", () => {
     await flush();
     expect(el.shadowRoot.querySelector(".remove-button").disabled).toBe(true);
     expect(getCart).toHaveBeenCalledTimes(1);
-    expect(el.shadowRoot.textContent).toContain("Please do not pay again.");
+    expect(el.shadowRoot.textContent).toContain("payment needs review");
   });
   it("never cancels on disconnect", async () => {
     checkoutRecovery.mockResolvedValue(pending);
@@ -130,6 +215,10 @@ describe("shopping bag recovery", () => {
   });
 });
 
-jest.mock("@salesforce/community/basePath", () => ({ default: "/goldvuee" }), {
-  virtual: true
-});
+jest.mock(
+  "@salesforce/community/basePath",
+  () => ({ __esModule: true, default: "/goldvuee" }),
+  {
+    virtual: true
+  }
+);

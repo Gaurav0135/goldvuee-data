@@ -62,10 +62,16 @@ const order = {
   paymentId: "payment1",
   orderId: "order1",
   orderNumber: "GV001",
+  shippingAddress: "Gold Street",
+  shippingCity: "Indore",
+  shippingState: "MP",
+  shippingPostalCode: "452001",
+  shippingCountry: "India",
   grandTotal: 900
 };
 const unpaid = { state: "Interrupted", canCancel: true, canRetry: true, order };
 const flush = async () => {
+  // eslint-disable-next-line no-await-in-loop -- Settle the sequential LWC render microtasks.
   for (let i = 0; i < 20; i++) await Promise.resolve();
 };
 let popup;
@@ -85,6 +91,7 @@ async function mount() {
 }
 async function send(type, data = {}) {
   const nonce = new URL(window.open.mock.calls[0][0]).searchParams.get("nonce");
+  // eslint-disable-next-line @lwc/lwc/prefer-custom-event -- Simulate the browser's native message event.
   const event = new Event("message");
   Object.assign(event, {
     source: popup,
@@ -95,6 +102,190 @@ async function send(type, data = {}) {
   await flush();
 }
 describe("secure payment recovery", () => {
+  it("recovers on explicit payment click only and reuses one gateway window despite double click", async () => {
+    resume.mockResolvedValue(order);
+    const expired = {
+      state: "RecoveryRequired",
+      canCancel: false,
+      canRetry: false,
+      canRecover: true,
+      order
+    };
+    recovery.mockResolvedValue(expired);
+    const el = await mount();
+    expect(request).not.toHaveBeenCalled();
+    expect(el.shadowRoot.querySelector(".razorpay-status-button")).toBeNull();
+    const button = el.shadowRoot.querySelector(".razorpay-pay-button");
+    expect(button.textContent).toContain("Continue Secure Payment");
+    button.click();
+    button.click();
+    await flush();
+    expect(request).toHaveBeenCalledTimes(1);
+    recovery.mockResolvedValue({ ...unpaid, canCancel: false });
+    await jest.advanceTimersByTimeAsync(600);
+    await flush();
+    expect(window.open).toHaveBeenCalledTimes(1);
+    expect(initiate).toHaveBeenCalledTimes(1);
+    expect(initiate).toHaveBeenCalledWith({ paymentId: order.paymentId });
+    expect(prepare).not.toHaveBeenCalled();
+    await send("READY");
+    expect(JSON.parse(popup.postMessage.mock.calls[0][0])).toEqual(
+      expect.objectContaining({
+        type: "START_PAYMENT",
+        data: expect.objectContaining({
+          orderId: "order_Gateway",
+          amount: 90000
+        })
+      })
+    );
+  });
+  it("stops recovery when stock is unavailable without initializing Razorpay", async () => {
+    resume.mockResolvedValue(order);
+    recovery.mockResolvedValue({
+      state: "StockUnavailable",
+      canCancel: false,
+      canRetry: false,
+      canRecover: true,
+      order
+    });
+    const el = await mount();
+    expect(request).not.toHaveBeenCalled();
+    el.shadowRoot.querySelector(".razorpay-pay-button").click();
+    await flush();
+    await jest.advanceTimersByTimeAsync(600);
+    await flush();
+    const reads = recovery.mock.calls.length;
+    await jest.advanceTimersByTimeAsync(30000);
+    expect(recovery).toHaveBeenCalledTimes(reads);
+    expect(initiate).not.toHaveBeenCalled();
+    expect(el.shadowRoot.textContent).toContain("currently unavailable");
+  });
+  it("unlocks delivery after a failed draft save without initiating payment", async () => {
+    resume.mockResolvedValue({ ...order, shippingAddress: null });
+    prepare.mockRejectedValue({
+      body: {
+        message: "Please complete all delivery information. GVCheckoutEngine"
+      }
+    });
+    const el = await mount();
+    const state = jest.fn();
+    el.addEventListener("checkoutstate", state);
+    el.shadowRoot.querySelector(".razorpay-pay-button").click();
+    await flush();
+    expect(state.mock.calls[state.mock.calls.length - 1][0].detail.locked).toBe(
+      false
+    );
+    expect(initiate).not.toHaveBeenCalled();
+    expect(el.shadowRoot.textContent).not.toContain("GVCheckoutEngine");
+  });
+  it("saves delivery on a restored draft before enabling payment without another checkout", async () => {
+    resume.mockResolvedValue({ ...order, shippingAddress: null });
+    const el = await mount();
+    expect(
+      el.shadowRoot.querySelector(".razorpay-pay-button").textContent
+    ).toContain("Continue to Secure Payment");
+    el.shadowRoot.querySelector(".razorpay-pay-button").click();
+    await flush();
+    expect(prepare).toHaveBeenCalledTimes(1);
+    expect(initiate).not.toHaveBeenCalled();
+    expect(
+      el.shadowRoot.querySelector(".razorpay-pay-button").textContent
+    ).toContain("900.00");
+    expect(el.shadowRoot.textContent).not.toContain(
+      "Resume Payment Verification"
+    );
+  });
+  it("rechecks expired UI eligibility and never initializes another payment while verification is uncertain", async () => {
+    resume.mockResolvedValue(order);
+    const el = await mount();
+    recovery.mockResolvedValue({
+      ...unpaid,
+      state: "Uncertain",
+      canCancel: false,
+      canRetry: false
+    });
+    el.shadowRoot.querySelector(".razorpay-pay-button").click();
+    await flush();
+    await send("READY");
+    await jest.advanceTimersByTimeAsync(21000);
+    await flush();
+    expect(initiate).not.toHaveBeenCalled();
+    expect(prepare).not.toHaveBeenCalled();
+    expect(cancel).not.toHaveBeenCalled();
+    expect(popup.close).not.toHaveBeenCalled();
+    expect(el.shadowRoot.textContent).toContain("Please do not pay again yet.");
+  });
+  it("keeps the host open when initialization is rejected and preserves recovery", async () => {
+    resume.mockResolvedValue(order);
+    const el = await mount();
+    initiate.mockRejectedValue({
+      body: {
+        message: "Verify your existing payment before resuming secure payment."
+      }
+    });
+    el.shadowRoot.querySelector(".razorpay-pay-button").click();
+    await flush();
+    expect(popup.close).not.toHaveBeenCalled();
+    expect(el.shadowRoot.textContent).toContain("Checking payment securely");
+    expect(prepare).not.toHaveBeenCalled();
+    expect(cancel).not.toHaveBeenCalled();
+  });
+  it("keeps an initialized payment modal open on failure and prevents a second window", async () => {
+    resume.mockResolvedValue(order);
+    const el = await mount();
+    el.shadowRoot.querySelector(".razorpay-pay-button").click();
+    await flush();
+    await send("READY");
+    await send("PAYMENT_FAILED");
+    expect(popup.close).not.toHaveBeenCalled();
+    expect(el.shadowRoot.textContent).toContain(
+      "retry in the secure payment window"
+    );
+    el.shadowRoot.querySelector(".razorpay-pay-button").click();
+    await flush();
+    expect(window.open).toHaveBeenCalledTimes(1);
+    expect(verify).not.toHaveBeenCalled();
+  });
+  it("does not time out a ready host while gateway initialization is still pending", async () => {
+    resume.mockResolvedValue(order);
+    const el = await mount();
+    let complete;
+    initiate.mockImplementation(
+      () =>
+        new Promise((resolve) => {
+          complete = resolve;
+        })
+    );
+    el.shadowRoot.querySelector(".razorpay-pay-button").click();
+    await flush();
+    await send("READY");
+    await jest.advanceTimersByTimeAsync(20000);
+    expect(popup.close).not.toHaveBeenCalled();
+    complete({
+      state: "Ready",
+      razorpayOrderId: "order_Gateway",
+      currencyCode: "INR",
+      amountPaise: 90000
+    });
+    await flush();
+    expect(popup.postMessage).toHaveBeenCalledTimes(1);
+    expect(JSON.parse(popup.postMessage.mock.calls[0][0]).data).toEqual({
+      key: "rzp_test_UnitTest",
+      orderId: "order_Gateway",
+      amount: 90000
+    });
+  });
+  it("retains the host error instead of closing the diagnostic window", async () => {
+    resume.mockResolvedValue(order);
+    const el = await mount();
+    el.shadowRoot.querySelector(".razorpay-pay-button").click();
+    await flush();
+    await send("READY");
+    await send("ERROR", { message: "Razorpay library unavailable." });
+    expect(popup.close).not.toHaveBeenCalled();
+    expect(el.shadowRoot.textContent).toContain("Checking payment securely");
+    expect(cancel).not.toHaveBeenCalled();
+  });
   it("dispatches confirmation once after verified server success, even with duplicate callbacks", async () => {
     resume.mockResolvedValue(order);
     const el = await mount();
@@ -242,7 +433,7 @@ describe("secure payment recovery", () => {
     });
     expect(verify).toHaveBeenCalledTimes(1);
     expect(success).not.toHaveBeenCalled();
-    expect(el.shadowRoot.textContent).toContain("Payment requires review.");
+    expect(el.shadowRoot.textContent).toContain("Checking payment securely");
   });
   it("leaves an uncertain cancellation locked with a recovery path", async () => {
     resume.mockResolvedValue(order);
@@ -257,7 +448,7 @@ describe("secure payment recovery", () => {
     const result = await el.cancelForBack();
     await flush();
     expect(result.state).toBe("Review");
-    expect(el.shadowRoot.textContent).toContain("Please do not pay again.");
+    expect(el.shadowRoot.textContent).toContain("payment needs review");
     expect(el.shadowRoot.querySelector(".orders-link")).not.toBeNull();
   });
 });

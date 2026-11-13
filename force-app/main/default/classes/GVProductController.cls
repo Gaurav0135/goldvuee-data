@@ -173,6 +173,7 @@ public with sharing class GVProductController {
                 Main_Image_URL__c,
                 Availability_Status__c,
                 Stock_Quantity__c,
+                Available_Quantity__c,
                 Metal_Type__c,
                 Gender__c,
                 Purity__c,
