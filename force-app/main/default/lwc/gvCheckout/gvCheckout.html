@@ -1,38 +1,36 @@
-<template
-  ><main class="shell">
+<template>
+  <main class="shell">
     <p class="eyebrow">GOLDVUEE &middot; THOUGHTFULLY CHOSEN</p>
     <h1>A little closer to yours</h1>
+    <a href={shoppingUrl}>Continue shopping</a>
     <template lwc:if={guest}
       ><section class="card">
-        <p>Sign in to continue to checkout.</p>
+        <h2>Your selection, safely yours</h2>
+        <p>Sign in before checking out.</p>
         <a class="button" href={loginUrl}>Sign in</a>
       </section></template
-    ><template lwc:else
-      ><ol class="progress" aria-label="Checkout progress">
+    >
+    <template lwc:else>
+      <ol class="progress" aria-label="Checkout progress">
         <li class={addressClass}>1 &middot; Delivery</li>
         <li class={summaryClass}>2 &middot; Review</li>
         <li class={paymentClass}>3 &middot; Payment</li>
       </ol>
-      <p role="alert" class="error">{error}</p>
+      <p class="error" role="alert">{error}</p>
       <p role="status">{notice}</p>
-      <p lwc:if={monitoring} role="status">
-        Verifying payment: {remainingSeconds} seconds remaining. You can
-        continue shopping at any time.
-      </p>
-      <a href={shoppingUrl}>Continue shopping</a>
-      <p lwc:if={busy} role="status">Please waitâ€¦</p>
-      <template lwc:if={addressStep}
-        ><section class="card">
+      <p lwc:if={busy} role="status">Please wait...</p>
+      <template lwc:if={addressStep}>
+        <section class="card">
           <h2>Where should we deliver?</h2>
           <div class="grid">
             <div>
-              <label for="name">Full name</label
+              <label for="fullName">Full name</label
               ><input
-                id="name"
+                id="fullName"
                 name="fullName"
                 value={delivery.fullName}
-                onchange={input}
                 oninput={input}
+                onchange={input}
                 required
                 maxlength="120"
                 autocomplete="shipping name"
@@ -40,29 +38,28 @@
             </div>
             <div>
               <label for="phone">Mobile number</label
-              >
-<input
-  id="phone"
-  name="phone"
-  type="tel"
-  maxlength="20"
-  value={delivery.phone}
-  onchange={input}
-  oninput={input}
-  required
-  autocomplete="tel"
-  title="Enter a valid Indian mobile number"
-/>
-
-              <p id="phone-help">10-digit Indian mobile; +91 is optional.</p>
+              ><input
+                id="phone"
+                name="phone"
+                type="tel"
+                value={delivery.phone}
+                pattern={phonePattern}
+                oninput={input}
+                onchange={input}
+                required
+                maxlength="40"
+                autocomplete="shipping tel"
+                aria-describedby="phoneHelp"
+              />
+              <p id="phoneHelp" class="muted">10 digits; +91 is optional.</p>
             </div>
           </div>
           <label for="street">Street address</label
           ><textarea
             id="street"
             name="street"
-            onchange={input}
             oninput={input}
+            onchange={input}
             required
             maxlength="1000"
             autocomplete="shipping street-address"
@@ -74,8 +71,8 @@
                 id="city"
                 name="city"
                 value={delivery.city}
-                onchange={input}
                 oninput={input}
+                onchange={input}
                 required
                 maxlength="50"
                 autocomplete="shipping address-level2"
@@ -88,8 +85,8 @@
                 name="state"
                 type="text"
                 value={delivery.state}
-                onchange={input}
                 oninput={input}
+                onchange={input}
                 required
                 maxlength="50"
                 autocomplete="shipping address-level1"
@@ -101,10 +98,10 @@
                 id="pin"
                 name="postalCode"
                 value={delivery.postalCode}
-                onchange={input}
-                oninput={input}
-                required
                 pattern="[1-9][0-9]{5}"
+                oninput={input}
+                onchange={input}
+                required
                 maxlength="6"
                 autocomplete="shipping postal-code"
               />
@@ -114,12 +111,12 @@
               ><input
                 id="country"
                 name="country"
-                autocomplete="shipping country-name"
                 value={delivery.country}
-                onchange={input}
                 oninput={input}
+                onchange={input}
                 required
                 maxlength="50"
+                autocomplete="shipping country-name"
               />
             </div>
           </div>
@@ -128,51 +125,62 @@
               Continue to order summary</button
             ><a href={cartUrl}>Back to bag</a>
           </div>
-        </section></template
-      >
-      <template lwc:if={summaryStep}
-        ><section class="card">
+        </section>
+      </template>
+      <template lwc:if={summaryStep}>
+        <section class="card">
           <div class="row">
             <h2>Delivery address</h2>
-            <button class="secondary" onclick={address}>Change address</button>
+            <button class="secondary" onclick={changeAddress}>
+              Change address
+            </button>
           </div>
           <p class="address">{snapshot}</p>
         </section>
         <section class="card">
           <h2>Your jewellery selection</h2>
           <template for:each={items} for:item="item"
-            ><article class="product" key={item.id}>
-              <img lwc:if={item.image} src={item.image} alt={item.name} />
+            ><article class="product" key={item.lineId}>
+              <img lwc:if={item.imageUrl} src={item.imageUrl} alt={item.name} />
               <div>
                 <h2>{item.name}</h2>
-                <p>Quantity: {item.quantity}</p>
+                <p>
+                  {item.quantity} &times;
+                  <lightning-formatted-number
+                    value={item.unitPrice}
+                    format-style="currency"
+                    currency-code="INR"
+                  ></lightning-formatted-number>
+                </p>
               </div>
               <lightning-formatted-number
-                value={item.total}
+                class="line-total"
+                value={item.lineTotal}
                 format-style="currency"
                 currency-code="INR"
               ></lightning-formatted-number></article
           ></template>
+          <p class="muted">No additional checkout charges are configured.</p>
           <div class="row">
             <p>Grand total</p>
-            <p class="amount">
-              <lightning-formatted-number
+            <strong class="amount"
+              ><lightning-formatted-number
                 value={total}
                 format-style="currency"
                 currency-code="INR"
-              ></lightning-formatted-number>
-            </p>
+              ></lightning-formatted-number
+            ></strong>
           </div>
-          <p class="muted">No additional checkout charges are configured.</p>
-          <button onclick={paymentStepNext}>Continue to payment</button>
-        </section></template
-      >
-      <template lwc:if={paymentStep}
-        ><section class="card">
-          <h2>Secure Razorpay test payment</h2>
-          <button class="secondary" onclick={backToSummary}>
-            Back to order summary
-          </button>
+          <div class="actions">
+            <a href={cartUrl}>Back to bag</a
+            ><button onclick={continueToPayment}>Continue to payment</button>
+          </div>
+        </section>
+      </template>
+      <template lwc:if={paymentStep}>
+        <section class="card">
+          <p class="eyebrow">ORDER {orderNumber}</p>
+          <h2>{resultTitle}</h2>
           <p class="amount">
             <lightning-formatted-number
               value={total}
@@ -181,36 +189,52 @@
             ></lightning-formatted-number>
           </p>
           <p role="status">{message}</p>
-          <template lwc:if={showResult}
-            ><c-gv-payment-result
-              payment-id={paymentId}
-            ></c-gv-payment-result></template
-          ><template lwc:if={unpaid}
+          <p lwc:if={monitoring} role="status">{monitoringMessage}</p>
+          <template lwc:if={paid}
+            ><div class="actions">
+              <a class="button" href={historyUrl}>View my orders</a
+              ><a href={shoppingUrl}>Continue shopping</a>
+            </div></template
+          >
+          <template lwc:else
             ><div class="actions">
               <button onclick={pay} disabled={payDisabled}>
-                Pay now &middot; Test mode</button
-              ><button
+                Pay now &middot; Test mode
+              </button>
+              <button
                 lwc:if={hasPaymentUrl}
+                class="secondary"
                 onclick={openPayment}
-                disabled={busy}
               >
-                Open secure Razorpay payment</button
-              ><button class="secondary" onclick={refresh} disabled={busy}>
-                Refresh payment status</button
-              ><button class="secondary" onclick={cancel} disabled={busy}>
-                Cancel unpaid payment</button
-              ><button class="secondary" onclick={retry} disabled={busy}>
+                Open Razorpay payment
+              </button>
+              <button class="secondary" onclick={refresh} disabled={busy}>
+                Refresh status
+              </button>
+              <button
+                class="secondary"
+                onclick={retry}
+                disabled={retryDisabled}
+              >
                 Retry payment
+              </button>
+              <button class="text-button" onclick={cancel} disabled={busy}>
+                Cancel unpaid payment
               </button>
             </div>
             <p class="muted">
-              Razorpay opens in a separate tab. This page checks verified
-              payment status for two minutes. If payment is still pending, you
-              can keep shopping while server verification continues.
+              Razorpay opens separately. New payment links allow two minutes
+              from gateway creation. Expiry is confirmed by the gateway; closing
+              this tab does not stop server reconciliation.
             </p></template
           >
-        </section></template
-      ></template
-    >
-  </main></template
->
+          <div class="actions">
+            <button class="secondary" onclick={backToSummary}>
+              Back to order summary</button
+            ><a href={shoppingUrl}>Continue shopping</a>
+          </div>
+        </section>
+      </template>
+    </template>
+  </main>
+</template>

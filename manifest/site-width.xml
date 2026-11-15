@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+<types>
+<members>site/GoldVuee1.sfdc_cms__view/home</members>
+<members>site/GoldVuee1.sfdc_cms__view/Collections</members>
+<members>site/GoldVuee1.sfdc_cms__view/Our_Story</members>
+<members>site/GoldVuee1.sfdc_cms__view/New_Arrivals</members>
+<members>site/GoldVuee1.sfdc_cms__view/Contact</members>
+<members>site/GoldVuee1.sfdc_cms__view/Product_Details</members>
+<members>site/GoldVuee1.sfdc_cms__themeLayout/scopedHeaderAndFooter</members>
+<members>site/GoldVuee1.sfdc_cms__brandingSet/Build_Your_Own_LWR</members>
+<name>DigitalExperience</name>
+</types>
+<types>
+<members>goldvueeHeader</members>
+<members>goldvueeHero</members>
+<members>goldvueeCategoryCarousel</members>
+<members>goldvueeFooter</members>
+<members>gvProductCatalog</members>
+<members>gvOurStory</members>
+<members>gvNewArrivals</members>
+<name>LightningComponentBundle</name>
+</types>
+<version>68.0</version>
+</Package>

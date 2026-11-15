@@ -1,5 +1,13 @@
-jest.mock('@salesforce/community/basePath',()=>({__esModule:true,default:'/shop/s'}),{virtual:true});
-jest.mock('@salesforce/user/isGuest',()=>({__esModule:true,default:false}),{virtual:true});
+jest.mock(
+  "@salesforce/community/basePath",
+  () => ({ __esModule: true, default: "/shop/s" }),
+  { virtual: true }
+);
+jest.mock(
+  "@salesforce/user/isGuest",
+  () => ({ __esModule: true, default: false }),
+  { virtual: true }
+);
 import { createElement } from "lwc";
 import Product from "c/gvProductDetails";
 import getProductById from "@salesforce/apex/GVProductController.getProductById";
@@ -17,9 +25,11 @@ jest.mock(
   () => ({ default: jest.fn() }),
   { virtual: true }
 );
-const flush = async () => {
-  for (let i = 0; i < 12; i++) await Promise.resolve();
-};
+const flush = () =>
+  Array.from({ length: 12 }).reduce(
+    (previous) => previous.then(() => Promise.resolve()),
+    Promise.resolve()
+  );
 async function mount() {
   const el = createElement("c-gv-product-details", { is: Product });
   el.recordId = "product1";

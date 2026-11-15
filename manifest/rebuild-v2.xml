@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+<types><members>GVCheckoutService</members><members
+    >GVCartController</members><members>GVCheckoutController</members><members
+    >GVRazorpayController</members><members>GVPaymentWebhook</members><members
+    >GVCleanCheckoutTest</members><members>GVCheckoutOperations</members><name
+    >ApexClass</name></types>
+<types><members>gvCart</members><members>gvCheckout</members><members
+    >gvProductDetails</members><name>LightningComponentBundle</name></types>
+<types><members>GoldVuee_Customer_Access</members><name
+    >PermissionSet</name></types>
+<version>68.0</version>
+</Package>

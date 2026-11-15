@@ -1,36 +1,43 @@
-
 <template>
-    <section class="gv-hero" aria-label="GoldVuee luxury jewellery">
-        <div class="gv-hero-content">
-            <p class="gv-eyebrow">— GOLDVUEE —</p>
+  <section class="gv-hero" aria-label="GoldVuee luxury jewellery">
+    <div class="gv-hero-inner">
+      <div class="gv-hero-content">
+        <div class="gv-brand">
+          <div class="gv-brand-ornament" aria-hidden="true">✦</div>
+          <p class="gv-brand-name">GoldVuee</p>
+          <p class="gv-brand-subtitle">FINE JEWELLERY</p>
+          <div class="gv-brand-divider" aria-hidden="true">
+            <span></span>
+            <span>◆</span>
+            <span></span>
+          </div>
+        </div>
+        <h1>
+          Timeless Jewellery<br />
+          for Modern Elegance
+        </h1>
 
-            <h1>
-                Timeless Jewellery<br/>
-                for Modern Elegance
-            </h1>
+        <p class="gv-description">
+          Explore our exclusive collection of handcrafted gold and diamond
+          jewellery, designed for life's special moments.
+        </p>
 
-            <p class="gv-description">
-                Explore our exclusive collection of handcrafted
-                gold and diamond jewellery, designed for life's
-                special moments.
-            </p>
+        <div class="gv-buttons">
+          <a href={collectionsUrl} class="gv-btn-primary">
+            Shop Collections
+            <span aria-hidden="true">→</span>
+          </a>
 
-            <div class="gv-buttons">
-                <a href={collectionsUrl} class="gv-btn-primary">
-                    Shop Collections
-                    <span aria-hidden="true">→</span>
-                </a>
+          <a href={newArrivalsUrl} class="gv-btn-outline"> New Arrivals </a>
+        </div>
 
-                <a href={newArrivalsUrl} class="gv-btn-outline">
-                    New Arrivals
-                </a>
-            </div>
-
-            <div class="gv-benefits">
+        <!-- <div class="gv-benefits">
                 <span>✧ Certified Jewellery</span>
                 <span>♢ Secure Payments</span>
                 <span>✧ Free Shipping</span>
-            </div>
-        </div>
-    </section>
+            </div> -->
+      </div>
+      <div class="gv-hero-visual" aria-hidden="true"></div>
+    </div>
+  </section>
 </template>

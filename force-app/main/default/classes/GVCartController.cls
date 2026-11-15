@@ -1,4 +1,4 @@
-/** Customer identity and row ownership are checked before all privileged cart operations. */
+/** Current editable bag. Payment state is never queried by cart operations. */
 public without sharing class GVCartController {
   public class CartResponse {
     @AuraEnabled
@@ -8,44 +8,20 @@ public without sharing class GVCartController {
     @AuraEnabled
     public Integer itemCount = 0;
     @AuraEnabled
-    public List<Cart_Item__c> items = new List<Cart_Item__c>();
+    public List<GVCheckoutService.Item> items = new List<GVCheckoutService.Item>();
   }
   @AuraEnabled
   public static CartResponse getCart() {
     Id cid = GVCheckoutService.customer();
     CartResponse result = new CartResponse();
-    List<Shopping_Cart__c> carts = [
-      SELECT Id, Total_Amount__c
-      FROM Shopping_Cart__c
-      WHERE Customer__c = :cid AND Cart_Status__c = 'Active'
-      WITH SYSTEM_MODE
-      LIMIT 2
-    ];
-    if (carts.isEmpty())
+    Shopping_Cart__c cart = GVCheckoutService.cart(cid, false);
+    if (cart == null)
       return result;
-    if (carts.size() > 1)
-      throw new AuraHandledException('Multiple active bags require support.');
-    result.cartId = carts[0].Id;
-    result.items = [
-      SELECT
-        Id,
-        Name,
-        Shopping_Cart__c,
-        Jewellery_Product__c,
-        Jewellery_Product__r.Name,
-        Jewellery_Product__r.Main_Image_URL__c,
-        Jewellery_Product__r.Available_Quantity__c,
-        Quantity__c,
-        Unit_Price__c,
-        Line_Total__c
-      FROM Cart_Item__c
-      WHERE Shopping_Cart__c = :result.cartId
-      WITH SYSTEM_MODE
-      ORDER BY CreatedDate
-    ];
-    for (Cart_Item__c item : result.items) {
-      result.itemCount += Integer.valueOf(item.Quantity__c);
-      result.totalAmount += item.Line_Total__c;
+    result.cartId = cart.Id;
+    result.items = GVCheckoutService.cartItems(cart.Id);
+    for (GVCheckoutService.Item item : result.items) {
+      result.itemCount += Integer.valueOf(item.quantity);
+      result.totalAmount += item.lineTotal;
     }
     return result;
   }
@@ -54,45 +30,60 @@ public without sharing class GVCartController {
     GVCheckoutService.quantity(quantity);
     Id cid = GVCheckoutService.customer();
     GVCheckoutService.lockCustomer(cid);
-    Shopping_Cart__c cart = activeCart(cid);
-    cart.Id = GVCheckoutService.editableCart(cart.Id, cid);
-    List<Cart_Item__c> items = [
+    Shopping_Cart__c cart = GVCheckoutService.cart(cid, true);
+    List<Cart_Item__c> rows = [
       SELECT Id, Quantity__c
       FROM Cart_Item__c
       WHERE Shopping_Cart__c = :cart.Id AND Jewellery_Product__c = :productId
       WITH SYSTEM_MODE
+      LIMIT 2
     ];
-    if (items.size() > 1)
-      throw new AuraHandledException('Duplicate bag lines require support.');
-    Integer qty = quantity;
-    if (!items.isEmpty() && qty != null)
-      qty += Integer.valueOf(items[0].Quantity__c);
-    Decimal price = validateProduct(productId, qty);
-    if (items.isEmpty())
+    if (rows.size() > 1)
+      throw new AuraHandledException(
+        'Duplicate product lines require support review.'
+      );
+    Decimal units = quantity + (rows.isEmpty() ? 0 : rows[0].Quantity__c);
+    Decimal price = validatedPrice(productId, units);
+    if (rows.isEmpty()) {
+      if (
+        [
+          SELECT COUNT()
+          FROM Cart_Item__c
+          WHERE Shopping_Cart__c = :cart.Id
+          WITH SYSTEM_MODE
+        ] >= 25
+      )
+        throw new AuraHandledException(
+          'Choose up to 25 different jewellery pieces.'
+        );
       insert as system new Cart_Item__c(
         Shopping_Cart__c = cart.Id,
         Jewellery_Product__c = productId,
-        Quantity__c = qty,
+        Quantity__c = units,
         Unit_Price__c = price
       );
-    else
+    } else
       update as system new Cart_Item__c(
-        Id = items[0].Id,
-        Quantity__c = qty,
+        Id = rows[0].Id,
+        Quantity__c = units,
         Unit_Price__c = price
       );
     return getCart();
   }
   @AuraEnabled
   public static CartResponse updateCartItem(Id cartItemId, Integer quantity) {
+    GVCheckoutService.quantity(quantity);
     Id cid = GVCheckoutService.customer();
     GVCheckoutService.lockCustomer(cid);
-    Cart_Item__c item = ownedItem(cartItemId, cid);
-    item = editableItem(item, cid);
+    Cart_Item__c line = currentLine(cartItemId, cid);
+    if (line == null)
+      throw new AuraHandledException(
+        'This jewellery is no longer in your current bag. Refresh your bag.'
+      );
     update as system new Cart_Item__c(
-      Id = item.Id,
+      Id = line.Id,
       Quantity__c = quantity,
-      Unit_Price__c = validateProduct(item.Jewellery_Product__c, quantity)
+      Unit_Price__c = validatedPrice(line.Jewellery_Product__c, quantity)
     );
     return getCart();
   }
@@ -100,70 +91,52 @@ public without sharing class GVCartController {
   public static CartResponse removeCartItem(Id cartItemId) {
     Id cid = GVCheckoutService.customer();
     GVCheckoutService.lockCustomer(cid);
-    Cart_Item__c item = ownedItem(cartItemId, cid);
-    item = editableItem(item, cid);
-    delete as system item;
+    Cart_Item__c line = currentLine(cartItemId, cid);
+    if (line != null)
+      delete as system line;
     return getCart();
   }
-  private static Shopping_Cart__c activeCart(Id cid) {
-    List<Shopping_Cart__c> rows = [
-      SELECT Id
-      FROM Shopping_Cart__c
-      WHERE Customer__c = :cid AND Cart_Status__c = 'Active'
+  // A tab may still hold a line ID from the frozen snapshot. Resolve its product into the current bag.
+  private static Cart_Item__c currentLine(Id lineId, Id cid) {
+    List<Cart_Item__c> owned = [
+      SELECT Jewellery_Product__c
+      FROM Cart_Item__c
+      WHERE Id = :lineId AND Shopping_Cart__r.Customer__c = :cid
+      WITH SYSTEM_MODE
+    ];
+    if (owned.isEmpty())
+      throw new AuraHandledException('Bag item not found or access denied.');
+    Shopping_Cart__c cart = GVCheckoutService.cart(cid, false);
+    if (cart == null)
+      return null;
+    Id productId = owned[0].Jewellery_Product__c;
+    List<Cart_Item__c> rows = [
+      SELECT Id, Jewellery_Product__c
+      FROM Cart_Item__c
+      WHERE Shopping_Cart__c = :cart.Id AND Jewellery_Product__c = :productId
       WITH SYSTEM_MODE
       LIMIT 2
-      FOR UPDATE
     ];
     if (rows.size() > 1)
-      throw new AuraHandledException('Multiple active bags require support.');
-    if (!rows.isEmpty())
-      return rows[0];
-    Shopping_Cart__c cart = new Shopping_Cart__c(
-      Customer__c = cid,
-      Cart_Status__c = 'Active'
-    );
-    insert as system cart;
-    return cart;
+      throw new AuraHandledException(
+        'Duplicate product lines require support review.'
+      );
+    return rows.isEmpty() ? null : rows[0];
   }
-  private static Cart_Item__c ownedItem(Id iid, Id cid) {
-    List<Cart_Item__c> rows = [
-      SELECT Id, Shopping_Cart__c, Jewellery_Product__c
-      FROM Cart_Item__c
-      WHERE
-        Id = :iid
-        AND Shopping_Cart__r.Customer__c = :cid
-        AND Shopping_Cart__r.Cart_Status__c = 'Active'
-      WITH SYSTEM_MODE
-    ];
-    if (rows.isEmpty())
-      throw new AuraHandledException('Bag item not found or access denied.');
-    return rows[0];
-  }
-  private static Cart_Item__c editableItem(Cart_Item__c item, Id cid) {
-    Id cartId = GVCheckoutService.editableCart(item.Shopping_Cart__c, cid);
-    if (cartId == item.Shopping_Cart__c)
-      return item;
-    return [
-      SELECT Id, Shopping_Cart__c, Jewellery_Product__c
-      FROM Cart_Item__c
-      WHERE
-        Shopping_Cart__c = :cartId
-        AND Jewellery_Product__c = :item.Jewellery_Product__c
-      WITH SYSTEM_MODE
-      LIMIT 1
-    ];
-  }
-  private static Decimal validateProduct(Id pid, Integer qty) {
-    if (qty == null || qty < 1 || qty > 100)
-      throw new AuraHandledException('Quantity must be between 1 and 100.');
-    List<Jewellery_Product__c> rows = [
+  private static Decimal validatedPrice(Id productId, Decimal units) {
+    GVCheckoutService.quantity(units);
+    List<Jewellery_Product__c> products = [
       SELECT Id, Active__c, Price__c, Discount_Price__c, Available_Quantity__c
       FROM Jewellery_Product__c
-      WHERE Id = :pid AND Active__c = TRUE
+      WHERE Id = :productId
       WITH SYSTEM_MODE
     ];
-    if (rows.isEmpty() || rows[0].Available_Quantity__c < qty)
-      throw new AuraHandledException('Insufficient available stock.');
-    return GVCheckoutService.price(rows[0]);
+    if (
+      products.isEmpty() ||
+      !products[0].Active__c ||
+      products[0].Available_Quantity__c < units
+    )
+      throw new AuraHandledException('The requested quantity is unavailable.');
+    return GVCheckoutService.price(products[0]);
   }
 }

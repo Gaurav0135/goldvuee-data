@@ -1,165 +1,183 @@
+import { LightningElement } from "lwc";
+import basePath from "@salesforce/community/basePath";
 
-import { LightningElement } from 'lwc';
-import basePath from '@salesforce/community/basePath';
+import signature1 from "@salesforce/resourceUrl/gvSignature1";
+import signature2 from "@salesforce/resourceUrl/gvSignature2";
+import signature3 from "@salesforce/resourceUrl/gvSignature3";
 
-import signature1 from '@salesforce/resourceUrl/gvSignature1';
-import signature2 from '@salesforce/resourceUrl/gvSignature2';
-import signature3 from '@salesforce/resourceUrl/gvSignature3';
+import arrival1 from "@salesforce/resourceUrl/gvNewArrival1";
+import arrival2 from "@salesforce/resourceUrl/gvNewArrival2";
+import arrival3 from "@salesforce/resourceUrl/gvNewArrival3";
 
-import arrival1 from '@salesforce/resourceUrl/gvNewArrival1';
-import arrival2 from '@salesforce/resourceUrl/gvNewArrival2';
-import arrival3 from '@salesforce/resourceUrl/gvNewArrival3';
-
-import bridal1 from '@salesforce/resourceUrl/gvBridal1';
-import bridal2 from '@salesforce/resourceUrl/gvBridal2';
-import bridal3 from '@salesforce/resourceUrl/gvBridal3';
+import bridal1 from "@salesforce/resourceUrl/gvBridal1";
+import bridal2 from "@salesforce/resourceUrl/gvBridal2";
+import bridal3 from "@salesforce/resourceUrl/gvBridal3";
 
 const COLLECTIONS = [
-    {
-        id: 'signature',
-        title: 'Signature Collection',
-        description: 'Extraordinary pieces for timeless elegance.',
-        images: [signature1, signature2, signature3],
-        path: '/collections?category=signature'
-    },
-    {
-        id: 'arrivals',
-        title: 'New Arrivals',
-        description: 'Discover our latest jewellery creations.',
-        images: [arrival1, arrival2, arrival3],
-        path: '/new-arrivals'
-    },
-    {
-        id: 'bridal',
-        title: 'Bridal Jewellery',
-        description: 'Celebrate forever with exceptional beauty.',
-        images: [bridal1, bridal2, bridal3],
-        path: '/collections?category=bridal'
-    }
+  {
+    id: "signature",
+    title: "Signature Collection",
+    description: "Extraordinary pieces for timeless elegance.",
+    images: [signature1, signature2, signature3],
+    path: "/collections?category=signature"
+  },
+  {
+    id: "arrivals",
+    title: "New Arrivals",
+    description: "Discover our latest jewellery creations.",
+    images: [arrival1, arrival2, arrival3],
+    path: "/new-arrivals"
+  },
+  {
+    id: "bridal",
+    title: "Bridal Jewellery",
+    description: "Celebrate forever with exceptional beauty.",
+    images: [bridal1, bridal2, bridal3],
+    path: "/collections?category=bridal"
+  }
 ];
 
-const HALF_DURATION = 350;
-
 export default class GoldvueeCategoryCarousel extends LightningElement {
-    indices = {
-        signature: 0,
-        arrivals: 0,
-        bridal: 0
+  indices = {
+    signature: 0,
+    arrivals: 0,
+    bridal: 0
+  };
+
+  pendingIndices = {
+    signature: 1,
+    arrivals: 1,
+    bridal: 1
+  };
+
+  flipping = {
+    signature: false,
+    arrivals: false,
+    bridal: false
+  };
+
+  touchStartX = 0;
+
+  // Prepare current and upcoming images
+  get categories() {
+    return COLLECTIONS.map((category) => {
+      const id = category.id;
+      const index = this.indices[id];
+      const pendingIndex = this.pendingIndices[id];
+      const isAnimating = this.flipping[id];
+
+      return {
+        ...category,
+
+        currentImage: category.images[index],
+
+        upcomingImage: category.images[pendingIndex],
+
+        displayIndex: index + 1,
+
+        totalImages: category.images.length,
+
+        imageAlt: `${category.title} image ${index + 1}`,
+
+        animationClass: isAnimating
+          ? "gv-image-rotator gv-flipping"
+          : "gv-image-rotator",
+
+        isAnimating,
+
+        url: `${basePath}${category.path}`
+      };
+    });
+  }
+
+  // Next image
+  nextImage(event) {
+    const id = event.currentTarget.dataset.id;
+    this.changeImage(id, 1);
+  }
+
+  // Previous image
+  previousImage(event) {
+    const id = event.currentTarget.dataset.id;
+    this.changeImage(id, -1);
+  }
+
+  // Start continuous 180 degree flip
+  changeImage(id, direction) {
+    const category = COLLECTIONS.find((item) => item.id === id);
+
+    if (!category || this.flipping[id]) {
+      return;
+    }
+
+    const currentIndex = this.indices[id];
+
+    const nextIndex =
+      (currentIndex + direction + category.images.length) %
+      category.images.length;
+
+    // Prepare image on the back face
+    this.pendingIndices = {
+      ...this.pendingIndices,
+      [id]: nextIndex
     };
 
-    phases = {
-        signature: 'idle',
-        arrivals: 'idle',
-        bridal: 'idle'
+    // Start one continuous flip animation
+    this.flipping = {
+      ...this.flipping,
+      [id]: true
+    };
+  }
+
+  // Flip completed
+  handleAnimationEnd(event) {
+    if (event.target !== event.currentTarget) {
+      return;
+    }
+
+    const id = event.currentTarget.dataset.id;
+
+    if (!this.flipping[id]) {
+      return;
+    }
+
+    // Commit next image as current image
+    this.indices = {
+      ...this.indices,
+      [id]: this.pendingIndices[id]
     };
 
-    timers = new Map();
-    touchStartX = 0;
+    // Reset rotation for next interaction
+    this.flipping = {
+      ...this.flipping,
+      [id]: false
+    };
+  }
 
-    get categories() {
-        return COLLECTIONS.map(category => {
-            const id = category.id;
-            const index = this.indices[id];
-            const phase = this.phases[id];
-
-            let animationClass = 'gv-image-rotator';
-
-            if (phase === 'out') {
-                animationClass += ' gv-flip-out';
-            } else if (phase === 'in') {
-                animationClass += ' gv-flip-in';
-            }
-
-            return {
-                ...category,
-                currentImage: category.images[index],
-                displayIndex: index + 1,
-                totalImages: category.images.length,
-                imageAlt: `${category.title} image ${index + 1}`,
-                animationClass,
-                isAnimating: phase !== 'idle',
-                url: `${basePath}${category.path}`
-            };
-        });
+  // Mobile swipe support
+  handleTouchStart(event) {
+    if (!event.touches.length) {
+      return;
     }
 
-    nextImage(event) {
-        this.changeImage(event.currentTarget.dataset.id, 1);
+    this.touchStartX = event.touches[0].clientX;
+  }
+
+  handleTouchEnd(event) {
+    if (!event.changedTouches.length) {
+      return;
     }
 
-    previousImage(event) {
-        this.changeImage(event.currentTarget.dataset.id, -1);
+    const endX = event.changedTouches[0].clientX;
+
+    const distance = endX - this.touchStartX;
+
+    if (Math.abs(distance) < 50) {
+      return;
     }
 
-    changeImage(id, direction) {
-        const category = COLLECTIONS.find(item => item.id === id);
+    const id = event.currentTarget.dataset.id;
 
-        if (!category || this.phases[id] !== 'idle') {
-            return;
-        }
-
-        // First half: current image rotates away.
-        this.phases = {
-            ...this.phases,
-            [id]: 'out'
-        };
-
-        const timer = setTimeout(() => {
-            const nextIndex =
-                (this.indices[id] + direction + category.images.length)
-                % category.images.length;
-
-            // Change image at the midpoint.
-            this.indices = {
-                ...this.indices,
-                [id]: nextIndex
-            };
-
-            // Second half: new image rotates into view.
-            this.phases = {
-                ...this.phases,
-                [id]: 'in'
-            };
-
-            this.timers.delete(id);
-        }, HALF_DURATION);
-
-        this.timers.set(id, timer);
-    }
-
-    handleAnimationEnd(event) {
-        if (event.target !== event.currentTarget) {
-            return;
-        }
-
-        const id = event.currentTarget.dataset.id;
-
-        if (this.phases[id] === 'in') {
-            this.phases = {
-                ...this.phases,
-                [id]: 'idle'
-            };
-        }
-    }
-
-    handleTouchStart(event) {
-        this.touchStartX = event.touches[0].clientX;
-    }
-
-    handleTouchEnd(event) {
-        const endX = event.changedTouches[0].clientX;
-        const distance = endX - this.touchStartX;
-
-        if (Math.abs(distance) < 50) {
-            return;
-        }
-
-        const id = event.currentTarget.dataset.id;
-        this.changeImage(id, distance < 0 ? 1 : -1);
-    }
-
-    disconnectedCallback() {
-        this.timers.forEach(timer => clearTimeout(timer));
-        this.timers.clear();
-    }
+    this.changeImage(id, distance < 0 ? 1 : -1);
+  }
 }

@@ -1,0 +1,397 @@
+:host {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  color: #35251f;
+  --wine: #320711;
+  --burgundy: #320711;
+  --gold: #b88942;
+  --cream: #f8f0e2;
+  --ivory: #fffdf8;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+h1,
+h2,
+h3 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+}
+p {
+  font:
+    400 17px/1.85 Georgia,
+    "Times New Roman",
+    serif;
+}
+em {
+  color: #320711;
+  font-weight: 400;
+}
+.story-page {
+  width: 100%;
+  background: #fffdf8;
+}
+.hero,
+.philosophy,
+.promise {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+}
+.hero {
+  background: #f8f0e2;
+}
+.hero-copy,
+.philosophy-copy,
+.promise-copy {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 64px clamp(28px, 5vw, 80px);
+}
+h1 {
+  max-width: 600px;
+  font-size: clamp(36px, 3.4vw, 52px);
+  line-height: 1.15;
+  letter-spacing: -0.8px;
+}
+h2 {
+  font-size: clamp(30px, 2.6vw, 42px);
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+}
+h3 {
+  font-size: 25px;
+  line-height: 1.3;
+}
+.eyebrow {
+  margin-bottom: 20px;
+  color: #35251f;
+  font-size: 13px;
+  line-height: 1.6;
+  letter-spacing: 1px;
+}
+.gold-line {
+  width: 64px;
+  height: 1px;
+  margin: 24px 0;
+  background: #b88942;
+}
+.lead {
+  max-width: 510px;
+  margin-bottom: 28px;
+}
+.hero-image,
+.philosophy-image,
+.promise-image {
+  position: relative;
+  min-width: 0;
+  min-height: 420px;
+  background: #ead8bc;
+}
+.hero-image img,
+.philosophy-image img,
+.promise-image img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.image-label {
+  position: absolute;
+  left: 24px;
+  bottom: 24px;
+  padding: 10px 14px;
+  background: #320711;
+  color: #f8f0e2;
+  font-size: 11px;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  min-height: 48px;
+  padding: 13px 22px;
+  border: 1px solid #b88942;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+  text-decoration: none;
+}
+.btn-primary,
+.btn-primary:link,
+.btn-primary:visited,
+.btn-gold,
+.btn-gold:link,
+.btn-gold:visited {
+  background: #b88942;
+  color: #35251f;
+}
+.btn:hover {
+  background: #ead8bc;
+}
+.btn:focus-visible {
+  outline: 2px solid #b88942;
+  outline-offset: 4px;
+}
+.section-padding {
+  padding: 72px clamp(24px, 4vw, 64px);
+}
+.introduction {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  column-gap: clamp(40px, 6vw, 100px);
+  max-width: 1536px;
+  margin: auto;
+}
+.introduction .eyebrow {
+  grid-column: 1;
+}
+.introduction h2 {
+  grid-column: 1;
+  grid-row: 2/4;
+  max-width: 540px;
+}
+.intro-description {
+  grid-column: 2;
+  max-width: 680px;
+}
+.intro-description + .intro-description {
+  margin-top: 18px;
+}
+.ornament {
+  grid-column: 1/-1;
+  color: #b88942;
+  text-align: center;
+  font-size: 22px;
+  margin-top: 36px;
+}
+.philosophy {
+  background: #f8f0e2;
+}
+.philosophy-copy p:not(.eyebrow),
+.promise-copy p:not(.eyebrow) {
+  max-width: 600px;
+}
+.philosophy-copy p + p,
+.promise-copy p + p {
+  margin-top: 18px;
+}
+.values {
+  background: #fffdf8;
+  text-align: center;
+}
+.values .eyebrow {
+  margin-bottom: 14px;
+}
+.section-subtitle {
+  margin: 18px auto 0;
+  max-width: 650px;
+}
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  max-width: 1408px;
+  gap: 24px;
+  margin: 40px auto 0;
+  text-align: left;
+}
+.value-card {
+  min-width: 0;
+  padding: 32px;
+  background: #f8f0e2;
+  border-top: 1px solid #b88942;
+}
+.value-icon {
+  color: #b88942;
+  font-size: 28px;
+  margin-bottom: 22px;
+}
+.value-card h3 {
+  margin-bottom: 16px;
+}
+.value-card p {
+  font-size: 15px;
+  line-height: 1.8;
+}
+.promise {
+  background: #f8f0e2;
+}
+.story-cta {
+  padding: 64px 24px 72px;
+  background: #320711;
+  color: #fffdf8;
+  text-align: center;
+}
+.story-cta .eyebrow {
+  color: #ead8bc;
+  margin-bottom: 18px;
+}
+.story-cta h2 {
+  max-width: 800px;
+  margin: auto;
+}
+.story-cta em {
+  color: #ead8bc;
+}
+.story-cta > p:not(.eyebrow) {
+  max-width: 650px;
+  margin: 24px auto;
+  font-size: 16px;
+}
+@media (min-width: 1536px) {
+  .hero-copy,
+  .promise-copy {
+    padding-left: max(64px, calc((100% * 2 - 1408px) / 2));
+  }
+  .philosophy-copy {
+    padding-right: max(64px, calc((100% * 2 - 1408px) / 2));
+  }
+}
+@media (max-width: 1024px) {
+  .hero-copy,
+  .philosophy-copy,
+  .promise-copy {
+    padding: 48px 28px;
+  }
+  .hero-image,
+  .philosophy-image,
+  .promise-image {
+    min-height: 380px;
+  }
+  .value-card {
+    padding: 26px 22px;
+  }
+}
+@media (max-width: 800px) {
+  .hero,
+  .philosophy,
+  .promise {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .hero-image,
+  .philosophy-image,
+  .promise-image {
+    min-height: 0;
+    aspect-ratio: 16/10;
+  }
+  .hero-copy,
+  .philosophy-copy,
+  .promise-copy {
+    padding: 44px 32px;
+  }
+  .philosophy-image {
+    order: 2;
+  }
+  .introduction {
+    column-gap: 32px;
+  }
+  .values-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+    max-width: 650px;
+  }
+  .value-card {
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1fr);
+    gap: 8px 18px;
+  }
+  .value-icon {
+    grid-row: 1/3;
+    margin: 0;
+  }
+  .value-card h3 {
+    margin: 0;
+  }
+  .value-card p {
+    grid-column: 2;
+  }
+  .section-padding {
+    padding-block: 52px;
+  }
+}
+@media (max-width: 600px) {
+  h1 {
+    font-size: 36px;
+  }
+  h2 {
+    font-size: 32px;
+  }
+  p {
+    font-size: 16px;
+  }
+  .hero-copy,
+  .philosophy-copy,
+  .promise-copy {
+    padding: 40px 24px;
+  }
+  .introduction {
+    display: block;
+    padding: 44px 24px;
+  }
+  .introduction h2 {
+    margin-bottom: 24px;
+  }
+  .ornament {
+    margin-top: 24px;
+  }
+  .values {
+    padding: 44px 24px;
+  }
+  .values-grid {
+    margin-top: 28px;
+  }
+  .value-card {
+    padding: 26px 20px;
+    gap: 10px 12px;
+    grid-template-columns: 28px minmax(0, 1fr);
+  }
+  .value-card h3 {
+    font-size: 23px;
+  }
+  .image-label {
+    left: 16px;
+    bottom: 16px;
+    font-size: 10px;
+    padding: 8px 10px;
+  }
+  .story-cta {
+    padding: 48px 24px;
+  }
+  .story-cta > p:not(.eyebrow) {
+    font-size: 15px;
+  }
+}
+@media (max-width: 374px) {
+  .hero-copy,
+  .philosophy-copy,
+  .promise-copy,
+  .introduction,
+  .values {
+    padding-inline: 20px;
+  }
+  .hero-image,
+  .philosophy-image,
+  .promise-image {
+    aspect-ratio: 4/3;
+  }
+}

@@ -1,53 +1,61 @@
-<template
-  ><main class="shell">
+<template>
+  <main class="shell">
     <p class="eyebrow">GOLDVUEE &middot; YOUR SELECTION</p>
     <h1>Your shopping bag</h1>
-    <template lwc:if={guest}
-      ><section class="card">
-        <p>Sign in to keep your jewellery selection safely in your account.</p>
+    <a href={shoppingUrl}>Continue shopping</a>
+    <template lwc:if={guest}>
+      <section class="card">
+        <h2>Keep something beautiful</h2>
+        <p>Sign in to save and edit your jewellery selection.</p>
         <a class="button" href={loginUrl}>Sign in</a>
-      </section></template
-    >
-    <template lwc:else
-      ><p role="alert" class="error">{error}</p>
-      <template lwc:if={busy}
-        ><p role="status">Updating your bag...</p></template
-      >
-      <template lwc:if={hasItems}
-        ><section class="card">
-          <template for:each={items} for:item="item"
-            ><article class="product" key={item.id}>
-              <img lwc:if={item.image} src={item.image} alt={item.name} />
+      </section>
+    </template>
+    <template lwc:else>
+      <p class="error" role="alert">{error}</p>
+      <p lwc:if={busy} role="status">Updating your bag...</p>
+      <template lwc:if={hasItems}>
+        <section class="card">
+          <template for:each={rows} for:item="item">
+            <article class="product" key={item.lineId}>
+              <img lwc:if={item.imageUrl} src={item.imageUrl} alt={item.name} />
               <div>
                 <h2>{item.name}</h2>
                 <lightning-formatted-number
-                  value={item.price}
+                  value={item.unitPrice}
                   format-style="currency"
                   currency-code="INR"
                 ></lightning-formatted-number>
+                <p lwc:if={item.available} class="muted">
+                  Available in your selection
+                </p>
+                <p lwc:else class="error">
+                  Check availability before checkout.
+                </p>
                 <div class="actions">
                   <button
-                    class="qty"
-                    data-id={item.id}
+                    class="secondary quantity"
+                    data-id={item.lineId}
                     data-action="minus"
                     onclick={change}
-                    disabled={item.min}
+                    disabled={item.decreaseDisabled}
                     aria-label="Decrease quantity"
                   >
-                    -</button
-                  ><span>{item.quantity}</span
-                  ><button
-                    class="qty"
-                    data-id={item.id}
+                    -
+                  </button>
+                  <span>{item.quantity}</span>
+                  <button
+                    class="secondary quantity"
+                    data-id={item.lineId}
                     data-action="plus"
                     onclick={change}
-                    disabled={busy}
+                    disabled={item.increaseDisabled}
                     aria-label="Increase quantity"
                   >
-                    +</button
-                  ><button
-                    class="secondary"
-                    data-id={item.id}
+                    +
+                  </button>
+                  <button
+                    class="text-button"
+                    data-id={item.lineId}
                     data-action="remove"
                     onclick={change}
                     disabled={busy}
@@ -56,38 +64,36 @@
                   </button>
                 </div>
               </div>
-              <div class="line">
-                <lightning-formatted-number
-                  value={item.total}
-                  format-style="currency"
-                  currency-code="INR"
-                ></lightning-formatted-number>
-              </div></article
-          ></template>
-          <div class="row">
-            <p>{count} pieces</p>
-            <p class="amount">
               <lightning-formatted-number
-                value={total}
+                class="line-total"
+                value={item.lineTotal}
                 format-style="currency"
                 currency-code="INR"
               ></lightning-formatted-number>
-            </p>
+            </article>
+          </template>
+          <div class="row">
+            <p>{count} pieces &middot; Subtotal / total</p>
+            <strong class="amount"
+              ><lightning-formatted-number
+                value={total}
+                format-style="currency"
+                currency-code="INR"
+              ></lightning-formatted-number
+            ></strong>
           </div>
-          <div class="actions">
-            <a class="button" href={checkoutUrl}>Proceed to checkout</a
-            ><a class="button secondary" href={shoppingUrl}
-              >Continue shopping</a
-            >
-          </div>
-        </section></template
-      >
+          <a class="button" href={checkoutUrl}>Proceed to checkout</a>
+        </section>
+      </template>
       <template lwc:else
         ><section class="card">
           <h2>Your bag awaits something beautiful.</h2>
+          <p>
+            Explore jewellery made for your everyday and extraordinary moments.
+          </p>
           <a class="button" href={shoppingUrl}>Explore collections</a>
         </section></template
-      ></template
-    >
-  </main></template
->
+      >
+    </template>
+  </main>
+</template>

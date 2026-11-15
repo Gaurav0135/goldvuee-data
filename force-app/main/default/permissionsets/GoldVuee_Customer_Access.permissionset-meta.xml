@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='utf-8' ?>
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <classAccesses>
         <apexClass>GVCartController</apexClass>
@@ -17,28 +17,17 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>GVOnlineCheckoutController</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
         <apexClass>GVOrderHistoryController</apexClass>
         <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>GVPaymentController</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>GVPaymentVerificationController</apexClass>
-        <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>GVProductController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
-    <classAccesses><apexClass>GVCheckoutController</apexClass><enabled>true</enabled></classAccesses>
-    <classAccesses><apexClass>GVRazorpayController</apexClass><enabled>true</enabled></classAccesses>
-    <description>Permissions for GoldVuee Experience Cloud customers to browse jewellery and manage their own shopping carts.</description>
+    <classAccesses><apexClass>GVRazorpayController</apexClass><enabled
+    >true</enabled></classAccesses>
+    <description
+  >Permissions for GoldVuee Experience Cloud customers to browse jewellery and manage their own shopping carts.</description>
     <fieldPermissions>
         <editable>false</editable>
         <field>Cart_Item__c.Line_Total__c</field>

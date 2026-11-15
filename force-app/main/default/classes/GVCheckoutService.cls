@@ -1,18 +1,43 @@
-/** Internal trust boundary. Browser entry points authorize Contact ownership before system DML.
- * Existing objects only. Gateway_Response__c holds versioned attempt state, never credentials.
- */
+/** Internal owner-checked data and atomic fulfillment boundary. No browser entry points. */
 public without sharing class GVCheckoutService {
   public class CheckoutException extends Exception {
   }
+  public class Item {
+    @AuraEnabled
+    public Id lineId;
+    @AuraEnabled
+    public Id productId;
+    @AuraEnabled
+    public String name;
+    @AuraEnabled
+    public String imageUrl;
+    @AuraEnabled
+    public Decimal quantity;
+    @AuraEnabled
+    public Decimal unitPrice;
+    @AuraEnabled
+    public Decimal lineTotal;
+    @AuraEnabled
+    public Boolean available;
+  }
+  // Versioned attempt metadata uses the existing long-text field; never stores credentials.
   public class Attempt {
-    public Integer version = 1;
+    public Integer version = 2;
     public String state = 'New';
+    public String fingerprint;
+    public Id cartId;
     public String linkId;
     public String url;
     public String gatewayOrderId;
+    public String jobId;
+    public Id retryOf;
     public String fulfillment;
     public String lastFailurePaymentId;
     public String lastFailureState;
+    // Opt-in only for newly initiated links. Historical attempts remain untouched.
+    public Integer expirySeconds;
+    public Long linkCreatedAt;
+    public Boolean expiryRequested;
   }
   public static Id customer() {
     User u = [
@@ -23,12 +48,12 @@ public without sharing class GVCheckoutService {
     ];
     if (u.UserType == 'Guest' || u.ContactId == null)
       throw new AuraHandledException(
-        'Please sign in with your GoldVuee customer account.'
+        'Sign in with your GoldVuee customer account.'
       );
     return u.ContactId;
   }
   public static void lockCustomer(Id cid) {
-    Contact c = [
+    Contact owner = [
       SELECT Id
       FROM Contact
       WHERE Id = :cid
@@ -36,30 +61,173 @@ public without sharing class GVCheckoutService {
       FOR UPDATE
     ];
   }
-  public static Attempt attempt(Payment__c p) {
-    if (String.isBlank(p.Gateway_Response__c)) {
-      Attempt a = new Attempt();
-      // Never treat a legacy gateway order as an uninitialized hosted payment.
-      if (
-        !String.isBlank(p.Razorpay_Order_ID__c) ||
-        !String.isBlank(p.Transaction_ID__c)
-      )
-        a.state = 'Legacy review';
-      return a;
-    }
-    try {
-      Attempt a = (Attempt) JSON.deserialize(
-        p.Gateway_Response__c,
-        Attempt.class
+  public static Shopping_Cart__c cart(Id cid, Boolean createIfEmpty) {
+    List<Shopping_Cart__c> rows = [
+      SELECT Id, Cart_Status__c
+      FROM Shopping_Cart__c
+      WHERE Customer__c = :cid AND Cart_Status__c = 'Active'
+      WITH SYSTEM_MODE
+      LIMIT 2
+    ];
+    if (rows.size() > 1)
+      throw new AuraHandledException(
+        'Your account has multiple current bags. Contact GoldVuee support.'
       );
-      if (a == null || a.version != 1 || String.isBlank(a.state))
-        throw new CheckoutException('Invalid attempt');
-      return a;
-    } catch (Exception e) {
-      Attempt a = new Attempt();
-      a.state = 'Legacy review';
-      return a;
+    if (!rows.isEmpty())
+      return rows[0];
+    if (!createIfEmpty)
+      return null;
+    Shopping_Cart__c result = new Shopping_Cart__c(
+      Customer__c = cid,
+      Cart_Status__c = 'Active'
+    );
+    insert as system result;
+    return result;
+  }
+  public static void quantity(Decimal value) {
+    if (value == null || value < 1 || value > 100 || value != value.setScale(0))
+      throw new AuraHandledException('Choose a whole quantity from 1 to 100.');
+  }
+  public static Decimal price(Jewellery_Product__c p) {
+    if (p.Price__c == null || p.Price__c <= 0)
+      throw new AuraHandledException('This jewellery price is unavailable.');
+    return p.Discount_Price__c != null &&
+      p.Discount_Price__c > 0 &&
+      p.Discount_Price__c < p.Price__c
+      ? p.Discount_Price__c
+      : p.Price__c;
+  }
+  public static List<Item> cartItems(Id cartId) {
+    List<Item> result = new List<Item>();
+    for (Cart_Item__c row : [
+      SELECT
+        Id,
+        Jewellery_Product__c,
+        Quantity__c,
+        Jewellery_Product__r.Name,
+        Jewellery_Product__r.Main_Image_URL__c,
+        Jewellery_Product__r.Price__c,
+        Jewellery_Product__r.Discount_Price__c,
+        Jewellery_Product__r.Active__c,
+        Jewellery_Product__r.Available_Quantity__c
+      FROM Cart_Item__c
+      WHERE Shopping_Cart__c = :cartId
+      WITH SYSTEM_MODE
+      ORDER BY CreatedDate, Id
+    ]) {
+      Item item = new Item();
+      item.lineId = row.Id;
+      item.productId = row.Jewellery_Product__c;
+      item.name = row.Jewellery_Product__r.Name;
+      item.imageUrl = row.Jewellery_Product__r.Main_Image_URL__c;
+      item.quantity = row.Quantity__c;
+      item.unitPrice = row.Jewellery_Product__r.Price__c > 0
+        ? price(row.Jewellery_Product__r)
+        : 0;
+      item.lineTotal = (item.unitPrice * item.quantity).setScale(2);
+      item.available =
+        row.Jewellery_Product__r.Active__c &&
+        item.unitPrice > 0 &&
+        row.Jewellery_Product__r.Available_Quantity__c >= item.quantity;
+      result.add(item);
     }
+    return result;
+  }
+  public static List<Item> orderItems(Id orderId) {
+    return orderItems(new Set<Id>{ orderId }).get(orderId);
+  }
+  public static Map<Id, List<Item>> orderItems(Set<Id> orderIds) {
+    Map<Id, List<Item>> result = new Map<Id, List<Item>>();
+    for (Id id : orderIds)
+      result.put(id, new List<Item>());
+    for (Jewellery_Order_Item__c row : [
+      SELECT
+        Id,
+        Jewellery_Order__c,
+        Jewellery_Product__c,
+        Jewellery_Product__r.Name,
+        Jewellery_Product__r.Main_Image_URL__c,
+        Quantity__c,
+        Unit_Price__c,
+        Line_Total__c
+      FROM Jewellery_Order_Item__c
+      WHERE Jewellery_Order__c IN :orderIds
+      WITH SYSTEM_MODE
+      ORDER BY CreatedDate, Id
+    ]) {
+      Item item = new Item();
+      item.lineId = row.Id;
+      item.productId = row.Jewellery_Product__c;
+      item.name = row.Jewellery_Product__r.Name;
+      item.imageUrl = row.Jewellery_Product__r.Main_Image_URL__c;
+      item.quantity = row.Quantity__c;
+      item.unitPrice = row.Unit_Price__c;
+      item.lineTotal = row.Line_Total__c;
+      item.available = true;
+      result.get(row.Jewellery_Order__c).add(item);
+    }
+    return result;
+  }
+  public static String fingerprint(
+    String address,
+    String city,
+    String state,
+    String pin,
+    String country,
+    List<Item> items,
+    Decimal total
+  ) {
+    List<String> selection = new List<String>();
+    for (Item item : items)
+      selection.add(
+        String.valueOf(item.productId) +
+          ':' +
+          String.valueOf(item.quantity.setScale(0)) +
+          ':' +
+          String.valueOf(item.lineTotal.setScale(2))
+      );
+    selection.sort();
+    List<String> parts = new List<String>{ address, city, state, pin, country };
+    for (Integer i = 0; i < parts.size(); i++)
+      parts[i] = parts[i] == null
+        ? ''
+        : parts[i].trim().replaceAll('\\s+', ' ').toLowerCase();
+    parts.addAll(selection);
+    parts.add(String.valueOf(total.setScale(2)));
+    return EncodingUtil.convertToHex(
+      Crypto.generateDigest('SHA-256', Blob.valueOf(JSON.serialize(parts)))
+    );
+  }
+  public static Attempt attempt(Payment__c payment) {
+    if (!String.isBlank(payment.Gateway_Response__c)) {
+      try {
+        Attempt value = (Attempt) JSON.deserialize(
+          payment.Gateway_Response__c,
+          Attempt.class
+        );
+        if (
+          value != null &&
+          (value.version == 0 ||
+          value.version == 1 ||
+          value.version == 2) &&
+          !String.isBlank(value.state)
+        ) {
+          if (
+            value.version != 2 &&
+            value.state == 'New' &&
+            value.linkId == null
+          )
+            value.state = 'Legacy review';
+          return value;
+        }
+      } catch (Exception ignored) {
+      }
+    }
+    Attempt legacy = new Attempt();
+    legacy.version = 0;
+    legacy.state = 'Legacy review';
+    legacy.gatewayOrderId = payment.Razorpay_Order_ID__c;
+    return legacy;
   }
   public static Payment__c payment(Id pid, Id cid) {
     List<Payment__c> rows = [
@@ -68,15 +236,16 @@ public without sharing class GVCheckoutService {
         Jewellery_Order__c,
         Payment_Amount__c,
         Payment_Status__c,
-        Transaction_ID__c,
-        Razorpay_Order_ID__c,
         Gateway_Response__c,
+        Razorpay_Order_ID__c,
+        Transaction_ID__c,
         Failure_Reason__c,
         Jewellery_Order__r.Customer__c,
         Jewellery_Order__r.Shopping_Cart__c,
         Jewellery_Order__r.Grand_Total__c,
         Jewellery_Order__r.Payment_Status__c,
-        Jewellery_Order__r.Order_Status__c
+        Jewellery_Order__r.Order_Status__c,
+        Jewellery_Order__r.Name
       FROM Payment__c
       WHERE Id = :pid AND Jewellery_Order__r.Customer__c = :cid
       WITH SYSTEM_MODE
@@ -85,124 +254,81 @@ public without sharing class GVCheckoutService {
       throw new AuraHandledException('Payment not found or access denied.');
     return rows[0];
   }
-  public static Decimal price(Jewellery_Product__c p) {
-    if (p.Price__c == null || p.Price__c <= 0)
-      throw new CheckoutException('Product price unavailable.');
-    return p.Discount_Price__c != null &&
-      p.Discount_Price__c > 0 &&
-      p.Discount_Price__c < p.Price__c
-      ? p.Discount_Price__c
-      : p.Price__c;
-  }
-  public static void quantity(Decimal q) {
-    if (q == null || q < 1 || q > 100 || q != q.setScale(0))
-      throw new AuraHandledException('Quantity must be between 1 and 100.');
-  }
-  public static void mutableCart(Id cartId) {
-    List<Shopping_Cart__c> carts = [
-      SELECT Id
-      FROM Shopping_Cart__c
-      WHERE Id = :cartId AND Cart_Status__c = 'Active'
-      WITH SYSTEM_MODE
-    ];
-    if (carts.isEmpty())
-      throw new AuraHandledException('Your shopping bag is no longer active.');
-  }
-  /** Fork only the editable bag. Original order, payment and cart lines remain unchanged. */
-  public static Id editableCart(Id cartId, Id cid) {
-    mutableCart(cartId);
-    Boolean payable = false;
-    for (Payment__c p : [
-      SELECT Gateway_Response__c, Razorpay_Order_ID__c, Transaction_ID__c
-      FROM Payment__c
-      WHERE
-        Jewellery_Order__r.Shopping_Cart__c = :cartId
-        AND Payment_Status__c = 'Pending'
-      WITH SYSTEM_MODE
-    ]) {
-      if (attempt(p).state != 'New')
-        payable = true;
+  public static void stock(Id orderId) {
+    List<Item> items = orderItems(orderId);
+    Set<Id> ids = new Set<Id>();
+    for (Item item : items) {
+      quantity(item.quantity);
+      ids.add(item.productId);
     }
-    return payable ? forkCart(cartId, cid) : cartId;
-  }
-  public static Id forkCart(Id cartId, Id cid) {
-    Shopping_Cart__c oldCart = [
-      SELECT Id, Customer__c, Cart_Status__c
-      FROM Shopping_Cart__c
-      WHERE Id = :cartId AND Customer__c = :cid AND Cart_Status__c = 'Active'
-      WITH SYSTEM_MODE
-      FOR UPDATE
-    ];
-    oldCart.Cart_Status__c = 'Abandoned';
-    update as system oldCart;
-    Shopping_Cart__c current = new Shopping_Cart__c(
-      Customer__c = cid,
-      Cart_Status__c = 'Active'
-    );
-    insert as system current;
-    List<Cart_Item__c> copies = new List<Cart_Item__c>();
-    for (Cart_Item__c line : [
-      SELECT Jewellery_Product__c, Quantity__c, Unit_Price__c
-      FROM Cart_Item__c
-      WHERE Shopping_Cart__c = :cartId
-      WITH SYSTEM_MODE
-    ]) {
-      copies.add(
-        new Cart_Item__c(
-          Shopping_Cart__c = current.Id,
-          Jewellery_Product__c = line.Jewellery_Product__c,
-          Quantity__c = line.Quantity__c,
-          Unit_Price__c = line.Unit_Price__c
-        )
-      );
-    }
-    insert as system copies;
-    return current.Id;
-  }
-
-  public static void stock(Id oid) {
-    Map<Id, Decimal> qty = quantities(oid);
     Map<Id, Jewellery_Product__c> products = new Map<Id, Jewellery_Product__c>(
       [
-        SELECT Id, Name, Active__c, Available_Quantity__c
+        SELECT Id, Active__c, Available_Quantity__c
         FROM Jewellery_Product__c
-        WHERE Id IN :qty.keySet()
+        WHERE Id IN :ids
         WITH SYSTEM_MODE
         FOR UPDATE
       ]
     );
-    if (qty.isEmpty() || qty.size() > 25 || products.size() != qty.size())
-      throw new CheckoutException('Invalid order items.');
-    for (Id pid : qty.keySet()) {
-      quantity(qty.get(pid));
-      if (
-        !products.get(pid).Active__c ||
-        products.get(pid).Available_Quantity__c < qty.get(pid)
-      )
-        throw new CheckoutException(
-          'Insufficient stock for ' + products.get(pid).Name
-        );
-    }
-  }
-  public static Map<Id, Decimal> quantities(Id oid) {
-    Map<Id, Decimal> qty = new Map<Id, Decimal>();
-    for (Jewellery_Order_Item__c i : [
-      SELECT Jewellery_Product__c, Quantity__c
-      FROM Jewellery_Order_Item__c
-      WHERE Jewellery_Order__c = :oid
-      WITH SYSTEM_MODE
-    ]) {
-      quantity(i.Quantity__c);
-      qty.put(
-        i.Jewellery_Product__c,
-        (qty.containsKey(i.Jewellery_Product__c)
-          ? qty.get(i.Jewellery_Product__c)
-          : 0) + i.Quantity__c
+    if (items.isEmpty() || items.size() > 25 || products.size() != ids.size())
+      throw new AuraHandledException(
+        'Choose available jewellery before paying.'
       );
-    }
-    return qty;
+    for (Item item : items)
+      if (
+        !products.get(item.productId).Active__c ||
+        products.get(item.productId).Available_Quantity__c < item.quantity
+      )
+        throw new AuraHandledException(
+          'The selected quantity is no longer in stock.'
+        );
   }
-  /** Only accepts evidence fetched with Named Credential or authenticated raw webhook HMAC. */
+  public static Boolean sameSelection(Id cartId, Id orderId) {
+    List<Item> bag = cartItems(cartId);
+    List<Item> saved = orderItems(orderId);
+    Decimal bagTotal = 0, savedTotal = 0;
+    for (Item item : bag)
+      bagTotal += item.lineTotal;
+    for (Item item : saved)
+      savedTotal += item.lineTotal;
+    return fingerprint('', '', '', '', '', bag, bagTotal) ==
+      fingerprint('', '', '', '', '', saved, savedTotal);
+  }
+  /** Freeze at payment initialization, not during shopping. The new editable bag needs no payment lookups. */
+  public static Id freezeCart(Id cid, Id orderId, Id oldCartId) {
+    Shopping_Cart__c current = cart(cid, false);
+    if (
+      current == null ||
+      current.Id != oldCartId ||
+      !sameSelection(current.Id, orderId)
+    )
+      throw new AuraHandledException(
+        'Your bag changed. Review it again before paying.'
+      );
+    current.Cart_Status__c = 'Abandoned';
+    update as system current;
+    Shopping_Cart__c next = new Shopping_Cart__c(
+      Customer__c = cid,
+      Cart_Status__c = 'Active'
+    );
+    insert as system next;
+    List<Cart_Item__c> copies = new List<Cart_Item__c>();
+    for (Item item : cartItems(current.Id))
+      copies.add(
+        new Cart_Item__c(
+          Shopping_Cart__c = next.Id,
+          Jewellery_Product__c = item.productId,
+          Quantity__c = item.quantity,
+          Unit_Price__c = item.unitPrice
+        )
+      );
+    insert as system copies;
+    return next.Id;
+  }
+  public static Decimal numberValue(Object value) {
+    return value == null ? null : Decimal.valueOf(String.valueOf(value));
+  }
+  /** Only called with authenticated gateway evidence. Every fulfillment change commits or rolls back together. */
   public static void captured(
     Id pid,
     String linkId,
@@ -211,9 +337,9 @@ public without sharing class GVCheckoutService {
     Savepoint checkpoint = Database.setSavepoint();
     try {
       finalizeCapture(pid, linkId, evidence);
-    } catch (Exception e) {
+    } catch (Exception error) {
       Database.rollback(checkpoint);
-      throw e;
+      throw error;
     }
   }
   private static void finalizeCapture(
@@ -232,11 +358,11 @@ public without sharing class GVCheckoutService {
       SELECT
         Id,
         Jewellery_Order__c,
-        Payment_Amount__c,
         Payment_Status__c,
-        Transaction_ID__c,
+        Payment_Amount__c,
+        Gateway_Response__c,
         Razorpay_Order_ID__c,
-        Gateway_Response__c
+        Transaction_ID__c
       FROM Payment__c
       WHERE Id = :pid
       WITH SYSTEM_MODE
@@ -247,38 +373,52 @@ public without sharing class GVCheckoutService {
     if (
       a.linkId != linkId ||
       String.isBlank(transactionId) ||
-      !transactionId.startsWith('pay_') ||
+      !Pattern.matches('^pay_[A-Za-z0-9]+$', transactionId) ||
+      a.gatewayOrderId != evidence.get('order_id') ||
+      String.isBlank(a.gatewayOrderId) ||
       evidence.get('status') != 'captured' ||
       evidence.get('captured') != true ||
       evidence.get('currency') != 'INR' ||
-      numberValue(evidence.get('amount')) != p.Payment_Amount__c * 100 ||
-      String.isBlank(a.gatewayOrderId) ||
-      evidence.get('order_id') != a.gatewayOrderId
+      numberValue(evidence.get('amount')) != p.Payment_Amount__c * 100
     )
       throw new CheckoutException(
-        'Gateway payment does not match this checkout.'
+        'Gateway evidence does not match this payment.'
       );
     if (p.Payment_Status__c == 'Success') {
       if (p.Transaction_ID__c != transactionId)
         throw new CheckoutException(
-          'Additional payment requires admin review.'
+          'Additional captured transaction requires admin review.'
         );
       return;
     }
-    Jewellery_Order__c o = [
-      SELECT Id, Shopping_Cart__c, Grand_Total__c, Payment_Status__c
+    Jewellery_Order__c orderRecord = [
+      SELECT Id, Grand_Total__c, Payment_Status__c, Shopping_Cart__c
       FROM Jewellery_Order__c
       WHERE Id = :p.Jewellery_Order__c
       WITH SYSTEM_MODE
       FOR UPDATE
     ];
-    if (
-      p.Payment_Amount__c != o.Grand_Total__c ||
-      o.Payment_Status__c == 'Paid'
-    )
-      throw new CheckoutException('Order requires payment review.');
-    // Record capture even if fulfillment cannot proceed. No inventory DML until every product passes.
-    Map<Id, Decimal> qty = quantities(o.Id);
+    if (orderRecord.Grand_Total__c != p.Payment_Amount__c)
+      throw new CheckoutException('Captured amount requires order review.');
+    List<Item> items = orderItems(orderRecord.Id);
+    Map<Id, Decimal> quantities = new Map<Id, Decimal>();
+    Boolean available = !items.isEmpty();
+    for (Item item : items) {
+      if (
+        item.productId == null ||
+        item.quantity == null ||
+        item.quantity < 1 ||
+        item.quantity != item.quantity.setScale(0)
+      )
+        available = false;
+      else
+        quantities.put(
+          item.productId,
+          (quantities.containsKey(item.productId)
+            ? quantities.get(item.productId)
+            : 0) + item.quantity
+        );
+    }
     Map<Id, Jewellery_Product__c> products = new Map<Id, Jewellery_Product__c>(
       [
         SELECT
@@ -288,60 +428,62 @@ public without sharing class GVCheckoutService {
           Reserved_Quantity__c,
           Available_Quantity__c
         FROM Jewellery_Product__c
-        WHERE Id IN :qty.keySet()
+        WHERE Id IN :quantities.keySet()
         WITH SYSTEM_MODE
         FOR UPDATE
       ]
     );
-    Boolean available =
-      !qty.isEmpty() &&
-      products.size() == qty.size() &&
-      qty.size() <= 25;
-    for (Id productId : qty.keySet()) {
-      Jewellery_Product__c product = products.get(productId);
-      if (
-        product == null ||
-        !product.Active__c ||
-        product.Available_Quantity__c < qty.get(productId)
-      )
-        available = false;
-    }
+    available =
+      available &&
+      products.size() == quantities.size() &&
+      orderRecord.Payment_Status__c != 'Paid';
     if (
       [
         SELECT COUNT()
         FROM Inventory_Movement__c
-        WHERE Jewellery_Order__c = :o.Id AND Movement_Type__c = 'Sale'
+        WHERE Jewellery_Order__c = :orderRecord.Id AND Movement_Type__c = 'Sale'
         WITH SYSTEM_MODE
       ] > 0
     )
       available = false;
-    a.state = 'Paid';
-    a.fulfillment = available ? 'Confirmed' : 'Stock review required';
+    for (Id id : quantities.keySet())
+      if (
+        !products.containsKey(id) ||
+        !products.get(id).Active__c ||
+        products.get(id).Available_Quantity__c < quantities.get(id)
+      )
+        available = false;
     List<Inventory_Movement__c> moves = new List<Inventory_Movement__c>();
     if (available) {
-      for (Id productId : qty.keySet()) {
-        Jewellery_Product__c product = products.get(productId);
+      for (Id id : quantities.keySet()) {
+        Jewellery_Product__c product = products.get(id);
         Decimal beforeStock = product.Stock_Quantity__c;
-        product.Stock_Quantity__c -= qty.get(productId);
+        product.Stock_Quantity__c -= quantities.get(id);
         moves.add(
           new Inventory_Movement__c(
-            Jewellery_Order__c = o.Id,
-            Jewellery_Product__c = productId,
+            Jewellery_Product__c = id,
+            Jewellery_Order__c = orderRecord.Id,
             Movement_Type__c = 'Sale',
-            Quantity__c = qty.get(productId),
+            Quantity__c = quantities.get(id),
             Stock_Before__c = beforeStock,
             Stock_After__c = product.Stock_Quantity__c,
             Movement_Date__c = System.now(),
-            Reason__c = 'Verified hosted Razorpay payment'
+            Reason__c = 'Verified GoldVuee hosted payment'
           )
         );
       }
       update as system products.values();
       insert as system moves;
     }
+    a.state = 'Paid';
+    a.fulfillment = available ? 'Confirmed' : 'Stock review required';
     p.Payment_Status__c = 'Success';
     p.Transaction_ID__c = transactionId;
     p.Payment_Date__c = System.now();
+    p.Gateway_Response__c = JSON.serialize(a);
+    p.Failure_Reason__c = available
+      ? null
+      : 'PAYMENT CAPTURED: admin fulfillment/refund review required. Do not charge again.';
     Map<String, String> methods = new Map<String, String>{
       'upi' => 'UPI',
       'card' => 'Card',
@@ -349,22 +491,21 @@ public without sharing class GVCheckoutService {
       'wallet' => 'Wallet'
     };
     p.Payment_Method__c = methods.get((String) evidence.get('method'));
-    p.Gateway_Response__c = JSON.serialize(a);
-    p.Failure_Reason__c = available
-      ? null
-      : 'PAYMENT CAPTURED: stock unavailable. Admin fulfillment/refund review required. Do not pay again.';
     update as system p;
-    o.Payment_Status__c = 'Paid';
-    o.Order_Status__c = available ? 'Confirmed' : 'pending';
-    update as system o;
-    // A paid exception is not fulfillment. Remove the frozen bag from further charging in either case.
-    if (o.Shopping_Cart__c != null)
-      update as system new Shopping_Cart__c(
-        Id = o.Shopping_Cart__c,
-        Cart_Status__c = 'Converted'
-      );
-  }
-  public static Decimal numberValue(Object value) {
-    return value == null ? null : Decimal.valueOf(String.valueOf(value));
+    orderRecord.Payment_Status__c = 'Paid';
+    if (available)
+      orderRecord.Order_Status__c = 'Confirmed';
+    update as system orderRecord;
+    Id boundCart = a.cartId == null ? orderRecord.Shopping_Cart__c : a.cartId;
+    Shopping_Cart__c current = cart(pre.Jewellery_Order__r.Customer__c, false);
+    if (
+      available &&
+      current != null &&
+      current.Id == boundCart &&
+      sameSelection(current.Id, orderRecord.Id)
+    ) {
+      current.Cart_Status__c = 'Converted';
+      update as system current;
+    }
   }
 }

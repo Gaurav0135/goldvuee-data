@@ -55,3 +55,6 @@ $RECYCLE.BIN/
 /verification/clean-checkout/reference/
 /verification/urgent-checkout/before/
 /verification/urgent-checkout/after/
+
+/verification/rebuild-v2/org-before/
+/verification/rebuild-v2/post-deploy/

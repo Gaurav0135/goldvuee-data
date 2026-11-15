@@ -1,0 +1,258 @@
+<template>
+  <main class="contact-page">
+    <!-- HERO -->
+    <section class="contact-hero">
+      <div class="hero-content">
+        <p class="eyebrow">THE GOLDVUEE EXPERIENCE</p>
+        <h1>We're Here <em>for You.</em></h1>
+        <div class="gold-line"></div>
+        <p class="hero-description">
+          Every beautiful journey begins with a conversation. Whether you have a
+          question about our collections or need assistance, we'd love to hear
+          from you.
+        </p>
+        <p class="hero-note">✦ Personal Attention. Timeless Elegance.</p>
+      </div>
+      <div class="hero-image">
+        <img
+          src={heroImage}
+          alt="GoldVuee fine jewellery on champagne silk"
+          loading="eager"
+        />
+      </div>
+    </section>
+
+    <!-- CONTACT FORM SECTION -->
+    <section class="contact-section">
+      <div class="contact-information">
+        <p class="eyebrow">GET IN TOUCH</p>
+        <h2>Let's <em>Connect.</em></h2>
+        <div class="gold-line"></div>
+        <p class="information-intro">
+          Your questions matter to us. Whether you're exploring a collection,
+          looking for jewellery guidance, or need help with an order, we're here
+          to listen.
+        </p>
+
+        <div class="contact-info-item">
+          <div class="info-symbol" aria-hidden="true">✉</div>
+          <div>
+            <h3>Email Enquiries</h3>
+            <p>Share your questions through our enquiry form.</p>
+          </div>
+        </div>
+
+        <div class="contact-info-item">
+          <div class="info-symbol" aria-hidden="true">◇</div>
+          <div>
+            <h3>Jewellery Guidance</h3>
+            <p>Questions about collections, designs, and product details.</p>
+          </div>
+        </div>
+
+        <div class="contact-info-item">
+          <div class="info-symbol" aria-hidden="true">♡</div>
+          <div>
+            <h3>Order Assistance</h3>
+            <p>Get guidance with your jewellery shopping experience.</p>
+          </div>
+        </div>
+
+        <div class="contact-decoration">
+          <span>GOLDVUEE</span>
+          <p>Every detail matters.</p>
+        </div>
+      </div>
+
+      <div class="form-panel">
+        <p class="eyebrow">SEND AN ENQUIRY</p>
+        <h2>How Can We <em>Help?</em></h2>
+        <p class="form-intro">
+          Complete the form below to prepare your enquiry.
+        </p>
+
+        <div class="phase-notice" role="status">
+          Online enquiry submission is coming soon. This form is currently a
+          preview.
+        </div>
+
+        <form onsubmit={handleSubmit} novalidate>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="fullName"> Full Name <span>*</span> </label>
+              <input
+                id="fullName"
+                name="fullName"
+                type="text"
+                value={fullName}
+                onchange={handleInputChange}
+                placeholder="Your full name"
+                autocomplete="name"
+                maxlength="100"
+                required
+              />
+            </div>
+
+            <div class="form-field">
+              <label for="email"> Email Address <span>*</span> </label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                value={email}
+                onchange={handleInputChange}
+                placeholder="you@example.com"
+                autocomplete="email"
+                maxlength="80"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="phone"> Phone Number </label>
+              <input
+                id="phone"
+                name="phone"
+                type="tel"
+                value={phone}
+                onchange={handleInputChange}
+                placeholder="Optional"
+                autocomplete="tel"
+                maxlength="40"
+              />
+            </div>
+
+            <div class="form-field">
+              <label for="enquiryType"> Enquiry Type <span>*</span> </label>
+              <select
+                id="enquiryType"
+                name="enquiryType"
+                value={enquiryType}
+                onchange={handleInputChange}
+                required
+              >
+                <option value="">Select an enquiry</option>
+                <option value="Product Enquiry">Product Enquiry</option>
+                <option value="Order Support">Order Support</option>
+                <option value="Jewellery Guidance">Jewellery Guidance</option>
+                <option value="General Enquiry">General Enquiry</option>
+              </select>
+            </div>
+          </div>
+
+          <template if:true={showOrderNumber}>
+            <div class="form-field">
+              <label for="orderNumber"> Order Number </label>
+              <input
+                id="orderNumber"
+                name="orderNumber"
+                type="text"
+                value={orderNumber}
+                onchange={handleInputChange}
+                placeholder="Enter order reference"
+                maxlength="40"
+              />
+            </div>
+          </template>
+
+          <div class="form-field">
+            <label for="message"> Your Message <span>*</span> </label>
+            <textarea
+              id="message"
+              name="message"
+              value={message}
+              onchange={handleInputChange}
+              placeholder="Tell us how we can help..."
+              rows="5"
+              maxlength="2000"
+              required
+            ></textarea>
+            <span class="field-hint"> Maximum 2000 characters </span>
+          </div>
+
+          <button class="submit-button" type="submit">
+            Preview Enquiry
+            <span aria-hidden="true">→</span>
+          </button>
+
+          <p class="form-disclaimer">
+            Preview only. No information is submitted or stored in Phase 1.
+          </p>
+        </form>
+
+        <template if:true={showPreview}>
+          <div class="preview-result" role="status" aria-live="polite">
+            <h3>Enquiry Preview Ready</h3>
+            <p>
+              Your details passed the browser validation checks. Submission to
+              Salesforce will be enabled in Phase 2.
+            </p>
+            <button
+              type="button"
+              class="dismiss-button"
+              onclick={dismissPreview}
+            >
+              Close Preview
+            </button>
+          </div>
+        </template>
+      </div>
+    </section>
+
+    <!-- CUSTOMER CARE -->
+    <section class="care-section">
+      <p class="eyebrow">THE GOLDVUEE PROMISE</p>
+      <h2>Thoughtful Care, <em>Always.</em></h2>
+      <p class="section-subtitle">
+        A personal approach to every jewellery journey.
+      </p>
+
+      <div class="care-grid">
+        <article class="care-card">
+          <span class="care-icon" aria-hidden="true"> ◇ </span>
+          <h3>Jewellery Guidance</h3>
+          <p>
+            Explore our collections with confidence and find pieces that reflect
+            your style.
+          </p>
+        </article>
+
+        <article class="care-card">
+          <span class="care-icon" aria-hidden="true"> ✧ </span>
+          <h3>Order Assistance</h3>
+          <p>
+            We're committed to making your shopping experience feel simple and
+            thoughtful.
+          </p>
+        </article>
+
+        <article class="care-card">
+          <span class="care-icon" aria-hidden="true"> ♡ </span>
+          <h3>Personal Attention</h3>
+          <p>
+            Every question deserves care, consideration, and a personal touch.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="contact-cta">
+      <p class="eyebrow">DISCOVER GOLDVUEE</p>
+      <h2>
+        Explore Something<br />
+        <em>Extraordinary.</em>
+      </h2>
+      <p>
+        Discover jewellery inspired by elegance, individuality, and
+        unforgettable moments.
+      </p>
+      <a href={collectionsUrl} class="collection-button">
+        Explore Collections
+        <span aria-hidden="true">→</span>
+      </a>
+    </section>
+  </main>
+</template>

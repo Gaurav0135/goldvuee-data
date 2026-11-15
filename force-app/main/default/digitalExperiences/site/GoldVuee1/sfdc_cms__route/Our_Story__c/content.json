@@ -1,0 +1,12 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Our Story",
+  "contentBody": {
+    "activeViewId": "Our_Story",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-our-story",
+    "urlPrefix": "our-story"
+  },
+  "urlName": "our-story"
+}

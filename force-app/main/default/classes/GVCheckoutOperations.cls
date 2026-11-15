@@ -14,46 +14,33 @@ public without sharing class GVCheckoutOperations {
   }
   public static Map<String, Boolean> configureReconciliation() {
     admin();
-    if (
-      [
-        SELECT COUNT()
-        FROM CronTrigger
-        WHERE
-          CronJobDetail.Name = 'GoldVuee Hourly Reconciliation'
-          AND State IN ('WAITING', 'ACQUIRED', 'EXECUTING')
-        WITH SYSTEM_MODE
-      ] == 0
-    )
-      System.schedule(
-        'GoldVuee Hourly Reconciliation',
-        '0 0 * * * ?',
-        new GVReconciliationScheduler()
-      );
     List<GV_Payment_Config__c> configs = [
-      SELECT Razorpay_Test_Secret__c, Webhook_Secret__c
+      SELECT Webhook_Secret__c
       FROM GV_Payment_Config__c
-      WHERE Name = 'RazorpayTest'
+      WHERE Name = 'Hosted Test Mode'
       WITH SYSTEM_MODE
-      LIMIT 1
+      LIMIT 2
     ];
-    String secret = configs.isEmpty()
-      ? null
-      : configs[0].Razorpay_Test_Secret__c;
-    String webhook = configs.isEmpty() ? null : configs[0].Webhook_Secret__c;
     return new Map<String, Boolean>{
-      'scheduled' => true,
-      'checkoutSecretReady' => !String.isBlank(secret) &&
-      !secret.contains('****'),
-      'webhookSecretReady' => !String.isBlank(webhook) &&
-      !webhook.contains('****')
+      'scheduled' => false,
+      'checkoutSecretReady' => configs.size() == 1,
+      'webhookSecretReady' => configs.size() == 1 &&
+      !String.isBlank(configs[0].Webhook_Secret__c) &&
+      !configs[0].Webhook_Secret__c.contains('*')
     };
   }
   @AuraEnabled
   public static void reconcilePayment(Id paymentId) {
     admin();
-    System.enqueueJob(new GVGatewayWorker(paymentId, 'reconcile'));
+    GVRazorpayController.reconcileForAdmin(paymentId);
   }
-  @AuraEnabled public static void approveLateCapture(Id paymentId) {admin();System.enqueueJob(new GVGatewayWorker(paymentId,'review'));}
+  @AuraEnabled
+  public static void approveLateCapture(Id paymentId) {
+    admin();
+    throw new AuraHandledException(
+      'Captured stock exceptions require manual fulfillment/refund review. No automatic refund or second stock deduction is permitted.'
+    );
+  }
   @AuraEnabled
   public static List<Jewellery_Product__c> inventory() {
     admin();
@@ -82,9 +69,13 @@ public without sharing class GVCheckoutOperations {
         Payment_Amount__c,
         Payment_Status__c,
         Reconciliation_State__c,
-        Last_Checked_At__c
+        Last_Checked_At__c,
+        Failure_Reason__c
       FROM Payment__c
-      WHERE Payment_Status__c = 'Pending'
+      WHERE
+        Payment_Status__c = 'Pending'
+        OR (Payment_Status__c = 'Success'
+        AND Failure_Reason__c != NULL)
       WITH SYSTEM_MODE
       ORDER BY CreatedDate DESC
       LIMIT 100
